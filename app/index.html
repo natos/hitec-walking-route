@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Angular Material - Starter App</title>
+    <title>Hi-Tec Walking Route</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
+    <meta name="description" content="Hi-Tec Walking Route">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
@@ -23,38 +23,63 @@
 
   </head>
 
-  <body ng-app="starterApp" layout="column" ng-controller="UserController as ul" ng-cloak>
+  <!-- <body ng-app="hiTecWalkingRouteApp" layout="column" ng-controller="UserController as ul" ng-cloak> -->
+  <body layout="column" ng-controller="MapController as map" ng-cloak>
 
-    <md-toolbar layout="row">
-      <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+    <!-- TODO: Create a mobile button to open the menu -->
+    <!-- <md-toolbar layout="row">
+      <h1><span>Hi-Tec Walking Route</span></h1>
+      <span flex></span>
+      <md-button class="menu" hide-gt-sm ng-click="map.toggleList()" aria-label="Show List">
         <md-icon md-svg-icon="menu" ></md-icon>
       </md-button>
-      <h1>Angular Material - Starter App</h1>
-    </md-toolbar>
+    </md-toolbar> -->
+
 
     <div flex layout="row">
-
-        <md-sidenav  ng-click="ul.toggleList()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2" >
-          <md-list>
-            <md-list-item ng-repeat="it in ul.users">
-                <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
-                  <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                  {{it.name}}
-                </md-button>
-            </md-list-item>
-          </md-list>
-        </md-sidenav>
-
-        <md-content flex id="content">
-          <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
-          <h2>{{ul.selected.name}}</h2>
-          <p>{{ul.selected.content}}</p>
-
-          <md-button class="share" md-no-ink ng-click="ul.makeContact(ul.selected)" aria-label="Share with {{ ul.selected.name }}">
-            <md-icon md-svg-icon="share"></md-icon>
+      <md-content flex id="content">
+        <div id="map"></div>
+        <div id="map-actions">
+          <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart">
+            <md-icon md-svg-icon="refresh"></md-icon>
           </md-button>
-        </md-content>
-
+          <md-button class="my-location md-fab md-primary" ng-click="map.center()" aria-label="My location">
+            <md-icon md-svg-icon="my_location"></md-icon>
+          </md-button>
+        </div>
+      </md-content>
+      <md-sidenav ng-click="map.toggleList()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="right" class="md-sidenav-right">
+        <md-list>
+          <md-list-item>
+            <h3>Create a Walking Route</h3>
+          </md-list-item>
+          <md-list-item ng-repeat="marker in map.selectedMarkers">
+            <md-button
+            class="marker-list marker-{{marker.mark.id}}"
+            ng-class="{'selected' : marker === map.selected }"
+            ng-click="map.showPlace(marker)"
+            style="background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url('{{marker.mark.media.x2}}') no-repeat 0 0;">
+              <div layout="row">
+                <div layout="column">
+                  <label class="marker-list-label" layout-align="start center">{{marker.mark.label}}</label>
+                  <div class="marker-list-chip">{{marker.mark.order}}</div>
+                </div>
+                <span flex></span>
+                <md-icon md-svg-icon="more_vert" layout-align="end center"></md-icon>
+                <!-- <md-button class="my-location md-mini md-fab" aria-label="More" layout-align="end center">
+                  <md-icon md-svg-icon="more_vert"></md-icon>
+                </md-button> -->
+              </div>
+            </md-button>
+          </md-list-item>
+          <md-list-item ng-if="!map.selectedMarkers.length">
+            <p>Choose from the pins in the map the first destination to start creating walking route.</p>
+          </md-list-item>
+          <md-list-item ng-if="map.selectedMarkers.length==1">
+            <p>Select at least on more destination.</p>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
     </div>
 
     <script src="../node_modules/angular/angular.js"></script>
@@ -62,32 +87,24 @@
     <script src="../node_modules/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
 
+    <script src="./src/App.js"></script>
+
+    <script src="./src/Map.js"></script>
+    <script src="./src/MapController.js"></script>
+    <script src="./src/MapDetailController.js"></script>
+    <script src="./src/MapService.js"></script>
+    <script src="./src/MarkersService.js"></script>
+    <script src="./src/HiTecMapDirective.js"></script>
+    <script src="./src/HiTecMapController.js"></script>
+
     <script src="./src/users/Users.js"></script>
     <script src="./src/users/UserController.js"></script>
     <script src="./src/users/UserService.js"></script>
 
     <script type="text/javascript">
-
-          angular
-              .module('starterApp', ['ngMaterial', 'users'])
-              .config(function($mdThemingProvider, $mdIconProvider){
-
-                  $mdIconProvider
-                      .defaultIconSet("./assets/svg/avatars.svg", 128)
-                      .icon("menu"       , "./assets/svg/menu.svg"        , 24)
-                      .icon("share"      , "./assets/svg/share.svg"       , 24)
-                      .icon("google_plus", "./assets/svg/google_plus.svg" , 512)
-                      .icon("hangouts"   , "./assets/svg/hangouts.svg"    , 512)
-                      .icon("twitter"    , "./assets/svg/twitter.svg"     , 512)
-                      .icon("phone"      , "./assets/svg/phone.svg"       , 512);
-
-                      $mdThemingProvider.theme('default')
-                          .primaryPalette('brown')
-                          .accentPalette('red');
-
-              });
-
+      function configure() { angular.bootstrap(document.getElementsByTagName("body")[0], ['WalkingRouteApp']); }
+      function start() { angular.element(document).ready(configure); }
     </script>
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYDPFTfr4iBb2gXWvJVzB35M-mq1Ob-oM&callback=start"></script>
   </body>
 </html>

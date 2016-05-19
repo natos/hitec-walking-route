@@ -1,0 +1,22 @@
+<div class="marker-detail" layout="column">
+  <md-button class="close md-primary md-button" aria-label="Close" ng-click="closeDialog()"
+    style="background: url('{{marker.mark.media.x3}}');">
+    <md-icon md-svg-icon="close"></md-icon>
+  </md-button>
+  <section>
+    <h2 class="md-headline">{{marker.mark.label}}</h2>
+    <div class="marker-details-content">
+      <p ng-repeat="p in marker.mark.content">{{p}}</p>
+    </div>
+  </section>
+  <footer layout="row" layout-sm="column">
+    <div layout="row" layout-align="start center">
+      <img class="avatar" ng-src="{{marker.mark.author.picture}}">
+      <span>{{marker.mark.author.name}}, <br>{{marker.mark.author.role}}</span>
+    </div>
+    <span flex></span>
+    <div layout="row" layout-align="end center">
+      <md-button class="md-raised md-primary" ng-click="closeDialog()">Close</md-button>
+    </div>
+  </footer>
+</div>

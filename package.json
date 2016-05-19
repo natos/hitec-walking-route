@@ -1,8 +1,8 @@
 {
-  "name": "material-start",
+  "name": "hitec-walking-route",
   "private": true,
-  "version": "0.0.4",
-  "description": "A starter project for AngularJS Material",
+  "version": "0.0.1",
+  "description": "Create walking routes with Hi-Tec",
   "repository": "https://github.com/angular/material-start",
   "licenses": [
     {
@@ -28,6 +28,7 @@
     "live-server": "^0.9.1"
   },
   "scripts": {
+    "start": "live-server ./ --watch ./",
     "prestart": "npm update"
   }
 }

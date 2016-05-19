@@ -1,9 +1,16 @@
-html, body {
+html, body,
+html.md-default-theme,
+body.md-default-theme {
   font-family: 'Roboto', sans-serif;
   font-size:14px;
   height:100%;
   margin: 0px;
   padding: 0px;
+  background: transparent;
+}
+
+md-content {
+  background: transparent;
 }
 
 /* Toolbar area */
@@ -50,27 +57,6 @@ md-list-item > button {
   padding-top: 5px;
 }
 
-#content .md-button.share {
-  background-color: transparent;
-  border: none;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto 16px 0;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-}
-
-#content md-icon.avatar {
-  margin-top: 10px;
-}
-
-#content .md-button.share > md-icon {
-  fill:black;
-  width:36px;
-  height:36px;
-}
-
 md-button.menuBtn > md-icon {
   fill:white;
   width:24px;
@@ -82,12 +68,6 @@ md-button.menuBtn > md-icon {
   border-radius: 75%;
   padding:4px;
   transition: all 100ms ease-out 30ms;
-}
-
-#content img {
-  display: block;
-  height: auto;
-  max-width: 500px;
 }
 
 /* Utils */
@@ -119,13 +99,107 @@ md-toolbar h1 {
   -moz-transform:scale(0.70);
 }
 
+#map {
+  position: absolute;
+  z-index: 70;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#map-actions {
+  position: absolute;
+  z-index: 71;
+  bottom: 3em;
+  left: 3em;
+}
+.my-location {
 
-md-bottom-sheet  md-icon {
-  margin-right:20px;
+}
+/* marker list */
+.marker-list {
+  overflow: visible;
+  position: relative;
+  width: 287px;
+  height: 110px;
+  border-radius: 0;
+  margin: 0;
+}
+.marker-list:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 110px;
+  top: 0;
+  left: -6px;
+  z-index: 1000;
+  transition: width 0.25s;
+  -webkit-transition: width .25s;
+  -moz-transition: width 0.25s;
+}
+.marker-list.selected:before {
+  width: 5px;
+  background: rgb(38, 136, 255);
 }
 
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
+.marker-list-background {
+  position: absolute;
+  top: 0; left: 0;
 }
+.marker-list-label {
+  padding: 0 1em;
+  color: rgb(255, 255, 255);
+}
+.marker-list-chip {
+  border-radius: 100%;
+  text-align: center;
+  line-height: 2em;
+  width: 2em;
+  height: 2em;
+  margin: 0 1em;
+  background: #ffffff;
+  color: #333333;
+}
+
+/* marker detail */
+.marker-detail > section {
+  padding: 0 2em;
+}
+.marker-detail > footer {
+  padding: 0 1em;
+}
+
+.marker-detail .close.md-button {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 400px;
+  background-size: cover!important;
+  background-position: center center!important;
+}
+.marker-detail .close.md-button md-icon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+/* fix content z-index */
+  md-content {
+    z-index: 1;
+  }
+  md-content md-bottom-sheet {
+    z-index: 100;
+  }
+
+/* fix sidebar width */
+  md-sidenav {
+    width: 287px;
+    overflow: visible; /* make selection offset visible */
+  }
+
+/* fix dialog backdrop color */
+  md-backdrop.md-opaque.md-default-theme, md-backdrop.md-opaque {
+    background-color: rgb(255, 255, 255);
+    opacity: .5;
+  }
