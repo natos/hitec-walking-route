@@ -62,13 +62,10 @@
               <div layout="row">
                 <div layout="column">
                   <label class="marker-list-label" layout-align="start center">{{marker.mark.label}}</label>
-                  <div class="marker-list-chip">{{marker.mark.order}}</div>
+                  <div class="marker-list-chip" ng-style="{ 'background-color': marker.mark.color }">{{marker.mark.order}}</div>
                 </div>
                 <span flex></span>
-                <md-icon md-svg-icon="more_vert" layout-align="end center"></md-icon>
-                <!-- <md-button class="my-location md-mini md-fab" aria-label="More" layout-align="end center">
-                  <md-icon md-svg-icon="more_vert"></md-icon>
-                </md-button> -->
+                <md-icon md-svg-icon="more_vert" aria-label="More" layout-align="end center"></md-icon>
               </div>
             </md-button>
           </md-list-item>
@@ -94,8 +91,7 @@
     <script src="./src/MapDetailController.js"></script>
     <script src="./src/MapService.js"></script>
     <script src="./src/MarkersService.js"></script>
-    <script src="./src/HiTecMapDirective.js"></script>
-    <script src="./src/HiTecMapController.js"></script>
+    <script src="./src/DirectionsService.js"></script>
 
     <script src="./src/users/Users.js"></script>
     <script src="./src/users/UserController.js"></script>

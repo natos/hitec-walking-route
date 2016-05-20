@@ -269,6 +269,7 @@
 
     return {
       getMap: function() {
+        if (map) { return map; }
         map = new google.maps.Map(document.getElementById('map'), config);
         map.setOptions({ "styles": styles });
         return map;

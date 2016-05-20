@@ -1,6 +1,6 @@
 <div class="marker-detail" layout="column">
   <md-button class="close md-primary md-button" aria-label="Close" ng-click="closeDialog()"
-    style="background: url('{{marker.mark.media.x3}}');">
+    ng-style="{ 'background-image': 'url({{marker.mark.media.x3}})' }">
     <md-icon md-svg-icon="close"></md-icon>
   </md-button>
   <section>

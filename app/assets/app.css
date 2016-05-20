@@ -124,6 +124,7 @@ md-toolbar h1 {
   height: 110px;
   border-radius: 0;
   margin: 0;
+  margin-bottom: 1px;
 }
 .marker-list:before {
   content: '';
@@ -132,15 +133,17 @@ md-toolbar h1 {
   width: 0;
   height: 110px;
   top: 0;
-  left: -6px;
+  left: 0;
   z-index: 1000;
-  transition: width 0.25s;
-  -webkit-transition: width .25s;
-  -moz-transition: width 0.25s;
+  transition: all 0.25s;
+  -webkit-transition: all .25s;
+  -moz-transition: all 0.25s;
+  transform: translate3d(0, 0, 0);
 }
 .marker-list.selected:before {
-  width: 5px;
+  width: 10px;
   background: rgb(38, 136, 255);
+  transform: translate3d(-11px, 0, 0);
 }
 
 .marker-list-background {
@@ -158,8 +161,8 @@ md-toolbar h1 {
   width: 2em;
   height: 2em;
   margin: 0 1em;
-  background: #ffffff;
-  color: #333333;
+  background: #333333;
+  color: #ffffff;
 }
 
 /* marker detail */
