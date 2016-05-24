@@ -14,33 +14,6 @@
    */
   function MapService() {
 
-    // var styles = [
-    //   {
-    //     stylers: [
-    //       { hue: "#54bceb" },
-    //       { saturation: -20 }
-    //     ]
-    //   }, {
-    //     featureType: "road",
-    //     elementType: "geometry",
-    //     stylers: [
-    //       { lightness: 100 },
-    //       { visibility: "simplified" }
-    //     ]
-    //   }, {
-    //     featureType: "road",
-    //     elementType: "labels",
-    //     stylers: [
-    //       { visibility: "off" }
-    //     ]
-    //   }, {
-    //     featureType: "poi",
-    //     stylers: [
-    //       { visibility: "off" }
-    //     ]
-    //   }
-    // ];
-
     var styles = [{
       "elementType": "labels.text",
       "stylers": [{
@@ -258,7 +231,7 @@
 
     var config = {
       zoom: 14,
-      center: AmsterdamMark,
+      center: HiTecStoreMark,
       disableDefaultUI: true,
       scaleControl: true,
       zoomControl: true,
@@ -267,16 +240,27 @@
       }
     };
 
+    function getCenterPoints() {
+      return HiTecStoreMark;
+    }
+
+    function centeMap() {
+      var map = getMap();
+      map.setCenter(config.center);
+      map.setZoom(config.zoom);
+      return map;
+    }
+
+    function getMap() {
+      if (map) { return map; }
+      map = new google.maps.Map(document.getElementById('map'), config);
+      map.setOptions({ "styles": styles });
+      return map;
+    }
+
     return {
-      getMap: function() {
-        if (map) { return map; }
-        map = new google.maps.Map(document.getElementById('map'), config);
-        map.setOptions({ "styles": styles });
-        return map;
-      },
-      getCenterPoints: function() {
-        return HiTecStoreMark;
-      }
+      getMap: getMap,
+      centeMap: centeMap
     };
   }
 

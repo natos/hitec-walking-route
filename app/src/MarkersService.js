@@ -118,9 +118,34 @@
       }
     ];
 
-    // <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.21 27.23"><defs><style>.cls-1{fill:#999;}</style></defs><title>pin</title><path class="cls-1" d="M20.21,10.1c0,5.58-9.25,17.13-10.1,17.13S0,15.68,0,10.1A10.1,10.1,0,1,1,20.21,10.1Z"/></svg>
-    var pinSVGPath = "M27.648 -41.399q0 -3.816 -2.7 -6.516t-6.516 -2.7 -6.516 2.7 -2.7 6.516 2.7 6.516 6.516 2.7 6.516 -2.7 2.7 -6.516zm9.216 0q0 3.924 -1.188 6.444l-13.104 27.864q-0.576 1.188 -1.71 1.872t-2.43 0.684 -2.43 -0.684 -1.674 -1.872l-13.14 -27.864q-1.188 -2.52 -1.188 -6.444 0 -7.632 5.4 -13.032t13.032 -5.4 13.032 5.4 5.4 13.032z";
-    // var pinSVGPath = "M20.21,10.1c0,5.58-9.25,17.13-10.1,17.13S0,15.68,0,10.1A10.1,10.1,0,1,1,20.21,10.1Z";
+    var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
+    var pinCircleSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50ZM0-25a7.28 7.28 0 0 1-7.28-7.28A7.28 7.28 0 0 1 0-39.55a7.28 7.28 0 0 1 7.28 7.28A7.28 7.28 0 0 1 0-25Z";
+
+    function markerIcon(options) {
+        var icon = {
+          path: options.path || pinCircleSVGPath,
+          scale: options.scale || .75,
+          strokeWeight: options.strokeWeight || 0,
+          fillColor: options.fillColor || "#ffffff",
+          fillOpacity: options.fillOpacity || .85,
+          labelOrigin: new google.maps.Point(-2, -30)
+        };
+        return icon;
+    }
+
+    function selectMarkerPin(marker) {
+      marker.setIcon(markerIcon({
+        path: pinSVGPath,
+        fillColor: marker.mark.color,
+        fillOpacity: 1
+      }));
+    }
+
+    function unselectMarkerPin(marker) {
+      marker.setIcon(markerIcon({
+        fillColor: marker.mark.color
+      }));
+    }
 
     function createMarker(mark, i) {
       $timeout(function() {
@@ -129,13 +154,7 @@
           position: mark.position,
           mark: mark,
           map: mapService.getMap(),
-          icon: {
-            path: pinSVGPath,
-            scale: .6,
-            strokeWeight: 0,
-            fillColor: mark.color,
-            fillOpacity: 0.85
-          }
+          icon: markerIcon({ fillColor: mark.color })
         });
         marker.addListener('click', toggleMarker);
       }, dropMarkTiming);
@@ -146,7 +165,6 @@
     }
 
     function toggleMarker() {
-      // map.setCenter(this.getPosition());
       // reset pin label
       this.setLabel('');
       var labelId = 'label_' + this.mark.id;
@@ -154,9 +172,11 @@
       var isAlreadySelected = position >= 0;
       if (isAlreadySelected) {
         selectedMarkers.splice(position, 1);
+        unselectMarkerPin(this);
       } else {
         var order = selectedMarkers.push(this);
         this.mark.order = order;
+        selectMarkerPin(this);
       }
       reorderMarkers();
       $rootScope.$emit('markersService:toggled-mark', this);
@@ -166,7 +186,10 @@
     function reorderMarkers() {
       for (var i = 0; i < selectedMarkers.length; i += 1) {
         selectedMarkers[i].mark.order = i+1;
-        selectedMarkers[i].setLabel(''+(i+1));
+        selectedMarkers[i].setLabel({
+          color: '#ffffff',
+          text: ''+(i+1)
+        });
       }
     }
 

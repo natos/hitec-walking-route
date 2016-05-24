@@ -113,9 +113,8 @@ md-toolbar h1 {
   bottom: 3em;
   left: 3em;
 }
-.my-location {
 
-}
+.my-location {}
 /* marker list */
 .marker-list {
   overflow: visible;
