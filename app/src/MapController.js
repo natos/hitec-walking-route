@@ -30,6 +30,7 @@
     self.rawMarks = [].concat(markersService.getMarks());
     self.selectedMarkers = [];
     self.center = centerMap;
+    self.finish = finish;
     self.restart = restartMap;
     self.showPlace = showPlace;
     self.toggleList = toggleList;
@@ -37,12 +38,13 @@
     markersService.dropMarkers();
 
     function centerMap() {
-      mapService.centeMap();
+      mapService.centerMap();
       // self.map.setCenter(mapService.getCenterPoints());
     }
 
     function restartMap() {
       self.selectedMarkers.splice(0, self.selectedMarkers.length);
+      directionsService.cleanRoute();
     }
 
     $scope.$watch('optimizeWaypoints', function(newVal, oldVal) {
@@ -105,6 +107,44 @@
           $mdDialog.hide();
           // unselect
           self.selected = null;
+        };
+      }
+    }
+
+    /**
+     * Show finish view
+     */
+    function finish() {
+
+      var isDialogOpen = document.getElementsByTagName('md-dialog')[0];
+
+      // otherwise, close dialog
+      if (isDialogOpen) {
+          closeDialog();
+      }
+
+      // show dialog
+      $mdDialog.show({
+        controller: ['$scope', '$mdDialog', StaticMapController],
+        fullscreen: true,
+        clickOutsideToClose: true,
+        parent: angular.element(document.body),
+        templateUrl: './src/StaticMap.html',
+        // fancy animations
+        openFrom: '.finish',
+        closeTo: '.finish'
+      });
+      /**
+       * User ContactSheet controller
+       */
+      function StaticMapController($scope, $mdDialog) {
+
+        $scope.staticMapURL = directionsService.getStaticMapWithDirections();
+
+        $scope.directions = directionsService.getCurrentDirections();
+
+        $scope.closeDialog = function() {
+          $mdDialog.hide();
         };
       }
     }

@@ -114,7 +114,6 @@ md-toolbar h1 {
   left: 3em;
 }
 
-.my-location {}
 /* marker list */
 .marker-list {
   overflow: visible;
@@ -165,6 +164,14 @@ md-toolbar h1 {
 }
 
 /* marker detail */
+.marker-detail > header {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center center;
+}
 .marker-detail > section {
   padding: 0 2em;
 }
@@ -173,17 +180,143 @@ md-toolbar h1 {
 }
 
 .marker-detail .close.md-button {
-  position: relative;
   margin: 0;
-  padding: 0;
-  min-height: 400px;
-  background-size: cover!important;
-  background-position: center center!important;
+  padding: 2em;
 }
 .marker-detail .close.md-button md-icon {
-  position: absolute;
-  top: 1em;
-  right: 1em;
+
+}
+
+.static-map {
+  width: 1000px;
+}
+.static-map header {
+  width: 640px;
+  height: 640px;
+}
+.static-map-content {
+  padding: 20px;
+  width: 255px;
+  height: 600px;
+  overflow: scroll;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 90%, rgba(0,0,0,0.15) 100%) no-repeat 0 0;
+}
+
+.static-map-content .leg {
+  margin-bottom: 2em;
+}
+
+.static-map-content .directions {
+  opacity: .5;
+  margin-bottom: 1em;
+}
+
+.static-map-content .instruction div {
+  color: #ccc;
+  padding: 1em 1.5em;
+}
+
+.static-map-content .start,
+.static-map-content .end,
+.static-map-content .start md-icon svg,
+.static-map-content .end md-icon svg {
+  color: #666;
+  fill: #666;
+}
+
+.static-map-content .step {
+  line-height: 16px;
+}
+.static-map-content .step md-icon {
+  font-size: 8px;
+}
+.static-map-content .step md-icon svg {
+  color: #ccc;
+  fill: #ccc;
+}
+
+.maneuver {
+  background-size: 19px 630px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  opacity: .75;
+}
+
+.maneuver.ferry {
+  background-position: 0 -614px
+}
+
+.maneuver.ferry-train {
+  background-position: 0 -566px
+}
+
+.maneuver.merge {
+  background-position: 0 -143px
+}
+
+.maneuver.straight {
+  background-position: 0 -534px
+}
+
+.maneuver.fork-left {
+  background-position: 0 -550px
+}
+
+.maneuver.ramp-left {
+  background-position: 0 -598px
+}
+
+.maneuver.roundabout-left {
+  background-position: 0 -197px
+}
+
+.maneuver.turn-left {
+  background-position: 0 -413px
+}
+
+.maneuver.turn-sharp-left {
+  background-position: 0 0
+}
+
+.maneuver.turn-slight-left {
+  background-position: 0 -378px
+}
+
+.maneuver.uturn-left {
+  background-position: 0 -305px
+}
+
+.maneuver.fork-right {
+  background-position: 0 -499px
+}
+
+.maneuver.ramp-right {
+  background-position: 0 -429px
+}
+
+.maneuver.roundabout-right {
+  background-position: 0 -232px
+}
+
+.maneuver.turn-right {
+  background-position: 0 -483px
+}
+
+.maneuver.turn-sharp-right {
+  background-position: 0 -582px
+}
+
+.maneuver.turn-slight-right {
+  background-position: 0 -51px
+}
+
+.maneuver.uturn-right {
+  background-position: 0 -35px
+}
+
+.maneuver {
+  background-image: url(http://maps.gstatic.com/mapfiles/api-3/images/maneuvers.png);
 }
 
 /* fix content z-index */

@@ -218,8 +218,8 @@
     }];
 
     var AmsterdamMark = {
-      lat: 52.3714633,
-      lng: 4.8815704
+      lat: 52.370216,
+      lng: 4.895168
     };
 
     var HiTecStoreMark = {
@@ -231,7 +231,7 @@
 
     var config = {
       zoom: 14,
-      center: HiTecStoreMark,
+      center: AmsterdamMark,
       disableDefaultUI: true,
       scaleControl: true,
       zoomControl: true,
@@ -240,11 +240,7 @@
       }
     };
 
-    function getCenterPoints() {
-      return HiTecStoreMark;
-    }
-
-    function centeMap() {
+    function centerMap() {
       var map = getMap();
       map.setCenter(config.center);
       map.setZoom(config.zoom);
@@ -260,7 +256,7 @@
 
     return {
       getMap: getMap,
-      centeMap: centeMap
+      centerMap: centerMap
     };
   }
 

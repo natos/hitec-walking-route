@@ -20,7 +20,11 @@
       console.error('Google Maps API is unavailable.');
     }
 
+    var API_KEY = 'AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo';
+
     var rawRoute;
+    var totalDuration = 0;
+    var totalDistance = 0;
 
     var optimizeWaypoints;
 
@@ -82,31 +86,29 @@
 
       directionsService.route(directions, function(response, status) {
           if (status === google.maps.DirectionsStatus.OK) {
-            // console.log('directions response', response)
+              // console.log('directions response', response)
               directionsDisplay.setDirections(response);
               rawRoute = response.routes[0];
 
               // var summaryPanel = document.getElementById('directions-panel');
               // summaryPanel.innerHTML = '';
-              // var totalDurationMin = 0;
-              // var totalDistanceMiles = 0;
 
               // For each route, display summary information.
-              // for (var i = 0; i < route.legs.length; i++) {
-              //     totalDurationMin += route.legs[i].duration.value / 60; // to minutes
-              //     totalDistanceMiles += route.legs[i].distance.value / 1000; // to km
-              //     var routeSegment = i + 1;
-              //     summaryPanel.innerHTML += route.legs[i].duration.text + ': <b>Route Segment: ' + routeSegment + '</b><br>';
-              //     summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-              //     summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-              //     summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+              // for (var i = 0; i < rawRoute.legs.length; i++) {
+              //     totalDuration += rawRoute.legs[i].duration.value / 60; // to minutes
+              //     totalDistance += rawRoute.legs[i].distance.value / 1000; // to km
+                  // var routeSegment = i + 1;
+                  // summaryPanel.innerHTML += rawRoute.legs[i].duration.text + ': <b>Route Segment: ' + routeSegment + '</b><br>';
+                  // summaryPanel.innerHTML += rawRoute.legs[i].start_address + ' to ';
+                  // summaryPanel.innerHTML += rawRoute.legs[i].end_address + '<br>';
+                  // summaryPanel.innerHTML += rawRoute.legs[i].distance.text + '<br><br>';
               // }
 
-              // totalDurationMin += route.legs[0].duration.value / 60; // to minutes
-              // totalDistanceMiles += route.legs[0].distance.value / 1000; // to km
-              // for (var i = 0; i < route.legs[0].steps.length; i++) {
+              // totalDurationMin += rawRoute.legs[0].duration.value / 60; // to minutes
+              // totalDistanceMiles += rawRoute.legs[0].distance.value / 1000; // to km
+              // for (var i = 0; i < rawRoute.legs[0].steps.length; i++) {
               //   console.log('step', step)
-              //   var step = route.legs[0].steps[i];
+              //   var step = rawRoute.legs[0].steps[i];
               //   var $step = document.createElement('div');
               //   if (step.maneuver && step.maneuver !== '') {
               //     $step.className = step.maneuver;
@@ -116,6 +118,7 @@
               // }
               // var totals = document.getElementById('totals');
               // totals.innerHTML = '<p>' + (Math.round(totalDistanceMiles * 10) / 10) + 'km / ' + (Math.round(totalDurationMin * 100) / 100) + ' min</p>';
+              // console.log(Math.round(totalDistance * 10) / 10, 'km / ', Math.round(totalDuration * 100) / 100, ' min');
           } else {
               console.error('Directions request failed due to ' + status, response);
           }
@@ -130,12 +133,28 @@
       directionsDisplay.setMap(null);
     }
 
+    function getCurrentDirections() {
+      return rawRoute;
+    }
+
+    function getStaticMapWithDirections() {
+        var url = 'https://maps.googleapis.com/maps/api/staticmap?';
+        url += 'center=52.370216,4.895168'; // center in Amsterdam
+        // url += '&zoom=14';
+        url += '&size=640x640';
+        url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + rawRoute.overview_polyline;
+        url += '&key=' + API_KEY;
+        return url;
+    }
+
     $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
 
     return {
       cleanRoute: cleanRoute,
+      getStaticMapWithDirections: getStaticMapWithDirections,
       calculateAndDisplayRoute: calculateAndDisplayRoute,
-      setOptimizeWaypoints: setOptimizeWaypoints
+      setOptimizeWaypoints: setOptimizeWaypoints,
+      getCurrentDirections: getCurrentDirections
     };
   }
 

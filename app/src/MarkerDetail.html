@@ -1,8 +1,9 @@
 <div class="marker-detail" layout="column">
-  <md-button class="close md-primary md-button" aria-label="Close" ng-click="closeDialog()"
-    ng-style="{ 'background-image': 'url({{marker.mark.media.x3}})' }">
-    <md-icon md-svg-icon="close"></md-icon>
-  </md-button>
+  <header ng-style="{ 'background-image': 'url({{marker.mark.media.x3}})' }" layout="row" layout-align="end start">
+    <md-button class="close md-primary md-button" aria-label="Close" ng-click="closeDialog()">
+      <md-icon md-svg-icon="close"></md-icon>
+    </md-button>
+  </header>
   <section>
     <h2 class="md-headline">{{marker.mark.label}}</h2>
     <div class="marker-details-content">

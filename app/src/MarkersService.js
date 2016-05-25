@@ -40,8 +40,8 @@
           x3: '/app/assets/img/x3/annefrank.jpg'
         },
         position: {
-          lat: 52.3752215,
-          lng: 4.8817825
+          lat: 52.375218,
+          lng: 4.883978
         }
       },
       {
@@ -64,8 +64,8 @@
           x3: '/app/assets/img/x3/hitecstore.jpg'
         },
         position: {
-          lat: 52.3620861,
-          lng: 4.8824255
+          lat: 52.361855,
+          lng: 4.881049
         }
       },
       {
@@ -88,8 +88,8 @@
           x3: '/app/assets/img/x3/vondelpark.jpg'
         },
         position: {
-          lat: 52.3579979,
-          lng: 4.8664597
+          lat: 52.357963,
+          lng: 4.868754
         }
       },
       {
@@ -112,8 +112,8 @@
           x3: '/app/assets/img/x3/bloemenmarkt.jpg'
         },
         position: {
-          lat: 52.3668379,
-          lng: 4.8891147
+          lat: 52.366838,
+          lng: 4.89131
         }
       }
     ];
@@ -157,7 +157,7 @@
           icon: markerIcon({ fillColor: mark.color })
         });
         marker.addListener('click', toggleMarker);
-      }, dropMarkTiming);
+      }, dropMarkTiming(i));
     }
 
     function dropMarkTiming(i) {
