@@ -1,8 +1,11 @@
-(function(){
+(function() {
   'use strict';
 
   angular.module('map')
-         .service('mapService', [MapService]);
+    .service('mapService', [
+      '$rootScope',
+      MapService
+    ]);
 
   /**
    * Users DataService
@@ -12,7 +15,7 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function MapService() {
+  function MapService($rootScope) {
 
     var styles = [{
       "elementType": "labels.text",
@@ -254,6 +257,12 @@
       return map;
     }
 
+
+    // delegate
+    $rootScope.$on('mapController:center-map', centerMap);
+    $rootScope.$on('markersService:cleaned-markers', centerMap);
+
+    // public interface
     return {
       getMap: getMap,
       centerMap: centerMap

@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   angular.module('map')
@@ -167,7 +167,6 @@
     function toggleMarker() {
       // reset pin label
       this.setLabel('');
-      var labelId = 'label_' + this.mark.id;
       var position = selectedMarkers.indexOf(this);
       var isAlreadySelected = position >= 0;
       if (isAlreadySelected) {
@@ -195,11 +194,23 @@
 
     function dropMarkers() {
       for (var i = 0; i < marks.length; i += 1) {
-        var mark = marks[i];
-        createMarker(mark, i);
+        createMarker(marks[i], i);
       }
     }
 
+    function cleanMarkers() {
+      for (var i = 0; i < selectedMarkers.length; i += 1) {
+        selectedMarkers[i].setLabel('');
+        unselectMarkerPin(selectedMarkers[i], i);
+      }
+      selectedMarkers.splice(0, selectedMarkers.length);
+      $rootScope.$emit('markersService:cleaned-markers');
+    }
+
+    // delegate
+    $rootScope.$on('mapController:restart-map', cleanMarkers);
+
+    // public interface
     return {
       getMark: function(i) {
         return marks[i];
@@ -216,7 +227,8 @@
       getSelectedMarkers: function() {
         return selectedMarkers;
       },
-      dropMarkers: dropMarkers
+      dropMarkers: dropMarkers,
+      cleanMarkers: cleanMarkers
     };
   }
 

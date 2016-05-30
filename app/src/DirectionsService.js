@@ -34,6 +34,7 @@
     directionsDisplay.setMap(mapService.getMap());
     directionsDisplay.setOptions({
       suppressMarkers: true,
+      preserveViewport: true,
       polylineOptions: {
         strokeWeight: 5,
         strokeOpacity: .75,
@@ -41,7 +42,10 @@
       }
     });
 
-    function calculateAndDisplayRoute(event) {
+    function calculateAndDisplayRoute() {
+
+      $rootScope.$emit('directionsService:calculating-route');
+
       var directions = {
           travelMode: google.maps.TravelMode.WALKING
       };
@@ -58,6 +62,7 @@
 
       if (selectedMarkers.length <= 1) {
         directionsDisplay.set('directions', null);
+        $rootScope.$emit('directionsService:calculating-route-end');
         return;
       }
 
@@ -78,59 +83,61 @@
 
       if (waypts.length) {
         directions.waypoints = waypts;
-        console.log('optimizeWaypoints', optimizeWaypoints);
         if (optimizeWaypoints) {
           directions.optimizeWaypoints = optimizeWaypoints;
         }
       }
 
       directionsService.route(directions, function(response, status) {
-          if (status === google.maps.DirectionsStatus.OK) {
-              // console.log('directions response', response)
-              directionsDisplay.setDirections(response);
-              rawRoute = response.routes[0];
+        $rootScope.$emit('directionsService:calculating-route-end');
+        if (status === google.maps.DirectionsStatus.OK) {
+          console.log('directions response', response)
+          directionsDisplay.setDirections(response);
+          rawRoute = response.routes[0];
+          // var summaryPanel = document.getElementById('directions-panel');
+          // summaryPanel.innerHTML = '';
 
-              // var summaryPanel = document.getElementById('directions-panel');
-              // summaryPanel.innerHTML = '';
+          // For each route, display summary information.
+          // for (var i = 0; i < rawRoute.legs.length; i++) {
+          //     totalDuration += rawRoute.legs[i].duration.value / 60; // to minutes
+          //     totalDistance += rawRoute.legs[i].distance.value / 1000; // to km
+              // var routeSegment = i + 1;
+              // summaryPanel.innerHTML += rawRoute.legs[i].duration.text + ': <b>Route Segment: ' + routeSegment + '</b><br>';
+              // summaryPanel.innerHTML += rawRoute.legs[i].start_address + ' to ';
+              // summaryPanel.innerHTML += rawRoute.legs[i].end_address + '<br>';
+              // summaryPanel.innerHTML += rawRoute.legs[i].distance.text + '<br><br>';
+          // }
 
-              // For each route, display summary information.
-              // for (var i = 0; i < rawRoute.legs.length; i++) {
-              //     totalDuration += rawRoute.legs[i].duration.value / 60; // to minutes
-              //     totalDistance += rawRoute.legs[i].distance.value / 1000; // to km
-                  // var routeSegment = i + 1;
-                  // summaryPanel.innerHTML += rawRoute.legs[i].duration.text + ': <b>Route Segment: ' + routeSegment + '</b><br>';
-                  // summaryPanel.innerHTML += rawRoute.legs[i].start_address + ' to ';
-                  // summaryPanel.innerHTML += rawRoute.legs[i].end_address + '<br>';
-                  // summaryPanel.innerHTML += rawRoute.legs[i].distance.text + '<br><br>';
-              // }
-
-              // totalDurationMin += rawRoute.legs[0].duration.value / 60; // to minutes
-              // totalDistanceMiles += rawRoute.legs[0].distance.value / 1000; // to km
-              // for (var i = 0; i < rawRoute.legs[0].steps.length; i++) {
-              //   console.log('step', step)
-              //   var step = rawRoute.legs[0].steps[i];
-              //   var $step = document.createElement('div');
-              //   if (step.maneuver && step.maneuver !== '') {
-              //     $step.className = step.maneuver;
-              //   }
-              //   $step.innerHTML += '<p>' + step.instructions + '<br>' + step.distance.text + ' / ' + step.duration.text + '</p>';
-              //   summaryPanel.appendChild($step);
-              // }
-              // var totals = document.getElementById('totals');
-              // totals.innerHTML = '<p>' + (Math.round(totalDistanceMiles * 10) / 10) + 'km / ' + (Math.round(totalDurationMin * 100) / 100) + ' min</p>';
-              // console.log(Math.round(totalDistance * 10) / 10, 'km / ', Math.round(totalDuration * 100) / 100, ' min');
-          } else {
-              console.error('Directions request failed due to ' + status, response);
-          }
+          // totalDurationMin += rawRoute.legs[0].duration.value / 60; // to minutes
+          // totalDistanceMiles += rawRoute.legs[0].distance.value / 1000; // to km
+          // for (var i = 0; i < rawRoute.legs[0].steps.length; i++) {
+          //   console.log('step', step)
+          //   var step = rawRoute.legs[0].steps[i];
+          //   var $step = document.createElement('div');
+          //   if (step.maneuver && step.maneuver !== '') {
+          //     $step.className = step.maneuver;
+          //   }
+          //   $step.innerHTML += '<p>' + step.instructions + '<br>' + step.distance.text + ' / ' + step.duration.text + '</p>';
+          //   summaryPanel.appendChild($step);
+          // }
+          // var totals = document.getElementById('totals');
+          // totals.innerHTML = '<p>' + (Math.round(totalDistanceMiles * 10) / 10) + 'km / ' + (Math.round(totalDurationMin * 100) / 100) + ' min</p>';
+          // console.log(Math.round(totalDistance * 10) / 10, 'km / ', Math.round(totalDuration * 100) / 100, ' min');
+        } else {
+          console.error('Directions request failed due to ' + status, response);
+        }
       });
     }
 
-    function setOptimizeWaypoints(val) {
-      optimizeWaypoints = val;
+    function optimizeCurrentRoute() {
+      optimizeWaypoints = true;
+      console.log('optimizeWaypoints')
+      calculateAndDisplayRoute()
+      optimizeWaypoints = false;
     }
 
     function cleanRoute() {
-      directionsDisplay.setMap(null);
+      directionsDisplay.set('directions', null);
     }
 
     function getCurrentDirections() {
@@ -147,13 +154,18 @@
         return url;
     }
 
-    $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
 
+    // delegate
+    $rootScope.$on('mapController:restart-map', cleanRoute);
+    $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
+    $rootScope.$on('mapController:optimize-route', optimizeCurrentRoute);
+
+    // public interface
     return {
       cleanRoute: cleanRoute,
       getStaticMapWithDirections: getStaticMapWithDirections,
       calculateAndDisplayRoute: calculateAndDisplayRoute,
-      setOptimizeWaypoints: setOptimizeWaypoints,
+      optimizeCurrentRoute: optimizeCurrentRoute,
       getCurrentDirections: getCurrentDirections
     };
   }
