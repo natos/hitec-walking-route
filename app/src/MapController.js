@@ -1,11 +1,12 @@
-(function(){
+(function() {
 
   'use strict';
 
   angular
     .module('map')
     .controller('MapController', [
-      '$scope', '$rootScope', 'mapService', 'markersService', 'directionsService', '$mdDialog', '$mdSidenav', '$timeout', '$log',
+      '$scope', '$rootScope', '$window', 'mapService', 'markersService', 'directionsService', 'printService',
+      '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$log',
       MapController
     ]);
 
@@ -16,7 +17,7 @@
    * @param avatarsService
    * @constructor
    */
-  function MapController($scope, $rootScope, mapService, markersService, directionsService, $mdDialog, $mdSidenav, $timeout, $log ) {
+  function MapController($scope, $rootScope, $window, mapService, markersService, directionsService, printService, $mdBottomSheet, $mdDialog, $mdSidenav, $timeout, $log ) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');
@@ -25,45 +26,82 @@
     var self = this;
 
     self.map = mapService.getMap();
-    self.optimizeWaypoints = false;
     self.selected = null;
+    self.printMode = false;
+    self.active = false;
+    self.openDirections = false;
     self.rawMarks = [].concat(markersService.getMarks());
     self.selectedMarkers = [];
     self.center = centerMap;
     self.finish = finish;
     self.restart = restartMap;
+    self.optimize = optimizeMap;
     self.showPlace = showPlace;
-    self.toggleList = toggleList;
+    self.showDirections = showDirections;
+    self.hideDirections = hideDirections;
+    self.setPrintMode = setPrintMode;
+    self.unsetPrintMode = unsetPrintMode;
+    self.print = print;
 
+    // drop markers
     markersService.dropMarkers();
 
+
+    function print() {
+      $window.print();
+    }
+
+    function setPrintMode() {
+      // self.staticMapURL = directionsService.getStaticMapWithDirections();
+      self.directions = directionsService.getCurrentDirections();
+      self.printMode = true;
+    }
+
+    function unsetPrintMode() {
+      self.directions = null;
+      self.printMode = false;
+    }
+
     function centerMap() {
-      mapService.centerMap();
-      // self.map.setCenter(mapService.getCenterPoints());
+      $rootScope.$broadcast('mapController:center-map');
     }
 
     function restartMap() {
-      self.selectedMarkers.splice(0, self.selectedMarkers.length);
-      directionsService.cleanRoute();
+      $rootScope.$broadcast('mapController:restart-map');
     }
 
-    $scope.$watch('optimizeWaypoints', function(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        directionsService.setOptimizeWaypoints(newVal);
-      }
-    });
+    function optimizeMap() {
+      $rootScope.$broadcast('mapController:optimize-route');
+    }
 
-    // *********************************
-    // Internal methods
-    // *********************************
+    function printMap() {
+      $rootScope.$broadcast('mapController:print');
+    }
 
-    /**
-     * Close marker dialog and unselect it from the list
-     */
+    function showDirections() {
+      self.directions = directionsService.getCurrentDirections();
+      self.openDirections = true;
+    }
+
+    function hideDirections() {
+      self.openDirections = false;
+    }
+
+    function updateMarkers() {
+      self.selectedMarkers = markersService.getSelectedMarkers();
+    }
+
+    function activate() {
+      self.active = true;
+    }
+
+    function deactivate() {
+      $timeout(function() {
+        self.active = false;
+      }, 600);
+    }
+
     function closeDialog() {
-      // unselect
-      self.selected = null;
-      // hide dialog
       $mdDialog.hide();
     }
 
@@ -74,40 +112,37 @@
     function showPlace(marker) {
 
       var isAlreadySelected = self.selected === marker;
-      var isDialogOpen = document.getElementsByTagName('md-dialog')[0];
+      var isDialogOpen = angular.element(document.body).hasClass('md-dialog-is-showing');
 
       // When selected dialog is triggered, close dialog and return
       if (isAlreadySelected && isDialogOpen) {
+        self.selected = null;
         return closeDialog();
       }
       // otherwise, close dialog and keep moving on to select next location
       if (isDialogOpen) {
-          closeDialog();
+        closeDialog();
       }
 
       // select marker
       self.selected = marker;
       // show dialog
-      $mdDialog.show({
-        controller: ['$scope', '$mdDialog', MarkerDetailController],
-        clickOutsideToClose: true,
-        // parent: angular.element(document.body),
-        parent: angular.element(document.getElementById('content')),
-        templateUrl: './src/MarkerDetail.html',
-        // fancy animations
-        openFrom: '.marker-' + marker.mark.id,
-        closeTo: '.marker-' + marker.mark.id
-      });
+      $mdDialog
+        .show({
+          controller: ['$scope', '$mdDialog', MarkerDetailController],
+          clickOutsideToClose: true,
+          parent: '#content',
+          templateUrl: './src/MarkerDetail.html',
+          // fancy animations
+          openFrom: '.marker-' + marker.mark.id,
+          closeTo: '.marker-' + marker.mark.id
+        });
       /**
        * User ContactSheet controller
        */
       function MarkerDetailController($scope, $mdDialog) {
         $scope.marker = marker;
-        $scope.closeDialog = function() {
-          $mdDialog.hide();
-          // unselect
-          self.selected = null;
-        };
+        $scope.closeDialog = closeDialog;
       }
     }
 
@@ -140,27 +175,24 @@
       function StaticMapController($scope, $mdDialog) {
 
         $scope.staticMapURL = directionsService.getStaticMapWithDirections();
-
         $scope.directions = directionsService.getCurrentDirections();
 
         $scope.closeDialog = function() {
           $mdDialog.hide();
         };
+
+        $scope.print = function() {
+          printMap();
+        };
       }
     }
 
-    /**
-     * Hide or Show the 'right' sideNav area
-     */
-    function toggleList() {
-      $mdSidenav('right').toggle();
-    }
-
-    function updateMarkers() {
-      self.selectedMarkers = markersService.getSelectedMarkers();
-    }
-
+    // delegate
+    $rootScope.$on('markersService:cleaned-markers', updateMarkers);
     $rootScope.$on('markersService:toggled-mark', updateMarkers);
+    $rootScope.$on('directionsService:calculating-route', activate);
+    $rootScope.$on('directionsService:calculating-route-end', deactivate);
+
   }
 
 })();

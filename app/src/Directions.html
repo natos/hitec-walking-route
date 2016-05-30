@@ -1,0 +1,29 @@
+<section class="directions" ng-cloak layout="column">
+  <div class="legs" layout="column">
+    <header>
+      <md-icon md-svg-icon="directions"></md-icon>
+      <span>Step by step directions</span>
+    </header>
+    <div class="leg" ng-repeat="leg in map.directions.legs" layout="column">
+      <div class="start">
+        <md-icon md-svg-icon="walk"></md-icon>
+        {{leg.duration.text}} ({{leg.distance.text}})<br/>
+        {{leg.start_address}}
+      </div>
+      <div class="steps">
+        <p class="step" ng-repeat="step in leg.steps">
+          <span class="maneuver" ng-class="step.maneuver"></span>
+          <span class="instruction" ng-bind-html="step.instructions"></span>
+        </p>
+      </div>
+      <div class="end" ng-if="$last">
+        <md-icon md-svg-icon="place"></md-icon>
+        {{leg.end_address}}
+      </div>
+    </div>
+  </div>
+  <span flex></span>
+  <div layout="column" layout-align="center">
+    <md-button aria-label="Close">Close</md-button>
+  </div>
+</section>
