@@ -40,7 +40,7 @@
         </div>
       </md-content>
       <div id="sidebar" layout="column" ng-if="!map.printMode">
-        <md-list layout="column">
+        <md-list>
           <md-list-item>
             <h3>Walking Route</h3>
           </md-list-item>
@@ -66,11 +66,15 @@
           <md-list-item ng-if="map.selectedMarkers.length==1">
             <p>Select at least on more destination.</p>
           </md-list-item>
+          <md-list-item ng-if="map.selectedMarkers.length>=2">
+            <md-button ng-click="map.optimize()" ng-disabled="map.selectedMarkers.length<2" aria-label="Optimize route">Optimize route</md-button>
+          </md-list-item>
+          <md-list-item ng-if="map.selectedMarkers.length>=2">
+            <md-button ng-click="map.showDirections()" ng-disabled="map.selectedMarkers.length<2" aria-label="Step by step directions">Step by step directions</md-button>
+          </md-list-item>
         </md-list>
         <span flex></span>
         <div layout="column" layout-align="center">
-          <md-button ng-click="map.optimize()" ng-disabled="map.selectedMarkers.length<2" aria-label="Optimize route">Optimize route</md-button>
-          <md-button ng-click="map.showDirections()" ng-disabled="map.selectedMarkers.length<2" aria-label="Step by step directions">Step by step directions</md-button>
           <md-button ng-click="map.setPrintMode()" class="finish md-raised md-primary" ng-disabled="map.selectedMarkers.length<2" aria-label="Finish">Finish</md-button>
         </div>
         <directions ng-if="map.openDirections" ng-click="map.hideDirections()" ng-class="{ open: map.openDirections }"></directions>

@@ -94,6 +94,7 @@ md-button.menuBtn > md-icon {
   right: 0;
   width: 287px;
   background: rgba(255, 255, 255, 0.9);
+  overflow: scroll;
 }
 
 #sidebar md-list {
