@@ -115,6 +115,50 @@
           lat: 52.366838,
           lng: 4.89131
         }
+      },
+      {
+        id: 5,
+        label: "Cannibale Royale",
+        color: "#E37F00",
+        content: [
+          "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
+        ],
+        author: {
+          name: "Marie Bennett",
+          role: "Architect",
+          picture: "/app/assets/img/avatars/MarieBennett.jpg"
+        },
+        media: {
+          x1: '/app/assets/img/x1/cannibaleroyale.jpg',
+          x2: '/app/assets/img/x2/cannibaleroyale.jpg',
+          x3: '/app/assets/img/x3/cannibaleroyale.jpg'
+        },
+        position: {
+          lat: 52.368009,
+          lng: 4.890342
+        }
+      },
+      {
+        id: 6,
+        label: "Juice Brothers",
+        color: "#E37F00",
+        content: [
+          "JuiceBrothers  their goal is to create quality cold-pressed juice that is nutritiouand delicious as hell."
+        ],
+        author: {
+          name: "Marie Bennett",
+          role: "Architect",
+          picture: "/app/assets/img/avatars/MarieBennett.jpg"
+        },
+        media: {
+          x1: '/app/assets/img/x1/juicebrothers.jpg',
+          x2: '/app/assets/img/x2/juicebrothers.jpg',
+          x3: '/app/assets/img/x3/juicebrothers.jpg'
+        },
+        position: {
+          lat: 52.352838,
+          lng: 4.903092
+        }
       }
     ];
 
