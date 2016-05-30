@@ -5,7 +5,7 @@
   angular.module('map')
     .service('directionsService', [
       '$rootScope', 'mapService', 'markersService',
-      directionsService
+      DirectionsService
     ]);
 
   /**
@@ -14,7 +14,7 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function directionsService($rootScope, mapService, markersService) {
+  function DirectionsService($rootScope, mapService, markersService) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');

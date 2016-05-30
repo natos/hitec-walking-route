@@ -237,7 +237,6 @@
       center: AmsterdamMark,
       disableDefaultUI: true,
       scaleControl: true,
-      zoomControl: true,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE
       }

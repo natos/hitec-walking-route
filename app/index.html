@@ -30,6 +30,7 @@
         <div id="map"></div>
         <div class="map-active" ng-if="map.active"><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
         <div class="map-decoration"><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
+        <div class="map-categories"><categories></categories></div>
         <div class="map-actions">
           <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart">
             <md-icon md-svg-icon="refresh"></md-icon>
@@ -97,7 +98,8 @@
     <script src="./src/DirectionsController.js"></script>
     <script src="./src/DirectionsDirective.js"></script>
     <script src="./src/DirectionsService.js"></script>
-    <script src="./src/PrintService.js"></script>
+    <script src="./src/CategoriesDirective.js"></script>
+    <script src="./src/CategoriesService.js"></script>
 
     <script type="text/javascript">
       function configure() { angular.bootstrap(document.getElementsByTagName("body")[0], ['WalkingRouteApp']); }

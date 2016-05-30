@@ -165,16 +165,24 @@
     var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
     var pinCircleSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50ZM0-25a7.28 7.28 0 0 1-7.28-7.28A7.28 7.28 0 0 1 0-39.55a7.28 7.28 0 0 1 7.28 7.28A7.28 7.28 0 0 1 0-25Z";
 
+    function randomColor(){
+      var c = '';
+      while (c.length < 7) {
+        c += (Math.random()).toString(16).substr(-6).substr(-1)
+      }
+      return '#'+c;
+    }
+
     function markerIcon(options) {
-        var icon = {
-          path: options.path || pinCircleSVGPath,
-          scale: options.scale || .75,
-          strokeWeight: options.strokeWeight || 0,
-          fillColor: options.fillColor || "#ffffff",
-          fillOpacity: options.fillOpacity || .85,
-          labelOrigin: new google.maps.Point(-2, -30)
-        };
-        return icon;
+      var icon = {
+        path: options.path || pinCircleSVGPath,
+        scale: options.scale || .75,
+        strokeWeight: options.strokeWeight || 0,
+        fillColor: options.fillColor || "#ffffff",
+        fillOpacity: options.fillOpacity || .85,
+        labelOrigin: new google.maps.Point(-2, -30)
+      };
+      return icon;
     }
 
     function selectMarkerPin(marker) {

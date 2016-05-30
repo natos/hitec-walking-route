@@ -5,7 +5,7 @@
   angular
     .module('map')
     .controller('MapController', [
-      '$scope', '$rootScope', '$window', 'mapService', 'markersService', 'directionsService', 'printService',
+      '$scope', '$rootScope', '$window', 'mapService', 'markersService', 'directionsService', 'categoriesService',
       '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$log',
       MapController
     ]);
@@ -17,7 +17,7 @@
    * @param avatarsService
    * @constructor
    */
-  function MapController($scope, $rootScope, $window, mapService, markersService, directionsService, printService, $mdBottomSheet, $mdDialog, $mdSidenav, $timeout, $log ) {
+  function MapController($scope, $rootScope, $window, mapService, markersService, directionsService, categoriesService, $mdBottomSheet, $mdDialog, $mdSidenav, $timeout, $log ) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');
@@ -30,10 +30,11 @@
     self.printMode = false;
     self.active = false;
     self.openDirections = false;
+    self.categories = [].concat(categoriesService.getAll());
+    self.selectedCategories = [].concat(categoriesService.getAll());
     self.rawMarks = [].concat(markersService.getMarks());
     self.selectedMarkers = [];
     self.center = centerMap;
-    self.finish = finish;
     self.restart = restartMap;
     self.optimize = optimizeMap;
     self.showPlace = showPlace;
@@ -41,11 +42,10 @@
     self.hideDirections = hideDirections;
     self.setPrintMode = setPrintMode;
     self.unsetPrintMode = unsetPrintMode;
-    self.print = print;
+    self.print = printMap;
 
     // drop markers
     markersService.dropMarkers();
-
 
     function print() {
       $window.print();
@@ -54,7 +54,9 @@
     function setPrintMode() {
       // self.staticMapURL = directionsService.getStaticMapWithDirections();
       self.directions = directionsService.getCurrentDirections();
-      self.printMode = true;
+      $timer(function() {
+        self.printMode = true;
+      });
     }
 
     function unsetPrintMode() {
@@ -80,7 +82,9 @@
 
     function showDirections() {
       self.directions = directionsService.getCurrentDirections();
-      self.openDirections = true;
+      $timer(function() {
+        self.openDirections = true;
+      });
     }
 
     function hideDirections() {
@@ -143,47 +147,6 @@
       function MarkerDetailController($scope, $mdDialog) {
         $scope.marker = marker;
         $scope.closeDialog = closeDialog;
-      }
-    }
-
-    /**
-     * Show finish view
-     */
-    function finish() {
-
-      var isDialogOpen = document.getElementsByTagName('md-dialog')[0];
-
-      // otherwise, close dialog
-      if (isDialogOpen) {
-          closeDialog();
-      }
-
-      // show dialog
-      $mdDialog.show({
-        controller: ['$scope', '$mdDialog', StaticMapController],
-        fullscreen: true,
-        clickOutsideToClose: true,
-        parent: angular.element(document.body),
-        templateUrl: './src/StaticMap.html',
-        // fancy animations
-        openFrom: '.finish',
-        closeTo: '.finish'
-      });
-      /**
-       * User ContactSheet controller
-       */
-      function StaticMapController($scope, $mdDialog) {
-
-        $scope.staticMapURL = directionsService.getStaticMapWithDirections();
-        $scope.directions = directionsService.getCurrentDirections();
-
-        $scope.closeDialog = function() {
-          $mdDialog.hide();
-        };
-
-        $scope.print = function() {
-          printMap();
-        };
       }
     }
 

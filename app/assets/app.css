@@ -62,8 +62,8 @@ md-button.menuBtn > md-icon {
 .map-actions {
   position: absolute;
   z-index: 71;
-  bottom: 50px;
-  left: 50px;
+  bottom: 2rem;
+  left: 2rem;
 }
 .map-active {
   position: absolute;
@@ -76,12 +76,37 @@ md-button.menuBtn > md-icon {
 .map-decoration {
   z-index: 70;
   position: absolute;
-  bottom: 50px;
+  bottom: 2rem;
   right: 340px;
 }
 
 .map-decoration .logo {
   opacity: .95;
+}
+
+.map-categories {
+  z-index: 71;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 340px;
+}
+
+.category label {
+  font-size: .9em;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .95);
+  background-color: rgba(50, 50, 50, .5);
+  padding: .5rem 1rem;
+  margin: .25rem;
+  border-radius: 3em;
+  white-space: nowrap;
+}
+.category input:checked ~ label {
+  background-color: #2688FF;
+}
+.category input {
+  display: none;
 }
 
 /* Sidenav area */
