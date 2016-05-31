@@ -307,7 +307,6 @@
         var categoryIsSelected = categories.indexOf(marks[e].category) > -1;
         var categoryIsUndefined = typeof marks[e].category === 'undefined';
         if (categoryIsSelected || categoryIsUndefined) {
-          console.log('pushing marks[e].category', marks[e].label, categories.indexOf(marks[e].category), marks[e].category)
           filteredMarkers.push(marks[e]);
         }
       }
@@ -318,6 +317,7 @@
           dropMarkers(filteredMarkers);
         });
       }
+      $rootScope.$emit('markersService:filtered-by-categories');
     }
 
     // delegate

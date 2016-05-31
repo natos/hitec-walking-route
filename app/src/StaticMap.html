@@ -1,14 +1,14 @@
-<header layout="row">
+<!-- <header layout="row">
   <div layout="row" layout-align="center center">
     <img class="logo" src="/app/assets/img/logo/hi-tec.png" alt="Hi-Tec" />
     <span>Walking Route</span>
   </div>
   <span flex></span>
-  <div layout="row" layout-align="center">
-    <md-button ng-click="map.unsetPrintMode()" aria-label="Cancel">Cancel</md-button>
-    <md-button ng-click="map.print()" class="cancel md-raised md-primary" aria-label="Print">Print</md-button>
-  </div>
-</header>
+</header> -->
+<div class="print-actions" layout="row">
+  <md-button ng-click="map.unsetPrintMode()" aria-label="Cancel">Cancel</md-button>
+  <md-button ng-click="map.print()" class="cancel md-raised md-primary" aria-label="Print">Print</md-button>
+</div>
 <div class="map-placeholder">
   <!-- <img ng-src="{{map.staticMapURL}}" /> -->
 </div>

@@ -1,0 +1,10 @@
+<div class="loading-route-content" layout="column">
+  <h3>Loading best route</h3>
+  <p>Hang there! We are tring to find the best optimized route for you.</p>
+  <div class="loading">
+    <md-progress-linear class="md-warn" md-mode="buffer"
+      value="{{value}}"
+      md-buffer-value="{{bufferValue}}"></md-progress-linear>
+  </div>
+</div>
+<md-button ng-click="closeDialog()" aria-label="Cancel" layout-align="center center">Cancel</md-button>

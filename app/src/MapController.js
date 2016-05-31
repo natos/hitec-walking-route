@@ -6,7 +6,7 @@
     .module('map')
     .controller('MapController', [
       '$scope', '$rootScope', '$window', 'mapService', 'markersService', 'directionsService', 'categoriesService',
-      '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$log',
+      '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$interval', '$log',
       MapController
     ]);
 
@@ -17,7 +17,7 @@
    * @param avatarsService
    * @constructor
    */
-  function MapController($scope, $rootScope, $window, mapService, markersService, directionsService, categoriesService, $mdBottomSheet, $mdDialog, $mdSidenav, $timeout, $log ) {
+  function MapController($scope, $rootScope, $window, mapService, markersService, directionsService, categoriesService, $mdBottomSheet, $mdDialog, $mdSidenav, $timeout, $interval, $log ) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');
@@ -38,6 +38,7 @@
     self.restart = restartMap;
     self.optimize = optimizeMap;
     self.showPlace = showPlace;
+    self.showRoute = showRoute;
     self.showDirections = showDirections;
     self.hideDirections = hideDirections;
     self.setPrintMode = setPrintMode;
@@ -113,6 +114,43 @@
       $mdDialog.hide();
     }
 
+    function showRoute(event) {
+
+      var _INTERVAL;
+      var _TIMEOUT_VALUE = 3000;
+
+      // auto close dialog
+      $timeout(function () {
+        if (_INTERVAL) _INTERVAL.cancel();
+        directionsService.calculateAndDisplayRoute();
+        closeDialog();
+      }, _TIMEOUT_VALUE);
+
+      $mdDialog
+        .show({
+          controller: ['$scope', '$mdDialog', LoadingRouteController],
+          clickOutsideToClose: true,
+          parent: '#map',
+          templateUrl: './src/LoadingRoute.html',
+          // fancy animations
+          openFrom: '.finish',
+          closeTo: '.finish'
+        });
+
+      /**
+       * Show Route controller
+       */
+      function LoadingRouteController($scope, $mdDialog) {
+        $scope.closeDialog = closeDialog;
+        $scope.value = 0;
+        $scope.bufferValue = 10;
+        $interval(function() {
+          $scope.value += 2;
+          $scope.bufferValue += 2.22;
+        }, 75, 0, true);
+      }
+    }
+
     /**
      * Show more information about a Marker
      * @param marker
@@ -146,7 +184,7 @@
           closeTo: '.marker-' + marker.mark.id
         });
       /**
-       * User ContactSheet controller
+       * Marker Detail controller
        */
       function MarkerDetailController($scope, $mdDialog) {
         $scope.marker = marker;
@@ -157,8 +195,12 @@
     // delegate
     $rootScope.$on('markersService:cleaned-markers', updateMarkers);
     $rootScope.$on('markersService:toggled-mark', updateMarkers);
+
     $rootScope.$on('directionsService:calculating-route', activate);
     $rootScope.$on('directionsService:calculating-route-end', deactivate);
+
+    $rootScope.$on('categoriesDirective:changed', activate);
+    $rootScope.$on('markersService:filtered-by-categories', deactivate);
 
   }
 
