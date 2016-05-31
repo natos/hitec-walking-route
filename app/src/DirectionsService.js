@@ -91,7 +91,7 @@
       directionsService.route(directions, function(response, status) {
         $rootScope.$emit('directionsService:calculating-route-end');
         if (status === google.maps.DirectionsStatus.OK) {
-          console.log('directions response', response)
+          // console.log('directions response', response)
           directionsDisplay.setDirections(response);
           rawRoute = response.routes[0];
           // var summaryPanel = document.getElementById('directions-panel');
@@ -157,7 +157,7 @@
 
     // delegate
     $rootScope.$on('mapController:restart-map', cleanRoute);
-    $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
+    // $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
     $rootScope.$on('mapController:optimize-route', optimizeCurrentRoute);
 
     // public interface

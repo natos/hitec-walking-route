@@ -8,8 +8,10 @@
       return {
         restrict: 'E',
         templateUrl: './src/Categories.html',
-        link: function(scope) {
-          console.log('Categories', scope);
+        link: function($scope) {
+          $scope.changed = function() {
+            $scope.$emit('categoriesDirective:changed');
+          };
         }
       };
     })

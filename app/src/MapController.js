@@ -30,8 +30,8 @@
     self.printMode = false;
     self.active = false;
     self.openDirections = false;
-    self.categories = [].concat(categoriesService.getAll());
-    self.selectedCategories = [].concat(categoriesService.getAll());
+    self.categories = [].concat(categoriesService.getCategories());
+    self.selectedCategories = [].concat(self.categories);
     self.rawMarks = [].concat(markersService.getMarks());
     self.selectedMarkers = [];
     self.center = centerMap;
@@ -54,7 +54,7 @@
     function setPrintMode() {
       // self.staticMapURL = directionsService.getStaticMapWithDirections();
       self.directions = directionsService.getCurrentDirections();
-      $timer(function() {
+      $timeout(function() {
         self.printMode = true;
       });
     }
@@ -82,7 +82,7 @@
 
     function showDirections() {
       self.directions = directionsService.getCurrentDirections();
-      $timer(function() {
+      $timeout(function() {
         self.openDirections = true;
       });
     }
@@ -93,6 +93,10 @@
 
     function updateMarkers() {
       self.selectedMarkers = markersService.getSelectedMarkers();
+    }
+
+    function updatedSelectedCategories() {
+      self.selectedCategories = CategoriesService.getSelectedCategories();
     }
 
     function activate() {

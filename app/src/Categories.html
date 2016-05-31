@@ -1,7 +1,7 @@
 <section class="categories" ng-cloak layout="row">
   <div class="category" ng-repeat="(key, label) in map.categories">
-    <input id="category{{key}}" type="checkbox" checklist-model="map.selectedCategories" checklist-value="label">
+    <input id="category{{key}}" type="checkbox" checklist-model="map.selectedCategories" checklist-value="label" ng-change="changed()">
     <label for="category{{key}}">{{ label }}</label>
   </div>
-  <p>{{map.selectedCategories}}</p>
 </section>
+<p>{{map.selectedCategories}}</p>

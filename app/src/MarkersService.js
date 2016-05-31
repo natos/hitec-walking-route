@@ -3,7 +3,7 @@
 
   angular.module('map')
     .service('markersService', [
-      '$rootScope', '$timeout', 'mapService',
+      '$rootScope', '$timeout', 'mapService', 'categoriesService',
       MarkersService
     ]);
 
@@ -13,10 +13,10 @@
    * @returns {{getMarkers: Function}}
    * @constructor
    */
-  function MarkersService($rootScope, $timeout, mapService) {
+  function MarkersService($rootScope, $timeout, mapService, categoriesService) {
 
     var markers = [];
-
+    var filteredMarkers = [];
     var selectedMarkers = [];
 
     var marks = [
@@ -24,6 +24,7 @@
         id: 1,
         label: "Anne Frank Huis",
         color: "#1D8800",
+        category: "Typical Amsterdam",
         content: [
           "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
           "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
@@ -72,6 +73,7 @@
         id: 3,
         label: "Vondelpark",
         color: "#7F007F",
+        category: "Typical Amsterdam",
         content: [
           "Illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui! Consuetudium lectorum mirum est notare quam littera gothica quam nunc putamus parum claram anteposuerit.",
           "Erat volutpat ut wisi enim ad minim veniam quis nostrud exerci. Zzril delenit augue duis dolore te feugait nulla facilisi nam liber tempor cum soluta nobis.",
@@ -96,6 +98,7 @@
         id: 4,
         label: "Bloemenmarkt",
         color: "#E37F00",
+        category: "Markets",
         content: [
           "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim.",
           "Eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.",
@@ -119,7 +122,8 @@
       {
         id: 5,
         label: "Cannibale Royale",
-        color: "#E37F00",
+        color: "#B43E43",
+        category: "Restaurants",
         content: [
           "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
         ],
@@ -141,7 +145,8 @@
       {
         id: 6,
         label: "Juice Brothers",
-        color: "#E37F00",
+        color: "#2A6E30",
+        category: "Healthy Bars",
         content: [
           "JuiceBrothers  their goal is to create quality cold-pressed juice that is nutritiouand delicious as hell."
         ],
@@ -165,7 +170,7 @@
     var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
     var pinCircleSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50ZM0-25a7.28 7.28 0 0 1-7.28-7.28A7.28 7.28 0 0 1 0-39.55a7.28 7.28 0 0 1 7.28 7.28A7.28 7.28 0 0 1 0-25Z";
 
-    function randomColor(){
+    function randomColor() {
       var c = '';
       while (c.length < 7) {
         c += (Math.random()).toString(16).substr(-6).substr(-1)
@@ -199,16 +204,37 @@
       }));
     }
 
+    function getMarker(mark) {
+      for (var i = 0; i < markers.length; i += 1) {
+        if (markers[i].mark.id === mark.id) {
+          return markers[i];
+        }
+      }
+    }
+
     function createMarker(mark, i) {
       $timeout(function() {
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          position: mark.position,
-          mark: mark,
-          map: mapService.getMap(),
-          icon: markerIcon({ fillColor: mark.color })
-        });
-        marker.addListener('click', toggleMarker);
+        var marker = getMarker(mark);
+        if (!marker) {
+          // create marker, it does not exist
+          marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: mark.position,
+            mark: mark,
+            icon: markerIcon({ fillColor: mark.color })
+          });
+          marker.addListener('click', toggleMarker);
+          markers.push(marker);
+        }
+        // marker exists
+        // assign map
+        marker.setMap(mapService.getMap());
+        // make sure to toggle
+        if (marker.mark.selected) {
+          selectMarkerPin(marker);
+        } else {
+          unselectMarkerPin(marker);
+        }
       }, dropMarkTiming(i));
     }
 
@@ -223,10 +249,12 @@
       var isAlreadySelected = position >= 0;
       if (isAlreadySelected) {
         selectedMarkers.splice(position, 1);
+        this.mark.selected = false;
         unselectMarkerPin(this);
       } else {
         var order = selectedMarkers.push(this);
         this.mark.order = order;
+        this.mark.selected = true;
         selectMarkerPin(this);
       }
       reorderMarkers();
@@ -244,12 +272,21 @@
       }
     }
 
-    function dropMarkers() {
-      for (var i = 0; i < marks.length; i += 1) {
-        createMarker(marks[i], i);
+    function dropMarkers(m) {
+      var m = m || marks;
+      for (var i = 0; i < m.length; i += 1) {
+        createMarker(m[i], i);
       }
     }
 
+    // remove markers from the map
+    function clearMarkers() {
+      for (var i = 0; i < markers.length; i += 1) {
+        markers[i].setMap(null);
+      }
+    }
+
+    // unselect markers
     function cleanMarkers() {
       for (var i = 0; i < selectedMarkers.length; i += 1) {
         selectedMarkers[i].setLabel('');
@@ -259,8 +296,33 @@
       $rootScope.$emit('markersService:cleaned-markers');
     }
 
+    function filterCategories() {
+      var categories = categoriesService.getSelectedCategories();
+      if (!categories.length) {
+        console.log('no selected categories, go for all');
+        categories = categoriesService.getCategories();
+      }
+      filteredMarkers.splice(0, filteredMarkers.length);
+      for (var e = 0; e < marks.length; e += 1) {
+        var categoryIsSelected = categories.indexOf(marks[e].category) > -1;
+        var categoryIsUndefined = typeof marks[e].category === 'undefined';
+        if (categoryIsSelected || categoryIsUndefined) {
+          console.log('pushing marks[e].category', marks[e].label, categories.indexOf(marks[e].category), marks[e].category)
+          filteredMarkers.push(marks[e]);
+        }
+      }
+      console.log('filteredMarkers', filteredMarkers)
+      if (filteredMarkers.length) {
+        clearMarkers();
+        $timeout(function () {
+          dropMarkers(filteredMarkers);
+        });
+      }
+    }
+
     // delegate
     $rootScope.$on('mapController:restart-map', cleanMarkers);
+    $rootScope.$on('categoriesService:updated', filterCategories);
 
     // public interface
     return {

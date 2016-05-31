@@ -3,7 +3,7 @@
 console.log('categoriesService')
   angular.module('map')
     .service('categoriesService', [
-      '$rootScope', 'markersService',
+      '$rootScope', '$timeout',
       CategoriesService
     ]);
 
@@ -13,17 +13,17 @@ console.log('categoriesService')
    * @returns {{getCategories: Function}}
    * @constructor
    */
-  function CategoriesService($rootScope, markersService) {
+  function CategoriesService($rootScope, $timeout) {
 
     var categories = ['Art & Museums', 'Restaurants', 'Markets', 'Healthy Bars', 'Breakfast & Lunch', 'Local Hotspots', 'Typical Amsterdam']
 
     var selectedCategories = [];
 
-    function getAll() {
+    function getCategories() {
       return categories;
     }
 
-    function getSelected() {
+    function getSelectedCategories() {
       return selectedCategories;
     }
 
@@ -49,13 +49,21 @@ console.log('categoriesService')
       selectedCategories.splice(0, selectedCategories.length);
     }
 
+    function updateCategories(event) {
+      selectedCategories = event.targetScope.map.selectedCategories;
+      $timeout(function() {
+        $rootScope.$emit('categoriesService:updated');
+      })
+    }
+
     // delegate
     $rootScope.$on('mapController:restart-map', restartSelection);
+    $rootScope.$on('categoriesDirective:changed', updateCategories);
 
     // public interface
     return {
-      getAll: getAll,
-      getSelected: getSelected,
+      getCategories: getCategories,
+      getSelectedCategories: getSelectedCategories,
       select: select,
       unselect: unselect,
       isSelected: isSelected
