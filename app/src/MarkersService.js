@@ -15,10 +15,17 @@
    */
   function MarkersService($rootScope, $timeout, mapService, categoriesService) {
 
+    // collections of markers in the map
     var markers = [];
-    var filteredMarkers = [];
+    // collection of selected markers
     var selectedMarkers = [];
+    // collections of filtered markers
+    var filteredMarkers = [];
 
+    // filtering flag
+    var isFiltering = false;
+
+    // collection of raw marks
     var marks = [
       {
         id: 1,
@@ -167,17 +174,12 @@
       }
     ];
 
+    // SVG for unselected pins
     var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
+    // SVG for selected pins
     var pinCircleSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50ZM0-25a7.28 7.28 0 0 1-7.28-7.28A7.28 7.28 0 0 1 0-39.55a7.28 7.28 0 0 1 7.28 7.28A7.28 7.28 0 0 1 0-25Z";
 
-    function randomColor() {
-      var c = '';
-      while (c.length < 7) {
-        c += (Math.random()).toString(16).substr(-6).substr(-1)
-      }
-      return '#'+c;
-    }
-
+    // construct a marker icon
     function markerIcon(options) {
       var icon = {
         path: options.path || pinCircleSVGPath,
@@ -190,20 +192,35 @@
       return icon;
     }
 
+    // set selected icon on a marker
     function selectMarkerPin(marker) {
       marker.setIcon(markerIcon({
         path: pinSVGPath,
         fillColor: marker.mark.color,
         fillOpacity: 1
       }));
+      marker.mark.selected = true;
     }
 
+    // set unselected icon on a marker
     function unselectMarkerPin(marker) {
       marker.setIcon(markerIcon({
         fillColor: marker.mark.color
       }));
+      marker.mark.selected = false;
     }
 
+    // return true if the mark is selected
+    function isMarkSelected(mark) {
+      for (var i = 0; i < selectedMarkers.length; i += 1) {
+        if (selectedMarkers[i].mark === mark) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // finds a specific marker given a mark
     function getMarker(mark) {
       for (var i = 0; i < markers.length; i += 1) {
         if (markers[i].mark.id === mark.id) {
@@ -212,36 +229,40 @@
       }
     }
 
+    // creates a marker in the map
     function createMarker(mark, i) {
-      $timeout(function() {
-        var marker = getMarker(mark);
-        if (!marker) {
-          // create marker, it does not exist
-          marker = new google.maps.Marker({
-            animation: google.maps.Animation.DROP,
-            position: mark.position,
-            mark: mark,
-            icon: markerIcon({ fillColor: mark.color })
-          });
-          marker.addListener('click', toggleMarker);
-          markers.push(marker);
-        }
-        // marker exists
-        // assign map
+      var marker = getMarker(mark);
+      if (!marker) {
+        marker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
+          position: mark.position,
+          mark: mark,
+          icon: markerIcon({ fillColor: mark.color })
+        });
+        marker.addListener('click', toggleMarker);
+        markers.push(marker);
+        $timeout(function() {
+          marker.setMap(mapService.getMap());
+        }, dropMarkTiming(i));
+      } else {
+        marker.setAnimation(null);
         marker.setMap(mapService.getMap());
-        // make sure to toggle
-        if (marker.mark.selected) {
-          selectMarkerPin(marker);
-        } else {
-          unselectMarkerPin(marker);
-        }
-      }, dropMarkTiming(i));
+      }
+      // make sure to toggle the pin
+      if (marker.mark.selected) {
+        selectMarkerPin(marker);
+      } else {
+        unselectMarkerPin(marker);
+      }
+
     }
 
+    // timer function to drop markers
     function dropMarkTiming(i) {
       return (i + .75) * 350;
     }
 
+    // toggle a map marker
     function toggleMarker() {
       // reset pin label
       this.setLabel('');
@@ -249,22 +270,26 @@
       var isAlreadySelected = position >= 0;
       if (isAlreadySelected) {
         selectedMarkers.splice(position, 1);
-        this.mark.selected = false;
+        // this.mark.selected = false;
         unselectMarkerPin(this);
       } else {
         var order = selectedMarkers.push(this);
         this.mark.order = order;
-        this.mark.selected = true;
+        // this.mark.selected = true;
         selectMarkerPin(this);
       }
+
       reorderMarkers();
+      if (isFiltering) filterByCategories();
+
       $rootScope.$emit('markersService:toggled-mark', this);
       if (!$rootScope.$$phase) $rootScope.$apply();
     }
 
+    // reorder markers numbers
     function reorderMarkers() {
       for (var i = 0; i < selectedMarkers.length; i += 1) {
-        selectedMarkers[i].mark.order = i+1;
+        selectedMarkers[i].mark.order = i + 1;
         selectedMarkers[i].setLabel({
           color: '#ffffff',
           text: ''+(i+1)
@@ -272,6 +297,7 @@
       }
     }
 
+    // create a collection of markers
     function dropMarkers(m) {
       var m = m || marks;
       for (var i = 0; i < m.length; i += 1) {
@@ -279,10 +305,17 @@
       }
     }
 
+    // remove marker from the map
+    function clearMarker(marker) {
+      if (typeof marker.mark === 'undefined') {
+        marker = getMarker(marker);
+      }
+      marker.setMap(null);
+    }
     // remove markers from the map
     function clearMarkers() {
       for (var i = 0; i < markers.length; i += 1) {
-        markers[i].setMap(null);
+        clearMarker(markers[i]);
       }
     }
 
@@ -296,22 +329,28 @@
       $rootScope.$emit('markersService:cleaned-markers');
     }
 
-    function filterCategories() {
-      var categories = categoriesService.getSelectedCategories();
-      if (!categories.length) {
-        console.log('no selected categories, go for all');
-        categories = categoriesService.getCategories();
-      }
+    // clean filtered markers
+    function cleanFilteredMarkers() {
       filteredMarkers.splice(0, filteredMarkers.length);
-      for (var e = 0; e < marks.length; e += 1) {
-        var categoryIsSelected = categories.indexOf(marks[e].category) > -1;
-        var categoryIsUndefined = typeof marks[e].category === 'undefined';
-        if (categoryIsSelected || categoryIsUndefined) {
-          filteredMarkers.push(marks[e]);
+    }
+
+    // filter by categories
+    function filterByCategories() {
+      cleanFilteredMarkers();
+      isFiltering = false;
+      var categories = categoriesService.getSelectedCategories();
+      if (categories.length) {
+        for (var i = 0; i < marks.length; i += 1) {
+          var isMarkerSelected = isMarkSelected(marks[i])
+          var categoryIsSelected = categories.indexOf(marks[i].category) > -1;
+          var categoryIsUndefined = typeof marks[i].category === 'undefined';
+          if (isMarkerSelected || categoryIsSelected || categoryIsUndefined) {
+            filteredMarkers.push(marks[i]);
+          }
         }
       }
-      console.log('filteredMarkers', filteredMarkers)
       if (filteredMarkers.length) {
+        isFiltering = true;
         clearMarkers();
         $timeout(function () {
           dropMarkers(filteredMarkers);
@@ -320,12 +359,22 @@
       $rootScope.$emit('markersService:filtered-by-categories');
     }
 
+    function restartMarkers() {
+      isFiltering = false;
+      cleanMarkers();
+      cleanFilteredMarkers();
+      $timeout(function () {
+        dropMarkers();
+      });
+    }
+
     // delegate
-    $rootScope.$on('mapController:restart-map', cleanMarkers);
-    $rootScope.$on('categoriesService:updated', filterCategories);
+    $rootScope.$on('mapController:restart-map', restartMarkers);
+    $rootScope.$on('categoriesService:updated', filterByCategories);
 
     // public interface
     return {
+      dropMarkers: dropMarkers,
       getMark: function(i) {
         return marks[i];
       },
@@ -340,9 +389,7 @@
       },
       getSelectedMarkers: function() {
         return selectedMarkers;
-      },
-      dropMarkers: dropMarkers,
-      cleanMarkers: cleanMarkers
+      }
     };
   }
 
