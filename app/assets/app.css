@@ -1,3 +1,7 @@
+/*
+  primary color: #2688FF
+*/
+
 html, body,
 html.md-default-theme,
 body.md-default-theme {
@@ -9,6 +13,49 @@ body.md-default-theme {
   background: transparent;
 }
 
+#start {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 10%;
+  z-index: 100;
+}
+#start .bubbles {
+  margin: 2rem;
+}
+#start .bubble {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  /*border: 1px solid #2688FF;*/
+  background-color: #333;
+  color: #eee;
+  border-radius: 100%;
+  margin: 1rem;
+}
+#start .md-primary {
+  padding: 1rem 4rem;
+}
+/* there is no need to define anything inside of the destination
+CSS class since the keyframe will take charge of the animation */
+#start.ng-leave {
+  animation: my_fade_animation 0.5s linear;
+  -webkit-animation: my_fade_animation 0.5s linear;
+}
+
+@keyframes my_fade_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-webkit-keyframes my_fade_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
 /* Primary content area */
 
 #content {

@@ -7,23 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Hi-Tec Walking Route">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="author" content="Natan Santolo">
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
 
-    <style type="text/css">
-        /**
-         * Hide when Angular is not yet loaded and initialized
-         */
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-          display: none !important;
-        }
-    </style>
+    <style type="text/css">[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none !important; }</style>
 
   </head>
 
   <body layout="column" ng-controller="MapController as map" ng-cloak>
+    <start-view id="start" ng-cloak ng-if="!map.printMode && !map.started"></start-view>
     <static-map id="print" ng-cloak ng-if="map.printMode"></static-map>
     <div flex layout="row" ng-class="{ 'print-mode': map.printMode }">
       <md-content flex id="content">
@@ -100,6 +95,7 @@
     <script src="./src/App.js"></script>
 
     <script src="./src/Map.js"></script>
+    <script src="./src/StartViewDirective.js"></script>
     <script src="./src/MapController.js"></script>
     <script src="./src/MapService.js"></script>
     <script src="./src/MarkersService.js"></script>

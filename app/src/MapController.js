@@ -27,6 +27,7 @@
 
     self.map = mapService.getMap();
     self.selected = null;
+    self.started = false;
     self.printMode = false;
     self.active = false;
     self.openDirections = false;
@@ -34,9 +35,9 @@
     self.selectedCategories = [].concat(self.categories);
     self.rawMarks = [].concat(markersService.getMarks());
     self.selectedMarkers = [];
+    self.start = start;
     self.center = centerMap;
     self.restart = restartMap;
-    self.optimize = optimizeMap;
     self.showPlace = showPlace;
     self.showRoute = showRoute;
     self.showDirections = showDirections;
@@ -44,9 +45,6 @@
     self.setPrintMode = setPrintMode;
     self.unsetPrintMode = unsetPrintMode;
     self.print = printMap;
-
-    // drop markers
-    markersService.dropMarkers();
 
     function print() {
       $window.print();
@@ -65,16 +63,18 @@
       self.printMode = false;
     }
 
+    function start() {
+      self.started = true;
+      markersService.dropMarkers();
+    }
+
     function centerMap() {
       $rootScope.$broadcast('mapController:center-map');
     }
 
     function restartMap() {
+      self.selectedCategories = [].concat(self.categories);
       $rootScope.$broadcast('mapController:restart-map');
-    }
-
-    function optimizeMap() {
-      $rootScope.$broadcast('mapController:optimize-route');
     }
 
     function printMap() {
