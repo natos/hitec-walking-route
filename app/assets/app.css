@@ -173,8 +173,18 @@ md-button.menuBtn > md-icon {
 #sidebar md-list .md-button.selected {
   color: #03a9f4;
 }
-#sidebar .finish {
+#sidebar .markers-list {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 50px;
+  overflow: scroll;
+}
+#sidebar .actions {
   width: 287px;
+  margin-left: 15px;
 }
 
 .loading-route-content {
@@ -535,33 +545,95 @@ md-button.menuBtn > md-icon {
     100% { background-color: rgba(255, 255, 255, 0); }
   }
 
-  .slide.ng-enter {
-    animation: .5s ease-in-out .25s slide_in_animation;
-    -webkit-animation: .5s ease-in-out .25s slide_in_animation;
+  .slide.right.ng-enter {
+    animation: .5s ease-in-out .25s slide_in_right_animation;
+    -webkit-animation: .5s ease-in-out .25s slide_in_right_animation;
     transform: translate3d(100%, 0, 0);
   }
 
-  @keyframes slide_in_animation {
+  @keyframes slide_in_right_animation {
     from { transform: translate3d(100%, 0, 0); }
     to { transform: translate3d(0, 0, 0); }
   }
 
-  @-webkit-keyframes slide_in_animation {
+  @-webkit-keyframes slide_in_right_animation {
     from { transform: translate3d(-100%, 0 , 0); }
     to { transform: translate3d(0, 0, 0); }
   }
 
-  .slide.ng-leave {
-    animation: .25s ease-in-out slide_out_animation;
-    -webkit-animation: .25s ease-in-out slide_out_animation;
+  .slide.right.ng-leave {
+    animation: .25s ease-in-out slide_out_right_animation;
+    -webkit-animation: .25s ease-in-out slide_out_right_animation;
   }
 
-  @keyframes slide_out_animation {
+  @keyframes slide_out_right_animation {
     from { transform: translate3d(0, 0, 0); }
     to { transform: translate3d(100%, 0, 0); }
   }
 
-  @-webkit-keyframes slide_out_animation {
+  @-webkit-keyframes slide_out_right_animation {
     from { transform: translate3d(0, 0, 0); }
     to { transform: translate3d(100%, 0, 0); }
+  }
+
+  .slide.left.ng-enter {
+    animation: .5s ease-in-out .25s slide_in_left_animation;
+    -webkit-animation: .5s ease-in-out .25s slide_in_left_animation;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  @keyframes slide_in_left_animation {
+    from { transform: translate3d(-100%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  @-webkit-keyframes slide_in_left_animation {
+    from { transform: translate3d(-100%, 0 , 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  .slide.left.ng-leave {
+    animation: .25s ease-in-out slide_out_left_animation;
+    -webkit-animation: .25s ease-in-out slide_out_left_animation;
+  }
+
+  @keyframes slide_out_left_animation {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+
+  @-webkit-keyframes slide_out_left_animation {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+
+  .slide.top.ng-enter {
+    animation: .5s ease-in-out .25s slide_in_top_animation;
+    -webkit-animation: .5s ease-in-out .25s slide_in_top_animation;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  @keyframes slide_in_top_animation {
+    from { transform: translate3d(0, -100%, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  @-webkit-keyframes slide_in_top_animation {
+    from { transform: translate3d(0, -100%, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  .slide.top.ng-leave {
+    animation: .25s ease-in-out slide_out_top_animation;
+    -webkit-animation: .25s ease-in-out slide_out_top_animation;
+  }
+
+  @keyframes slide_out_top_animation {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(0, -100%, 0); }
+  }
+
+  @-webkit-keyframes slide_out_top_animation {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(0, -100%, 0); }
   }
