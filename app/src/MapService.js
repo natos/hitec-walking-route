@@ -267,6 +267,7 @@
 
     angular.element($window).bind('resize', function() {
       google.maps.event.trigger(map, 'resize');
+      centerMap();
     })
 
 
