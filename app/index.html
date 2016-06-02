@@ -18,16 +18,15 @@
   </head>
 
   <body layout="column" ng-controller="MapController as map" ng-cloak>
-    <start-view id="start" ng-cloak ng-if="!map.printMode && !map.started"></start-view>
-    <static-map id="print" ng-cloak ng-if="map.printMode"></static-map>
+    <div class="flash" ng-cloak ng-if="map.printMode"></div>
+    <start-view id="start" class="fade" ng-cloak ng-if="!map.printMode && !map.started"></start-view>
+    <static-map id="print" class="fade" ng-cloak ng-if="map.printMode"></static-map>
     <div flex layout="row" ng-class="{ 'print-mode': map.printMode }">
       <md-content flex id="content">
         <div id="map"></div>
         <div class="map-logo"><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
-        <div class="map-active" ng-if="map.active"><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
-        <div class="map-decoration"></div>
-        <div class="map-categories" layout="row" layout-align="center center"><categories></categories></div>
-        <div class="map-actions">
+        <div class="map-categories fade" layout="row" layout-align="center center" ng-if="!map.printMode" ng-cloak><categories></categories></div>
+        <div class="map-actions fade" ng-if="!map.printMode" ng-cloak>
           <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
             <md-icon md-svg-icon="refresh"></md-icon>
           </md-button>
@@ -35,13 +34,14 @@
             <md-icon md-svg-icon="my_location"></md-icon>
           </md-button>
         </div>
-        <div class="map-print-action">
+        <div class="map-active" ng-cloak ng-if="map.active"><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
+        <!-- <div class="map-print-action">
           <md-button class="print md-fab md-primary" ng-click="map.setPrintMode()" aria-label="Print map">
             <md-icon md-svg-icon="print"></md-icon>
           </md-button>
-        </div>
+        </div> -->
       </md-content>
-      <div id="sidebar" layout="column" ng-if="!map.printMode">
+      <div id="sidebar" class="slide" layout="column" ng-if="!map.printMode && map.started">
         <md-list>
           <md-list-item>
             <h3>Walking Route</h3>
@@ -68,21 +68,11 @@
           <md-list-item ng-if="map.selectedMarkers.length==1">
             <p>Select at least on more destination.</p>
           </md-list-item>
-          <md-list-item ng-if="map.selectedMarkers.length>=2">
-            <md-button ng-click="map.showRoute()" class="finish md-raised md-primary" ng-disabled="map.selectedMarkers.length<2" aria-label="Create route">Create route</md-button>
-          </md-list-item>
-          <!-- <md-list-item ng-if="map.selectedMarkers.length>=2">
-            <md-button ng-click="map.optimize()" ng-disabled="map.selectedMarkers.length<2" aria-label="Optimize route">Optimize route</md-button>
-          </md-list-item> -->
-          <!-- <md-list-item ng-if="map.selectedMarkers.length>=2">
-            <md-button ng-click="map.showDirections()" ng-disabled="map.selectedMarkers.length<2" aria-label="Step by step directions">Step by step directions</md-button>
-          </md-list-item> -->
         </md-list>
-        <!-- <span flex></span>
+        <span flex></span>
         <div layout="column" layout-align="center">
-          <md-button ng-click="map.setPrintMode()" class="finish md-raised md-primary" ng-disabled="map.selectedMarkers.length<2" aria-label="Finish">Finish</md-button>
-        </div> -->
-        <!-- <directions ng-if="map.openDirections" ng-click="map.hideDirections()" ng-class="{ open: map.openDirections }"></directions> -->
+          <md-button ng-click="map.setPrintMode()" class="finish md-raised md-primary" ng-disabled="map.selectedMarkers.length<2" aria-label="View step by step direcctions">View step by step direcctions</md-button>
+        </div>
       </div>
     </div>
 

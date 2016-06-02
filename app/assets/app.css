@@ -40,22 +40,7 @@ body.md-default-theme {
 #start .md-primary {
   padding: 1rem 4rem;
 }
-/* there is no need to define anything inside of the destination
-CSS class since the keyframe will take charge of the animation */
-#start.ng-leave {
-  animation: my_fade_animation 0.5s linear;
-  -webkit-animation: my_fade_animation 0.5s linear;
-}
 
-@keyframes my_fade_animation {
-  from { opacity:1; }
-  to { opacity:0; }
-}
-
-@-webkit-keyframes my_fade_animation {
-  from { opacity:1; }
-  to { opacity:0; }
-}
 /* Primary content area */
 
 #content {
@@ -187,6 +172,9 @@ md-button.menuBtn > md-icon {
 
 #sidebar md-list .md-button.selected {
   color: #03a9f4;
+}
+#sidebar .finish {
+  width: 287px;
 }
 
 .loading-route-content {
@@ -466,7 +454,7 @@ md-button.menuBtn > md-icon {
     bottom: 2em;
   }
 
-  .print-mode .md-button,
+  /*.print-mode .md-button,
   .print-mode .map-active,
   .print-mode .map-actions,
   .print-mode .map-decoration,
@@ -474,7 +462,7 @@ md-button.menuBtn > md-icon {
   .print-mode #sidebar {
       display: none;
     }
-  }
+  }*/
   /* print */
   @media print {
     .md-button,
@@ -486,9 +474,94 @@ md-button.menuBtn > md-icon {
     #print .print-actions {
       display: none;
     }
+  }
 
-    #map {
-      width: 100%;
-      position: relative;
-    }
+
+
+  /* there is no need to define anything inside of the destination
+  CSS class since the keyframe will take charge of the animation */
+  .fade.ng-enter {
+    animation: fade_in_animation 1s linear;
+    -webkit-animation: fade_in_animation 1s linear;
+  }
+
+  @keyframes fade_in_animation {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  @-webkit-keyframes fade_in_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+  }
+
+  .fade.ng-leave {
+    animation: fade_out_animation 0.25s linear;
+    -webkit-animation: fade_out_animation 0.25s linear;
+  }
+
+  @keyframes fade_out_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+  }
+
+  @-webkit-keyframes fade_out_animation {
+    from { opacity:1; }
+    to { opacity:0; }
+  }
+
+  .flash.ng-enter,
+  .flash.ng-leave {
+    display: block;
+    position: absolute;
+    top:0; right: 0;
+    bottom: 0; left: 0;
+    animation: flash_animation .5s linear;
+    -webkit-animation: flash_animation .5s linear;
+    z-index: 100;
+  }
+
+  @keyframes flash_animation {
+    0% { background-color: rgba(255, 255, 255, 0); }
+    40% { background-color: rgba(255, 255, 255, 1); }
+    60% { background-color: rgba(255, 255, 255, 1); }
+    100% { background-color: rgba(255, 255, 255, 0); }
+  }
+
+  @-webkit-keyframes flash_animation {
+    0% { background-color: rgba(255, 255, 255, 0); }
+    40% { background-color: rgba(255, 255, 255, 1); }
+    60% { background-color: rgba(255, 255, 255, 1); }
+    100% { background-color: rgba(255, 255, 255, 0); }
+  }
+
+  .slide.ng-enter {
+    animation: .5s ease-in-out .25s slide_in_animation;
+    -webkit-animation: .5s ease-in-out .25s slide_in_animation;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  @keyframes slide_in_animation {
+    from { transform: translate3d(100%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  @-webkit-keyframes slide_in_animation {
+    from { transform: translate3d(-100%, 0 , 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  .slide.ng-leave {
+    animation: .25s ease-in-out slide_out_animation;
+    -webkit-animation: .25s ease-in-out slide_out_animation;
+  }
+
+  @keyframes slide_out_animation {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(100%, 0, 0); }
+  }
+
+  @-webkit-keyframes slide_out_animation {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(100%, 0, 0); }
   }
