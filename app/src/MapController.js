@@ -36,6 +36,8 @@
     self.rawMarks = [].concat(markersService.getMarks());
     self.selectedMarkers = [];
     self.start = start;
+    self.isReady = isReady;
+    self.isPristine = isPristine;
     self.center = centerMap;
     self.restart = restartMap;
     self.showPlace = showPlace;
@@ -45,6 +47,14 @@
     self.setPrintMode = setPrintMode;
     self.unsetPrintMode = unsetPrintMode;
     self.print = printMap;
+
+    function isPristine() {
+      return !self.started;
+    }
+
+    function isReady() {
+      return self.started && !self.printMode;
+    }
 
     function print() {
       $window.print();
@@ -66,6 +76,7 @@
     function start() {
       self.started = true;
       markersService.dropMarkers();
+      mapService.getReady();
     }
 
     function centerMap() {

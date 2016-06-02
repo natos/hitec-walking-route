@@ -3,7 +3,7 @@
 
   angular.module('map')
     .service('mapService', [
-      '$rootScope',
+      '$rootScope', '$window',
       MapService
     ]);
 
@@ -15,7 +15,7 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function MapService($rootScope) {
+  function MapService($rootScope, $window) {
 
     var styles = [{
       "elementType": "labels.text",
@@ -256,15 +256,25 @@
       return map;
     }
 
+    function getReady() {
+      google.maps.event.trigger(map, 'resize');
+      centerMap();
+    }
 
     // delegate
     $rootScope.$on('mapController:center-map', centerMap);
     $rootScope.$on('markersService:cleaned-markers', centerMap);
 
+    angular.element($window).bind('resize', function() {
+      google.maps.event.trigger(map, 'resize');
+    })
+
+
     // public interface
     return {
       getMap: getMap,
-      centerMap: centerMap
+      centerMap: centerMap,
+      getReady: getReady
     };
   }
 

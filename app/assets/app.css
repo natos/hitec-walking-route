@@ -13,6 +13,16 @@ body.md-default-theme {
   background: transparent;
 }
 
+html, body {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
 #start {
   position: absolute;
   top: 0;
@@ -90,6 +100,9 @@ md-button.menuBtn > md-icon {
   left: 0;
   right: 0;
   bottom: 0;
+}
+#map * {
+    overflow:visible;
 }
 .map-actions {
   position: absolute;
@@ -557,7 +570,7 @@ md-button.menuBtn > md-icon {
   }
 
   @-webkit-keyframes slide_in_right_animation {
-    from { transform: translate3d(-100%, 0 , 0); }
+    from { transform: translate3d(100%, 0 , 0); }
     to { transform: translate3d(0, 0, 0); }
   }
 

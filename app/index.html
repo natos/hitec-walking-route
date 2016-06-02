@@ -19,14 +19,14 @@
 
   <body layout="column" ng-controller="MapController as map" ng-cloak>
     <div class="flash" ng-cloak ng-if="map.printMode"></div>
-    <start-view id="start" class="fade" ng-cloak ng-if="!map.printMode && !map.started"></start-view>
+    <start-view id="start" class="fade" ng-cloak ng-if="map.isPristine()"></start-view>
     <static-map id="print" class="fade" ng-cloak ng-if="map.printMode"></static-map>
     <div flex layout="row" ng-class="{ 'print-mode': map.printMode }">
       <md-content flex id="content">
         <div id="map"></div>
         <div class="map-logo"><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
-        <div class="map-categories slide top" layout="row" layout-align="center center" ng-if="!map.printMode" ng-cloak><categories></categories></div>
-        <div class="map-actions slide left" ng-if="!map.printMode" ng-cloak>
+        <div class="map-categories slide top" layout="row" layout-align="center center" ng-if="map.isReady()" ng-cloak><categories></categories></div>
+        <div class="map-actions slide left" ng-if="map.isReady()" ng-cloak>
           <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
             <md-icon md-svg-icon="refresh"></md-icon>
           </md-button>
@@ -41,7 +41,7 @@
           </md-button>
         </div> -->
       </md-content>
-      <div id="sidebar" class="slide right" layout="column" ng-if="!map.printMode && map.started">
+      <div id="sidebar" class="slide right" layout="column" ng-if="map.isReady()">
         <md-list class="markers-list">
           <md-list-item>
             <h3>Walking Route</h3>
@@ -98,7 +98,7 @@
 
     <script type="text/javascript">
       function configure() { angular.bootstrap(document.getElementsByTagName("body")[0], ['WalkingRouteApp']); }
-      function start() { angular.element(document).ready(configure); }
+      function start() { google.maps.event.addDomListener(window, 'load', configure); }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo&callback=start"></script>
   </body>
