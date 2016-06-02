@@ -157,7 +157,7 @@
 
     // delegate
     $rootScope.$on('mapController:restart-map', cleanRoute);
-    // $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
+    $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
     $rootScope.$on('mapController:optimize-route', optimizeCurrentRoute);
 
     // public interface
