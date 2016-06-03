@@ -152,7 +152,7 @@
         website: "http://www.juicebro.com",
         category: "Healthy Bars",
         content: [
-          "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritiouand delicious as hell."
+          "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
         ],
         author: {
           name: "Marie Bennett",
