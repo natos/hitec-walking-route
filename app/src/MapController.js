@@ -62,7 +62,7 @@
 
     function setPrintMode() {
       // self.staticMapURL = directionsService.getStaticMapWithDirections();
-      self.directions = directionsService.getCurrentDirections();
+      self.directions = directionsService.calculateDirections().get();
       $timeout(function() {
         self.printMode = true;
       });

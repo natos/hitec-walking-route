@@ -22,9 +22,10 @@
 
     var API_KEY = 'AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo';
 
+    var route;
     var rawRoute;
-    var totalDuration = 0;
-    var totalDistance = 0;
+    var totalDuration = { value: 0, min: 0 };
+    var totalDistance = { value: 0, min: 0 };
 
     var optimizeWaypoints;
 
@@ -55,7 +56,9 @@
       for (var i = 0; i < selectedMarkers.length; i++) {
         var marker = selectedMarkers[i];
         waypts.push({
-            location: new google.maps.LatLng(marker.mark.position.lat, marker.mark.position.lng),
+            location: {
+              placeId: marker.getPlace().placeId
+            },
             stopover: true
         });
       }
@@ -94,35 +97,15 @@
           // console.log('directions response', response)
           directionsDisplay.setDirections(response);
           rawRoute = response.routes[0];
-          // var summaryPanel = document.getElementById('directions-panel');
-          // summaryPanel.innerHTML = '';
+          route = response.routes[0];
+          // Collect time and distance information
+          for (var i = 0; i < route.legs.length; i++) {
+              totalDuration.value += rawRoute.legs[i].duration.value / 60; // to minutes
+              totalDistance.value += rawRoute.legs[i].distance.value / 1000; // to km
+          }
+          totalDistance.km = (Math.round(totalDistance.value * 10) / 10);
+          totalDuration.min = (Math.round(totalDuration.value * 100) / 100);
 
-          // For each route, display summary information.
-          // for (var i = 0; i < rawRoute.legs.length; i++) {
-          //     totalDuration += rawRoute.legs[i].duration.value / 60; // to minutes
-          //     totalDistance += rawRoute.legs[i].distance.value / 1000; // to km
-              // var routeSegment = i + 1;
-              // summaryPanel.innerHTML += rawRoute.legs[i].duration.text + ': <b>Route Segment: ' + routeSegment + '</b><br>';
-              // summaryPanel.innerHTML += rawRoute.legs[i].start_address + ' to ';
-              // summaryPanel.innerHTML += rawRoute.legs[i].end_address + '<br>';
-              // summaryPanel.innerHTML += rawRoute.legs[i].distance.text + '<br><br>';
-          // }
-
-          // totalDurationMin += rawRoute.legs[0].duration.value / 60; // to minutes
-          // totalDistanceMiles += rawRoute.legs[0].distance.value / 1000; // to km
-          // for (var i = 0; i < rawRoute.legs[0].steps.length; i++) {
-          //   console.log('step', step)
-          //   var step = rawRoute.legs[0].steps[i];
-          //   var $step = document.createElement('div');
-          //   if (step.maneuver && step.maneuver !== '') {
-          //     $step.className = step.maneuver;
-          //   }
-          //   $step.innerHTML += '<p>' + step.instructions + '<br>' + step.distance.text + ' / ' + step.duration.text + '</p>';
-          //   summaryPanel.appendChild($step);
-          // }
-          // var totals = document.getElementById('totals');
-          // totals.innerHTML = '<p>' + (Math.round(totalDistanceMiles * 10) / 10) + 'km / ' + (Math.round(totalDurationMin * 100) / 100) + ' min</p>';
-          // console.log(Math.round(totalDistance * 10) / 10, 'km / ', Math.round(totalDuration * 100) / 100, ' min');
         } else {
           console.error('Directions request failed due to ' + status, response);
         }
@@ -140,8 +123,24 @@
       directionsDisplay.set('directions', null);
     }
 
-    function getCurrentDirections() {
-      return rawRoute;
+    function calculateDirections() {
+      var _route = angular.extend({}, route);
+      // attach markers for each leg
+      for (var i = 0; i < _route.legs.length; i += 1) {
+        var start_marker = markersService.getMarkerByLocation(rawRoute.legs[i].start_address);
+        var end_marker = markersService.getMarkerByLocation(rawRoute.legs[i].end_address);
+        if (start_marker) {
+          _route.legs[i].start_marker = start_marker;
+        }
+        if (end_marker) {
+          _route.legs[i].end_marker = end_marker;
+        }
+      }
+      return {
+        get: function() {
+          return _route;
+        }
+      };
     }
 
     function getStaticMapWithDirections() {
@@ -149,7 +148,7 @@
         url += 'center=52.370216,4.895168'; // center in Amsterdam
         // url += '&zoom=14';
         url += '&size=640x640';
-        url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + rawRoute.overview_polyline;
+        url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + route.overview_polyline;
         url += '&key=' + API_KEY;
         return url;
     }
@@ -165,8 +164,14 @@
       cleanRoute: cleanRoute,
       getStaticMapWithDirections: getStaticMapWithDirections,
       calculateAndDisplayRoute: calculateAndDisplayRoute,
+      calculateDirections: calculateDirections,
       optimizeCurrentRoute: optimizeCurrentRoute,
-      getCurrentDirections: getCurrentDirections
+      getTotalDistance: function() {
+        return totalDistance;
+      },
+      getTotalDuration: function() {
+        return totalDuration;
+      }
     };
   }
 

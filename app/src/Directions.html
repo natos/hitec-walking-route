@@ -1,14 +1,16 @@
 <section class="directions" ng-cloak layout="column">
   <div class="legs" layout="column">
     <header>
-      <md-icon md-svg-icon="directions"></md-icon>
-      <span>Step by step directions</span>
+      <h3><md-icon md-svg-icon="directions"></md-icon> Step by step directions</h3>
     </header>
     <div class="leg" ng-repeat="leg in map.directions.legs" layout="column">
-      <div class="start">
-        <md-icon md-svg-icon="walk"></md-icon>
-        {{leg.duration.text}} ({{leg.distance.text}})<br/>
-        {{leg.start_address}}
+      <div class="start" ng-style="{ 'border-color': leg.start_marker.mark.color }">
+        <div class="place" ng-if="leg.start_marker">
+          <md-icon md-svg-icon="walk"></md-icon>
+          <strong>{{leg.start_marker.mark.label}}</strong>
+          {{leg.duration.text}} ({{leg.distance.text}})
+        </div>
+        <div class="address">{{leg.start_address}}</div>
       </div>
       <div class="steps">
         <p class="step" ng-repeat="step in leg.steps">
@@ -16,9 +18,13 @@
           <span class="instruction" ng-bind-html="step.instructions"></span>
         </p>
       </div>
-      <div class="end" ng-if="$last">
-        <md-icon md-svg-icon="place"></md-icon>
-        {{leg.end_address}}
+      <div class="end" ng-if="$last" ng-style="{ 'border-color': leg.end_marker.mark.color }">
+        <div class="place" ng-if="leg.end_marker">
+          <md-icon md-svg-icon="place_dark"></md-icon>
+          <strong>{{leg.end_marker.mark.label}}</strong>
+          {{leg.duration.text}} ({{leg.distance.text}})
+        </div>
+        <div class="address">{{leg.end_address}}</div>
       </div>
     </div>
   </div>

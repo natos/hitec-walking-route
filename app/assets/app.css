@@ -446,19 +446,20 @@ md-button.menuBtn > md-icon {
     bottom: 0;
     z-index: 100;
   }
-
   #print .map-placeholder {
     height: 100%;
   }
-
   #print .directions {
     padding: 1rem;
   }
-
-  #print .directions .start {
+  #print .directions .start,
+  #print .directions .end {
     padding-top: 1rem;
+    padding-left: 1rem;
+    border-left: 10px solid #ccc;
   }
   #print .directions .start,
+  #print .directions .end,
   #print .directions .step {
     padding-bottom: 1rem;
     border-bottom: 1px solid #ccc;
@@ -466,11 +467,12 @@ md-button.menuBtn > md-icon {
   #print .directions .step:last-of-type {
     border: none;
   }
-
+  #print .directions .address {
+    margin-left: 2em;
+  }
   #print .map-actions {
     display: none;
   }
-
   #print .print-actions {
     position: absolute;
     right: 2em;

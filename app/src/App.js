@@ -9,6 +9,7 @@
         .icon("directions", "./assets/svg/ic_directions_black_24px.svg" , 24)
         .icon("walk", "./assets/svg/ic_directions_walk_white_24px.svg" , 24)
         .icon("place", "./assets/svg/ic_place_white_24px.svg" , 24)
+        .icon("place_dark", "./assets/svg/ic_place_black_24px.svg" , 24)
         .icon("close", "./assets/svg/ic_close_white_24px.svg" , 24)
         .icon("email", "./assets/svg/ic_email_white_24px.svg" , 24)
         .icon("print", "./assets/svg/ic_print_white_24px.svg" , 24)

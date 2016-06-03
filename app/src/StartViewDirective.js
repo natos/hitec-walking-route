@@ -7,7 +7,8 @@
     .directive('startView', function() {
       return {
         restrict: 'E',
-        templateUrl: './src/StartView.html'
+        templateUrl: './src/StartView.html',
+        controller:  'StartViewController'
       };
     });
 

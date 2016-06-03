@@ -21,7 +21,6 @@
     var selectedMarkers = [];
     // collections of filtered markers
     var filteredMarkers = [];
-
     // filtering flag
     var isFiltering = false;
 
@@ -29,8 +28,8 @@
     var marks = [
       {
         id: 1,
-        label: "Anne Frank Huis",
         color: "#1D8800",
+        label: "Anne Frank Huis",
         category: "Typical Amsterdam",
         content: [
           "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
@@ -47,15 +46,15 @@
           x2: '/app/assets/img/x2/annefrank.jpg',
           x3: '/app/assets/img/x3/annefrank.jpg'
         },
-        position: {
-          lat: 52.375218,
-          lng: 4.883978
+        location: {
+          place_id: "ChIJSRE-IcUJxkcRCltjPmVdmtQ"
         }
       },
       {
         id: 2,
-        label: "Hi-Tec Store",
         color: "#2688FF",
+        label: "Hi-Tec Store",
+        website: "http://www.hi-tec.amsterdam",
         content: [
           "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
           "Putamus parum claram anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Legentis in iis: qui ii legunt saepius claritas. Luptatum zzril delenit augue duis congue nihil imperdiet doming.",
@@ -71,15 +70,14 @@
           x2: '/app/assets/img/x2/hitecstore.jpg',
           x3: '/app/assets/img/x3/hitecstore.jpg'
         },
-        position: {
-          lat: 52.361855,
-          lng: 4.881049
+        location: {
+          place_id: "ChIJIyPEUu8JxkcRTmRcuMxC9yc"
         }
       },
       {
         id: 3,
-        label: "Vondelpark",
         color: "#7F007F",
+        label: "Vondelpark",
         category: "Typical Amsterdam",
         content: [
           "Illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui! Consuetudium lectorum mirum est notare quam littera gothica quam nunc putamus parum claram anteposuerit.",
@@ -96,15 +94,14 @@
           x2: '/app/assets/img/x2/vondelpark.jpg',
           x3: '/app/assets/img/x3/vondelpark.jpg'
         },
-        position: {
-          lat: 52.357963,
-          lng: 4.868754
+        location: {
+          place_id: "ChIJz3y0xeIJxkcRNcogBVV41Gw"
         }
       },
       {
         id: 4,
-        label: "Bloemenmarkt",
         color: "#E37F00",
+        label: "Bloemenmarkt",
         category: "Markets",
         content: [
           "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim.",
@@ -121,15 +118,15 @@
           x2: '/app/assets/img/x2/bloemenmarkt.jpg',
           x3: '/app/assets/img/x3/bloemenmarkt.jpg'
         },
-        position: {
-          lat: 52.366838,
-          lng: 4.89131
+        location: {
+          place_id: "ChIJaTMo1sEJxkcRfjuQODB7BK8"
         }
       },
       {
         id: 5,
-        label: "Cannibale Royale",
         color: "#B43E43",
+        label: "Cannibale Royale",
+        website: "http://www.cannibaleroyale.nl",
         category: "Restaurants",
         content: [
           "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
@@ -144,18 +141,18 @@
           x2: '/app/assets/img/x2/cannibaleroyale.jpg',
           x3: '/app/assets/img/x3/cannibaleroyale.jpg'
         },
-        position: {
-          lat: 52.368009,
-          lng: 4.890342
+        location: {
+          place_id: "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k"
         }
       },
       {
         id: 6,
-        label: "Juice Brothers",
         color: "#2A6E30",
+        label: "Juice Brothers",
+        website: "http://www.juicebro.com",
         category: "Healthy Bars",
         content: [
-          "JuiceBrothers  their goal is to create quality cold-pressed juice that is nutritiouand delicious as hell."
+          "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritiouand delicious as hell."
         ],
         author: {
           name: "Marie Bennett",
@@ -167,12 +164,85 @@
           x2: '/app/assets/img/x2/juicebrothers.jpg',
           x3: '/app/assets/img/x3/juicebrothers.jpg'
         },
-        position: {
-          lat: 52.352838,
-          lng: 4.903092
+        location: {
+          place_id: "ChIJezIPCY8JxkcRgdqv8FrYp8U"
+        }
+      },
+      {
+        id: 7,
+        color: "#c5a881",
+        label: "Foodhallen",
+        website: "http://www.foodhallen.nl",
+        category: "Restaurants",
+        content: [
+          "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
+        ],
+        author: {
+          name: "Marie Bennett",
+          role: "Architect",
+          picture: "/app/assets/img/avatars/MarieBennett.jpg"
+        },
+        media: {
+          x1: '/app/assets/img/x1/bloemenmarkt.jpg',
+          x2: '/app/assets/img/x2/bloemenmarkt.jpg',
+          x3: '/app/assets/img/x3/bloemenmarkt.jpg'
+        },
+        location: {
+          place_id: "ChIJ3UYLU3XixUcRlxW4bSCFqdQ"
+        }
+      },
+      {
+        id: 8,
+        color: "#A25935",
+        label: "Lion Noir",
+        website: "http://www.lionnoir.nl",
+        region: "West",
+        category: "Restaurants",
+        content: [
+          "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
+        ],
+        author: {
+          name: "Marie Bennett",
+          role: "Architect",
+          picture: "/app/assets/img/avatars/MarieBennett.jpg"
+        },
+        media: {
+          x1: '/app/assets/img/x1/bloemenmarkt.jpg',
+          x2: '/app/assets/img/x2/lionnoir.jpg',
+          x3: '/app/assets/img/x3/lionnoir.jpg'
+        },
+        location: {
+          place_id: "ChIJ6XBeeuoJxkcRxkGkr5WBeKw"
         }
       }
     ];
+
+    // get places
+    var service = new google.maps.places.PlacesService(map);
+
+    function getPlaces() {
+      for (var i = 0; i < marks.length; i += 1) {
+        // Clousure keep reference while async requests come back
+        (function(i) {
+          var mark = marks[i];
+          var position = i;
+          service.getDetails({
+            placeId: mark.location.place_id
+          }, function (results, status) {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+              // populate mark with place info
+              marks[position].place_info = results;
+              marks[position].place = {
+                placeId: results.place_id,
+                location: results.geometry.location,
+              };
+              marks[position].address = results.formatted_address;
+              marks[position].vicinity = results.vicinity;
+            }
+          });
+        })(i);
+      }
+    }
 
     // SVG for unselected pins
     var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
@@ -233,12 +303,25 @@
     function createMarker(mark, i) {
       var marker = getMarker(mark);
       if (!marker) {
-        marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          position: mark.position,
+        var raw = {
           mark: mark,
+          place: mark.place,
+          // {
+          //   placeId: mark.location.place_id,
+          //   location: {
+          //     lat: mark.place.geometry.location.lat(),
+          //     lng: mark.place.geometry.location.lng()
+          //   }
+          // },
+          // position: {
+          //   placeId: mark.place_id,
+          //   lat: mark.place.geometry.location.lat(),
+          //   lng: mark.place.geometry.location.lng()
+          // },
+          animation: google.maps.Animation.DROP,
           icon: markerIcon({ fillColor: mark.color })
-        });
+        }
+        marker = new google.maps.Marker(raw);
         marker.addListener('click', toggleMarker);
         markers.push(marker);
         $timeout(function() {
@@ -254,7 +337,6 @@
       } else {
         unselectMarkerPin(marker);
       }
-
     }
 
     // timer function to drop markers
@@ -368,6 +450,15 @@
       });
     }
 
+    function getMarkerByLocation(location) {
+      for (var i = 0; i < selectedMarkers.length; i += 1) {
+        if (selectedMarkers[i].mark.address.indexOf(location) >= 0 || location.indexOf(selectedMarkers[i].mark.address) >= 0) {
+          return angular.extend({}, selectedMarkers[i]);
+        }
+      }
+      return false;
+    }
+
     // delegate
     $rootScope.$on('mapController:restart-map', restartMarkers);
     $rootScope.$on('categoriesService:updated', filterByCategories);
@@ -389,7 +480,9 @@
       },
       getSelectedMarkers: function() {
         return selectedMarkers;
-      }
+      },
+      getPlaces: getPlaces,
+      getMarkerByLocation: getMarkerByLocation
     };
   }
 

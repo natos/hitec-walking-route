@@ -85,21 +85,21 @@
     <script src="./src/App.js"></script>
 
     <script src="./src/Map.js"></script>
-    <script src="./src/StartViewDirective.js"></script>
     <script src="./src/MapController.js"></script>
     <script src="./src/MapService.js"></script>
     <script src="./src/MarkersService.js"></script>
     <script src="./src/StaticMapDirective.js"></script>
-    <script src="./src/DirectionsController.js"></script>
     <script src="./src/DirectionsDirective.js"></script>
     <script src="./src/DirectionsService.js"></script>
     <script src="./src/CategoriesDirective.js"></script>
     <script src="./src/CategoriesService.js"></script>
+    <script src="./src/StartViewController.js"></script>
+    <script src="./src/StartViewDirective.js"></script>
 
     <script type="text/javascript">
       function configure() { angular.bootstrap(document.getElementsByTagName("body")[0], ['WalkingRouteApp']); }
       function start() { google.maps.event.addDomListener(window, 'load', configure); }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo&callback=start"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo&libraries=places&callback=start"></script>
   </body>
 </html>
