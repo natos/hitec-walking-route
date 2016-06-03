@@ -46,7 +46,7 @@
     self.hideDirections = hideDirections;
     self.setPrintMode = setPrintMode;
     self.unsetPrintMode = unsetPrintMode;
-    self.print = printMap;
+    self.print = print;
 
     function isPristine() {
       return !self.started;
@@ -57,10 +57,12 @@
     }
 
     function print() {
+      $rootScope.$broadcast('mapController:print');
       $window.print();
     }
 
     function setPrintMode() {
+      $rootScope.$broadcast('mapController:set-print-mode');
       // self.staticMapURL = directionsService.getStaticMapWithDirections();
       self.directions = directionsService.calculateDirections().get();
       $timeout(function() {
@@ -71,6 +73,7 @@
     function unsetPrintMode() {
       self.directions = null;
       self.printMode = false;
+      $rootScope.$broadcast('mapController:unset-print-mode');
     }
 
     function start() {
@@ -86,10 +89,6 @@
     function restartMap() {
       self.selectedCategories = [].concat(self.categories);
       $rootScope.$broadcast('mapController:restart-map');
-    }
-
-    function printMap() {
-      $rootScope.$broadcast('mapController:print');
     }
 
     function showDirections() {
@@ -128,10 +127,11 @@
     function showRoute(event) {
 
       var _INTERVAL;
+      var _CLOSE_TIMEOUT;
       var _TIMEOUT_VALUE = 3000;
 
       // auto close dialog
-      $timeout(function () {
+      _CLOSE_TIMEOUT = $timeout(function () {
         if (_INTERVAL) _INTERVAL.cancel();
         setPrintMode()
         closeDialog();
@@ -146,7 +146,11 @@
           // fancy animations
           openFrom: '.finish',
           closeTo: '.finish'
-        });
+        })
+        .finally(function() {
+          console.log('finally', _CLOSE_TIMEOUT)
+          $timeout.cancel(_CLOSE_TIMEOUT);
+        });;
 
       /**
        * Show Route controller
