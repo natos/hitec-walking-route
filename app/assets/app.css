@@ -308,6 +308,7 @@ md-button.menuBtn > md-icon {
 
 .directions {
   margin-bottom: 1em;
+  background: rgba(255, 255, 255, 1);
 }
 
 .directions .instruction div {
@@ -448,6 +449,7 @@ md-button.menuBtn > md-icon {
   }
   #print .map-placeholder {
     height: 100%;
+    margin-bottom: -10%;
   }
   #print .directions {
     padding: 1rem;
@@ -467,8 +469,12 @@ md-button.menuBtn > md-icon {
   #print .directions .step:last-of-type {
     border: none;
   }
-  #print .directions .address {
+  #print .directions .place-content,
+  #print .directions .place-address {
     margin-left: 2em;
+  }
+  #print .directions .place-address {
+    font-style: italic;
   }
   #print .map-actions {
     display: none;

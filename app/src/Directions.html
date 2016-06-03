@@ -2,15 +2,21 @@
   <div class="legs" layout="column">
     <header>
       <h3><md-icon md-svg-icon="directions"></md-icon> Step by step directions</h3>
+      <p>Total {{map.directions.totalDuration.min}} min ({{map.directions.totalDistance.km}} km)</p>
     </header>
     <div class="leg" ng-repeat="leg in map.directions.legs" layout="column">
       <div class="start" ng-style="{ 'border-color': leg.start_marker.mark.color }">
         <div class="place" ng-if="leg.start_marker">
-          <md-icon md-svg-icon="walk"></md-icon>
-          <strong>{{leg.start_marker.mark.label}}</strong>
-          {{leg.duration.text}} ({{leg.distance.text}})
+          <div class="place-title">
+            <md-icon md-svg-icon="walk"></md-icon>
+            <strong>{{leg.start_marker.mark.label}}</strong>
+            {{leg.duration.text}} ({{leg.distance.text}})
+          </div>
+          <div class="place-content">
+            <p ng-repeat="p in leg.start_marker.mark.content">{{p}}</p>
+          </div>
+          <div class="place-address">{{leg.start_address}}</div>
         </div>
-        <div class="address">{{leg.start_address}}</div>
       </div>
       <div class="steps">
         <p class="step" ng-repeat="step in leg.steps">
@@ -20,11 +26,16 @@
       </div>
       <div class="end" ng-if="$last" ng-style="{ 'border-color': leg.end_marker.mark.color }">
         <div class="place" ng-if="leg.end_marker">
-          <md-icon md-svg-icon="place_dark"></md-icon>
-          <strong>{{leg.end_marker.mark.label}}</strong>
-          {{leg.duration.text}} ({{leg.distance.text}})
+          <div class="place-title">
+            <md-icon md-svg-icon="place_dark"></md-icon>
+            <strong>{{leg.end_marker.mark.label}}</strong>
+            {{leg.duration.text}} ({{leg.distance.text}})
+          </div>
+          <div class="place-content">
+            <p ng-repeat="p in leg.end_address.mark.content">{{p}}</p>
+          </div>
+          <div class="place-address">{{leg.end_address}}</div>
         </div>
-        <div class="address">{{leg.end_address}}</div>
       </div>
     </div>
   </div>

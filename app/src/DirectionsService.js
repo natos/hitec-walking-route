@@ -125,6 +125,8 @@
 
     function calculateDirections() {
       var _route = angular.extend({}, route);
+      _route.totalDistance = getTotalDistance();
+      _route.totalDuration = getTotalDuration();
       // attach markers for each leg
       for (var i = 0; i < _route.legs.length; i += 1) {
         var start_marker = markersService.getMarkerByLocation(rawRoute.legs[i].start_address);
@@ -153,6 +155,13 @@
         return url;
     }
 
+    function getTotalDistance() {
+      return totalDistance;
+    }
+
+    function getTotalDuration() {
+      return totalDuration;
+    }
 
     // delegate
     $rootScope.$on('mapController:restart-map', cleanRoute);
@@ -166,12 +175,8 @@
       calculateAndDisplayRoute: calculateAndDisplayRoute,
       calculateDirections: calculateDirections,
       optimizeCurrentRoute: optimizeCurrentRoute,
-      getTotalDistance: function() {
-        return totalDistance;
-      },
-      getTotalDuration: function() {
-        return totalDuration;
-      }
+      getTotalDistance: getTotalDistance,
+      getTotalDuration: getTotalDuration
     };
   }
 
