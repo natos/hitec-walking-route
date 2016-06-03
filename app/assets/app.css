@@ -37,14 +37,13 @@ html, body {
   margin: 2rem;
 }
 #start .bubble {
-  width: 100px;
+  /*width: 100px;
   height: 100px;
   line-height: 100px;
   text-align: center;
-  /*border: 1px solid #2688FF;*/
   background-color: #333;
   color: #eee;
-  border-radius: 100%;
+  border-radius: 100%;*/
   margin: 1rem;
 }
 #start .md-primary {

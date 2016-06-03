@@ -133,7 +133,7 @@
       // auto close dialog
       $timeout(function () {
         if (_INTERVAL) _INTERVAL.cancel();
-        directionsService.calculateAndDisplayRoute();
+        setPrintMode()
         closeDialog();
       }, _TIMEOUT_VALUE);
 
