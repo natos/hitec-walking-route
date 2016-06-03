@@ -222,7 +222,8 @@
 
     function getPlaces() {
       for (var i = 0; i < marks.length; i += 1) {
-        // Clousure keep reference while async requests come back
+        // Keep reference in the closure
+        // while async requests come back
         (function(i) {
           var mark = marks[i];
           var position = i;
@@ -306,18 +307,6 @@
         var raw = {
           mark: mark,
           place: mark.place,
-          // {
-          //   placeId: mark.location.place_id,
-          //   location: {
-          //     lat: mark.place.geometry.location.lat(),
-          //     lng: mark.place.geometry.location.lng()
-          //   }
-          // },
-          // position: {
-          //   placeId: mark.place_id,
-          //   lat: mark.place.geometry.location.lat(),
-          //   lng: mark.place.geometry.location.lng()
-          // },
           animation: google.maps.Animation.DROP,
           icon: markerIcon({ fillColor: mark.color })
         }
@@ -385,6 +374,21 @@
       for (var i = 0; i < m.length; i += 1) {
         createMarker(m[i], i);
       }
+    }
+
+    function cleanUnselectedMarkers() {
+      for (var i = 0; i < markers.length; i += 1) {
+        if (!markers[i].mark.selected) {
+          clearMarker(markers[i])
+        }
+      }
+    }
+
+    function recoverMarkers() {
+      clearMarkers();
+      $timeout(function () {
+        dropMarkers();
+      });
     }
 
     // remove marker from the map
@@ -461,6 +465,8 @@
 
     // delegate
     $rootScope.$on('mapController:restart-map', restartMarkers);
+    $rootScope.$on('mapController:set-print-mode', cleanUnselectedMarkers);
+    $rootScope.$on('mapController:unset-print-mode', recoverMarkers);
     $rootScope.$on('categoriesService:updated', filterByCategories);
 
     // public interface
