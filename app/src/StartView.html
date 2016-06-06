@@ -4,11 +4,12 @@
   <p>Just three simple steps to get a tailored walking route in Asmterdam just for you.</p>
   <div class="bubbles" layout="row" layout-align="center">
     <div class="bubble">1. Select places</div>
-    <div class="bubble">2. Create route</div>
+    <div class="bubble">2. Get directions</div>
     <div class="bubble">3. Walk the walk</div>
   </div>
   <div flex></div>
-  <div layout-align="center end">
+  <md-progress-circular md-mode="indeterminate" md-diameter="40" ng-if="!map.isLoaded()"></md-progress-circular>
+  <div class="fade" layout-align="center end" ng-if="map.isLoaded()">
     <md-button ng-click="map.start()" class="finish md-raised md-primary" aria-label="Start"><md-icon md-svg-icon="place"></md-icon> Start</md-button>
   </div>
 </div>

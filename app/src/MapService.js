@@ -230,6 +230,8 @@
       lng: 4.8824255
     };
 
+    var currentLocation;
+
     var map;
 
     var config = {
@@ -242,9 +244,23 @@
       }
     };
 
+    // try to get the current location
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        currentLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        $rootScope.$emit('mapService:location-ready');
+      });
+    } else {
+      /* geolocation IS NOT available */
+      $rootScope.$emit('mapService:location-ready');
+    }
+
     function centerMap() {
       var map = getMap();
-      map.setCenter(config.center);
+      map.setCenter(currentLocation || config.center);
       map.setZoom(config.zoom);
       return map;
     }
@@ -261,21 +277,23 @@
       centerMap();
     }
 
+    function getCurrentLocation() {
+      return currentLocation;
+    }
+
     // delegate
     $rootScope.$on('mapController:center-map', centerMap);
     $rootScope.$on('markersService:cleaned-markers', centerMap);
 
-    angular.element($window).bind('resize', function() {
-      google.maps.event.trigger(map, 'resize');
-      centerMap();
-    })
+    angular.element($window).bind('resize', getReady);
 
 
     // public interface
     return {
       getMap: getMap,
       centerMap: centerMap,
-      getReady: getReady
+      getReady: getReady,
+      getCurrentLocation: getCurrentLocation
     };
   }
 

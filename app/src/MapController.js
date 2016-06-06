@@ -27,6 +27,7 @@
 
     self.map = mapService.getMap();
     self.selected = null;
+    self.loaded = false;
     self.started = false;
     self.printMode = false;
     self.active = false;
@@ -37,6 +38,7 @@
     self.selectedMarkers = [];
     self.start = start;
     self.isReady = isReady;
+    self.isLoaded = isLoaded;
     self.isPristine = isPristine;
     self.center = centerMap;
     self.restart = restartMap;
@@ -54,6 +56,24 @@
 
     function isReady() {
       return self.started && !self.printMode;
+    }
+
+    function isLoaded() {
+      return self.loaded;
+    }
+
+    var isLocationReady = false;
+    function locationReady() { isLocationReady = true; load(); }
+
+    var arePlacesReady = false;
+    function placesReady() { arePlacesReady = true; load(); }
+
+    function load() {
+      if (isLocationReady && arePlacesReady) {
+        self.loaded = true;
+        mapService.getReady();
+        if (!$rootScope.$$phase) $rootScope.$apply();
+      }
     }
 
     function print() {
@@ -78,7 +98,10 @@
 
     function start() {
       self.started = true;
-      markersService.dropMarkers();
+      markersService.dropYourLocationPin();
+      $timeout(function() {
+        markersService.dropMarkers();
+      }, 1000);
       mapService.getReady();
     }
 
@@ -208,6 +231,9 @@
     }
 
     // delegate
+    $rootScope.$on('mapService:location-ready', locationReady);
+    $rootScope.$on('markersService:places-ready', placesReady);
+
     $rootScope.$on('markersService:cleaned-markers', updateMarkers);
     $rootScope.$on('markersService:toggled-mark', updateMarkers);
 

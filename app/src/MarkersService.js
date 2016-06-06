@@ -95,7 +95,8 @@
           x3: '/app/assets/img/x3/vondelpark.jpg'
         },
         location: {
-          place_id: "ChIJz3y0xeIJxkcRNcogBVV41Gw"
+          // place_id: "ChIJz3y0xeIJxkcRNcogBVV41Gw"
+          place_id: "ChIJYe2ad-QJxkcRURPt_bZPrmM"
         }
       },
       {
@@ -221,7 +222,13 @@
     var service = new google.maps.places.PlacesService(map);
 
     function getPlaces() {
-      for (var i = 0; i < marks.length; i += 1) {
+      var places = 0;
+      var total = marks.length;
+      function loaded() {
+        places += 1;
+        if (places === total) $rootScope.$emit('markersService:places-ready');
+      }
+      for (var i = 0; i < total; i += 1) {
         // Keep reference in the closure
         // while async requests come back
         (function(i) {
@@ -239,12 +246,15 @@
               };
               marks[position].address = results.formatted_address;
               marks[position].vicinity = results.vicinity;
+              loaded();
             }
           });
         })(i);
       }
     }
 
+
+    var yourLocationSVGPath = "M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z";
     // SVG for unselected pins
     var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
     // SVG for selected pins
@@ -376,6 +386,25 @@
       }
     }
 
+    var yourLocation;
+    function dropYourLocationPin() {
+      var raw = {
+        map: mapService.getMap(),
+        position: mapService.getCurrentLocation(),
+        // animation: google.maps.Animation.DROP,
+        icon: {
+          path: yourLocationSVGPath,
+          scale: 1,
+          strokeWeight: 0,
+          fillColor: '#037AFF',
+          fillOpacity: 1
+        }
+      }
+      yourLocation = new google.maps.Marker(raw);
+      console.log('droping your location', raw)
+      // yourLocation.addListener('click', toggleMarker);
+    }
+
     function cleanUnselectedMarkers() {
       for (var i = 0; i < markers.length; i += 1) {
         if (!markers[i].mark.selected) {
@@ -472,6 +501,7 @@
     // public interface
     return {
       dropMarkers: dropMarkers,
+      dropYourLocationPin: dropYourLocationPin,
       getMark: function(i) {
         return marks[i];
       },
