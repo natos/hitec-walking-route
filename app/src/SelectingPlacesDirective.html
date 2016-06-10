@@ -1,0 +1,33 @@
+<md-content layout="column">
+
+  <md-subheader>
+    <h1>Select the places you want to visit</h1>
+    <p>Out brand ambassadors have hand-picked their favorite spots in Amsterdam</p>
+  </md-subheader>
+
+  <div class="places-by-category layout-padding" ng-repeat="(key, value) in app.placesByCategory" ng-if="value.length">
+    <h3>{{key}} ({{value.length}})</h3>
+    <div class="places" layout="row" layout-align="start none" layout-wrap>
+      <md-card class="place" ng-repeat="place in value" flex="20" ng-class="{ 'selected': place.selected }">
+        <label for="place{{place.id}}" layout="row" layout-align="space-between center">
+          <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
+        </label>
+        <md-card-actions>
+          <label for="place{{place.id}}" layout="row" layout-align="space-between center">
+            <p>{{place.label}}</p>
+            <input id="place{{place.id}}" type="checkbox" ng-model="place.selected" checklist-model="app.selectedPlaces" checklist-value="place">
+          </label>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+
+  <div flex></div>
+
+  <md-toolbar>
+    <div class="md-toolbar-tools" layout-align="end center">
+      <md-button ng-click="app.next()" class="continue md-raised" aria-label="Continue">Continue</md-button>
+    </div>
+  </md-toolbar>
+
+</md-content>

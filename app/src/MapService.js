@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('map')
+  angular.module('App')
     .service('mapService', [
       '$rootScope', '$window',
       MapService

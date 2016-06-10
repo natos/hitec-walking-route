@@ -8,8 +8,8 @@
     <div class="bubble">3. Walk the walk</div>
   </div>
   <div flex></div>
-  <md-progress-circular md-mode="indeterminate" md-diameter="40" ng-if="!map.isLoaded()"></md-progress-circular>
-  <div class="fade" layout-align="center end" ng-if="map.isLoaded()">
-    <md-button ng-click="map.start()" class="finish md-raised md-primary" aria-label="Start"><md-icon md-svg-icon="place"></md-icon> Start</md-button>
+  <md-progress-circular ng-if="app.state.isPristine()" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
+  <div ng-if="app.state.isReady()" class="fade" layout-align="center end">
+    <md-button ng-click="app.next()" class="start md-raised md-primary" aria-label="Start"><md-icon md-svg-icon="place"></md-icon> Start</md-button>
   </div>
 </div>

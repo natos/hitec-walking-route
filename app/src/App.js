@@ -1,8 +1,8 @@
-(function(){
+(function() {
   'use strict';
 
   angular
-    .module('WalkingRouteApp', ['ngSanitize', 'ngMaterial', 'map'])
+    .module('App', ['ngSanitize', 'ngMaterial'])
     .config(function($mdThemingProvider, $mdIconProvider) {
 
       $mdIconProvider
@@ -24,12 +24,6 @@
         .primaryPalette('blue')
         .accentPalette('red');
 
-    })
-    .filter('sanitize', ['$sce', function($sce) {
-      return function(htmlCode) {
-        console.log('sanitize', htmlCode)
-        return $sce.trustAsHtml(htmlCode);
-      }
-    }]);
+    });
 
 })();

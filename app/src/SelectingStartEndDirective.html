@@ -1,0 +1,50 @@
+<md-content layout="column">
+
+  <md-subheader>
+    <h1>Where to start, where to end</h1>
+    <p>Pick a place where do you want to start and another where you want to end your walk</p>
+  </md-subheader>
+
+  <header class="layout-padding">
+    <h3>Start here:</h3>
+  </header>
+  <div class="places" ng-model="selected" layout="row" layout-align="start none" layout-wrap>
+    <md-card class="place" ng-repeat="place in app.selectedPlaces" flex="20" ng-class="{ 'selected': app.startPlace === place.id }">
+      <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
+        <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
+      </label>
+      <md-card-actions>
+        <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
+          <p>{{place.label}}</p>
+          <input id="startPlace{{place.id}}" name="startPlace" type="radio" ng-model="app.startPlace" ng-value="place.id">
+        </label>
+      </md-card-actions>
+    </md-card>
+  </div>
+
+  <header class="layout-padding">
+    <h3>End here:</h3>
+  </header>
+  <div class="places" ng-model="selected" layout="row" layout-align="start none" layout-wrap>
+    <md-card class="place" ng-repeat="place in app.selectedPlaces" flex="20" ng-class="{ 'selected': app.endPlace === place.id }">
+      <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
+        <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
+      </label>
+      <md-card-actions>
+        <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
+          <p>{{place.label}}</p>
+          <input id="endPlace{{place.id}}" name="endPlace" type="radio" ng-model="app.endPlace" ng-value="place.id">
+        </label>
+      </md-card-actions>
+    </md-card>
+  </div>
+
+  <div flex></div>
+
+  <md-toolbar>
+    <div class="md-toolbar-tools" layout-align="end center">
+      <md-button ng-click="app.next()" class="continue md-raised" aria-label="Continue">Continue</md-button>
+    </div>
+  </md-toolbar>
+
+</md-content>

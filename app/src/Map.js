@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('map', ['ngMaterial']);
+  angular.module('map', []);
 
 
 })();

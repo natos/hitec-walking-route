@@ -3,14 +3,20 @@
   'use strict';
 
   angular
-    .module('map')
+    .module('App')
     .controller('StartViewController', [
-      'markersService',
+      // 'markersService',
+      'placesService',
       StartViewController
     ]);
 
-    function StartViewController(markersService) {
-      markersService.getPlaces();
+
+    /**
+     * StartView Controller for Hi-Tec Walking Route
+     * @constructor
+     */
+    function StartViewController(/*markersService*/placesService) {
+      // markersService.getPlaces();
     }
 
 })();

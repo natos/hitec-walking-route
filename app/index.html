@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Hi-Tec Walking Route</title>
+    <title>Hi-Tec Walking Routes</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="description" content="Hi-Tec Walking Route">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="author" content="Natan Santolo">
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
@@ -17,64 +17,15 @@
 
   </head>
 
-  <body layout="column" ng-controller="MapController as map" ng-cloak>
-    <div class="flash" ng-cloak ng-if="map.printMode"></div>
-    <start-view id="start" class="fade" ng-cloak ng-if="map.isPristine()"></start-view>
-    <static-map id="print" class="fade" ng-cloak ng-if="map.printMode"></static-map>
-    <div flex layout="row" ng-class="{ 'print-mode': map.printMode }">
-      <md-content flex id="content">
-        <div id="map"></div>
-        <div class="map-logo"><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
-        <div class="map-categories slide top" layout="row" layout-align="center center" ng-if="map.isReady()" ng-cloak><categories></categories></div>
-        <div class="map-actions slide left" ng-if="map.isReady()" ng-cloak>
-          <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
-            <md-icon md-svg-icon="refresh"></md-icon>
-          </md-button>
-          <md-button class="my-location md-fab md-primary" ng-click="map.center()" aria-label="Go to my location">
-            <md-icon md-svg-icon="my_location"></md-icon>
-          </md-button>
-        </div>
-        <div class="map-active" ng-cloak ng-if="map.active"><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
-        <!-- <div class="map-print-action">
-          <md-button class="print md-fab md-primary" ng-click="map.setPrintMode()" aria-label="Print map">
-            <md-icon md-svg-icon="print"></md-icon>
-          </md-button>
-        </div> -->
-      </md-content>
-      <div id="sidebar" class="slide right" layout="column" ng-if="map.isReady()">
-        <md-list class="markers-list">
-          <md-list-item>
-            <h3>Walking Route</h3>
-          </md-list-item>
-          <md-list-item ng-repeat="marker in map.selectedMarkers">
-            <md-button
-            class="marker-list marker-{{marker.mark.id}}"
-            ng-class="{'selected' : marker === map.selected }"
-            ng-click="map.showPlace(marker)"
-            style="background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url('{{marker.mark.media.x2}}') no-repeat 0 0;">
-              <div layout="row">
-                <div layout="column">
-                  <label class="marker-list-label" layout-align="start center">{{marker.mark.label}}</label>
-                  <div class="marker-list-chip" ng-style="{ 'background-color': marker.mark.color }">{{marker.mark.order}}</div>
-                </div>
-                <span flex></span>
-                <md-icon md-svg-icon="more_vert" aria-label="More" layout-align="end center"></md-icon>
-              </div>
-            </md-button>
-          </md-list-item>
-          <md-list-item ng-if="!map.selectedMarkers.length">
-            <p>Choose from the pins in the map the first destination to start creating walking route.</p>
-          </md-list-item>
-          <md-list-item ng-if="map.selectedMarkers.length==1">
-            <p>Select at least on more destination.</p>
-          </md-list-item>
-        </md-list>
-        <span flex></span>
-        <div class="actions" layout="column" layout-align="center">
-          <md-button ng-click="map.showRoute()" class="finish md-raised md-primary" ng-disabled="map.selectedMarkers.length<2" aria-label="View step by step direcctions">View step by step direcctions</md-button>
-        </div>
-      </div>
-    </div>
+  <body ng-controller="AppController as app" ng-cloak>
+
+    <start-view id="start" class="fade" ng-if="app.state.isPristine() ||  app.state.isReady()"></start-view>
+
+    <selecting-places ng-if="app.state.isSelectingPlaces()"></selecting-places>
+
+    <selecting-start ng-if="app.state.isSelectingStartEnd()"></selecting-start>
+
+    <div id="map" ng-show="app.state.isReviewing()" ng-controller="MapController as map">Map</div>
 
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-sanitize/angular-sanitize.js"></script>
@@ -82,11 +33,25 @@
     <script src="../node_modules/angular-aria/angular-aria.js"></script>
     <script src="../node_modules/angular-material/angular-material.js"></script>
 
+
     <script src="./src/App.js"></script>
+    <script src="./src/AppModel.js"></script>
+    <script src="./src/AppController.js"></script>
+
 
     <script src="./src/Map.js"></script>
     <script src="./src/MapController.js"></script>
     <script src="./src/MapService.js"></script>
+    <script src="./src/PlacesService.js"></script>
+    <script src="./src/PlacesModel.js"></script>
+
+    <script src="./src/SelectingPlacesController.js"></script>
+    <script src="./src/SelectingPlacesDirective.js"></script>
+    <script src="./src/SelectingStartEndDirective.js"></script>
+
+    <script src="./src/CheckListModelDirective.js"></script>
+
+    <!-- TODO: Cleaning -->
     <script src="./src/MarkersService.js"></script>
     <script src="./src/StaticMapDirective.js"></script>
     <script src="./src/DirectionsDirective.js"></script>
@@ -97,7 +62,8 @@
     <script src="./src/StartViewDirective.js"></script>
 
     <script type="text/javascript">
-      function configure() { angular.bootstrap(document.getElementsByTagName("body")[0], ['WalkingRouteApp']); }
+      /** manual bootstrap */
+      function configure() { angular.bootstrap(document.getElementsByTagName("body")[0], ['App']); }
       function start() { google.maps.event.addDomListener(window, 'load', configure); }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo&libraries=places&callback=start"></script>

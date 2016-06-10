@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('map')
+  angular.module('App')
     .service('directionsService', [
       '$rootScope', 'mapService', 'markersService',
       DirectionsService

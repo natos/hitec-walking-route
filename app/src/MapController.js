@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('map')
+    .module('App')
     .controller('MapController', [
       '$scope', '$rootScope', '$window', 'mapService', 'markersService', 'directionsService', 'categoriesService',
       '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$interval', '$log',
@@ -24,7 +24,7 @@
     }
 
     var self = this;
-
+console.log('map controller')
     self.map = mapService.getMap();
     self.selected = null;
     self.loaded = false;

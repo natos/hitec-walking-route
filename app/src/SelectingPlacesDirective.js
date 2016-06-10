@@ -4,17 +4,16 @@
 
   angular
     .module('App')
-    .directive('startView', StartViewDirective);
+    .directive('selectingPlaces', SelectingPlacesDirective);
 
     /**
      * StartView Directive for Hi-Tec Walking Route
      * @constructor
      */
-    function StartViewDirective() {
+    function SelectingPlacesDirective() {
       return {
         restrict: 'E',
-        templateUrl: './src/StartViewDirective.html',
-        controller:  'StartViewController'
+        templateUrl: './src/SelectingPlacesDirective.html'
       };
     }
 

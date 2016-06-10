@@ -50,6 +50,24 @@ html, body {
   padding: 1rem 4rem;
 }
 
+md-content {
+  min-height: 100%;
+}
+.places .place {
+  max-width: 287px;
+  transition: all 400ms ease-out 50ms;
+  transform: scale3d(.95, .95, 1);
+  opacity: .8;
+}
+.place.selected {
+  box-shadow: 0px 0px 3px 3px rgba(38,136,255,.75);
+  transform: scale3d(1, 1, 1);
+  opacity: 1;
+}
+.place label {
+  cursor: pointer;
+}
+
 /* Primary content area */
 
 #content {
