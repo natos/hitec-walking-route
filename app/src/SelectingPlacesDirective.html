@@ -15,7 +15,7 @@
         <md-card-actions>
           <label for="place{{place.id}}" layout="row" layout-align="space-between center">
             <p>{{place.label}}</p>
-            <input id="place{{place.id}}" type="checkbox" ng-model="place.selected" checklist-model="app.selectedPlaces" checklist-value="place">
+            <input id="place{{place.id}}" type="checkbox" ng-model="place.selected" checklist-model="app.selected.places" checklist-value="place">
           </label>
         </md-card-actions>
       </md-card>

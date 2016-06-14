@@ -5,7 +5,8 @@
   angular
     .module('App')
     .controller('MapController', [
-      '$scope', '$rootScope', '$window', 'mapService', 'markersService', 'directionsService', 'categoriesService',
+      '$scope', '$rootScope', '$window',
+      'mapService', 'markersService', 'directionsService', 'categoriesService',
       '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$interval', '$log',
       MapController
     ]);

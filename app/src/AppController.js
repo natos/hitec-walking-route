@@ -24,8 +24,6 @@
       console.error('Google Maps API is unavailable.');
     }
 
-    mapService.getReady();
-
     var self = this;
         // expose state helper
         self.state = appModel.state;
@@ -54,7 +52,10 @@
      * @private
      */
     function currentStateChanged() {
-      console.log('currentStateChanged', appModel.getState());
+      // get map READY
+      if (appModel.state.isPristine() || appModel.state.isReviewing()) {
+        mapService.getReady();
+      }
       // apply state change
       if (!$rootScope.$$phase) $rootScope.$apply();
     }
@@ -75,6 +76,33 @@
       }, 1000)
     }
 
+    /* watchers */
+
+    $scope.selected = {
+      places: [],
+      start: 0,
+      end: 0
+    };
+
+    $scope.$watchCollection('selected', function(a, b) {
+      console.log('selected', a)
+    }, true);
+
+    // $scope.$watchCollection('selected.places', function(a, b) {
+    //   console.log('places selected?', a, b);
+    //   placesModel.selectedPlaces = placesModel.selectedPlaces.concat(a);
+    // }, true);
+    //
+    //
+    // $scope.$watch('selected.start', function(a, b) {
+    //   console.log('start selected?', a, b);
+    // });
+    //
+    //
+    // $scope.$watch('selected.end', function(a, b) {
+    //   console.log('end selected?', a, b);
+    // });
+
 
     /* delegate */
 
@@ -85,7 +113,6 @@
     $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
 
     $rootScope.$on(placesModel.events.placesReady, placesAreReady);
-
 
   }
 

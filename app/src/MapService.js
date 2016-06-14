@@ -273,6 +273,7 @@
     }
 
     function getReady() {
+      console.log('getMapReady')
       google.maps.event.trigger(map, 'resize');
       centerMap();
     }

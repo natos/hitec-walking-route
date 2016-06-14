@@ -8,32 +8,32 @@
   <header class="layout-padding">
     <h3>Start here:</h3>
   </header>
-  <div class="places" ng-model="selected" layout="row" layout-align="start none" layout-wrap>
-    <md-card class="place" ng-repeat="place in app.selectedPlaces" flex="20" ng-class="{ 'selected': app.startPlace === place.id }">
+  <div class="places" layout="row" layout-align="start none" layout-wrap>
+    <md-card class="place" ng-repeat="place in app.selected.places" flex="20" ng-class="{ 'selected': app.selected.start === place.id }">
       <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
         <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
       </label>
       <md-card-actions>
         <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
           <p>{{place.label}}</p>
-          <input id="startPlace{{place.id}}" name="startPlace" type="radio" ng-model="app.startPlace" ng-value="place.id">
+          <input id="startPlace{{place.id}}" name="startPlace" type="radio" ng-model="app.selected.start" ng-value="place.id">
         </label>
       </md-card-actions>
     </md-card>
   </div>
 
-  <header class="layout-padding">
+  <header class="layout-padding fade" ng-if="app.selected.start">
     <h3>End here:</h3>
   </header>
-  <div class="places" ng-model="selected" layout="row" layout-align="start none" layout-wrap>
-    <md-card class="place" ng-repeat="place in app.selectedPlaces" flex="20" ng-class="{ 'selected': app.endPlace === place.id }">
+  <div class="places fade" layout="row" layout-align="start none" layout-wrap ng-if="app.selected.start">
+    <md-card class="place" ng-repeat="place in app.selected.places" flex="20" ng-class="{ 'selected': app.selected.end === place.id }">
       <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
         <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
       </label>
       <md-card-actions>
         <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
           <p>{{place.label}}</p>
-          <input id="endPlace{{place.id}}" name="endPlace" type="radio" ng-model="app.endPlace" ng-value="place.id">
+          <input id="endPlace{{place.id}}" name="endPlace" type="radio" ng-model="app.selected.end" ng-value="place.id">
         </label>
       </md-card-actions>
     </md-card>
