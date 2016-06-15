@@ -235,7 +235,11 @@
       * Selected Places
       * @public
       */
-      this.selectedPlaces = [];
+      this.selected = {
+        places: [],
+        start: 0,
+        end: 0
+      };
 
     }
 

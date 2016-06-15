@@ -76,33 +76,12 @@
       }, 1000)
     }
 
-    /* watchers */
+    /* model bindings */
 
-    $scope.selected = {
-      places: [],
-      start: 0,
-      end: 0
-    };
-
-    $scope.$watchCollection('selected', function(a, b) {
-      console.log('selected', a)
-    }, true);
-
-    // $scope.$watchCollection('selected.places', function(a, b) {
-    //   console.log('places selected?', a, b);
-    //   placesModel.selectedPlaces = placesModel.selectedPlaces.concat(a);
-    // }, true);
-    //
-    //
-    // $scope.$watch('selected.start', function(a, b) {
-    //   console.log('start selected?', a, b);
-    // });
-    //
-    //
-    // $scope.$watch('selected.end', function(a, b) {
-    //   console.log('end selected?', a, b);
-    // });
-
+    // Bind selected model to the view-model
+    // This way we avoid the overload of having
+    // watchers for each property
+    $scope.selected = placesModel.selected;
 
     /* delegate */
 
