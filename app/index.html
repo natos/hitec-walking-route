@@ -19,13 +19,32 @@
 
   <body ng-controller="AppController as app" ng-cloak>
 
-    <start-view id="start" class="fade" ng-if="app.state.isPristine() ||  app.state.isReady()"></start-view>
+    <start-view id="start" class="fade fullscreen" ng-cloak ng-if="app.state.isPristine() ||  app.state.isReady()"></start-view>
 
-    <selecting-places ng-if="app.state.isSelectingPlaces()"></selecting-places>
+    <selecting-places class="fade fullscreen" ng-cloak ng-if="app.state.isSelectingPlaces()"></selecting-places>
 
-    <selecting-start ng-if="app.state.isSelectingStartEnd()"></selecting-start>
+    <selecting-start class="fade fullscreen" ng-cloak ng-if="app.state.isSelectingStartEnd()"></selecting-start>
 
-    <div id="map" ng-show="app.state.isReviewing()"></div>
+    <div id="map-container" ng-controller="MapController as map" ng-cloak>
+
+      <div class="map-overlay fade fullscreen" ng-hide="app.state.isReviewing()"></div>
+
+      <div class="map-active" ng-if="map.active" ng-cloak><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
+
+      <div class="map-logo" ng-cloak><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
+
+      <div class="map-actions slide left" ng-if="map.isReady()" ng-cloak>
+        <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
+          <md-icon md-svg-icon="refresh"></md-icon>
+        </md-button>
+        <md-button class="my-location md-fab md-primary" ng-click="map.center()" aria-label="Go to my location">
+          <md-icon md-svg-icon="my_location"></md-icon>
+        </md-button>
+      </div>
+
+      <div id="map" class="fullscreen" ng-cloak></div>
+
+    </div>
 
     <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-sanitize/angular-sanitize.js"></script>
@@ -40,10 +59,13 @@
 
 
     <script src="./src/Map.js"></script>
+    <script src="./src/MapModel.js"></script>
     <script src="./src/MapController.js"></script>
     <script src="./src/MapService.js"></script>
     <script src="./src/PlacesService.js"></script>
     <script src="./src/PlacesModel.js"></script>
+    <script src="./src/LocationService.js"></script>
+    <script src="./src/LocationModel.js"></script>
 
     <script src="./src/SelectingPlacesController.js"></script>
     <script src="./src/SelectingPlacesDirective.js"></script>
@@ -53,6 +75,7 @@
 
     <!-- TODO: Cleaning -->
     <script src="./src/MarkersService.js"></script>
+    <script src="./src/MarkersModel.js"></script>
     <script src="./src/StaticMapDirective.js"></script>
     <script src="./src/DirectionsDirective.js"></script>
     <script src="./src/DirectionsService.js"></script>

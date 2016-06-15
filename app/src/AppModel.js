@@ -6,7 +6,7 @@
     .service('appModel', ['$rootScope', AppModel]);
 
     /**
-     * App Controller for Hi-Tec Walking Route
+     * App Model for Hi-Tec Walking Route
      * @param $rootScope
      * @constructor
      */

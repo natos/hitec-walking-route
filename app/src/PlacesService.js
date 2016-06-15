@@ -54,6 +54,16 @@
       }
     })();
 
+    function findPlaceById(id) {
+      var total = placesModel.places.length;
+      for (var i = 0; i < total; i += 1) {
+        if (placesModel.places[i].id === id) {
+          return placesModel.places[i];
+        }
+      }
+
+    }
+
     function getPlaces() {
       return placesModel.places;
     }
@@ -63,7 +73,15 @@
     }
 
     function getSelectedPlaces() {
-      return placesModel.selectedPlaces;
+      return placesModel.selected.places;
+    }
+
+    function getStartPlace() {
+      return findPlaceById(placesModel.selected.start);
+    }
+
+    function getEndPlace() {
+      return findPlaceById(placesModel.selected.end);
     }
 
     function selectPlace(place) {
@@ -72,8 +90,10 @@
 
     return {
       getPlaces: getPlaces,
-      getPlacesByCategory: getPlacesByCategory,
-      getSelectedPlaces: getSelectedPlaces
+      getEndPlace: getEndPlace,
+      getStartPlace: getStartPlace,
+      getSelectedPlaces: getSelectedPlaces,
+      getPlacesByCategory: getPlacesByCategory
     };
   }
 

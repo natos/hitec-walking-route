@@ -110,16 +110,34 @@ md-button.menuBtn > md-icon {
   -moz-transform:scale(0.70);
 }
 
-#map {
+.fullscreen {
   position: absolute;
-  z-index: 70;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 }
+
+start-view {
+  z-index: 100;
+}
+selecting-places {
+  z-index: 99;
+}
+selecting-start {
+  z-index: 98;
+}
+
+#map {
+  position: absolute;
+  z-index: 70;
+}
 #map * {
     overflow:visible;
+}
+.map-overlay {
+  z-index: 71;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 .map-actions {
   position: absolute;

@@ -6,53 +6,75 @@
     .module('App')
     .controller('MapController', [
       '$scope', '$rootScope', '$window',
-      'appModel',
-      'mapService', 'markersService', 'directionsService', 'placesService',
-      '$mdDialog', '$timeout', '$interval',
+      'mapService', 'markersService', 'directionsService', 'categoriesService',
+      '$mdBottomSheet', '$mdDialog', '$mdSidenav', '$timeout', '$interval', '$log',
       MapController
     ]);
 
   /**
    * Map Controller for Hi-Tec Walking Route
    * @param $scope
+   * @param $mdSidenav
    * @param avatarsService
    * @constructor
    */
-  function MapController($scope, $rootScope, $window, appModel, mapService, markersService, directionsService, placesService, $mdDialog, $timeout, $interval) {
+  function MapController($scope, $rootScope, $window, mapService, markersService, directionsService, categoriesService, $mdBottomSheet, $mdDialog, $mdSidenav, $timeout, $interval, $log ) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');
     }
 
     var self = this;
+console.log('map controller')
+    self.map = mapService.getMap();
+    self.selected = null;
+    self.loaded = true;
+    self.started = true;
+    self.printMode = false;
+    self.active = false;
+    self.openDirections = false;
+    self.categories = [].concat(categoriesService.getCategories());
+    self.selectedCategories = [].concat(self.categories);
+    self.rawMarks = [].concat(markersService.getMarks());
+    self.selectedMarkers = [];
+    self.start = start;
+    self.isReady = isReady;
+    self.isLoaded = isLoaded;
+    self.isPristine = isPristine;
+    self.center = centerMap;
+    self.restart = restartMap;
+    self.showPlace = showPlace;
+    self.showRoute = showRoute;
+    self.showDirections = showDirections;
+    self.hideDirections = hideDirections;
+    self.setPrintMode = setPrintMode;
+    self.unsetPrintMode = unsetPrintMode;
+    self.print = print;
 
-        self.active = true;
-        self.map = mapService.getMap();
-        self.selectedMarkers = [];
-        self.center = centerMap;
-        self.restart = restartMap;
-        // self.showPlace = showPlace;
-        // self.showRoute = showRoute;
-        // self.setPrintMode = setPrintMode;
-        // self.unsetPrintMode = unsetPrintMode;
-        // self.print = print;
-
-
-    function shakeThatMap() {
-      mapService.getReady();
-      markersService.dropYourLocationPin();
-      $timeout(function () {
-        markersService.dropMarkers();
-      }, 1500);
+    function isPristine() {
+      return !self.started;
     }
 
-    function currentStateChanged() {
-      // get map READY
-      if (appModel.state.isReviewing()) {
-        shakeThatMap();
+    function isReady() {
+      return self.started && !self.printMode;
+    }
+
+    function isLoaded() {
+      return self.loaded;
+    }
+
+    var isLocationReady = false;
+    function locationReady() { isLocationReady = true; load(); }
+
+    var arePlacesReady = false;
+    function placesReady() { arePlacesReady = true; load(); }
+
+    function load() {
+      if (isLocationReady && arePlacesReady) {
+        self.loaded = true;
+        mapService.getReady();
+        if (!$rootScope.$$phase) $rootScope.$apply();
       }
-      // apply state change
-      if (!$rootScope.$$phase) $rootScope.$apply();
     }
 
     function print() {
@@ -75,26 +97,52 @@
       $rootScope.$broadcast('mapController:unset-print-mode');
     }
 
+    function start() {
+      self.started = true;
+      markersService.dropYourLocationPin();
+      $timeout(function() {
+        markersService.dropMarkers();
+      }, 1000);
+      mapService.getReady();
+    }
+
     function centerMap() {
       $rootScope.$broadcast('mapController:center-map');
     }
 
     function restartMap() {
+      self.selectedCategories = [].concat(self.categories);
       $rootScope.$broadcast('mapController:restart-map');
+    }
+
+    function showDirections() {
+      self.directions = directionsService.getCurrentDirections();
+      $timeout(function() {
+        self.openDirections = true;
+      });
+    }
+
+    function hideDirections() {
+      self.openDirections = false;
     }
 
     function updateMarkers() {
       self.selectedMarkers = markersService.getSelectedMarkers();
     }
 
-    function setActive() {
+    function updatedSelectedCategories() {
+      self.selectedCategories = CategoriesService.getSelectedCategories();
+    }
+
+    function activate() {
       self.active = true;
     }
 
-    function setUnactive() {
-      self.active = false;
+    function deactivate() {
+      $timeout(function() {
+        self.active = false;
+      }, 600);
     }
-
 
     function closeDialog() {
       $mdDialog.hide();
@@ -183,16 +231,18 @@
       }
     }
 
-    /* delegate */
-
-    $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
+    // delegate
+    $rootScope.$on('mapService:location-ready', locationReady);
+    $rootScope.$on('markersService:places-ready', placesReady);
 
     $rootScope.$on('markersService:cleaned-markers', updateMarkers);
     $rootScope.$on('markersService:toggled-mark', updateMarkers);
 
-    $rootScope.$on('directionsService:calculating-route', setActive);
-    $rootScope.$on('directionsService:calculating-route-end', setUnactive);
+    $rootScope.$on('directionsService:calculating-route', activate);
+    $rootScope.$on('directionsService:calculating-route-end', deactivate);
 
+    $rootScope.$on('categoriesDirective:changed', activate);
+    $rootScope.$on('markersService:filtered-by-categories', deactivate);
 
   }
 

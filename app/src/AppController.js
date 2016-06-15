@@ -53,7 +53,7 @@
      */
     function currentStateChanged() {
       // get map READY
-      if (appModel.state.isPristine() || appModel.state.isReviewing()) {
+      if (appModel.state.isPristine()) {
         mapService.getReady();
       }
       // apply state change
@@ -89,7 +89,7 @@
 
     $rootScope.$on(appModel.events.prevState, prev);
 
-    $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
+    // $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
 
     $rootScope.$on(placesModel.events.placesReady, placesAreReady);
 
