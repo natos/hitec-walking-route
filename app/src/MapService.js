@@ -3,7 +3,7 @@
 
   angular.module('App')
     .service('mapService', [
-      '$rootScope', '$window',
+      '$rootScope', '$window', '$timeout',
       'mapModel',
       'locationService',
       MapService
@@ -13,11 +13,11 @@
    * Map Service
    * @constructor
    */
-  function MapService($rootScope, $window, mapModel, LocationService) {
+  function MapService($rootScope, $window, $timeout, mapModel, locationService) {
 
     function centerMap() {
       var map = getMap();
-      map.setCenter(LocationService.getCurrentLocation() || mapModel.config.center);
+      map.setCenter(locationService.getCurrentLocation() || mapModel.config.center);
       map.setZoom(mapModel.config.zoom);
       return map;
     }
@@ -30,9 +30,9 @@
     }
 
     function getReady() {
-      console.log('getMapReady')
+      if (mapModel.map) { return; }
       google.maps.event.trigger(mapModel.map, 'resize');
-      centerMap();
+      $timeout(centerMap);
     }
 
     // delegate

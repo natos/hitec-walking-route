@@ -21,9 +21,10 @@
         'READY': 2,
         'SELECTING-PLACES': 3,
         'SELECTING-START-END': 4,
-        'REVIEWING': 5,
-        'PRINTING': 6,
-        'THANK-YOU': 7
+        'LOADING-DIRECTIONS': 5,
+        'REVIEWING': 6,
+        'PRINTING': 7,
+        'THANK-YOU': 8
       };
 
       /**
@@ -102,6 +103,9 @@
         },
         isSelectingStartEnd: function() {
           return currentState === states['SELECTING-START-END'];
+        },
+        isLoadingDirections: function() {
+          return currentState === states['LOADING-DIRECTIONS'];
         },
         isReviewing: function() {
           return currentState === states['REVIEWING'];

@@ -4,8 +4,9 @@
   angular.module('App')
     .service('markersService', [
       '$rootScope', '$timeout',
-      'markersModel',
+      'appModel', 'markersModel',
       'mapService', 'placesService', 'locationService',
+      'Marker',
       MarkersService
     ]);
 
@@ -15,150 +16,173 @@
    * @returns {{getMarkers: Function}}
    * @constructor
    */
-  function MarkersService($rootScope, $timeout, markersModel, mapService, placesService, locationService) {
+  function MarkersService($rootScope, $timeout, appModel, markersModel, mapService, placesService, locationService, Marker) {
+    //
+    // // construct a marker icon
+    // function markerIcon(options) {
+    //   var icon = {
+    //     path: options.path,
+    //     scale: options.scale || .75,
+    //     strokeWeight: options.strokeWeight || 0,
+    //     fillColor: options.fillColor || "#ffffff",
+    //     fillOpacity: options.fillOpacity || .85,
+    //     labelOrigin: new google.maps.Point(-2, -30)
+    //   };
+    //   return icon;
+    // }
+    //
+    // // select marker
+    // function selectMarker(marker) {
+    //   if (!isMarkSelected(marker.mark)) {
+    //     var order = markersModel.selectedMarkers.push(marker);
+    //     marker.mark.order = order;
+    //     marker.mark.selected = true;
+    //     selectMarkerPin(marker);
+    //     // TODO: Emit an event to notify that Marker has been selected
+    //     $rootScope.$emit('markersService:marker-selected', marker);
+    //   }
+    // }
+    //
+    // function unselectMarker(marker) {
+    //   var position = markersModel.selectedMarkers.indexOf(marker);
+    //   markersModel.selectedMarkers.splice(position, 1);
+    //   marker.mark.selected = false;
+    //   unselectMarkerPin(marker);
+    //   // TODO: Emit an event to notify that Marker has been unselected
+    //   $rootScope.$emit('markersService:marker-unselected', marker);
+    // }
+    //
+    // // set selected icon on a marker
+    // function selectMarkerPin(marker) {
+    //   var icon = markerIcon({
+    //     path: markersModel.iconPath.selectedPin,
+    //     fillColor: marker.mark.color,
+    //     fillOpacity: 1
+    //   });
+    //   marker.setIcon(icon);
+    //   marker.mark.selected = true;
+    // }
+    //
+    // // set unselected icon on a marker
+    // function unselectMarkerPin(marker) {
+    //   var icon = markerIcon({
+    //     path: markersModel.iconPath.unselectedPin,
+    //     fillColor:  "#666666"
+    //   });
+    //   marker.setIcon(icon);
+    //   marker.mark.selected = false;
+    // }
 
-    // collections of markers in the map
-    var markers = [];
-    // collection of selected markers
-    var selectedMarkers = [];
-    // collections of filtered markers
-    // var filteredMarkers = [];
-    // filtering flag
-    // var isFiltering = false;
-
-    var yourLocationSVGPath = "M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z";
-    // SVG for unselected pins
-    var pinSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50Z";
-    // SVG for selected pins
-    var pinCircleSVGPath = "M0-50A17.38 17.38 0 0 0-17.5-32.5C-17.5-19.51 0 0 0 0S17.5-19.51 17.5-32.5A17.38 17.38 0 0 0 0-50ZM0-25a7.28 7.28 0 0 1-7.28-7.28A7.28 7.28 0 0 1 0-39.55a7.28 7.28 0 0 1 7.28 7.28A7.28 7.28 0 0 1 0-25Z";
-
-    // construct a marker icon
-    function markerIcon(options) {
-      var icon = {
-        path: options.path,
-        scale: options.scale || .75,
-        strokeWeight: options.strokeWeight || 0,
-        fillColor: options.fillColor || "#ffffff",
-        fillOpacity: options.fillOpacity || .85,
-        labelOrigin: new google.maps.Point(-2, -30)
-      };
-      // console.log('set icon', icon);
-      return icon;
-    }
-
-    // set selected icon on a marker
-    function selectMarkerPin(marker) {
-      marker.setIcon(markerIcon({
-        path: pinSVGPath,
-        fillColor: marker.mark.color,
-        fillOpacity: 1
-      }));
-      marker.mark.selected = true;
-    }
-
-    // set unselected icon on a marker
-    function unselectMarkerPin(marker) {
-      marker.setIcon(markerIcon({
-        path: pinCircleSVGPath,
-        fillColor:  "#aaaaaa"//marker.mark.color
-      }));
-      marker.mark.selected = false;
+    // return true if the mark is selected
+    function isMarkerSelected(marker) {
+      return isMarkSelected(marker.mark);
     }
 
     // return true if the mark is selected
     function isMarkSelected(mark) {
-      for (var i = 0; i < selectedMarkers.length; i += 1) {
-        if (selectedMarkers[i].mark === mark) {
+      var selectedPlaces = placesService.getSelectedPlaces();
+      for (var i = 0; i < selectedPlaces.length; i += 1) {
+        if (selectedPlaces[i].id === mark.id) {
           return true;
         }
       }
       return false;
     }
 
-    // finds a specific marker given a mark
-    function getMarker(mark) {
-      for (var i = 0; i < markers.length; i += 1) {
-        if (markers[i].mark.id === mark.id) {
-          return markers[i];
+    // finds a specific marker given a place
+    function getMarker(place) {
+      for (var i = 0; i < markersModel.markers.length; i += 1) {
+        if (markersModel.markers[i].place.id === place.id) {
+          return markersModel.markers[i];
         }
       }
     }
-
-    // creates a marker in the map
-    function createMarker(mark, i, t) {
-      var marker = getMarker(mark);
-      if (!marker) {
-        var raw = {
-          mark: mark,
-          place: mark.place//,
-          // animation: google.maps.Animation.DROP,
-          // icon: markerIcon({ fillColor: mark.color })
-        }
-        marker = new google.maps.Marker(raw);
-        marker.addListener('click', toggleMarker);
-        markers.push(marker);
-        // $timeout(function() {
-          marker.setMap(mapService.getMap());
-          areAllMarkersDropped(i, t);
-        // }, dropMarkTiming(i));
-      } else {
-        marker.setAnimation(null);
-        marker.setMap(mapService.getMap());
-      }
-      // make sure to toggle the pin
-      if (marker.mark.selected) {
-        selectMarkerPin(marker);
-      } else {
-        unselectMarkerPin(marker);
-      }
-      // console.log('new marker', marker)
-    }
+    //
+    // // creates a marker in the map
+    // function createMarker(mark, i, t) {
+    //   var marker = getMarker(mark);
+    //   if (!marker) {
+    //     var raw = {
+    //       mark: mark,
+    //       place: mark.place//,
+    //       // animation: google.maps.Animation.DROP,
+    //       // icon: markerIcon({ fillColor: mark.color })
+    //     }
+    //     marker = new google.maps.Marker(raw);
+    //     marker.addListener('click', toggleMarker);
+    //     markersModel.markers.push(marker);
+    //     // $timeout(function() {
+    //       marker.setMap(mapService.getMap());
+    //       areAllMarkersDropped(i, t);
+    //     // }, dropMarkTiming(i));
+    //   } else {
+    //     marker.setAnimation(null);
+    //     marker.setMap(mapService.getMap());
+    //   }
+    //   // make sure to toggle the pin
+    //   if (marker.mark.selected) {
+    //     selectMarkerPin(marker);
+    //   } else {
+    //     unselectMarkerPin(marker);
+    //   }
+    //   // console.log('new marker', marker)
+    // }
 
     // timer function to drop markers
-    function dropMarkTiming(i) {
-      return (i + .75) * 350;
-    }
+    // function dropMarkTiming(i) {
+    //   return (i + .75) * 350;
+    // }
 
-    // toggle a map marker
-    function toggleMarker() {
-      // reset pin label
-      this.setLabel('');
-      var position = selectedMarkers.indexOf(this);
-      var isAlreadySelected = position >= 0;
-      if (isAlreadySelected) {
-        selectedMarkers.splice(position, 1);
-        // this.mark.selected = false;
-        unselectMarkerPin(this);
-      } else {
-        var order = selectedMarkers.push(this);
-        this.mark.order = order;
-        // this.mark.selected = true;
-        selectMarkerPin(this);
-      }
-
-      reorderMarkers();
-      // if (isFiltering) filterByCategories();
-
-      $rootScope.$emit('markersService:toggled-mark', this);
-      if (!$rootScope.$$phase) $rootScope.$apply();
-    }
+    // // toggle a map marker
+    // function toggleMarker() {
+    //   // reset pin label
+    //   this.setLabel('');
+    //   if (isMarkerSelected(this)) {
+    //     unselectMarker(this);
+    //   } else {
+    //     selectMarker(this);
+    //   }
+    //   reorderMarkers();
+    //
+    //   $rootScope.$emit('markersService:toggled-mark', this);
+    //   if (!$rootScope.$$phase) $rootScope.$apply();
+    // }
 
     // reorder markers numbers
     function reorderMarkers() {
-      for (var i = 0; i < selectedMarkers.length; i += 1) {
-        selectedMarkers[i].mark.order = i + 1;
-        selectedMarkers[i].setLabel({
+      for (var i = 0; i < markersModel.selectedMarkers.length; i += 1) {
+        markersModel.selectedMarkers[i].mark.order = i + 1;
+        markersModel.selectedMarkers[i].setLabel({
           color: '#ffffff',
-          text: ''+(i+1)
+          text: '' + (i + 1)
         });
       }
     }
 
     function reorderMarkersFromRoute(route) {
       console.log('reorderMarkersFromRoute',route);
-      for (var i = 0; i < route.waypoint_order; i += 1) {
-        // TODO: reorder optimized waypoints
+      console.log('markersModel.selectedMarkers',markersModel.selectedMarkers);
+
+      var waypoints = placesService.getWaypoints();
+
+      var startPlace = getMarker(placesService.getStartPlace());
+      if (startPlace) {
+        startPlace.order(1);
       }
+
+      var endPlace = getMarker(placesService.getEndPlace());
+      if (endPlace) {
+        endPlace.order(waypoints.length + 2);
+      }
+
+      for (var i = 0; i < waypoints.length; i += 1) {
+        var marker = getMarker(waypoints[i]);
+        console.log('marker', marker, route.waypoint_order[i] + 2);
+        if (marker) {
+          marker.order(route.waypoint_order[i] + 2);
+        }
+      }
+
     }
 
     var drops = 0;
@@ -166,8 +190,16 @@
       drops += 1;
       if (drops === t) {
         $rootScope.$emit('markersService:dropped-pins');
-        reorderMarkers();
       }
+    }
+
+    function createMarkers() {
+      var places = placesService.getPlaces();
+      for (var i = 0; i < places.length; i += 1) {
+        var marker = new Marker(places[i]).render(mapService.getMap());
+        markersModel.markers.push(marker);
+      }
+      // console.log('Created Markers', markersModel.markers);
     }
 
     // create a collection of markers
@@ -180,12 +212,13 @@
     }
 
     function dropYourLocationPin() {
+      var location = locationService.getCurrentLocation();
+      if (!location) return;
       var raw = {
         map: mapService.getMap(),
-        position: locationService.getCurrentLocation(),
-        // animation: google.maps.Animation.BOUNCE,
+        position: location,
         icon: {
-          path: yourLocationSVGPath,
+          path: markersModel.iconPath.yourLocation,
           scale: 1,
           strokeWeight: 0,
           fillColor: '#037AFF',
@@ -265,9 +298,9 @@
     // }
 
     function restartMarkers() {
-      isFiltering = false;
+      // isFiltering = false;
       cleanMarkers();
-      cleanFilteredMarkers();
+      // cleanFilteredMarkers();
       $timeout(function () {
         dropMarkers();
       });
@@ -292,6 +325,7 @@
     // public interface
     return {
       dropMarkers: dropMarkers,
+      createMarkers: createMarkers,
       dropYourLocationPin: dropYourLocationPin,
       reorderMarkersFromRoute: reorderMarkersFromRoute,
       // getMark: function(i) {

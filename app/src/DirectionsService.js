@@ -48,15 +48,9 @@
 
       $rootScope.$emit('directionsService:calculating-route');
 
-      var selectedPlaces = placesService.getSelectedPlaces();
-      console.log('selectedPlaces', selectedPlaces)
-
+      var waypoints = placesService.getWaypoints();
       var origin = placesService.getStartPlace();
-
       var destination = placesService.getEndPlace();
-
-      console.log('origin', origin)
-      console.log('destination', destination)
 
       var directions = {
           travelMode: google.maps.TravelMode.WALKING,
@@ -66,31 +60,27 @@
           waypoints: []
       };
 
-      if (!selectedPlaces) {
-        console.log('No selections, cant calculate route');
+      if (!origin || !destination) {
+        console.log('No selections, can`t calculate route');
+        directionsDisplay.set('directions', null);
+        $rootScope.$emit('directionsService:calculating-route-end');
         return;
       }
 
-      for (var i = 0; i < selectedPlaces.length; i += 1) {
-        var marker = selectedPlaces[i];
+      for (var i = 0; i < waypoints.length; i += 1) {
+        var marker = waypoints[i];
         directions.waypoints.push({
             location: marker.place.location,
             stopover: true
         });
       }
 
-      if (selectedPlaces.length <= 1) {
-        directionsDisplay.set('directions', null);
-        $rootScope.$emit('directionsService:calculating-route-end');
-        return;
-      }
-
-      console.log('Asking for direcctions', directions);
+      // console.log('Asking for direcctions', directions);
 
       directionsService.route(directions, function(response, status) {
         $rootScope.$emit('directionsService:calculating-route-end');
         if (status === google.maps.DirectionsStatus.OK) {
-          console.log('directions response', response)
+          // console.log('directions response', response)
           directionsDisplay.setDirections(response);
           // rawRoute = response.routes[0];
           route = response.routes[0];
@@ -102,10 +92,11 @@
           }
           totalDistance.km = (Math.round(totalDistance.value * 10) / 10);
           totalDuration.min = (Math.round(totalDuration.value * 100) / 100);
-
+          
         } else {
           console.error('Directions request failed due to ' + status, response);
         }
+        $rootScope.$emit('directionsService:calculating-route-end');
       });
     }
 
@@ -160,7 +151,7 @@
     // delegate
     $rootScope.$on('mapController:restart-map', cleanRoute);
     // $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
-    $rootScope.$on('markersService:dropped-pins', calculateAndDisplayRoute);
+    // $rootScope.$on('markersService:dropped-pins', calculateAndDisplayRoute);
 
     // public interface
     return {

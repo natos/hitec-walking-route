@@ -27,6 +27,11 @@
     var self = this;
 
         self.active = true;
+        self.loaded = false;
+        self.ready = false;
+        self.isReady = function () {
+          return self.loaded && self.ready;
+        };
         self.map = mapService.getMap();
         self.selectedMarkers = [];
         self.center = centerMap;
@@ -37,19 +42,21 @@
         // self.unsetPrintMode = unsetPrintMode;
         // self.print = print;
 
-
-    function shakeThatMap() {
-      mapService.getReady();
-      markersService.dropYourLocationPin();
-      $timeout(function () {
-        markersService.dropMarkers();
-      }, 1500);
-    }
-
     function currentStateChanged() {
-      // get map READY
+      // get markers in the map
+      // get directions
+      if (appModel.state.isLoadingDirections()) {
+        markersService.createMarkers();
+        markersService.dropYourLocationPin();
+        directionsService.calculateAndDisplayRoute();
+        transitionToRoute();
+      }
+      // map is READY
       if (appModel.state.isReviewing()) {
-        shakeThatMap();
+        mapService.getReady();
+        centerMap();
+        $timeout(closeDialog, 700);
+        $timeout(setReady, 1500);
       }
       // apply state change
       if (!$rootScope.$$phase) $rootScope.$apply();
@@ -83,8 +90,16 @@
       $rootScope.$broadcast('mapController:restart-map');
     }
 
-    function updateMarkers() {
-      self.selectedMarkers = markersService.getSelectedMarkers();
+    // function updateMarkers() {
+    //   self.selectedMarkers = markersService.getSelectedMarkers();
+    // }
+
+    function setReady() {
+      self.ready = true;
+    }
+
+    function setLoaded() {
+      self.loaded = true;
     }
 
     function setActive() {
@@ -100,32 +115,17 @@
       $mdDialog.hide();
     }
 
-    function showRoute(event) {
-
-      var _INTERVAL;
-      var _CLOSE_TIMEOUT;
-      var _TIMEOUT_VALUE = 3000;
-
-      // auto close dialog
-      _CLOSE_TIMEOUT = $timeout(function () {
-        if (_INTERVAL) _INTERVAL.cancel();
-        setPrintMode()
-        closeDialog();
-      }, _TIMEOUT_VALUE);
+    function transitionToRoute(event) {
 
       $mdDialog
         .show({
           controller: ['$scope', '$mdDialog', LoadingRouteController],
-          clickOutsideToClose: true,
-          parent: '#map',
-          templateUrl: './src/LoadingRoute.html',
-          // fancy animations
-          openFrom: '.finish',
-          closeTo: '.finish'
+          parent: '#map-container',
+          templateUrl: './src/LoadingRoute.html'
         })
         .finally(function() {
           console.log('finally', _CLOSE_TIMEOUT)
-          $timeout.cancel(_CLOSE_TIMEOUT);
+          // $timeout.cancel(_CLOSE_TIMEOUT);
         });;
 
       /**
@@ -133,12 +133,25 @@
        */
       function LoadingRouteController($scope, $mdDialog) {
         $scope.closeDialog = closeDialog;
+        $scope.ready = false;
         $scope.value = 0;
         $scope.bufferValue = 10;
-        $interval(function() {
-          $scope.value += 2;
-          $scope.bufferValue += 2.22;
-        }, 75, 0, true);
+        var i = $interval(function() {
+          $scope.value += 3;
+          $scope.bufferValue += 3.333;
+          if ($scope.value >= 100 && $scope.ready) {
+            $interval.cancel(i);
+            $timeout(function() {
+              $rootScope.$emit(appModel.events.nextState);
+            }, 500);
+          }
+        }, 100, 0, true);
+
+        $rootScope.$on('directionsService:calculating-route-end', function() {
+          console.log('done? yeah close this down');
+          $scope.ready = true;
+        });
+
       }
     }
 
@@ -187,11 +200,12 @@
 
     $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
 
-    $rootScope.$on('markersService:cleaned-markers', updateMarkers);
-    $rootScope.$on('markersService:toggled-mark', updateMarkers);
+    // $rootScope.$on('markersService:cleaned-markers', updateMarkers);
+    // $rootScope.$on('markersService:toggled-mark', updateMarkers);
 
     $rootScope.$on('directionsService:calculating-route', setActive);
     $rootScope.$on('directionsService:calculating-route-end', setUnactive);
+    $rootScope.$on('directionsService:calculating-route-end', setLoaded);
 
 
   }

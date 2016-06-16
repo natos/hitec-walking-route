@@ -27,11 +27,11 @@
 
     <div id="map-container" ng-controller="MapController as map" ng-cloak>
 
-      <div class="map-overlay fade fullscreen" ng-hide="app.state.isReviewing()"></div>
+      <div class="map-overlay fade fullscreen" ng-if="!app.state.isReviewing()"></div>
 
-      <div class="map-active" ng-if="map.active" ng-cloak><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
+      <div class="map-active" ng-if="app.state.isReviewing() && map.active" ng-cloak><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
 
-      <div class="map-logo" ng-cloak><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
+      <div class="map-logo fade" ng-cloak><img class="logo" src="/app/assets/img/logo/hi-tec-white.png" alt="Hi-Tec" /></div>
 
       <div class="map-actions slide left" ng-if="map.isReady()" ng-cloak>
         <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
@@ -57,7 +57,6 @@
     <script src="./src/AppModel.js"></script>
     <script src="./src/AppController.js"></script>
 
-
     <script src="./src/Map.js"></script>
     <script src="./src/MapModel.js"></script>
     <script src="./src/MapController.js"></script>
@@ -75,6 +74,7 @@
 
     <!-- TODO: Cleaning -->
     <script src="./src/MarkersService.js"></script>
+    <script src="./src/Marker.js"></script>
     <script src="./src/MarkersModel.js"></script>
     <script src="./src/StaticMapDirective.js"></script>
     <script src="./src/DirectionsDirective.js"></script>

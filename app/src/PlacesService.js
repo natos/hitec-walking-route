@@ -76,6 +76,16 @@
       return placesModel.selected.places;
     }
 
+    function getWaypoints() {
+      var i, w = [];
+      for (i = 0; i < placesModel.selected.places.length; i += 1) {
+        if (placesModel.selected.places[i].id !== placesModel.selected.start && placesModel.selected.places[i].id !== placesModel.selected.end) {
+          w.push(placesModel.selected.places[i]);
+        }
+      }
+      return w;
+    }
+
     function getStartPlace() {
       return findPlaceById(placesModel.selected.start);
     }
@@ -91,6 +101,7 @@
     return {
       getPlaces: getPlaces,
       getEndPlace: getEndPlace,
+      getWaypoints: getWaypoints,
       getStartPlace: getStartPlace,
       getSelectedPlaces: getSelectedPlaces,
       getPlacesByCategory: getPlacesByCategory
