@@ -48,19 +48,6 @@
     }
 
     /**
-     * Updates App State
-     * @private
-     */
-    function currentStateChanged() {
-      // get map READY
-      if (appModel.state.isPristine()) {
-        mapService.getReady();
-      }
-      // apply state change
-      if (!$rootScope.$$phase) $rootScope.$apply();
-    }
-
-    /**
      * Places data is home
      * @private
      */
@@ -88,8 +75,6 @@
     $rootScope.$on(appModel.events.nextState, next);
 
     $rootScope.$on(appModel.events.prevState, prev);
-
-    // $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
 
     $rootScope.$on(placesModel.events.placesReady, placesAreReady);
 

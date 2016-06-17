@@ -3,14 +3,13 @@
 
   angular
     .module('App')
-    .service('placesModel', ['$rootScope', PlacesModel]);
+    .service('placesModel', [PlacesModel]);
 
     /**
      * Places Controller for Hi-Tec Walking Route
-     * @param $rootScope
      * @constructor
      */
-    function PlacesModel($rootScope) {
+    function PlacesModel() {
 
       /**
        * Places Events dictionary

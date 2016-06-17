@@ -3,8 +3,8 @@
 
   angular.module('App')
     .service('Marker', [
-      '$rootScope',
-      'markersModel',
+      '$rootScope', '$mdDialog',
+      'markersModel', 'appModel',
       'mapService', 'placesService', 'locationService',
       MarkerFactory
     ]);
@@ -12,10 +12,12 @@
   /**
    * Marker factory
    */
-  function MarkerFactory($rootScope, markersModel, mapService, placesService, locationService) {
+  function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService, placesService, locationService) {
 
     /**
      * Marker contructor
+     * @param {Place} place
+     * @param {object|undefined} icon
      * @constructor
      */
 
@@ -33,7 +35,7 @@
       this.place.selected && this.select();
 
       google.maps.event.addListener(this.pin, 'click', function() {
-        marker.toggle.call(marker);
+        marker.maximize.call(marker);
       });
 
       return this;
@@ -67,6 +69,7 @@
         fillColor: '#037AFF' // this.place.color
       });
       this.pin.setIcon(icon);
+      // if (this.place.order) this.pin.setLabel('' + this.place.order);
       this.place.selected = true;
       return this;
     };
@@ -74,6 +77,7 @@
     Marker.prototype.unselect = function() {
       var icon = markerIcon();
       this.pin.setIcon(icon);
+      // this.pin.setLabel('');
       this.place.selected = false;
       return this;
     };
@@ -96,7 +100,66 @@
     Marker.prototype.remove = function() {
       this.pin.setMap(null);
       return this;
-    }
+    };
+
+    Marker.prototype.maximize = function() {
+
+      var marker = this;
+
+      $mdDialog.show({
+        controller: ['$scope', '$mdDialog', MarkerDetailController],
+        clickOutsideToClose: true,
+        parent: angular.element(document.body), //'#content',
+        templateUrl: './src/MarkerDetail.html'//,
+        // fancy animations
+        // openFrom: '.marker-' + marker.mark.id,
+        // closeTo: '.marker-' + marker.mark.id
+      });
+
+      function triggerReroute() {
+        $rootScope.$emit(appModel.events.prevState);
+      }
+
+      function closeDialog() {
+        $mdDialog.hide();
+      };
+
+      function addToRoute() {
+        marker.select();
+        placesService.selectPlace(marker.place);
+        closeDialog();
+        triggerReroute();
+      }
+
+      function removeFromRoute() {
+        marker.unselect();
+        placesService.unselectPlace(marker.place);
+        closeDialog();
+        triggerReroute();
+      }
+
+      function setStart() {
+        placesService.setStartPlace(marker.place);
+        marker.place.selected && closeDialog() || addToRoute();
+      }
+
+      function setEnd() {
+        placesService.setEndPlace(marker.place);
+        marker.place.selected && closeDialog() || addToRoute();
+      }
+
+      /**
+       * Marker Detail controller
+       */
+      function MarkerDetailController($scope, $mdDialog) {
+        $scope.marker = marker;
+        $scope.addToRoute = addToRoute;
+        $scope.removeFromRoute = removeFromRoute;
+        $scope.setStart = setStart;
+        $scope.setEnd = setEnd;
+        $scope.closeDialog = closeDialog;
+      }
+    };
 
     // construct a marker icon
     function markerIcon(options) {

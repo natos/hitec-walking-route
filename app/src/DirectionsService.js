@@ -5,7 +5,8 @@
   angular.module('App')
     .service('directionsService', [
       '$rootScope',
-      'mapService', 'markersService', 'placesService',
+      'mapModel', 'directionsModel',
+      'mapService', 'placesService',
       DirectionsService
     ]);
 
@@ -15,116 +16,140 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function DirectionsService($rootScope, mapService, markersService, placesService) {
+  function DirectionsService($rootScope, mapModel, directionsModel, mapService, placesService) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');
     }
 
-    var API_KEY = 'AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo';
-
-    var route;
-    var totalDuration = { value: 0, min: 0 };
-    var totalDistance = { value: 0, min: 0 };
-
-    var optimizeWaypoints;
-
+    /**
+     * Directions Service
+     * @public
+     */
     var directionsService = new google.maps.DirectionsService;
+
+    /**
+     * Collect time and distance information from route
+     * @public
+     */
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
     directionsDisplay.setMap(mapService.getMap());
-    directionsDisplay.setOptions({
-      suppressMarkers: true,
-      preserveViewport: true,
-      polylineOptions: {
-        strokeWeight: 5,
-        strokeOpacity: .75,
-        strokeColor: "#CC0000"
-      }
-    });
+    directionsDisplay.setOptions(directionsModel.options);
 
+    /**
+     * Collect time and distance information from route
+     * @public
+     */
+    function collectTimeAndDistance() {
+      // Collect time and distance information
+      for (var i = 0; i < directionsModel.route.legs.length; i++) {
+          directionsModel.duration.value += directionsModel.route.legs[i].duration.value / 60; // to minutes
+          directionsModel.distance.value += directionsModel.route.legs[i].distance.value / 1000; // to km
+      }
+      directionsModel.duration.min = (Math.round(directionsModel.duration.value * 100) / 100);
+      directionsModel.distance.km = (Math.round(directionsModel.distance.value * 10) / 10);
+    }
+
+    /**
+     * Render direcctions from Google API
+     * @param response Response object
+     * @param status HTTP status code
+     * @public
+     */
+    function displayDirections(response, status) {
+
+      if (status === google.maps.DirectionsStatus.OK) {
+
+        // comunicate state
+        $rootScope.$emit(directionsModel.events.displayingDirections);
+
+        // display direcctions
+        directionsDisplay.setDirections(response);
+
+        // save route information
+        directionsModel.route = response.routes[0];
+
+        // collect time and distance info
+        collectTimeAndDistance();
+
+        // comunicate state
+        $rootScope.$emit(directionsModel.events.displayedDirections);
+
+      } else {
+        console.error('Directions request failed due to ' + status, response);
+        // comunicate state
+        $rootScope.$emit(directionsModel.events.displayingdDirectionsError);
+      }
+    }
+
+    /**
+     * Get direcctions from Google API
+     * @public
+     */
     function calculateAndDisplayRoute() {
 
+      $rootScope.$emit(directionsModel.events.calculatingDirections);
 
-      $rootScope.$emit('directionsService:calculating-route');
-
+      // get selected places
       var waypoints = placesService.getWaypoints();
       var origin = placesService.getStartPlace();
       var destination = placesService.getEndPlace();
 
-      var directions = {
-          travelMode: google.maps.TravelMode.WALKING,
-          origin: origin.place.location,
-          destination: destination.place.location,
-          optimizeWaypoints: true,
-          waypoints: []
-      };
-
+      // make sure there's an origin and destination
       if (!origin || !destination) {
-        console.log('No selections, can`t calculate route');
         directionsDisplay.set('directions', null);
         $rootScope.$emit('directionsService:calculating-route-end');
         return;
       }
 
+      // create the request object
+      var directions = {
+          travelMode: google.maps.TravelMode.WALKING,
+          optimizeWaypoints: true,
+          origin: origin.place.location,
+          destination: destination.place.location,
+          waypoints: []
+      };
+
+      // attach all the waypoints
       for (var i = 0; i < waypoints.length; i += 1) {
-        var marker = waypoints[i];
         directions.waypoints.push({
-            location: marker.place.location,
+            location: waypoints[i].place.location,
             stopover: true
         });
       }
 
-      // console.log('Asking for direcctions', directions);
-
-      directionsService.route(directions, function(response, status) {
-        $rootScope.$emit('directionsService:calculating-route-end');
-        if (status === google.maps.DirectionsStatus.OK) {
-          // console.log('directions response', response)
-          directionsDisplay.setDirections(response);
-          // rawRoute = response.routes[0];
-          route = response.routes[0];
-          markersService.reorderMarkersFromRoute(route);
-          // Collect time and distance information
-          for (var i = 0; i < route.legs.length; i++) {
-              totalDuration.value += route.legs[i].duration.value / 60; // to minutes
-              totalDistance.value += route.legs[i].distance.value / 1000; // to km
-          }
-          totalDistance.km = (Math.round(totalDistance.value * 10) / 10);
-          totalDuration.min = (Math.round(totalDuration.value * 100) / 100);
-          
-        } else {
-          console.error('Directions request failed due to ' + status, response);
-        }
-        $rootScope.$emit('directionsService:calculating-route-end');
-      });
+      $rootScope.$emit(directionsModel.events.gettingDirections);
+      // trigger the request to the API
+      directionsService.route(directions, displayDirections);
     }
 
     function cleanRoute() {
       directionsDisplay.set('directions', null);
     }
 
-    function calculateDirections() {
-      var _route = angular.extend({}, route);
-      _route.totalDistance = getTotalDistance();
-      _route.totalDuration = getTotalDuration();
-      // attach markers for each leg
-      for (var i = 0; i < _route.legs.length; i += 1) {
-        var start_marker = markersService.getMarkerByLocation(rawRoute.legs[i].start_address);
-        var end_marker = markersService.getMarkerByLocation(rawRoute.legs[i].end_address);
-        if (start_marker) {
-          _route.legs[i].start_marker = start_marker;
-        }
-        if (end_marker) {
-          _route.legs[i].end_marker = end_marker;
-        }
-      }
-      return {
-        get: function() {
-          return _route;
-        }
-      };
-    }
+    // function calculateDirections() {
+    //   var _route = angular.extend({}, route);
+    //   _route.totalDistance = getTotalDistance();
+    //   _route.totalDuration = getTotalDuration();
+    //   // attach markers for each leg
+    //   for (var i = 0; i < _route.legs.length; i += 1) {
+    //     var start_marker = markersService.getMarkerByLocation(rawRoute.legs[i].start_address);
+    //     var end_marker = markersService.getMarkerByLocation(rawRoute.legs[i].end_address);
+    //     if (start_marker) {
+    //       _route.legs[i].start_marker = start_marker;
+    //     }
+    //     if (end_marker) {
+    //       _route.legs[i].end_marker = end_marker;
+    //     }
+    //   }
+    //   return {
+    //     get: function() {
+    //       return _route;
+    //     }
+    //   };
+    // }
 
     function getStaticMapWithDirections() {
         var url = 'https://maps.googleapis.com/maps/api/staticmap?';
@@ -132,20 +157,20 @@
         // url += '&zoom=14';
         url += '&size=640x640';
         url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + route.overview_polyline;
-        url += '&key=' + API_KEY;
+        url += '&key=' + mapModel.API_KEY;
         return url;
     }
 
     function getTotalDistance() {
-      return totalDistance;
+      return directionsModel.distance;
     }
 
     function getTotalDuration() {
-      return totalDuration;
+      return directionsModel.duration;
     }
 
-    function getRouteInfo() {
-      return route;
+    function getCurrentRoute() {
+      return directionsModel.route;
     }
 
     // delegate
@@ -158,10 +183,10 @@
       cleanRoute: cleanRoute,
       getStaticMapWithDirections: getStaticMapWithDirections,
       calculateAndDisplayRoute: calculateAndDisplayRoute,
-      calculateDirections: calculateDirections,
+      // calculateDirections: calculateDirections,
       getTotalDistance: getTotalDistance,
       getTotalDuration: getTotalDuration,
-      getRouteInfo: getRouteInfo
+      getCurrentRoute: getCurrentRoute
     };
   }
 

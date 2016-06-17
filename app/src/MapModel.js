@@ -12,6 +12,12 @@
     function MapModel() {
 
       /**
+       * Map Model Google Maps API Key
+       * @public
+       */
+      this.API_KEY = 'AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo';
+
+      /**
        * Map Model map instance
        * @public
        */

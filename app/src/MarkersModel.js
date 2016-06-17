@@ -22,7 +22,7 @@
        * @public
        */
       this.events = {
-
+        markersUpdated: 'markers:updated'
       };
 
       /**

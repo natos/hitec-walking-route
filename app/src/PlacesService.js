@@ -94,17 +94,34 @@
       return findPlaceById(placesModel.selected.end);
     }
 
+    function setStartPlace(start) {
+      placesModel.selected.start = start;
+    }
+
+    function setEndPlace(end) {
+      placesModel.selected.end = end;
+    }
+
     function selectPlace(place) {
-      placesModel.selectedPlaces.push(place);
+      placesModel.selected.places.push(place);
+    }
+
+    function unselectPlace(place) {
+      var position = placesModel.selected.places.indexOf(place);
+      placesModel.selected.places.splice(position, 1);
     }
 
     return {
       getPlaces: getPlaces,
-      getEndPlace: getEndPlace,
       getWaypoints: getWaypoints,
+      getEndPlace: getEndPlace,
       getStartPlace: getStartPlace,
       getSelectedPlaces: getSelectedPlaces,
-      getPlacesByCategory: getPlacesByCategory
+      getPlacesByCategory: getPlacesByCategory,
+      selectPlace: selectPlace,
+      setStartPlace: setStartPlace,
+      setEndPlace: setEndPlace,
+      unselectPlace: unselectPlace
     };
   }
 

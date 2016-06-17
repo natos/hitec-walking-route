@@ -136,14 +136,14 @@ selecting-start {
     overflow:visible;
 }
 .map-overlay {
-  z-index: 71;
+  z-index: 75;
   background-color: rgba(255, 255, 255, 0.95);
 }
 .map-actions {
   position: absolute;
   z-index: 71;
   bottom: 2rem;
-  left: 2rem;
+  left: 4rem;
 }
 .map-print-action {
   position: absolute;
@@ -153,7 +153,7 @@ selecting-start {
 }
 .map-active {
   position: absolute;
-  z-index: 72;
+  z-index: 73;
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
@@ -161,33 +161,10 @@ selecting-start {
 .map-logo {
   z-index: 71;
   position: absolute;
-  top: .65rem;
-  left: 1rem;
-}
-.map-categories {
-  z-index: 71;
-  position: absolute;
-  top: 2rem;
-  left: 230px;
-  right: 340px;
-}
-.category label {
-  font-size: .9em;
-  cursor: pointer;
-  color: rgba(255, 255, 255, .95);
-  background-color: rgba(50, 50, 50, .5);
-  padding: .5rem 1rem;
-  margin: .25rem;
-  border-radius: 3em;
-  white-space: nowrap;
-  opacity: .75;
-}
-.category input:checked ~ label {
-  background-color: #2688FF;
-  opacity: 1;
-}
-.category input {
-  display: none;
+  top: 0;
+  left: 4rem;
+  background-color: rgb(0, 0, 0);
+  padding: 2rem;
 }
 
 /* Sidenav area */
@@ -693,3 +670,35 @@ selecting-start {
     from { transform: translate3d(0, 0, 0); }
     to { transform: translate3d(0, -100%, 0); }
   }
+
+
+    .slide.bottom.ng-enter {
+      animation: .5s ease-in-out .25s slide_in_bottom_animation;
+      -webkit-animation: .5s ease-in-out .25s slide_in_bottom_animation;
+      transform: translate3d(0, -100%, 0);
+    }
+
+    @keyframes slide_in_bottom_animation {
+      from { transform: translate3d(0, 100%, 0); }
+      to { transform: translate3d(0, 0, 0); }
+    }
+
+    @-webkit-keyframes slide_in_bottom_animation {
+      from { transform: translate3d(0, -100%, 0); }
+      to { transform: translate3d(0, 0, 0); }
+    }
+
+    .slide.bottom.ng-leave {
+      animation: .25s ease-in-out slide_out_bottom_animation;
+      -webkit-animation: .25s ease-in-out slide_out_bottom_animation;
+    }
+
+    @keyframes slide_out_bottom_animation {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, 100%, 0); }
+    }
+
+    @-webkit-keyframes slide_out_bottom_animation {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(0, 100%, 0); }
+    }

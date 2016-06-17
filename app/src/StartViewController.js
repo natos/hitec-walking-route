@@ -4,19 +4,15 @@
 
   angular
     .module('App')
-    .controller('StartViewController', [
-      // 'markersService',
-      'placesService',
-      StartViewController
-    ]);
+    .controller('StartViewController', [StartViewController]);
 
 
     /**
      * StartView Controller for Hi-Tec Walking Route
      * @constructor
      */
-    function StartViewController(/*markersService*/placesService) {
-      // markersService.getPlaces();
+    function StartViewController() {
+
     }
 
 })();
