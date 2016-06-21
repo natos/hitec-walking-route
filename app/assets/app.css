@@ -67,6 +67,22 @@ md-content {
 .place label {
   cursor: pointer;
 }
+.places .place md-card-actions {
+  margin: 0; /* fix hotspot area */
+}
+.places .place md-card-actions label {
+  padding: 8px; /* fix hotspot area */
+}
+
+.fullscreen md-content {
+  padding-bottom: 100px;
+}
+.fullscreen md-toolbar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 
 /* Primary content area */
 
@@ -179,6 +195,7 @@ selecting-start {
   width: 300px;
   overflow: scroll;
   background-color: rgba(255, 255, 255, 1);
+  z-index: 70;
 }
 
 #sidebar md-list {

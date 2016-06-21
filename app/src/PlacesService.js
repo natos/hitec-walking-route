@@ -22,7 +22,7 @@
       var places = 0, total = placesModel.places.length;
       function loaded() {
         places += 1;
-        if (places === total) $rootScope.$emit(placesModel.events.placesReady);
+        if (places === (total-1)) $rootScope.$emit(placesModel.events.placesReady);
       }
       for (var i = 0; i < total; i += 1) {
         // Keep reference in the closure
@@ -103,7 +103,10 @@
     }
 
     function selectPlace(place) {
-      placesModel.selected.places.push(place);
+      var position = placesModel.selected.places.indexOf(place);
+      if (position === -1) {
+        placesModel.selected.places.push(place);
+      }
     }
 
     function unselectPlace(place) {

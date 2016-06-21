@@ -139,13 +139,13 @@
       }
 
       function setStart() {
-        placesService.setStartPlace(marker.place);
-        marker.place.selected && closeDialog() || addToRoute();
+        placesService.setStartPlace(marker.place.id);
+        addToRoute();
       }
 
       function setEnd() {
-        placesService.setEndPlace(marker.place);
-        marker.place.selected && closeDialog() || addToRoute();
+        placesService.setEndPlace(marker.place.id);
+        addToRoute();
       }
 
       /**

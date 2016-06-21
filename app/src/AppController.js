@@ -55,6 +55,9 @@
       //  expose all places
       self.places = placesService.getPlaces();
       self.placesByCategory = placesService.getPlacesByCategory();
+
+      console.log('Places ready man')
+
       // move to the next state
       next();
       // TODO: remove this hack to make app auto start
