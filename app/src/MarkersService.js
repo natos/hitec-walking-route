@@ -181,6 +181,20 @@
       });
     }
 
+    function maximizeMarker(place_id) {
+      // var position = markersModel.markers.indexOf(place);
+      // markersModel.markers[position].maximize();
+
+      for (var i = 0; i < markersModel.markers.length; i += 1) {
+        if (markersModel.markers[i]) {
+          if (place_id === markersModel.markers[i].place.id) {
+            return markersModel.markers[i].maximize();
+          }
+        }
+      }
+      // console.log('markersModel.markers[position]', markersModel.markers[position])
+    }
+
     /* delegate */
 
     $rootScope.$on(directionsModel.events.displayedDirections, reorderMarkersFromRoute);
@@ -194,6 +208,7 @@
     return {
       dropMarkers: dropMarkers,
       createMarkers: createMarkers,
+      maximizeMarker: maximizeMarker,
       dropYourLocationPin: dropYourLocationPin,
       reorderMarkersFromRoute: reorderMarkersFromRoute
     };

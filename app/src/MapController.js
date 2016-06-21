@@ -31,7 +31,7 @@
         self.map = mapService.getMap();
         self.center = centerMap;
         self.restart = restartMap;
-        // self.showPlace = showPlace;
+        self.showPlace = showPlace;
         // self.showRoute = showRoute;
         // self.setPrintMode = setPrintMode;
         // self.unsetPrintMode = unsetPrintMode;
@@ -96,6 +96,10 @@
 
     function closeDialog() {
       $mdDialog.hide();
+    }
+
+    function showPlace(place) {
+      markersService.maximizeMarker(place.id);
     }
 
     // function triggerReroute() {

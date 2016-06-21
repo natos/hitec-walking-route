@@ -178,6 +178,7 @@ selecting-start {
   /*width: 287px;*/
   width: 300px;
   overflow: scroll;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 #sidebar md-list {
@@ -216,8 +217,8 @@ selecting-start {
   padding: 3em;
 }
 
-/* marker list */
-.marker-list {
+/* place list */
+.place-list {
   overflow: visible;
   position: relative;
   width: 287px;
@@ -226,7 +227,7 @@ selecting-start {
   margin: 0;
   margin-bottom: 1px;
 }
-.marker-list:before {
+.place-list:before {
   content: '';
   display: block;
   position: absolute;
@@ -240,21 +241,21 @@ selecting-start {
   -moz-transition: all 0.25s;
   transform: translate3d(0, 0, 0);
 }
-.marker-list.selected:before {
+.place-list.selected:before {
   width: 10px;
   background: rgb(38, 136, 255);
   transform: translate3d(-11px, 0, 0);
 }
 
-.marker-list-background {
+.place-list-background {
   position: absolute;
   top: 0; left: 0;
 }
-.marker-list-label {
+.place-list-label {
   padding: 0 1em;
   color: rgb(255, 255, 255);
 }
-.marker-list-chip {
+.place-list-chip {
   border-radius: 100%;
   text-align: center;
   line-height: 2em;
