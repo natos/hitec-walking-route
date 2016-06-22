@@ -25,6 +25,8 @@
 
     <selecting-start class="fade fullscreen" ng-cloak ng-if="app.state.isSelectingStartEnd()"></selecting-start>
 
+    <static-map id="print" class="fade fullscreen" ng-cloak ng-if="app.state.isPrinting()"></static-map>
+
     <div id="map-container" ng-controller="MapController as map" ng-cloak>
 
       <div class="map-overlay fade fullscreen" ng-if="!app.state.isReviewing()&&!map.ready"></div>
@@ -44,7 +46,7 @@
 
       <div id="map" class="fullscreen" ng-cloak></div>
 
-      <div id="sidebar" class="slide right" layout="column" ng-if="map.ready" ng-cloak>
+      <div id="sidebar" class="slide right" layout="column" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
         <div class="places">
           <md-card class="place" ng-repeat="place in selected.places" ng-click="map.showPlace(place)">
             <label for="place{{place.id}}" layout="row" layout-align="space-between center">
@@ -59,7 +61,7 @@
         </div>
         <span flex></span>
         <div class="actions" layout="column" layout-align="center">
-          <md-button ng-click="map.showRoute()" class="finish md-raised md-primary" ng-disabled="map.selectedMarkers.length<2" aria-label="View step by step direcctions">View step by step direcctions</md-button>
+          <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">View step by step direcctions</md-button>
         </div>
       </div>
 
@@ -98,6 +100,7 @@
     <script src="./src/Marker.js"></script>
     <script src="./src/MarkersModel.js"></script>
     <script src="./src/StaticMapDirective.js"></script>
+    <script src="./src/DirectionsController.js"></script>
     <script src="./src/DirectionsDirective.js"></script>
     <script src="./src/DirectionsModel.js"></script>
     <script src="./src/DirectionsService.js"></script>

@@ -26,16 +26,11 @@
 
     var self = this;
 
-        self.active = true;
         self.ready = false;
         self.map = mapService.getMap();
         self.center = centerMap;
         self.restart = restartMap;
         self.showPlace = showPlace;
-        // self.showRoute = showRoute;
-        // self.setPrintMode = setPrintMode;
-        // self.unsetPrintMode = unsetPrintMode;
-        // self.print = print;
 
     function currentStateChanged() {
       if (appModel.state.isLoadingDirections()) {
@@ -86,25 +81,13 @@
       self.ready = true;
     }
 
-    function setActive() {
-      self.active = true;
-    }
-
-    function setUnactive() {
-      self.active = false;
+    function showPlace(place) {
+      markersService.maximizeMarker(place.id);
     }
 
     function closeDialog() {
       $mdDialog.hide();
     }
-
-    function showPlace(place) {
-      markersService.maximizeMarker(place.id);
-    }
-
-    // function triggerReroute() {
-    //   $rootScope.$emit(appModel.events.prevState);
-    // }
 
     /**
      * Cancel routing
@@ -159,8 +142,6 @@
     /* delegate */
 
     $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
-    // $rootScope.$on(markersModel.events.markersUpdated, triggerReroute);
-    $rootScope.$on(directionsModel.events.displayedDirections, setUnactive);
 
   }
 

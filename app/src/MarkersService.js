@@ -5,7 +5,7 @@
     .service('markersService', [
       '$rootScope', '$timeout',
       'appModel', 'markersModel', 'directionsModel',
-      'mapService', 'placesService', 'locationService', 'directionsService',
+      'mapService', 'placesService', 'locationService',
       'Marker',
       MarkersService
     ]);
@@ -16,7 +16,7 @@
    * @returns {{getMarkers: Function}}
    * @constructor
    */
-  function MarkersService($rootScope, $timeout, appModel, markersModel, directionsModel, mapService, placesService, locationService, directionsService, Marker) {
+  function MarkersService($rootScope, $timeout, appModel, markersModel, directionsModel, mapService, placesService, locationService, Marker) {
 
     // return true if the mark is selected
     function isMarkerSelected(marker) {
@@ -64,7 +64,8 @@
 
       removeOrderFromMarkers()
 
-      var route = directionsService.getCurrentRoute();
+      var route = directionsModel.route;
+      // var route = angular.extend({}, directionsModel.route);
       var waypoints = placesService.getWaypoints();
 
       var startPlace = getMarker(placesService.getStartPlace());
@@ -195,6 +196,16 @@
       // console.log('markersModel.markers[position]', markersModel.markers[position])
     }
 
+    function getMarkerByLocation(location) {
+      for (var i = 0; i < markersModel.markers.length; i += 1) {
+        console.log('Address = Location', markersModel.markers[i].place.address, location);
+        if (markersModel.markers[i].place.address.indexOf(location) >= 0 || location.indexOf(markersModel.markers[i].place.address) >= 0) {
+          return angular.extend({}, markersModel.markers[i]);
+        }
+      }
+      return false;
+    }
+
     /* delegate */
 
     $rootScope.$on(directionsModel.events.displayedDirections, reorderMarkersFromRoute);
@@ -210,7 +221,8 @@
       createMarkers: createMarkers,
       maximizeMarker: maximizeMarker,
       dropYourLocationPin: dropYourLocationPin,
-      reorderMarkersFromRoute: reorderMarkersFromRoute
+      reorderMarkersFromRoute: reorderMarkersFromRoute,
+      getMarkerByLocation: getMarkerByLocation
     };
   }
 

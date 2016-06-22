@@ -6,7 +6,7 @@
     .service('directionsService', [
       '$rootScope',
       'mapModel', 'directionsModel',
-      'mapService', 'placesService',
+      'mapService', 'placesService', 'markersService',
       DirectionsService
     ]);
 
@@ -16,7 +16,7 @@
    * @returns {{loadAll: Function}}
    * @constructor
    */
-  function DirectionsService($rootScope, mapModel, directionsModel, mapService, placesService) {
+  function DirectionsService($rootScope, mapModel, directionsModel, mapService, placesService, markersService) {
 
     if (!google || !google.maps) {
       console.error('Google Maps API is unavailable.');
@@ -129,27 +129,26 @@
       directionsDisplay.set('directions', null);
     }
 
-    // function calculateDirections() {
-    //   var _route = angular.extend({}, route);
-    //   _route.totalDistance = getTotalDistance();
-    //   _route.totalDuration = getTotalDuration();
-    //   // attach markers for each leg
-    //   for (var i = 0; i < _route.legs.length; i += 1) {
-    //     var start_marker = markersService.getMarkerByLocation(rawRoute.legs[i].start_address);
-    //     var end_marker = markersService.getMarkerByLocation(rawRoute.legs[i].end_address);
-    //     if (start_marker) {
-    //       _route.legs[i].start_marker = start_marker;
-    //     }
-    //     if (end_marker) {
-    //       _route.legs[i].end_marker = end_marker;
-    //     }
-    //   }
-    //   return {
-    //     get: function() {
-    //       return _route;
-    //     }
-    //   };
-    // }
+    function calculateDirections() {
+      var _route = angular.extend({}, directionsModel.route);
+      _route.totalDistance = getTotalDistance();
+      _route.totalDuration = getTotalDuration();
+      // attach markers for each leg
+      for (var i = 0; i < _route.legs.length; i += 1) {
+        console.log('calculateDirections', _route.legs[i])
+        var start_marker = markersService.getMarkerByLocation(_route.legs[i].start_address);
+        var end_marker = markersService.getMarkerByLocation(_route.legs[i].end_address);
+        console.log('calculateDirections start_marker', start_marker);
+        console.log('calculateDirections end_marker', end_marker);
+        if (start_marker) {
+          _route.legs[i].start_marker = start_marker;
+        }
+        if (end_marker) {
+          _route.legs[i].end_marker = end_marker;
+        }
+      }
+      return _route;
+    }
 
     function getStaticMapWithDirections() {
         var url = 'https://maps.googleapis.com/maps/api/staticmap?';
@@ -170,7 +169,11 @@
     }
 
     function getCurrentRoute() {
-      return directionsModel.route;
+      return {
+        totalDistance: directionsModel.distance,
+        totalDuration: directionsModel.duration,
+        route: directionsModel.route
+      };
     }
 
     // delegate
@@ -183,7 +186,7 @@
       cleanRoute: cleanRoute,
       getStaticMapWithDirections: getStaticMapWithDirections,
       calculateAndDisplayRoute: calculateAndDisplayRoute,
-      // calculateDirections: calculateDirections,
+      calculateDirections: calculateDirections,
       getTotalDistance: getTotalDistance,
       getTotalDuration: getTotalDuration,
       getCurrentRoute: getCurrentRoute

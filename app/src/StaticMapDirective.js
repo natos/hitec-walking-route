@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('map')
+    .module('App')
     .directive('staticMap', function() {
       return {
         restrict: 'E',
