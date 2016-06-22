@@ -56,6 +56,9 @@
               <label for="place{{place.id}}" layout="row" layout-align="space-between center">
                 <p>{{place.label}}</p>
               </label>
+              <label for="place{{place.id}}" layout="row" layout-align="end center">
+                <span>{{place.order}}</span>
+              </label>
             </md-card-actions>
           </md-card>
         </div>
@@ -64,17 +67,17 @@
           <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">View step by step direcctions</md-button>
         </div>
       </div>
-
     </div>
 
-    <script src="../node_modules/angular/angular.js"></script>
+    <!-- <script src="../node_modules/angular/angular.js"></script>
     <script src="../node_modules/angular-sanitize/angular-sanitize.js"></script>
     <script src="../node_modules/angular-animate/angular-animate.js"></script>
     <script src="../node_modules/angular-aria/angular-aria.js"></script>
-    <script src="../node_modules/angular-material/angular-material.js"></script>
+    <script src="../node_modules/angular-material/angular-material.js"></script> -->
 
 
-    <script src="./src/App.js"></script>
+    <script src="./dist/hitec.min.js"></script>
+    <!-- <script src="./src/App.js"></script>
     <script src="./src/AppModel.js"></script>
     <script src="./src/AppController.js"></script>
 
@@ -87,23 +90,26 @@
     <script src="./src/LocationService.js"></script>
     <script src="./src/LocationModel.js"></script>
 
+    <script src="./src/SidebarDirective.js"></script>
+
     <script src="./src/StartViewController.js"></script>
     <script src="./src/StartViewDirective.js"></script>
     <script src="./src/SelectingPlacesController.js"></script>
     <script src="./src/SelectingPlacesDirective.js"></script>
     <script src="./src/SelectingStartEndDirective.js"></script>
 
-    <script src="./src/CheckListModelDirective.js"></script>
+    <script src="./src/CheckListModelDirective.js"></script> -->
 
     <!-- TODO: Cleaning -->
-    <script src="./src/MarkersService.js"></script>
+    <!-- <script src="./src/MarkersService.js"></script>
     <script src="./src/Marker.js"></script>
     <script src="./src/MarkersModel.js"></script>
+    <script src="./src/StaticMapController.js"></script>
     <script src="./src/StaticMapDirective.js"></script>
     <script src="./src/DirectionsController.js"></script>
     <script src="./src/DirectionsDirective.js"></script>
     <script src="./src/DirectionsModel.js"></script>
-    <script src="./src/DirectionsService.js"></script>
+    <script src="./src/DirectionsService.js"></script> -->
 
     <script type="text/javascript">
       /** manual bootstrap */

@@ -1,0 +1,16 @@
+id: "ChIJaTMo1sEJxkcRfjuQODB7BK8"
+color: "#E37F00"
+label: "Bloemenmarkt"
+category: "Markets"
+content:
+  - "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
+  - "Eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue."
+  - "Id quod mazim placerat facer, possim assum typi non habent claritatem insitam est usus legentis in. Consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat! Te feugait nulla facilisi nam liber tempor cum soluta. Consequat duis autem vel eum iriure dolor in hendrerit in vulputate velit."
+author:
+  name: "Marie Bennett"
+  role: "Architect"
+  picture: "/app/assets/img/avatars/MarieBennett.jpg"
+media:
+  x1: '/app/assets/img/x1/bloemenmarkt.jpg'
+  x2: '/app/assets/img/x2/bloemenmarkt.jpg'
+  x3: '/app/assets/img/x3/bloemenmarkt.jpg'

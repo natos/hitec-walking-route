@@ -1,0 +1,15 @@
+id: "ChIJezIPCY8JxkcRgdqv8FrYp8U"
+color: "#2A6E30"
+label: "Juice Brothers"
+website: "http://www.juicebro.com"
+category: "Healthy Bars"
+content:
+  - "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
+author:
+  name: "Marie Bennett"
+  role: "Architect"
+  picture: "/app/assets/img/avatars/MarieBennett.jpg"
+media:
+  x1: '/app/assets/img/x1/juicebrothers.jpg'
+  x2: '/app/assets/img/x2/juicebrothers.jpg'
+  x3: '/app/assets/img/x3/juicebrothers.jpg'

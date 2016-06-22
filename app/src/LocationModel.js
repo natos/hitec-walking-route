@@ -1,31 +1,26 @@
-(function(){
-  'use strict';
+angular
+  .module('App')
+  .service('locationModel', LocationModel);
 
-  angular
-    .module('App')
-    .service('locationModel', LocationModel);
+  /**
+   * Location Model for Hi-Tec Walking Route
+   * @constructor
+   */
+  function LocationModel() {
 
     /**
-     * Location Model for Hi-Tec Walking Route
-     * @constructor
+     * Location instance
+     * @public
      */
-    function LocationModel() {
+    this.currentLocation = null;
 
-      /**
-       * Location instance
-       * @public
-       */
-      this.currentLocation = null;
+    /**
+     * Location Model events dictionary
+     * @public
+     */
+    this.events = {
+      locationReady: 'locationModel:location-ready',
+      locationUnavailable: 'locationModel:location-unavailable'
+    };
 
-      /**
-       * Location Model events dictionary
-       * @public
-       */
-      this.events = {
-        locationReady: 'locationModel:location-ready',
-        locationUnavailable: 'locationModel:location-unavailable'
-      };
-
-    }
-
-})();
+  }
