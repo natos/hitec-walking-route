@@ -3,7 +3,7 @@ var glob = require("glob");
 var YAML = require('yamljs');
 
 
-glob("app/content/*.yaml", function (err, files) {
+glob("content/*.yaml", function (err, files) {
 
   if (err) {
     throw(err);

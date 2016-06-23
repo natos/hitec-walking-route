@@ -9,8 +9,8 @@ content:
 author:
   name: "Andrea Clarke"
   role: "Entrepreneur"
-  picture: "/app/assets/img/avatars/AndreaClarke.jpg"
+  picture: "/assets/img/avatars/AndreaClarke.jpg"
 media:
-  x1: '/app/assets/img/x1/hitecstore.jpg'
-  x2: '/app/assets/img/x2/hitecstore.jpg'
-  x3: '/app/assets/img/x3/hitecstore.jpg'
+  x1: '/assets/img/x1/hitecstore.jpg'
+  x2: '/assets/img/x2/hitecstore.jpg'
+  x3: '/assets/img/x3/hitecstore.jpg'

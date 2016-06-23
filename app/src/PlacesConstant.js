@@ -1,26 +1,5 @@
 angular.module('App').constant('places', [
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "color": "#1D8800",
-        "label": "Anne Frank Huis",
-        "category": "Typical Amsterdam",
-        "content": [
-            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
-            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
-            "Ea commodo consequat duis autem vel eum iriure dolor in hendrerit? Litterarum formas humanitatis per seacula quarta decima et quinta decima eodem modo typi."
-        ],
-        "author": {
-            "name": "Shannon Banks",
-            "role": "Fashion designer",
-            "picture": "/app/assets/img/avatars/ShannonBanks.jpg"
-        },
-        "media": {
-            "x1": "/app/assets/img/x1/annefrank.jpg",
-            "x2": "/app/assets/img/x2/annefrank.jpg",
-            "x3": "/app/assets/img/x3/annefrank.jpg"
-        }
-    },
-    {
         "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
         "color": "#E37F00",
         "label": "Bloemenmarkt",
@@ -33,32 +12,33 @@ angular.module('App').constant('places', [
         "author": {
             "name": "Marie Bennett",
             "role": "Architect",
-            "picture": "/app/assets/img/avatars/MarieBennett.jpg"
+            "picture": "/assets/img/avatars/MarieBennett.jpg"
         },
         "media": {
-            "x1": "/app/assets/img/x1/bloemenmarkt.jpg",
-            "x2": "/app/assets/img/x2/bloemenmarkt.jpg",
-            "x3": "/app/assets/img/x3/bloemenmarkt.jpg"
+            "x1": "/assets/img/x1/bloemenmarkt.jpg",
+            "x2": "/assets/img/x2/bloemenmarkt.jpg",
+            "x3": "/assets/img/x3/bloemenmarkt.jpg"
         }
     },
     {
-        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
-        "color": "#B43E43",
-        "label": "Cannibale Royale",
-        "website": "http://www.cannibaleroyale.nl",
-        "category": "Restaurants",
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "color": "#1D8800",
+        "label": "Anne Frank Huis",
+        "category": "Typical Amsterdam",
         "content": [
-            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
+            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
+            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
+            "Ea commodo consequat duis autem vel eum iriure dolor in hendrerit? Litterarum formas humanitatis per seacula quarta decima et quinta decima eodem modo typi."
         ],
         "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "/app/assets/img/avatars/MarieBennett.jpg"
+            "name": "Shannon Banks",
+            "role": "Fashion designer",
+            "picture": "/assets/img/avatars/ShannonBanks.jpg"
         },
         "media": {
-            "x1": "/app/assets/img/x1/cannibaleroyale.jpg",
-            "x2": "/app/assets/img/x2/cannibaleroyale.jpg",
-            "x3": "/app/assets/img/x3/cannibaleroyale.jpg"
+            "x1": "/assets/img/x1/annefrank.jpg",
+            "x2": "/assets/img/x2/annefrank.jpg",
+            "x3": "/assets/img/x3/annefrank.jpg"
         }
     },
     {
@@ -73,12 +53,32 @@ angular.module('App').constant('places', [
         "author": {
             "name": "Marie Bennett",
             "role": "Architect",
-            "picture": "/app/assets/img/avatars/MarieBennett.jpg"
+            "picture": "/assets/img/avatars/MarieBennett.jpg"
         },
         "media": {
-            "x1": "/app/assets/img/x1/bloemenmarkt.jpg",
-            "x2": "/app/assets/img/x2/bloemenmarkt.jpg",
-            "x3": "/app/assets/img/x3/bloemenmarkt.jpg"
+            "x1": "/assets/img/x1/bloemenmarkt.jpg",
+            "x2": "/assets/img/x2/bloemenmarkt.jpg",
+            "x3": "/assets/img/x3/bloemenmarkt.jpg"
+        }
+    },
+    {
+        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
+        "color": "#B43E43",
+        "label": "Cannibale Royale",
+        "website": "http://www.cannibaleroyale.nl",
+        "category": "Restaurants",
+        "content": [
+            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
+        ],
+        "author": {
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "/assets/img/avatars/MarieBennett.jpg"
+        },
+        "media": {
+            "x1": "/assets/img/x1/cannibaleroyale.jpg",
+            "x2": "/assets/img/x2/cannibaleroyale.jpg",
+            "x3": "/assets/img/x3/cannibaleroyale.jpg"
         }
     },
     {
@@ -94,12 +94,12 @@ angular.module('App').constant('places', [
         "author": {
             "name": "Andrea Clarke",
             "role": "Entrepreneur",
-            "picture": "/app/assets/img/avatars/AndreaClarke.jpg"
+            "picture": "/assets/img/avatars/AndreaClarke.jpg"
         },
         "media": {
-            "x1": "/app/assets/img/x1/hitecstore.jpg",
-            "x2": "/app/assets/img/x2/hitecstore.jpg",
-            "x3": "/app/assets/img/x3/hitecstore.jpg"
+            "x1": "/assets/img/x1/hitecstore.jpg",
+            "x2": "/assets/img/x2/hitecstore.jpg",
+            "x3": "/assets/img/x3/hitecstore.jpg"
         }
     },
     {
@@ -114,12 +114,12 @@ angular.module('App').constant('places', [
         "author": {
             "name": "Marie Bennett",
             "role": "Architect",
-            "picture": "/app/assets/img/avatars/MarieBennett.jpg"
+            "picture": "/assets/img/avatars/MarieBennett.jpg"
         },
         "media": {
-            "x1": "/app/assets/img/x1/juicebrothers.jpg",
-            "x2": "/app/assets/img/x2/juicebrothers.jpg",
-            "x3": "/app/assets/img/x3/juicebrothers.jpg"
+            "x1": "/assets/img/x1/juicebrothers.jpg",
+            "x2": "/assets/img/x2/juicebrothers.jpg",
+            "x3": "/assets/img/x3/juicebrothers.jpg"
         }
     },
     {
@@ -135,12 +135,12 @@ angular.module('App').constant('places', [
         "author": {
             "name": "Marie Bennett",
             "role": "Architect",
-            "picture": "/app/assets/img/avatars/MarieBennett.jpg"
+            "picture": "/assets/img/avatars/MarieBennett.jpg"
         },
         "media": {
-            "x1": "/app/assets/img/x1/bloemenmarkt.jpg",
-            "x2": "/app/assets/img/x2/lionnoir.jpg",
-            "x3": "/app/assets/img/x3/lionnoir.jpg"
+            "x1": "/assets/img/x1/bloemenmarkt.jpg",
+            "x2": "/assets/img/x2/lionnoir.jpg",
+            "x3": "/assets/img/x3/lionnoir.jpg"
         }
     }
 ]);
