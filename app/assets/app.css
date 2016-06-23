@@ -73,6 +73,19 @@ md-content {
 .places .place md-card-actions label {
   padding: 8px; /* fix hotspot area */
 }
+.place-order {
+  background-color: #2688FF;
+  color: #fff;
+  border-radius: 100%;
+  width: 2em;
+  height: 2em;
+  line-height: 1em;
+  text-align: center;
+  display: block;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
 
 .fullscreen md-content {
   padding-bottom: 100px;
