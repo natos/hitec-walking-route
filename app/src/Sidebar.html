@@ -1,5 +1,5 @@
 <div class="places">
-  <h3>Your selection</h3>
+  <h4>Your route</h4>
   <md-card class="place" ng-repeat="place in selected.places" ng-click="map.showPlace(place)">
     <label for="place{{place.id}}" layout="row" layout-align="space-between center">
       <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
@@ -13,5 +13,5 @@
 </div>
 <span flex></span>
 <div class="actions" layout="column" layout-align="center">
-  <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">View step by step direcctions</md-button>
+  <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">View step by step directions</md-button>
 </div>
