@@ -1,0 +1,9 @@
+<div layout="column" layout-align="center center">
+  <img class="logo" src="assets/img/logo/hi-tec.png" alt="Hi-Tec" alt="Hi-Tec"/>
+  <h1>Create your own walking route</h1>
+  <div flex></div>
+  <md-progress-circular ng-if="app.state.isPristine()" md-mode="indeterminate" md-diameter="40"></md-progress-circular>
+  <div ng-if="app.state.isReady()" class="fade" layout-align="center end">
+    <md-button ng-click="app.next()" class="start md-raised md-primary" aria-label="Start"><md-icon md-svg-icon="place"></md-icon> Start</md-button>
+  </div>
+</div>
