@@ -1,0 +1,16 @@
+id: "ChIJIyPEUu8JxkcRTmRcuMxC9yc"
+color: "#2688FF"
+label: "Hi-Tec Store"
+website: "http://www.hi-tec.amsterdam"
+content:
+  - "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod."
+  - "Putamus parum claram anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Legentis in iis: qui ii legunt saepius claritas. Luptatum zzril delenit augue duis congue nihil imperdiet doming."
+  - "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
+author:
+  name: "Andrea Clarke"
+  role: "Entrepreneur"
+  picture: "/assets/img/avatars/AndreaClarke.jpg"
+media:
+  x1: '/assets/img/x1/hitecstore.jpg'
+  x2: '/assets/img/x2/hitecstore.jpg'
+  x3: '/assets/img/x3/hitecstore.jpg'
