@@ -1,23 +1,22 @@
 angular.module('App').constant('places', [
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "color": "#1D8800",
-        "label": "Anne Frank Huis",
-        "category": "Typical Amsterdam",
+        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
+        "color": "#B43E43",
+        "label": "Cannibale Royale",
+        "website": "http://www.cannibaleroyale.nl",
+        "category": "Restaurants",
         "content": [
-            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
-            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
-            "Ea commodo consequat duis autem vel eum iriure dolor in hendrerit? Litterarum formas humanitatis per seacula quarta decima et quinta decima eodem modo typi."
+            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
         ],
         "author": {
-            "name": "Shannon Banks",
-            "role": "Fashion designer",
-            "picture": "assets/img/avatars/ShannonBanks.jpg"
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/avatars/MarieBennett.jpg"
         },
         "media": {
-            "x1": "assets/img/x1/annefrank.jpg",
-            "x2": "assets/img/x2/annefrank.jpg",
-            "x3": "assets/img/x3/annefrank.jpg"
+            "x1": "assets/img/x1/cannibaleroyale.jpg",
+            "x2": "assets/img/x2/cannibaleroyale.jpg",
+            "x3": "assets/img/x3/cannibaleroyale.jpg"
         }
     },
     {
@@ -42,23 +41,24 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
-        "color": "#B43E43",
-        "label": "Cannibale Royale",
-        "website": "http://www.cannibaleroyale.nl",
-        "category": "Restaurants",
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "color": "#1D8800",
+        "label": "Anne Frank Huis",
+        "category": "Typical Amsterdam",
         "content": [
-            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
+            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
+            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
+            "Ea commodo consequat duis autem vel eum iriure dolor in hendrerit? Litterarum formas humanitatis per seacula quarta decima et quinta decima eodem modo typi."
         ],
         "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/avatars/MarieBennett.jpg"
+            "name": "Shannon Banks",
+            "role": "Fashion designer",
+            "picture": "assets/img/avatars/ShannonBanks.jpg"
         },
         "media": {
-            "x1": "assets/img/x1/cannibaleroyale.jpg",
-            "x2": "assets/img/x2/cannibaleroyale.jpg",
-            "x3": "assets/img/x3/cannibaleroyale.jpg"
+            "x1": "assets/img/x1/annefrank.jpg",
+            "x2": "assets/img/x2/annefrank.jpg",
+            "x3": "assets/img/x3/annefrank.jpg"
         }
     },
     {
