@@ -13,7 +13,7 @@ git checkout master README.md
 
 # Add and commit that file
 git add .
-git commit -m "INIT: initial commit on gh-pages branch"
+git commit -m "initial commit on gh-pages branch"
 
 # Push to remote gh-pages branch
 git push origin gh-pages
@@ -22,16 +22,16 @@ git push origin gh-pages
 git checkout master
 
 # Remove the public folder to make room for the gh-pages subtree
-rm -rf public
+rm -rf app
 
 git add .
 git commit -m "Cleaning"
 
 # Add the gh-pages branch of the repository. It will look like a folder named public
-git subtree add --prefix=public git@github.com:Spaaza/hitec-walking-route.git gh-pages --squash
+git subtree add --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages --squash
 
 # Pull down the file we just committed. This helps avoid merge conflicts
-git subtree pull --prefix=public git@github.com:Spaaza/hitec-walking-route.git gh-pages
+git subtree pull --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages
 
 # Add everything
 git add -A
@@ -40,4 +40,4 @@ git add -A
 git commit -m "Updating site" && git push origin master
 
 # Push the public subtree to the gh-pages branch
-git subtree push --prefix=public git@github.com:Spaaza/hitec-walking-route.git gh-pages
+git subtree push --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages
