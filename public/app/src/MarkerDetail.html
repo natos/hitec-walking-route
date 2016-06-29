@@ -1,0 +1,27 @@
+<div class="marker-detail" layout="column">
+  <header ng-style="{ 'background-image': 'url({{marker.place.media.x3}})' }" layout="row" layout-align="end start" class="fade" ng-if="true">
+    <md-button class="close md-primary md-button" aria-label="Close" ng-click="closeDialog()">
+      <md-icon md-svg-icon="close"></md-icon>
+    </md-button>
+  </header>
+  <section class="fade" ng-if="true">
+    <h2 class="md-headline">{{marker.place.label}}</h2>
+    <div class="marker-details-content">
+      <p ng-repeat="p in marker.place.content">{{p}}</p>
+    </div>
+  </section>
+  <span flex></span>
+  <footer layout="row" class="fade" ng-if="true">
+    <div layout="row" layout-align="start center">
+      <img class="avatar" ng-src="{{marker.place.author.picture}}">
+      <span>{{marker.place.author.name}}, <br>{{marker.place.author.role}}</span>
+    </div>
+    <span flex></span>
+    <div layout="row" layout-align="end center">
+      <md-button class="md-raised md-secondary" ng-click="setStart()">Set start</md-button>
+      <md-button class="md-raised md-secondary" ng-click="setEnd()">Set end</md-button>
+      <md-button class="md-raised md-primary" ng-click="removeFromRoute()" ng-if="marker.place.selected">Remove</md-button>
+      <md-button class="md-raised md-primary" ng-click="addToRoute()" ng-if="!marker.place.selected">Add to the route</md-button>
+    </div>
+  </footer>
+</div>
