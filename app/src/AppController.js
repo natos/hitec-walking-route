@@ -55,9 +55,6 @@ function AppController($scope, $rootScope, $timeout, appModel, placesModel, plac
     // move to the next state
     next();
     // TODO: remove this hack to make app auto start
-    $timeout(function() {
-      next();
-    }, 1000)
   }
 
   /* model bindings */

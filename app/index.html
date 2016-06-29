@@ -20,6 +20,10 @@
 
     <start-view id="start" class="fade fullscreen" ng-cloak ng-if="app.state.isPristine() ||  app.state.isReady()"></start-view>
 
+    <div id="hitec-header">
+      <img class="logo" src="assets/img/logo/hi-tec-white.png" alt="Hi-Tec" />
+    </div>
+
     <selecting-places class="fade fullscreen" ng-cloak ng-if="app.state.isSelectingPlaces()"></selecting-places>
 
     <selecting-start class="fade fullscreen" ng-cloak ng-if="app.state.isSelectingStartEnd()"></selecting-start>
@@ -32,7 +36,7 @@
 
       <div class="map-active" ng-if="app.state.isReviewing() && map.active" ng-cloak><md-progress-circular md-mode="indeterminate" md-diameter="40"></md-progress-circular></div>
 
-      <div class="map-logo slide top" ng-if="app.state.isReviewing()" ng-cloak><img class="logo" src="assets/img/logo/logo.png" alt="Hi-Tec" /></div>
+<!--       <div class="map-logo slide top" ng-if="app.state.isReviewing()" ng-cloak><img class="logo" src="assets/img/logo/logo.png" alt="Hi-Tec" /></div> -->
 
       <div class="map-actions fade" ng-if="map.ready" ng-cloak>
         <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
@@ -46,6 +50,7 @@
       <div id="map" class="fullscreen" ng-cloak></div>
 
       <div id="sidebar" class="slide right" layout="column" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
+        <h4>Your personalised route</h4>
         <div class="places">
           <md-card class="place" ng-repeat="place in selected.places" ng-click="map.showPlace(place)">
             <label for="place{{place.id}}" layout="row" layout-align="space-between center">
@@ -62,8 +67,8 @@
           </md-card>
         </div>
         <span flex></span>
-        <div class="actions" layout="column" layout-align="center">
-          <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">View step by step direcctions</md-button>
+        <div id="directions-actions-container" class="actions" layout="column" layout-align="center">
+          <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">Step-by-step directions</md-button>
         </div>
       </div>
     </div>

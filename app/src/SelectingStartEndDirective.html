@@ -1,12 +1,12 @@
 <md-content layout="column">
 
   <md-subheader>
-    <h1>Where to start, where to end</h1>
-    <p>Pick a place where do you want to start and another where you want to end your walk</p>
+    <h1>Choose the start and end of your walk</h1>
+    <p>Select the place where you want to start and another where you want to end</p>
   </md-subheader>
 
   <header class="layout-padding">
-    <h3>Start here:</h3>
+    <h3>Start location</h3>
   </header>
   <div class="places" layout="row" layout-align="start none" layout-wrap>
     <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{ 'selected': selected.start === place.id }">
@@ -23,7 +23,7 @@
   </div>
 
   <header class="layout-padding fade" ng-if="selected.start">
-    <h3>End here:</h3>
+    <h3>End location</h3>
   </header>
   <div class="places fade" layout="row" layout-align="start none" layout-wrap ng-if="selected.start">
     <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{ 'selected': selected.end === place.id }">

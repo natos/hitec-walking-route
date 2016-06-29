@@ -65,7 +65,7 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
     var icon = markerIcon({
       scale: .75,
       path: markersModel.iconPath.selectedPin,
-      fillColor: '#037AFF' // this.place.color
+      fillColor: '#54bceb' // this.place.color
     });
     this.pin.setIcon(icon);
     // if (this.place.order) this.pin.setLabel('' + this.place.order);
