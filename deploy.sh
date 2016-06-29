@@ -14,4 +14,4 @@ git commit -m "$msg"
 
 # Push source and build repos.
 # git push live master
-git subtree push --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages
+npm run build:content && npm run build:css && npm run build:js && npm run build:css:autoprefixer && git subtree push --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages
