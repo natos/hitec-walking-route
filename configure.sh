@@ -21,17 +21,17 @@ git push origin gh-pages
 # Return to master branch
 git checkout master
 
-# Remove the app folder to make room for the gh-pages subtree
-rm -rf app
+# Remove the public folder to make room for the gh-pages subtree
+rm -rf public
 
 git add .
 git commit -m "Cleaning"
 
-# Add the gh-pages branch of the repository. It will look like a folder named app
-git subtree add --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages --squash
+# Add the gh-pages branch of the repository. It will look like a folder named public
+git subtree add --prefix=public git@github.com:Spaaza/hitec-walking-route.git gh-pages --squash
 
 # Pull down the file we just committed. This helps avoid merge conflicts
-git subtree pull --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages
+git subtree pull --prefix=public git@github.com:Spaaza/hitec-walking-route.git gh-pages
 
 # Add everything
 git add -A
@@ -39,5 +39,5 @@ git add -A
 # Commit and push to master
 git commit -m "Updating site" && git push origin master
 
-# Push the app subtree to the gh-pages branch
-git subtree push --prefix=app git@github.com:Spaaza/hitec-walking-route.git gh-pages
+# Push the public subtree to the gh-pages branch
+git subtree push --prefix=public git@github.com:Spaaza/hitec-walking-route.git gh-pages
