@@ -49,7 +49,7 @@
 
       <div id="map" class="fullscreen" ng-cloak></div>
 
-      <div id="sidebar" class="slide right" layout="column" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
+      <div id="sidebar" class="slide right" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
         <h4>Your personalised route</h4>
         <div class="places">
           <md-card class="place" ng-repeat="place in selected.places" ng-click="map.showPlace(place)">
@@ -66,8 +66,7 @@
             </md-card-actions>
           </md-card>
         </div>
-        <span flex></span>
-        <div id="directions-actions-container" class="actions" layout="column" layout-align="center">
+        <div class="actions">
           <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">Step-by-step directions</md-button>
         </div>
       </div>

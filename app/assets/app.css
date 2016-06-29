@@ -337,12 +337,12 @@ selecting-start {
 /* Sidenav area */
 
 #sidebar {
+  position: relative;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
-  /*width: 287px;*/
-  width: 300px;
+  width: 287px;
   overflow: scroll;
   background-color: #f1f1f2;
   z-index: 70;
@@ -373,18 +373,24 @@ selecting-start {
 #sidebar md-list .md-button.selected {
   color: #03a9f4;
 }
-#sidebar .markers-list {
+#sidebar .places {
   position: absolute;
   top: 0;
-  left: 15px;
+  left: 0;
   right: 0;
   bottom: 0;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   overflow: scroll;
 }
 #sidebar .actions {
-  width: 287px;
-  margin-left: 15px;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+}
+
+#sidebar .actions button {
+  width: 95%;
 }
 
 .loading-route-content {
@@ -478,28 +484,6 @@ md-progress-linear.md-default-theme[md-mode=buffer].md-warn ._md-bar1, md-progre
 }
 .marker-detail .close.md-button md-icon {
 
-}
-
-#sidebar directions {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 247px;
-  overflow: scroll;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transform: translate3d(0, 100%, 0);
-}
-
-#directions-actions-container {
-  
-}
-
-#sidebar directions.open {
-  transform: translate3d(0, 0, 0);
 }
 
 #sidebar .directions .md-button {
