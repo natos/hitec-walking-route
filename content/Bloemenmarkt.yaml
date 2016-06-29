@@ -9,8 +9,8 @@ content:
 author:
   name: "Marie Bennett"
   role: "Architect"
-  picture: "/assets/img/avatars/MarieBennett.jpg"
+  picture: "assets/img/avatars/MarieBennett.jpg"
 media:
-  x1: '/assets/img/x1/bloemenmarkt.jpg'
-  x2: '/assets/img/x2/bloemenmarkt.jpg'
-  x3: '/assets/img/x3/bloemenmarkt.jpg'
+  x1: 'assets/img/x1/bloemenmarkt.jpg'
+  x2: 'assets/img/x2/bloemenmarkt.jpg'
+  x3: 'assets/img/x3/bloemenmarkt.jpg'
