@@ -388,7 +388,20 @@ selecting-start {
 }
 
 .loading-route-content {
-  padding: 3em;
+  padding: 2em;
+  text-align: center;
+}
+
+md-progress-linear.md-default-theme.md-warn ._md-bar, md-progress-linear.md-warn ._md-bar {
+  background-color: #54bceb;
+}
+
+md-progress-linear.md-default-theme.md-warn ._md-bar, md-progress-linear.md-warn ._md-bar {
+    background-color: #54bceb;
+}
+
+md-progress-linear.md-default-theme[md-mode=buffer].md-warn ._md-bar1, md-progress-linear[md-mode=buffer].md-warn ._md-bar1 {
+    background-color: rgba(84,188,235,0.6);
 }
 
 /* place list */
@@ -479,6 +492,10 @@ selecting-start {
   padding: 20px;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   transform: translate3d(0, 100%, 0);
+}
+
+#directions-actions-container {
+  
 }
 
 #sidebar directions.open {
