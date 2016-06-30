@@ -9,7 +9,7 @@
     <h3>Start location</h3>
   </header>
   <div class="places" layout="row" layout-align="start none" layout-wrap>
-    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{ 'selected': selected.start === place.id }">
+    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{selected: selected.start === place.id}">
       <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
         <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
       </label>
@@ -26,7 +26,7 @@
     <h3>End location</h3>
   </header>
   <div class="places fade" layout="row" layout-align="start none" layout-wrap ng-if="selected.start">
-    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{ 'selected': selected.end === place.id }">
+    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{selected: selected.end === place.id}">
       <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
         <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
       </label>
@@ -43,6 +43,6 @@
 
 <md-toolbar>
   <div class="md-toolbar-tools" layout-align="end center">
-    <md-button ng-click="app.next()" class="continue md-raised" aria-label="Continue">Continue</md-button>
+    <md-button ng-click="app.next()" class="continue md-raised" aria-label="Continue" ng-disabled="selected.start===0||selected.end===0">Continue</md-button>
   </div>
 </md-toolbar>

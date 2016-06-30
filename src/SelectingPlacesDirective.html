@@ -8,7 +8,7 @@
   <div class="places-by-category layout-padding" ng-repeat="(key, value) in app.placesByCategory" ng-if="value.length">
     <h3>{{key}} ({{value.length}})</h3>
     <div class="places" layout="row" layout-align="start none" layout-wrap>
-      <md-card class="place" ng-repeat="place in value" flex="20" ng-class="{ 'selected': place.selected }">
+      <md-card class="place" ng-repeat="place in value" flex="20" ng-class="{selected: place.selected}">
         <label for="place{{place.id}}" layout="row" layout-align="space-between center">
           <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
         </label>
@@ -27,6 +27,6 @@
 </md-content>
 <md-toolbar>
   <div class="md-toolbar-tools" layout-align="end center">
-    <md-button ng-click="app.next()" class="continue md-raised" aria-label="Continue">Continue</md-button>
+    <md-button ng-click="app.next()" class="continue md-raised" aria-label="Continue" ng-disabled="selected.places.length<3">Continue</md-button>
   </div>
 </md-toolbar>
