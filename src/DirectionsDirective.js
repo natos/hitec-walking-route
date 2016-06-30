@@ -3,7 +3,7 @@ angular
   .directive('directions', function() {
     return {
       restrict: 'E',
-      templateUrl: './src/Directions.html',
+      templateUrl: 'src/Directions.html',
       controller: 'DirectionsController as directions'
     };
   });

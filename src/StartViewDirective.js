@@ -9,7 +9,7 @@ angular
   function StartViewDirective() {
     return {
       restrict: 'E',
-      templateUrl: './src/StartViewDirective.html',
+      templateUrl: 'src/StartViewDirective.html',
       controller:  'StartViewController'
     };
   }

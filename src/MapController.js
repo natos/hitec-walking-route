@@ -101,7 +101,7 @@ function MapController($scope, $rootScope, $window, appModel, directionsModel, m
       .show({
         controller: ['$scope', '$mdDialog', LoadingRouteController],
         parent: '#map-container',
-        templateUrl: './src/LoadingRoute.html'
+        templateUrl: 'src/LoadingRoute.html'
       });
 
     /**

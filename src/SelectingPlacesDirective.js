@@ -9,6 +9,6 @@ angular
   function SelectingPlacesDirective() {
     return {
       restrict: 'E',
-      templateUrl: './src/SelectingPlacesDirective.html'
+      templateUrl: 'src/SelectingPlacesDirective.html'
     };
   }

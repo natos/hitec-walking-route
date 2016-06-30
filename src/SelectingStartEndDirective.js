@@ -9,6 +9,6 @@ angular
   function SelectingStartDirective() {
     return {
       restrict: 'E',
-      templateUrl: './src/SelectingStartEndDirective.html'
+      templateUrl: 'src/SelectingStartEndDirective.html'
     };
   }

@@ -109,7 +109,7 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
       controller: ['$scope', '$mdDialog', MarkerDetailController],
       clickOutsideToClose: true,
       parent: angular.element(document.body), //'#content',
-      templateUrl: './src/MarkerDetail.html'//,
+      templateUrl: 'src/MarkerDetail.html'//,
       // fancy animations
       // openFrom: '.marker-' + marker.mark.id,
       // closeTo: '.marker-' + marker.mark.id
