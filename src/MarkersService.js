@@ -2,7 +2,7 @@ angular
   .module('App')
   .service('markersService', [
     '$rootScope', '$timeout',
-    'appModel', 'markersModel', 'directionsModel',
+    'appModel', 'markersModel', 'directionsModel', 'mapModel',
     'mapService', 'placesService', 'locationService',
     'Marker',
     MarkersService
@@ -14,7 +14,7 @@ angular
  * @returns {{getMarkers: Function}}
  * @constructor
  */
-function MarkersService($rootScope, $timeout, appModel, markersModel, directionsModel, mapService, placesService, locationService, Marker) {
+function MarkersService($rootScope, $timeout, appModel, markersModel, directionsModel, mapModel, mapService, placesService, locationService, Marker) {
 
   // return true if the mark is selected
   function isMarkerSelected(marker) {
@@ -163,12 +163,14 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
 
   // unselect markers
   function cleanMarkers() {
-    for (var i = 0; i < selectedMarkers.length; i += 1) {
-      selectedMarkers[i].setLabel('');
-      unselectMarkerPin(selectedMarkers[i], i);
+    // markersModel.markers.push(marker);
+    for (var i = 0; i < markersModel.markers.length; i += 1) {
+      markersModel.markers[i].unselect();
+      markersModel.markers[i].remove();
     }
-    selectedMarkers.splice(0, selectedMarkers.length);
-    $rootScope.$emit('markersService:cleaned-markers');
+    markersModel.markers.splice(0, markersModel.markers.length);
+    $rootScope.$emit(markersModel.events.cleaned);
+    console.log('cleaned markers', markersModel.markers)
   }
 
   function restartMarkers() {
@@ -176,7 +178,7 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     cleanMarkers();
     // cleanFilteredMarkers();
     $timeout(function () {
-      dropMarkers();
+      createMarkers();
     });
   }
 
@@ -206,6 +208,7 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
 
   /* delegate */
 
+  $rootScope.$on(mapModel.events.restart, restartMarkers);
   $rootScope.$on(directionsModel.events.displayedDirections, reorderMarkersFromRoute);
   $rootScope.$on('mapController:restart-map', restartMarkers);
   $rootScope.$on('mapController:set-print-mode', cleanUnselectedMarkers);
