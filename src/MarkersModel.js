@@ -19,7 +19,8 @@ angular
      * @public
      */
     this.events = {
-      markersUpdated: 'markers:updated'
+      markersUpdated: 'markers:updated',
+      markersCleaned: 'markers:cleaned'
     };
 
     /**

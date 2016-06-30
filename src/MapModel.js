@@ -25,7 +25,12 @@ angular
      * @public
      */
     this.events = {
-
+      ready: 'map-model:ready',
+      restart: 'map-model:restart',
+      center: 'map-model:center-map',
+      print: 'map-model:print-map',
+      setPrintMode: 'map-model:set-print-mode',
+      unsetPrintMode: 'map-model:unset-print-mode'
     };
 
     /**
