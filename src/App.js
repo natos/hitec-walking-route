@@ -3,6 +3,7 @@ angular
   .config(function($mdThemingProvider, $mdIconProvider) {
 
     $mdIconProvider
+      .icon("start_over", "./assets/svg/ic_arrow_back_white_24px.svg" , 24)
       .icon("directions", "./assets/svg/ic_directions_black_24px.svg" , 24)
       .icon("walk", "./assets/svg/ic_directions_walk_white_24px.svg" , 24)
       .icon("walking_blue", "./assets/svg/ic_directions_walk_blue_mod_24px.svg" , 24)
