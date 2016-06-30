@@ -58,48 +58,48 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     // var route = angular.extend({}, directionsModel.route);
     var waypoints = placesService.getWaypoints();
 
-    var endPlace = placesService.getEndPlace();
+    var endPlaceMarker, endPlace = placesService.getEndPlace();
     if (endPlace) {
-      console.log('endPlace', endPlace);
-    }
-    var endPlaceMarker = markersService.getMarker(endPlace);
-    if (endPlaceMarker) {
-      endPlaceMarker.order(waypoints.length + 2);
-    }
-
-    var startPlace = placesService.getStartPlace();
-    if (startPlace) {
-      console.log('startPlace', startPlace);
-    }
-    var startPlaceMarker = markersService.getMarker(startPlace);
-    if (startPlaceMarker) {
-      startPlaceMarker.order(1);
-    }
-
-    for (var i = 0; i < waypoints.length; i += 1) {
-      var waypoint = waypoints[i];
-      if (waypoint) {
-        console.log('waypoint', route.waypoint_order[i] + 2, waypoint);
+      // console.log('endPlace', endPlace);
+      endPlaceMarker = markersService.getMarker(endPlace);
+      if (endPlaceMarker) {
+        endPlaceMarker.order(waypoints.length + 2);
       }
-      var waypointMarker = markersService.getMarker(waypoint);
-      // console.log('marker', marker, route.waypoint_order[i] + 2);
-      if (waypointMarker) {
-        waypointMarker.order(route.waypoint_order[i] + 2);
+    }
+
+    var startPlaceMarker, startPlace = placesService.getStartPlace();
+    if (startPlace) {
+      // console.log('startPlace', startPlace);
+      startPlaceMarker = markersService.getMarker(startPlace);
+      if (startPlaceMarker) {
+        startPlaceMarker.order(1);
+      }
+    }
+
+    var waypoint;
+    for (var i = 0; i < waypoints.length; i += 1) {
+      if (waypoints[i]) {
+        // console.log('waypoint', route.waypoint_order[i] + 2, waypoint);
+        var waypointMarker = markersService.getMarker(waypoints[i]);
+        // console.log('marker', marker, route.waypoint_order[i] + 2);
+        if (waypointMarker) {
+          waypointMarker.order(route.waypoint_order[i] + 2);
+        }
       }
     }
 
     for (var i = 0; i < route.legs.length; i += 1) {
       if (i === 0) {
-        console.log('first leg start place')
+        // console.log('first leg start place')
         route.legs[i].start_place = startPlace;
       } else if (waypoints[i-1]) {
-        console.log('first leg is waypoing', waypoints[i-1])
+        // console.log('first leg is waypoing', waypoints[i-1])
         route.legs[i].start_place = waypoints[i-1];
       } else if ((i+1) === route.legs.length) {
-        console.log('last leg is end place')
+        // console.log('last leg is end place')
         route.legs[i].end_place = endPlace;
       } else if (waypoints[i]) {
-        console.log('last leg is waypoint', waypoints[i-1])
+        // console.log('last leg is waypoint', waypoints[i-1])
         route.legs[i].end_place = waypoints[i-1];
       }
     }
