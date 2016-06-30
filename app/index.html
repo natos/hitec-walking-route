@@ -10,7 +10,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-    <link rel="stylesheet" href="dist/hitec.min.css"/>
+    <link rel="stylesheet" href="css/hitec.min.css"/>
 
     <style type="text/css">[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { display: none !important; }</style>
 
@@ -39,17 +39,17 @@
 <!--       <div class="map-logo slide top" ng-if="app.state.isReviewing()" ng-cloak><img class="logo" src="assets/img/logo/logo.png" alt="Hi-Tec" /></div> -->
 
       <div class="map-actions fade" ng-if="map.ready" ng-cloak>
-        <md-button class="refresh md-fab md-primary" ng-click="map.restart()" aria-label="Restart map">
-          <md-icon md-svg-icon="refresh"></md-icon>
+        <md-button class="start-over md-fab md-primary" ng-click="map.startOver()" aria-label="Start over">
+          <md-icon md-svg-icon="start_over"></md-icon>
         </md-button>
         <md-button class="my-location md-fab md-primary" ng-click="map.center()" aria-label="Go to my location">
           <md-icon md-svg-icon="my_location"></md-icon>
         </md-button>
       </div>
 
-      <div id="map" class="fullscreen" ng-cloak></div>
+      <div id="map" class="fullscreen" ng-cloak ng-class="{printing: app.state.isPrinting()}"></div>
 
-      <div id="sidebar" class="slide right" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
+      <div id="sidebar" class="fade" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
         <h4>Your personalised route</h4>
         <div class="places">
           <md-card class="place" ng-repeat="place in selected.places" ng-click="map.showPlace(place)">
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <script src="./dist/hitec.min.js"></script>
+    <script src="./js/hitec.min.js"></script>
 
     <script type="text/javascript">
       /** manual bootstrap */
