@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller('MapController', [
     '$scope', '$rootScope', '$window',
-    'appModel', 'directionsModel',
+    'appModel', 'mapModel', 'directionsModel',
     'mapService', 'markersService', 'directionsService', 'placesService',
     '$mdDialog', '$timeout', '$interval',
     MapController
@@ -14,7 +14,7 @@ angular
  * @param avatarsService
  * @constructor
  */
-function MapController($scope, $rootScope, $window, appModel, directionsModel, mapService, markersService, directionsService, placesService, $mdDialog, $timeout, $interval) {
+function MapController($scope, $rootScope, $window, appModel, mapModel, directionsModel, mapService, markersService, directionsService, placesService, $mdDialog, $timeout, $interval) {
 
   if (!google || !google.maps) {
     console.error('Google Maps API is unavailable.');
@@ -25,7 +25,7 @@ function MapController($scope, $rootScope, $window, appModel, directionsModel, m
       self.ready = false;
       self.map = mapService.getMap();
       self.center = centerMap;
-      self.restart = restartMap;
+      self.startOver = startOver;
       self.showPlace = showPlace;
 
   function currentStateChanged() {
@@ -40,6 +40,9 @@ function MapController($scope, $rootScope, $window, appModel, directionsModel, m
       $timeout(centerMap);
       $timeout(closeDialog, 700);
       $timeout(setReady, 1500);
+    }
+    if (appModel.state.isPrinting()) {
+      $timeout(function() { window.dispatchEvent(new Event('resize')); });
     }
     // apply state change
     if (!$rootScope.$$phase) $rootScope.$apply();
@@ -69,12 +72,16 @@ function MapController($scope, $rootScope, $window, appModel, directionsModel, m
     $rootScope.$broadcast('mapController:center-map');
   }
 
-  function restartMap() {
-    $rootScope.$broadcast('mapController:restart-map');
+  function startOver() {
+    $rootScope.$broadcast(mapModel.events.restart);
+    console.log('restart');
+    self.ready = false;
+    appModel.setState(3);
   }
 
   function setReady() {
     self.ready = true;
+    $rootScope.$broadcast(mapModel.events.ready);
   }
 
   function showPlace(place) {
