@@ -10,7 +10,7 @@ glob("content/*.yaml", function (err, files) {
   }
 
   var constantTemplate = "angular.module('App').constant('places', {});"
-  var outputFilename = "app/src/PlacesConstant.js";
+  var outputFilename = "src/PlacesConstant.js";
   var collection = [];
   var count = files.length;
 
