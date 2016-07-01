@@ -32,6 +32,7 @@ angular
      */
     this.events = {
       calculatingDirections: 'directions:calculating-directions',
+      calculatingDirectionsEnd: 'directions:calculating-directions-end',
       gettingDirections: 'directions:getting-directions',
       displayingDirections: 'directions:displaying-directions',
       displayedDirections: 'directions:displayed-directions',
