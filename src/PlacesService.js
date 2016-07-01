@@ -83,6 +83,16 @@ function PlacesService($rootScope, placesModel, directionsModel, mapService) {
     return w;
   }
 
+  function getPlaceByOrder(order) {
+    var i, t = placesModel.selected.places.length;
+    for (i = 0; i < t; i += 1) {
+      if (placesModel.selected.places[i].order === order) {
+        return placesModel.selected.places[i];
+      }
+    }
+    return false;
+  }
+
   function getStartPlace() {
     return findPlaceById(placesModel.selected.start);
   }
@@ -111,29 +121,9 @@ function PlacesService($rootScope, placesModel, directionsModel, mapService) {
     placesModel.selected.places.splice(position, 1);
   }
 
-  function sortSelectedPlacesByOrder() {
-    console.log('sorting places by selected', placesModel.selected.places);
-    $rootScope.selected.places = placesModel.selected.places.sort(sortByOrder);
-    // apply state change
-    if (!$rootScope.$$phase) $rootScope.$apply();
-    //
-    // for (var i = 0; i < placesModel.selected.places.length; i += 1) {
-    //   if(!placesModel.selected.places[i].order) {
-    //     console.log('no order?')
-    //   } else {
-    //     console.log('order', placesModel.selected.places[i].order)
-    //   }
-    //   console.log(i, 'new order for', placesModel.selected.places[i].label, placesModel.selected.places[i].order, placesModel.selected.places[i]);
-    // }
-  }
-
   function sortByOrder(a, b) {
     return a.order - b.order;
   }
-
-  /* delegate */
-
-  // $rootScope.$on(directionsModel.events.displayedDirections, sortSelectedPlacesByOrder);
 
   /* public */
 
@@ -142,9 +132,9 @@ function PlacesService($rootScope, placesModel, directionsModel, mapService) {
     getWaypoints: getWaypoints,
     getEndPlace: getEndPlace,
     getStartPlace: getStartPlace,
+    getPlaceByOrder: getPlaceByOrder,
     getSelectedPlaces: getSelectedPlaces,
     getPlacesByCategory: getPlacesByCategory,
-    sortSelectedPlacesByOrder: sortSelectedPlacesByOrder,
     selectPlace: selectPlace,
     setStartPlace: setStartPlace,
     setEndPlace: setEndPlace,
