@@ -38,7 +38,7 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
 
   function dropYourLocationPin() {
     var location = locationService.getCurrentLocation();
-    if (!location) return;
+    if (!location || markersModel.yourPin) return;
     new google.maps.Marker({
       map: mapService.getMap(),
       position: location,
@@ -51,15 +51,14 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
         fillOpacity: .9
       }
     });
+    markersModel.yourPin = true;
   }
 
   // unselect markers
   function cleanMarkers() {
     // markersModel.markers.push(marker);
     for (var i = 0; i < markersModel.markers.length; i += 1) {
-      markersModel.markers[i]
-        .remove()
-        .unselect();
+      markersModel.markers[i].remove();
     }
     markersModel.markers.splice(0, markersModel.markers.length);
     $rootScope.$emit(markersModel.events.cleaned);

@@ -57,4 +57,10 @@ angular
      */
     this.selectedMarkers = [];
 
+
+    /**
+     * Flag to know if your location was already render
+     * @public
+     */
+    this.yourPin = false;
   }
