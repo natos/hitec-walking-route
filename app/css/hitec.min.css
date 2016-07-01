@@ -2730,9 +2730,9 @@ md-tooltip._md-show{-webkit-transition:all .4s cubic-bezier(.25,.8,.25,1);transi
 @media print{[md-whiteframe],md-whiteframe{background-color:#fff}
 .hide-print:not(.show-print):not(.show){display:none!important}
 }
-@font-face{font-family:AvantGarde-Demi;src:url(../../assets/fonts/2FA3D6_0_0.eot);src:url(../../assets/fonts/2FA3D6_0_0.eot?#iefix) format('embedded-opentype'),url(../../assets/fonts/2FA3D6_0_0.woff2) format('woff2'),url(../../assets/fonts/2FA3D6_0_0.woff) format('woff'),url(../../assets/fonts/2FA3D6_0_0.ttf) format('truetype');font-weight:400;font-style:normal}
-@font-face{font-family:FranklinGothicURW-Boo;src:url(../../assets/fonts/2FA3D6_1_0.eot);src:url(../../assets/fonts/2FA3D6_1_0.eot?#iefix) format('embedded-opentype'),url(../../assets/fonts/2FA3D6_1_0.woff2) format('woff2'),url(../../assets/fonts/2FA3D6_1_0.woff) format('woff'),url(../../assets/fonts/2FA3D6_1_0.ttf) format('truetype');font-weight:400;font-style:normal}
-@font-face{font-family:hi-tec-icon-font;src:url(../../assets/fonts/hi-tec-icon-font.eot);src:url(../../assets/fonts/hi-tec-icon-font.eot?#iefix) format("embedded-opentype"),url(../../assets/fonts/hi-tec-icon-font.woff) format("woff"),url(../../assets/fonts/hi-tec-icon-font.ttf) format("truetype"),url(../../assets/fonts/hi-tec-icon-font.svg#hi-tec-icon-font) format("svg");font-weight:400;font-style:normal}
+@font-face{font-family:AvantGarde-Demi;src:url(../assets/fonts/2FA3D6_0_0.eot);src:url(../assets/fonts/2FA3D6_0_0.eot?#iefix) format('embedded-opentype'),url(../assets/fonts/2FA3D6_0_0.woff2) format('woff2'),url(../assets/fonts/2FA3D6_0_0.woff) format('woff'),url(../assets/fonts/2FA3D6_0_0.ttf) format('truetype');font-weight:400;font-style:normal}
+@font-face{font-family:FranklinGothicURW-Boo;src:url(../assets/fonts/2FA3D6_1_0.eot);src:url(../assets/fonts/2FA3D6_1_0.eot?#iefix) format('embedded-opentype'),url(../assets/fonts/2FA3D6_1_0.woff2) format('woff2'),url(../assets/fonts/2FA3D6_1_0.woff) format('woff'),url(../assets/fonts/2FA3D6_1_0.ttf) format('truetype');font-weight:400;font-style:normal}
+@font-face{font-family:hi-tec-icon-font;src:url(../assets/fonts/hi-tec-icon-font.eot);src:url(../assets/fonts/hi-tec-icon-font.eot?#iefix) format("embedded-opentype"),url(../assets/fonts/hi-tec-icon-font.woff) format("woff"),url(../assets/fonts/hi-tec-icon-font.ttf) format("truetype"),url(../assets/fonts/hi-tec-icon-font.svg#hi-tec-icon-font) format("svg");font-weight:400;font-style:normal}
 body,body.md-default-theme,html,html.md-default-theme{font-family:FranklinGothicURW-Boo,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.42857;color:#333;height:100%;margin:0;padding:0;background-color:#f1f1f2}
 h1,h2{font-family:AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 h3,h4{margin:45px 0 25px;position:relative;color:#333;text-align:center;text-transform:uppercase}
@@ -2741,7 +2741,7 @@ h1{font-size:40px;font-weight:400;color:#333}
 h3{font:1.25em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 h3:before{border-top:4px solid #54bceb;content:"";display:block;margin:0 auto 21px;width:50px}
 h4{font:1em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
-start-view{background-image:url(../../assets/img/brand/cape-town.jpg);background-size:cover;position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.9);padding-top:10%;z-index:200}
+start-view{background-image:url(../assets/img/brand/cape-town.jpg);background-size:cover;position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.9);padding-top:10%;z-index:200}
 #start .bubbles{margin:2rem}
 #start .bubble{margin:1rem}
 #start .md-primary{padding:1rem 4rem}

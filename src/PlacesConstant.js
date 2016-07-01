@@ -19,6 +19,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJ3UYLU3XixUcRlxW4bSCFqdQ",
+        "label": "Foodhallen",
+        "website": "http://www.foodhallen.nl",
+        "category": "Restaurants",
+        "content": [
+            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
+        ],
+        "author": {
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/avatars/MarieBennett.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/bloemenmarkt.jpg",
+            "x3": "assets/img/x3/bloemenmarkt.jpg"
+        }
+    },
+    {
         "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
         "label": "Bloemenmarkt",
         "category": "Markets",
@@ -56,24 +74,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ3UYLU3XixUcRlxW4bSCFqdQ",
-        "label": "Foodhallen",
-        "website": "http://www.foodhallen.nl",
-        "category": "Restaurants",
-        "content": [
-            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
-        ],
-        "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/avatars/MarieBennett.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/bloemenmarkt.jpg",
-            "x3": "assets/img/x3/bloemenmarkt.jpg"
-        }
-    },
-    {
         "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
         "label": "Hi-Tec Store",
         "website": "http://www.hi-tec.amsterdam",
@@ -93,24 +93,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJezIPCY8JxkcRgdqv8FrYp8U",
-        "label": "Juice Brothers",
-        "website": "http://www.juicebro.com",
-        "category": "Healthy Bars",
-        "content": [
-            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
-        ],
-        "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/avatars/MarieBennett.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/juicebrothers.jpg",
-            "x3": "assets/img/x3/juicebrothers.jpg"
-        }
-    },
-    {
         "id": "ChIJ6XBeeuoJxkcRxkGkr5WBeKw",
         "label": "Lion Noir",
         "website": "http://www.lionnoir.nl",
@@ -127,6 +109,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/lionnoir.jpg",
             "x3": "assets/img/x3/lionnoir.jpg"
+        }
+    },
+    {
+        "id": "ChIJezIPCY8JxkcRgdqv8FrYp8U",
+        "label": "Juice Brothers",
+        "website": "http://www.juicebro.com",
+        "category": "Healthy Bars",
+        "content": [
+            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
+        ],
+        "author": {
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/avatars/MarieBennett.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/juicebrothers.jpg",
+            "x3": "assets/img/x3/juicebrothers.jpg"
         }
     },
     {
