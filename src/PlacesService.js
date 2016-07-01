@@ -1,7 +1,9 @@
 angular
   .module('App')
   .service('placesService', [
-    '$rootScope', 'placesModel', 'directionsModel', 'mapService',
+    '$rootScope',
+    'placesModel', 'mapModel',
+    'mapService',
     PlacesService
   ]);
 
@@ -11,7 +13,7 @@ angular
  * @returns
  * @constructor
  */
-function PlacesService($rootScope, placesModel, directionsModel, mapService) {
+function PlacesService($rootScope, placesModel, mapModel, mapService) {
 
   // Get places information
   (function getPlaces() {
@@ -79,7 +81,6 @@ function PlacesService($rootScope, placesModel, directionsModel, mapService) {
         w.push(placesModel.selected.places[i]);
       }
     }
-    w.sort(sortByOrder);
     return w;
   }
 
@@ -112,6 +113,7 @@ function PlacesService($rootScope, placesModel, directionsModel, mapService) {
   function selectPlace(place) {
     var position = placesModel.selected.places.indexOf(place);
     if (position === -1) {
+      place.selected = true;
       placesModel.selected.places.push(place);
     }
   }
@@ -121,9 +123,16 @@ function PlacesService($rootScope, placesModel, directionsModel, mapService) {
     placesModel.selected.places.splice(position, 1);
   }
 
-  function sortByOrder(a, b) {
-    return a.order - b.order;
+  function restart() {
+    var total = placesModel.places.length;
+    for (var i = 0; i < total; i += 1) {
+      placesModel.places[i].selected = false;
+    }
   }
+
+  /* delegate */
+
+  $rootScope.$on(mapModel.events.restart, restart);
 
   /* public */
 

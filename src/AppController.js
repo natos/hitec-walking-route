@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller('AppController', [
     '$scope', '$rootScope', '$timeout',
-    'appModel', 'placesModel',
+    'appModel', 'placesModel', 'mapModel',
     'placesService', 'mapService',
     AppController
   ]);
@@ -14,7 +14,7 @@ angular
  * @param appModel
  * @constructor
  */
-function AppController($scope, $rootScope, $timeout, appModel, placesModel, placesService, mapService) {
+function AppController($scope, $rootScope, $timeout, appModel, placesModel, mapModel, placesService, mapService) {
 
   if (!google || !google.maps) {
     console.error('Google Maps API is unavailable.');
@@ -57,6 +57,15 @@ function AppController($scope, $rootScope, $timeout, appModel, placesModel, plac
     // TODO: remove this hack to make app auto start
   }
 
+  function restart() {
+    $rootScope.selected = placesModel.selected = {
+      places: [],
+      start: 0,
+      end: 0
+    };
+    appModel.setState(3);
+  }
+
   /* model bindings */
 
   // Bind selected model to the view-model
@@ -69,6 +78,8 @@ function AppController($scope, $rootScope, $timeout, appModel, placesModel, plac
   $rootScope.$on(appModel.events.nextState, next);
 
   $rootScope.$on(appModel.events.prevState, prev);
+
+  $rootScope.$on(mapModel.events.restart, restart);
 
   $rootScope.$on(placesModel.events.placesReady, placesAreReady);
 

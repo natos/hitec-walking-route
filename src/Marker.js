@@ -30,11 +30,16 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
 
     this.pin = new google.maps.Marker(raw);
     this.place = place;
-    this.place.selected && this.select();
+
+    if (this.place.selected) {
+      this.select();
+    }
 
     google.maps.event.addListener(this.pin, 'click', function() {
       marker.maximize.call(marker);
     });
+
+    console.log('new marker', 'selected', this.place.selected);
 
     return this;
   };
@@ -52,7 +57,6 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
     if (!order) {
       return this.place.order;
     }
-    // console.log('setOrder', this.place.label, 'new order', order, 'old order', this.place.order);
     this.place.order = order;
     this.pin.setLabel({
       color: '#ffffff',
@@ -68,16 +72,17 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
       fillColor: '#54bceb' // this.place.color
     });
     this.pin.setIcon(icon);
-    // if (this.place.order) this.pin.setLabel('' + this.place.order);
-    this.place.selected = true;
+    if (this.place.order) this.pin.setLabel('' + this.place.order);
+    placesService.selectPlace(this.place);
     return this;
   };
 
   Marker.prototype.unselect = function() {
     var icon = markerIcon();
     this.pin.setIcon(icon);
-    // this.pin.setLabel('');
-    this.place.selected = false;
+    this.pin.setLabel('');
+    // this.place.selected = false;
+    placesService.unselectPlace(this.place);
     return this;
   };
 

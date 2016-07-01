@@ -30,6 +30,7 @@ function MapController($scope, $rootScope, $window, appModel, mapModel, directio
 
   function currentStateChanged() {
     if (appModel.state.isLoadingDirections()) {
+      markersService.cleanMarkers();
       markersService.createMarkers();
       markersService.dropYourLocationPin();
       directionsService.calculateAndDisplayRoute();
@@ -74,9 +75,7 @@ function MapController($scope, $rootScope, $window, appModel, mapModel, directio
 
   function startOver() {
     $rootScope.$broadcast(mapModel.events.restart);
-    console.log('restart');
     self.ready = false;
-    appModel.setState(3);
   }
 
   function setReady() {

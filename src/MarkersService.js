@@ -53,47 +53,16 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     });
   }
 
-  function cleanUnselectedMarkers() {
-    for (var i = 0; i < markers.length; i += 1) {
-      if (!markers[i].mark.selected) {
-        clearMarker(markers[i])
-      }
-    }
-  }
-
-  // remove marker from the map
-  function clearMarker(marker) {
-    if (typeof marker.mark === 'undefined') {
-      marker = getMarker(marker);
-    }
-    marker.setMap(null);
-  }
-  // remove markers from the map
-  function clearMarkers() {
-    for (var i = 0; i < markers.length; i += 1) {
-      clearMarker(markers[i]);
-    }
-  }
-
   // unselect markers
   function cleanMarkers() {
     // markersModel.markers.push(marker);
     for (var i = 0; i < markersModel.markers.length; i += 1) {
-      console.log('cleanning marker', markersModel.markers[i])
       markersModel.markers[i]
-        .unselect()
-        .remove();
+        .remove()
+        .unselect();
     }
     markersModel.markers.splice(0, markersModel.markers.length);
     $rootScope.$emit(markersModel.events.cleaned);
-    console.log('cleaned markers', markersModel.markers)
-  }
-
-  function restartMarkers() {
-    cleanMarkers();
-    $timeout(function () {
-      createMarkers();
-    });
   }
 
   function maximizeMarker(place_id) {
@@ -108,7 +77,6 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
 
   function getMarkerByLocation(location) {
     for (var i = 0; i < markersModel.markers.length; i += 1) {
-      console.log('Address = Location', markersModel.markers[i].place.address, location);
       if (markersModel.markers[i].place.address.indexOf(location) >= 0 || location.indexOf(markersModel.markers[i].place.address) >= 0) {
         return angular.extend({}, markersModel.markers[i]);
       }
@@ -125,14 +93,10 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     return false;
   }
 
-  /* delegate */
-
-  $rootScope.$on(mapModel.events.restart, restartMarkers);
-  $rootScope.$on('mapController:restart-map', restartMarkers);
-
   // public interface
   return {
     getMarker: getMarker,
+    cleanMarkers: cleanMarkers,
     createMarkers: createMarkers,
     maximizeMarker: maximizeMarker,
     dropYourLocationPin: dropYourLocationPin,
