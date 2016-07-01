@@ -55,53 +55,36 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   function reorder() {
 
     var route = directionsModel.route;
-
-    console.log('reordering route', route);
-
-    var waypoints = placesService.getWaypoints();
     var selectedPlaces = [];
+    var waypoints = placesService.getWaypoints();
 
+    // reorder waypoints
+    for (var i = 0; i < route.waypoint_order.length; i += 1) {
+      var place = waypoints[route.waypoint_order[i]];
+      selectedPlaces.push(place);
+      markersService.getMarker(place).order(i + 2);
+    }
+
+    // add start place
     var startPlaceMarker, startPlace = placesService.getStartPlace();
     if (startPlace) {
-      // console.log('startPlace', startPlace);
       startPlaceMarker = markersService.getMarker(startPlace);
       if (startPlaceMarker) {
         startPlaceMarker.order(1);
-        selectedPlaces.push(startPlace);
-        console.log('ordering', 'startPlace', startPlace.label, 1);
+        selectedPlaces.unshift(startPlace);
       }
     }
 
-    var waypoint, newOrder;
-    console.log('waypoint_order', route.waypoint_order)
-    for (var i = 0; i < route.waypoint_order.length; i += 1) {
-      var place = waypoints[i];
-      var waypointOrder = route.waypoint_order[i];
-      var marker = markersService.getMarker(place);
-      if (marker) {
-        newOrder = waypointOrder + 2
-        marker.order(newOrder);
-        selectedPlaces[waypointOrder + 1] = place;
-        console.log('ordering', i, place.label, 'waypointOrder', waypointOrder, 'newOrder', newOrder);
-      }
-    }
-
+    // add end place
+    // TODO: What should happen when start place equals end place?
     var endPlaceMarker, endPlace = placesService.getEndPlace();
     if (endPlace) {
-      // console.log('endPlace', endPlace);
       endPlaceMarker = markersService.getMarker(endPlace);
       if (endPlaceMarker) {
         selectedPlaces.push(endPlace);
         endPlaceMarker.order(waypoints.length + 2);
-        console.log('ordering', 'endPlace', endPlace.label, waypoints.length + 2);
       }
     }
-
-    var debugSelectedPlaces = [];
-    for (var i = 0; i < selectedPlaces.length; i += 1) {
-      debugSelectedPlaces.push(selectedPlaces[i].label);
-    }
-    console.log('debugSelectedPlaces', debugSelectedPlaces);
 
     // get place information for direcctions
     var i, t = route.legs.length;
@@ -111,7 +94,6 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     }
 
     // update selected places render
-    // console.log('selectedPlaces ordered', selectedPlaces);
     $rootScope.selected.places = selectedPlaces;
     if (!$rootScope.$$phase) $rootScope.$apply();
   }
@@ -138,11 +120,11 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       // collect time and distance info
       collectTimeAndDistance();
 
-      // comunicate state
-      $rootScope.$emit(directionsModel.events.displayedDirections);
-
       // reorder points and places
       reorder();
+
+      // comunicate state
+      $rootScope.$emit(directionsModel.events.displayedDirections);
 
     } else {
       console.error('Directions request failed due to ' + status, response);
