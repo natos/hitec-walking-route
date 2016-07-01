@@ -1,7 +1,7 @@
 angular
   .module('App')
   .service('Marker', [
-    '$rootScope', '$mdDialog',
+    '$rootScope', '$mdDialog', '$timeout',
     'markersModel', 'appModel',
     'mapService', 'placesService', 'locationService',
     MarkerFactory
@@ -10,7 +10,7 @@ angular
 /**
  * Marker factory
  */
-function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService, placesService, locationService) {
+function MarkerFactory($rootScope, $mdDialog, $timeout, markersModel, appModel, mapService, placesService, locationService) {
 
   /**
    * Marker contructor
@@ -38,8 +38,6 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
     google.maps.event.addListener(this.pin, 'click', function() {
       marker.maximize.call(marker);
     });
-
-    console.log('new marker', 'selected', this.place.selected);
 
     return this;
   };
@@ -72,7 +70,13 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
       fillColor: '#54bceb' // this.place.color
     });
     this.pin.setIcon(icon);
-    if (this.place.order) this.pin.setLabel('' + this.place.order);
+    if (this.place.order) {
+      this.pin.setLabel({
+        color: '#ffffff',
+        text: '' + this.place.order
+      });
+    }
+    this.place.selected = true;
     placesService.selectPlace(this.place);
     return this;
   };
@@ -80,8 +84,11 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
   Marker.prototype.unselect = function() {
     var icon = markerIcon();
     this.pin.setIcon(icon);
-    this.pin.setLabel('');
-    // this.place.selected = false;
+    this.pin.setLabel({
+      color: '#ffffff',
+      text: ' '
+    });
+    this.place.selected = false;
     placesService.unselectPlace(this.place);
     return this;
   };
@@ -121,7 +128,9 @@ function MarkerFactory($rootScope, $mdDialog, markersModel, appModel, mapService
     });
 
     function triggerReroute() {
-      $rootScope.$emit(appModel.events.prevState);
+      $timeout(function() {
+        $rootScope.$emit(appModel.events.prevState);
+      }, 500);
     }
 
     function closeDialog() {
