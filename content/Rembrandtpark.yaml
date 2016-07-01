@@ -8,7 +8,7 @@ content:
 author:
   name: "Shannon Banks"
   role: "Fashion designer"
-  picture: "assets/img/avatars/ShannonBanks.jpg"
+  picture: "ShannonBanks.jpg"
 media:
-  x2: 'assets/img/x2/annefrank.jpg'
-  x3: 'assets/img/x3/annefrank.jpg'
+  x2: 'annefrank.jpg'
+  x3: 'annefrank.jpg'

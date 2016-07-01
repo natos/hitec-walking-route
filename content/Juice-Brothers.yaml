@@ -7,7 +7,7 @@ content:
 author:
   name: "Marie Bennett"
   role: "Architect"
-  picture: "assets/img/avatars/MarieBennett.jpg"
+  picture: "avatars/MarieBennett.jpg"
 media:
-  x2: 'assets/img/x2/juicebrothers.jpg'
-  x3: 'assets/img/x3/juicebrothers.jpg'
+  x2: 'juicebrothers.jpg'
+  x3: 'juicebrothers.jpg'
