@@ -1,5 +1,4 @@
 id: "ChIJIyPEUu8JxkcRTmRcuMxC9yc"
-color: "#2688FF"
 label: "Hi-Tec Store"
 website: "http://www.hi-tec.amsterdam"
 content:
@@ -11,6 +10,5 @@ author:
   role: "Entrepreneur"
   picture: "assets/img/avatars/AndreaClarke.jpg"
 media:
-  x1: 'assets/img/x1/hitecstore.jpg'
   x2: 'assets/img/x2/hitecstore.jpg'
   x3: 'assets/img/x3/hitecstore.jpg'

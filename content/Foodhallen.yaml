@@ -1,5 +1,4 @@
 id: "ChIJ3UYLU3XixUcRlxW4bSCFqdQ"
-color: "#c5a881"
 label: "Foodhallen"
 website: "http://www.foodhallen.nl"
 category: "Restaurants"
@@ -10,6 +9,5 @@ author:
   role: "Architect"
   picture: "assets/img/avatars/MarieBennett.jpg"
 media:
-  x1: 'assets/img/x1/bloemenmarkt.jpg'
   x2: 'assets/img/x2/bloemenmarkt.jpg'
   x3: 'assets/img/x3/bloemenmarkt.jpg'

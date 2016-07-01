@@ -1,7 +1,7 @@
 angular
   .module('App')
   .service('placesService', [
-    '$rootScope', 'placesModel', 'mapService',
+    '$rootScope', 'placesModel', 'directionsModel', 'mapService',
     PlacesService
   ]);
 
@@ -11,7 +11,7 @@ angular
  * @returns
  * @constructor
  */
-function PlacesService($rootScope, placesModel, mapService) {
+function PlacesService($rootScope, placesModel, directionsModel, mapService) {
 
   // Get places information
   (function getPlaces() {
@@ -58,7 +58,6 @@ function PlacesService($rootScope, placesModel, mapService) {
         return placesModel.places[i];
       }
     }
-
   }
 
   function getPlaces() {
@@ -80,6 +79,7 @@ function PlacesService($rootScope, placesModel, mapService) {
         w.push(placesModel.selected.places[i]);
       }
     }
+    w.sort(sortByOrder);
     return w;
   }
 
@@ -112,13 +112,30 @@ function PlacesService($rootScope, placesModel, mapService) {
   }
 
   function sortSelectedPlacesByOrder() {
-    placesModel.selected.places.sort(sortByOrder);
+    console.log('sorting places by selected', placesModel.selected.places);
+    $rootScope.selected.places = placesModel.selected.places.sort(sortByOrder);
+    // apply state change
+    if (!$rootScope.$$phase) $rootScope.$apply();
+    //
+    // for (var i = 0; i < placesModel.selected.places.length; i += 1) {
+    //   if(!placesModel.selected.places[i].order) {
+    //     console.log('no order?')
+    //   } else {
+    //     console.log('order', placesModel.selected.places[i].order)
+    //   }
+    //   console.log(i, 'new order for', placesModel.selected.places[i].label, placesModel.selected.places[i].order, placesModel.selected.places[i]);
+    // }
   }
 
   function sortByOrder(a, b) {
-    console.log(typeof a.order, typeof b.order)
     return a.order - b.order;
   }
+
+  /* delegate */
+
+  // $rootScope.$on(directionsModel.events.displayedDirections, sortSelectedPlacesByOrder);
+
+  /* public */
 
   return {
     getPlaces: getPlaces,

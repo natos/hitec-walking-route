@@ -52,20 +52,12 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
    * Reorder if waypoints got omtimized
    * @public
    */
-  function reorderIfNeeded() {
+  function reorder() {
 
+    var selectedPlaces = [];
     var route = directionsModel.route;
     // var route = angular.extend({}, directionsModel.route);
     var waypoints = placesService.getWaypoints();
-
-    var endPlaceMarker, endPlace = placesService.getEndPlace();
-    if (endPlace) {
-      // console.log('endPlace', endPlace);
-      endPlaceMarker = markersService.getMarker(endPlace);
-      if (endPlaceMarker) {
-        endPlaceMarker.order(waypoints.length + 2);
-      }
-    }
 
     var startPlaceMarker, startPlace = placesService.getStartPlace();
     if (startPlace) {
@@ -73,18 +65,29 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       startPlaceMarker = markersService.getMarker(startPlace);
       if (startPlaceMarker) {
         startPlaceMarker.order(1);
+        selectedPlaces.push(startPlace);
+        console.log('ordering', 0, startPlace.label, 'startPlace');
       }
     }
 
     var waypoint;
-    for (var i = 0; i < waypoints.length; i += 1) {
-      if (waypoints[i]) {
-        // console.log('waypoint', route.waypoint_order[i] + 2, waypoint);
-        var waypointMarker = markersService.getMarker(waypoints[i]);
-        // console.log('marker', marker, route.waypoint_order[i] + 2);
-        if (waypointMarker) {
-          waypointMarker.order(route.waypoint_order[i] + 2);
-        }
+    for (var i = 0; i < route.waypoint_order.length; i += 1) {
+      var marker = markersService.getMarker(waypoints[i]);
+      if (marker) {
+        marker.order(route.waypoint_order[i] + 2);
+        selectedPlaces[route.waypoint_order[i] + 1] = marker.place;
+        console.log('ordering', route.waypoint_order[i] + 1, marker.place.label);
+      }
+    }
+
+    var endPlaceMarker, endPlace = placesService.getEndPlace();
+    if (endPlace) {
+      // console.log('endPlace', endPlace);
+      endPlaceMarker = markersService.getMarker(endPlace);
+      if (endPlaceMarker) {
+        endPlaceMarker.order(waypoints.length + 2);
+        selectedPlaces.push(endPlace);
+        console.log('ordering', waypoints.length + 1, endPlace.label, 'endPlace');
       }
     }
 
@@ -104,7 +107,11 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       }
     }
 
-    placesService.sortSelectedPlacesByOrder();
+
+    console.log('selectedPlaces ordered', selectedPlaces);
+    $rootScope.selected.places = selectedPlaces;
+
+    if (!$rootScope.$$phase) $rootScope.$apply();
   }
 
   /**
@@ -128,14 +135,14 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       // save route information
       directionsModel.route = response.routes[0];
 
-      // reorder points and places
-      reorderIfNeeded();
-
       // collect time and distance info
       collectTimeAndDistance();
 
       // comunicate state
       $rootScope.$emit(directionsModel.events.displayedDirections);
+
+      // reorder points and places
+      reorder();
 
     } else {
       console.error('Directions request failed due to ' + status, response);

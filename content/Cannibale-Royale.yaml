@@ -1,5 +1,4 @@
 id: "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k"
-color: "#B43E43"
 label: "Cannibale Royale"
 website: "http://www.cannibaleroyale.nl"
 category: "Restaurants"
@@ -10,6 +9,5 @@ author:
   role: "Architect"
   picture: "assets/img/avatars/MarieBennett.jpg"
 media:
-  x1: 'assets/img/x1/cannibaleroyale.jpg'
   x2: 'assets/img/x2/cannibaleroyale.jpg'
   x3: 'assets/img/x3/cannibaleroyale.jpg'

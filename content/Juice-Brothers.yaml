@@ -1,5 +1,4 @@
 id: "ChIJezIPCY8JxkcRgdqv8FrYp8U"
-color: "#2A6E30"
 label: "Juice Brothers"
 website: "http://www.juicebro.com"
 category: "Healthy Bars"
@@ -10,6 +9,5 @@ author:
   role: "Architect"
   picture: "assets/img/avatars/MarieBennett.jpg"
 media:
-  x1: 'assets/img/x1/juicebrothers.jpg'
   x2: 'assets/img/x2/juicebrothers.jpg'
   x3: 'assets/img/x3/juicebrothers.jpg'

@@ -1,5 +1,4 @@
 id: "ChIJSRE-IcUJxkcRCltjPmVdmtQ"
-color: "#1D8800"
 label: "Anne Frank Huis"
 category: "Typical Amsterdam"
 content:
@@ -11,6 +10,5 @@ author:
   role: "Fashion designer"
   picture: "assets/img/avatars/ShannonBanks.jpg"
 media:
-  x1: 'assets/img/x1/annefrank.jpg'
   x2: 'assets/img/x2/annefrank.jpg'
   x3: 'assets/img/x3/annefrank.jpg'

@@ -62,7 +62,7 @@ function AppController($scope, $rootScope, $timeout, appModel, placesModel, plac
   // Bind selected model to the view-model
   // This way we avoid the overload of having
   // watchers for each property
-  $scope.selected = placesModel.selected;
+  $rootScope.selected = placesModel.selected;
 
   /* delegate */
 

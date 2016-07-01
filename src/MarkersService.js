@@ -69,21 +69,24 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     var startPlace = getMarker(placesService.getStartPlace());
     if (startPlace) {
       startPlace.order(1);
+      console.log('marker order', 1, startPlace.place.label);
     }
 
-    var endPlace = getMarker(placesService.getEndPlace());
-    if (endPlace) {
-      endPlace.order(waypoints.length + 2);
-    }
+    console.log('waypoint order', route.waypoint_order);
 
-    for (var i = 0; i < waypoints.length; i += 1) {
+    for (var i = 0; i < route.waypoint_order.length; i += 1) {
       var marker = getMarker(waypoints[i]);
-      // console.log('marker', marker, route.waypoint_order[i] + 2);
       if (marker) {
         marker.order(route.waypoint_order[i] + 2);
+        console.log('marker order', route.waypoint_order[i] + 2, marker.place.label);
       }
     }
 
+    var endPlace = getMarker(placesService.getEndPlace());
+    if (endPlace && endPlace !== startPlace) {
+      endPlace.order(waypoints.length + 2);
+      console.log('marker order', waypoints.length + 2, endPlace.place.label);
+    }
   }
 
   var drops = 0;
@@ -165,8 +168,10 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
   function cleanMarkers() {
     // markersModel.markers.push(marker);
     for (var i = 0; i < markersModel.markers.length; i += 1) {
-      markersModel.markers[i].unselect();
-      markersModel.markers[i].remove();
+      console.log('cleanning marker', markersModel.markers[i])
+      markersModel.markers[i]
+        .unselect()
+        .remove();
     }
     markersModel.markers.splice(0, markersModel.markers.length);
     $rootScope.$emit(markersModel.events.cleaned);
@@ -209,7 +214,7 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
   /* delegate */
 
   $rootScope.$on(mapModel.events.restart, restartMarkers);
-  $rootScope.$on(directionsModel.events.displayedDirections, reorderMarkersFromRoute);
+  // $rootScope.$on(directionsModel.events.displayedDirections, reorderMarkersFromRoute);
   $rootScope.$on('mapController:restart-map', restartMarkers);
   $rootScope.$on('mapController:set-print-mode', cleanUnselectedMarkers);
   $rootScope.$on('mapController:unset-print-mode', recoverMarkers);
@@ -223,7 +228,7 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     createMarkers: createMarkers,
     maximizeMarker: maximizeMarker,
     dropYourLocationPin: dropYourLocationPin,
-    reorderMarkersFromRoute: reorderMarkersFromRoute,
+    // reorderMarkersFromRoute: reorderMarkersFromRoute,
     getMarkerByLocation: getMarkerByLocation
   };
 }

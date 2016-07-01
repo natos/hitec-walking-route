@@ -1,5 +1,4 @@
 id: "ChIJaTMo1sEJxkcRfjuQODB7BK8"
-color: "#E37F00"
 label: "Bloemenmarkt"
 category: "Markets"
 content:
@@ -11,6 +10,5 @@ author:
   role: "Architect"
   picture: "assets/img/avatars/MarieBennett.jpg"
 media:
-  x1: 'assets/img/x1/bloemenmarkt.jpg'
   x2: 'assets/img/x2/bloemenmarkt.jpg'
   x3: 'assets/img/x3/bloemenmarkt.jpg'
