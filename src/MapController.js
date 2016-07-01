@@ -36,6 +36,8 @@ function MapController($scope, $rootScope, $window, appModel, mapModel, directio
       directionsService.calculateAndDisplayRoute();
       mapService.getReady();
       transitionToRoute();
+      centerMap();
+
     }
     if (appModel.state.isReviewing()) {
       $timeout(centerMap);
@@ -114,6 +116,7 @@ function MapController($scope, $rootScope, $window, appModel, mapModel, directio
      * Show Route controller
      */
     function LoadingRouteController($scope, $mdDialog) {
+      self.ready = false;
       $scope.cancel = cancelTransition;
       $scope.ready = false;
       $scope.value = 0;
@@ -133,9 +136,12 @@ function MapController($scope, $rootScope, $window, appModel, mapModel, directio
       }, 100, 0, true);
 
       $rootScope.$on(directionsModel.events.displayedDirections, function() {
-        $scope.ready = true;
         $scope.value = 90;
         $scope.bufferValue = 100;
+        $timeout(function () {
+          $scope.ready = true;
+          self.ready = true;
+        }, 200);
       });
 
     }
