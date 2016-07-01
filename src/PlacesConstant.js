@@ -1,20 +1,21 @@
 angular.module('App').constant('places', [
     {
-        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
-        "label": "Cannibale Royale",
-        "website": "http://www.cannibaleroyale.nl",
-        "category": "Restaurants",
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "label": "Anne Frank Huis",
+        "category": "Typical Amsterdam",
         "content": [
-            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
+            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
+            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
+            "Ea commodo consequat duis autem vel eum iriure dolor in hendrerit? Litterarum formas humanitatis per seacula quarta decima et quinta decima eodem modo typi."
         ],
         "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/author/MarieBennett.jpg"
+            "name": "Shannon Banks",
+            "role": "Fashion designer",
+            "picture": "assets/img/author/ShannonBanks.jpg"
         },
         "media": {
-            "x2": "assets/img/x2/cannibaleroyale.jpg",
-            "x3": "assets/img/x3/cannibaleroyale.jpg"
+            "x2": "assets/img/x2/annefrank.jpg",
+            "x3": "assets/img/x3/annefrank.jpg"
         }
     },
     {
@@ -36,22 +37,21 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "label": "Anne Frank Huis",
-        "category": "Typical Amsterdam",
+        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
+        "label": "Cannibale Royale",
+        "website": "http://www.cannibaleroyale.nl",
+        "category": "Restaurants",
         "content": [
-            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
-            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est.",
-            "Ea commodo consequat duis autem vel eum iriure dolor in hendrerit? Litterarum formas humanitatis per seacula quarta decima et quinta decima eodem modo typi."
+            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
         ],
         "author": {
-            "name": "Shannon Banks",
-            "role": "Fashion designer",
-            "picture": "assets/img/author/ShannonBanks.jpg"
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/author/MarieBennett.jpg"
         },
         "media": {
-            "x2": "assets/img/x2/annefrank.jpg",
-            "x3": "assets/img/x3/annefrank.jpg"
+            "x2": "assets/img/x2/cannibaleroyale.jpg",
+            "x3": "assets/img/x3/cannibaleroyale.jpg"
         }
     },
     {
@@ -71,6 +71,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/bloemenmarkt.jpg",
             "x3": "assets/img/x3/bloemenmarkt.jpg"
+        }
+    },
+    {
+        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
+        "label": "Hi-Tec Store",
+        "website": "http://www.hi-tec.amsterdam",
+        "content": [
+            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
+            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
+        ],
+        "author": {
+            "name": "Andrea Clarke",
+            "role": "Entrepreneur",
+            "picture": "assets/img/author/AndreaClarke.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/hitecstore.jpg",
+            "x3": "assets/img/x3/hitecstore.jpg"
         }
     },
     {
@@ -108,24 +126,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/lionnoir.jpg",
             "x3": "assets/img/x3/lionnoir.jpg"
-        }
-    },
-    {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
-        "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
-        ],
-        "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/author/AndreaClarke.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
         }
     },
     {
