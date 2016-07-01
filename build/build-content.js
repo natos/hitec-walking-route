@@ -18,6 +18,11 @@ glob("content/*.yaml", function (err, files) {
 
   files.forEach(function(file, i) {
     YAML.load(file, function(content) {
+      // route assets to public folders
+      content.author.picture = "assets/img/author/" + content.author.picture;
+      content.media.x2 = "assets/img/x2/" + content.media.x2;
+      content.media.x3 = "assets/img/x3/" + content.media.x3;
+      // push content
       push(content, i);
     });
   });
