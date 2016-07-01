@@ -119,6 +119,7 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
   }
 
   function unselectPlace(place) {
+    place.selected = false;
     var position = placesModel.selected.places.indexOf(place);
     placesModel.selected.places.splice(position, 1);
   }
