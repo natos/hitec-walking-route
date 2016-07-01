@@ -54,8 +54,8 @@
 
     "watch:js": "nodemon --watch 'src' -e 'js' --exec 'npm run build:js'",
     "watch:css": "nodemon --watch 'css' -e 'css' --exec 'npm run build:css'",
-    "watch:templates": "nodemon --watch 'js' -e 'html' --exec 'npm run build:templates && npm run build:js'",
-    "watch:content": "nodemon --watch 'content' -e 'yaml' --exec 'npm run build:content && npm run build:js'",
+    "watch:templates": "nodemon --watch 'js' -e 'html' --exec 'npm run build:templates'",
+    "watch:content": "nodemon --watch 'content' -e 'yaml' --exec 'npm run build:content'",
 
     "serve": "browser-sync start --no-notify --s 'app' --ss 'app/assets' --files 'app/*'"
   }
