@@ -252,7 +252,7 @@ angular
 
     /**
      * Map Model Hi-Tec Store Mark
-     * @public
+     * @private
      */
     var HiTecStoreMark = {
       lat: 52.3620861,
@@ -265,7 +265,7 @@ angular
      */
     this.config = {
       zoom: 14,
-      center: AmsterdamMark,
+      center: HiTecStoreMark,
       disableDefaultUI: true,
       scaleControl: true,
       zoomControlOptions: {
