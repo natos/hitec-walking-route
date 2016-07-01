@@ -54,10 +54,9 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
    */
   function reorder() {
 
-    var selectedPlaces = [];
     var route = directionsModel.route;
-    // var route = angular.extend({}, directionsModel.route);
     var waypoints = placesService.getWaypoints();
+    var selectedPlaces = [];
 
     var startPlaceMarker, startPlace = placesService.getStartPlace();
     if (startPlace) {
@@ -66,7 +65,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       if (startPlaceMarker) {
         startPlaceMarker.order(1);
         selectedPlaces.push(startPlace);
-        console.log('ordering', 0, startPlace.label, 'startPlace');
+        // console.log('ordering', 1, startPlace.label, 'startPlace');
       }
     }
 
@@ -76,7 +75,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       if (marker) {
         marker.order(route.waypoint_order[i] + 2);
         selectedPlaces[route.waypoint_order[i] + 1] = marker.place;
-        console.log('ordering', route.waypoint_order[i] + 1, marker.place.label);
+        // console.log(i, 'ordering', route.waypoint_order[i] + 2, marker.place.label, 'waypoint');
       }
     }
 
@@ -85,32 +84,22 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       // console.log('endPlace', endPlace);
       endPlaceMarker = markersService.getMarker(endPlace);
       if (endPlaceMarker) {
-        endPlaceMarker.order(waypoints.length + 2);
         selectedPlaces.push(endPlace);
-        console.log('ordering', waypoints.length + 1, endPlace.label, 'endPlace');
+        endPlaceMarker.order(waypoints.length + 2);
+        // console.log('ordering', waypoints.length + 2, endPlace.label, 'endPlace');
       }
     }
 
-    for (var i = 0; i < route.legs.length; i += 1) {
-      if (i === 0) {
-        // console.log('first leg start place')
-        route.legs[i].start_place = startPlace;
-      } else if (waypoints[i-1]) {
-        // console.log('first leg is waypoing', waypoints[i-1])
-        route.legs[i].start_place = waypoints[i-1];
-      } else if ((i+1) === route.legs.length) {
-        // console.log('last leg is end place')
-        route.legs[i].end_place = endPlace;
-      } else if (waypoints[i]) {
-        // console.log('last leg is waypoint', waypoints[i-1])
-        route.legs[i].end_place = waypoints[i-1];
-      }
+    // get place information for direcctions
+    var i, t = route.legs.length;
+    for (i = 0; i < t; i += 1) {
+      route.legs[i].start_place = placesService.getPlaceByOrder(i+1);
+      route.legs[i].end_place = placesService.getPlaceByOrder(i+2);
     }
 
-
-    console.log('selectedPlaces ordered', selectedPlaces);
+    // update selected places render
+    // console.log('selectedPlaces ordered', selectedPlaces);
     $rootScope.selected.places = selectedPlaces;
-
     if (!$rootScope.$$phase) $rootScope.$apply();
   }
 
@@ -167,7 +156,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     // make sure there's an origin and destination
     if (!origin || !destination) {
       directionsDisplay.set('directions', null);
-      $rootScope.$emit('directionsService:calculating-route-end');
+      $rootScope.$emit(directionsModel.events.calculatingDirectionsEnd);
       return;
     }
 
@@ -197,15 +186,15 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     directionsDisplay.set('directions', null);
   }
 
-  function getStaticMapWithDirections() {
-      var url = 'https://maps.googleapis.com/maps/api/staticmap?';
-      url += 'center=52.370216,4.895168'; // center in Amsterdam
-      // url += '&zoom=14';
-      url += '&size=640x640';
-      url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + route.overview_polyline;
-      url += '&key=' + mapModel.API_KEY;
-      return url;
-  }
+  // function getStaticMapWithDirections() {
+  //     var url = 'https://maps.googleapis.com/maps/api/staticmap?';
+  //     url += 'center=52.370216,4.895168'; // center in Amsterdam
+  //     // url += '&zoom=14';
+  //     url += '&size=640x640';
+  //     url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + route.overview_polyline;
+  //     url += '&key=' + mapModel.API_KEY;
+  //     return url;
+  // }
 
   function getTotalDistance() {
     return directionsModel.distance;
@@ -227,7 +216,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   // public interface
   return {
     cleanRoute: cleanRoute,
-    getStaticMapWithDirections: getStaticMapWithDirections,
+    // getStaticMapWithDirections: getStaticMapWithDirections,
     calculateAndDisplayRoute: calculateAndDisplayRoute,
     getTotalDistance: getTotalDistance,
     getTotalDuration: getTotalDuration,
