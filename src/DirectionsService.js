@@ -55,6 +55,9 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   function reorder() {
 
     var route = directionsModel.route;
+
+    console.log('reordering route', route);
+
     var waypoints = placesService.getWaypoints();
     var selectedPlaces = [];
 
@@ -65,17 +68,21 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       if (startPlaceMarker) {
         startPlaceMarker.order(1);
         selectedPlaces.push(startPlace);
-        // console.log('ordering', 1, startPlace.label, 'startPlace');
+        console.log('ordering', 'startPlace', startPlace.label, 1);
       }
     }
 
-    var waypoint;
+    var waypoint, newOrder;
+    console.log('waypoint_order', route.waypoint_order)
     for (var i = 0; i < route.waypoint_order.length; i += 1) {
-      var marker = markersService.getMarker(waypoints[i]);
+      var place = waypoints[i];
+      var waypointOrder = route.waypoint_order[i];
+      var marker = markersService.getMarker(place);
       if (marker) {
-        marker.order(route.waypoint_order[i] + 2);
-        selectedPlaces[route.waypoint_order[i] + 1] = marker.place;
-        // console.log(i, 'ordering', route.waypoint_order[i] + 2, marker.place.label, 'waypoint');
+        newOrder = waypointOrder + 2
+        marker.order(newOrder);
+        selectedPlaces[waypointOrder + 1] = place;
+        console.log('ordering', i, place.label, 'waypointOrder', waypointOrder, 'newOrder', newOrder);
       }
     }
 
@@ -86,9 +93,15 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       if (endPlaceMarker) {
         selectedPlaces.push(endPlace);
         endPlaceMarker.order(waypoints.length + 2);
-        // console.log('ordering', waypoints.length + 2, endPlace.label, 'endPlace');
+        console.log('ordering', 'endPlace', endPlace.label, waypoints.length + 2);
       }
     }
+
+    var debugSelectedPlaces = [];
+    for (var i = 0; i < selectedPlaces.length; i += 1) {
+      debugSelectedPlaces.push(selectedPlaces[i].label);
+    }
+    console.log('debugSelectedPlaces', debugSelectedPlaces);
 
     // get place information for direcctions
     var i, t = route.legs.length;
@@ -112,8 +125,6 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   function displayDirections(response, status) {
 
     if (status === google.maps.DirectionsStatus.OK) {
-
-      console.log('response', response);
 
       // comunicate state
       $rootScope.$emit(directionsModel.events.displayingDirections);
