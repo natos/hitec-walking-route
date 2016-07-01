@@ -16,84 +16,12 @@ angular
  */
 function MarkersService($rootScope, $timeout, appModel, markersModel, directionsModel, mapModel, mapService, placesService, locationService, Marker) {
 
-  // return true if the mark is selected
-  function isMarkerSelected(marker) {
-    return isMarkSelected(marker.mark);
-  }
-
-  // return true if the mark is selected
-  function isMarkSelected(mark) {
-    var selectedPlaces = placesService.getSelectedPlaces();
-    for (var i = 0; i < selectedPlaces.length; i += 1) {
-      if (selectedPlaces[i].id === mark.id) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   // finds a specific marker given a place
   function getMarker(place) {
     for (var i = 0; i < markersModel.markers.length; i += 1) {
       if (markersModel.markers[i].place.id === place.id) {
         return markersModel.markers[i];
       }
-    }
-  }
-
-  function removeOrderFromMarkers() {
-    for (var i = 0; i < markersModel.markers.length; i += 1) {
-      markersModel.markers[i].pin.setLabel('');
-    }
-  }
-
-  // reorder markers numbers
-  function reorderMarkers() {
-    for (var i = 0; i < markersModel.selectedMarkers.length; i += 1) {
-      markersModel.selectedMarkers[i].mark.order = i + 1;
-      markersModel.selectedMarkers[i].setLabel({
-        color: '#ffffff',
-        text: '' + (i + 1)
-      });
-    }
-  }
-
-  function reorderMarkersFromRoute() {
-
-    removeOrderFromMarkers()
-
-    var route = directionsModel.route;
-    // var route = angular.extend({}, directionsModel.route);
-    var waypoints = placesService.getWaypoints();
-
-    var startPlace = getMarker(placesService.getStartPlace());
-    if (startPlace) {
-      startPlace.order(1);
-      console.log('marker order', 1, startPlace.place.label);
-    }
-
-    console.log('waypoint order', route.waypoint_order);
-
-    for (var i = 0; i < route.waypoint_order.length; i += 1) {
-      var marker = getMarker(waypoints[i]);
-      if (marker) {
-        marker.order(route.waypoint_order[i] + 2);
-        console.log('marker order', route.waypoint_order[i] + 2, marker.place.label);
-      }
-    }
-
-    var endPlace = getMarker(placesService.getEndPlace());
-    if (endPlace && endPlace !== startPlace) {
-      endPlace.order(waypoints.length + 2);
-      console.log('marker order', waypoints.length + 2, endPlace.place.label);
-    }
-  }
-
-  var drops = 0;
-  function areAllMarkersDropped(i, t) {
-    drops += 1;
-    if (drops === t) {
-      $rootScope.$emit('markersService:dropped-pins');
     }
   }
 
@@ -105,16 +33,6 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     for (var i = 0; i < places.length; i += 1) {
       var marker = new Marker(places[i]).render(mapService.getMap());
       markersModel.markers.push(marker);
-    }
-    // console.log('Created Markers', markersModel.markers);
-  }
-
-  // create a collection of markers
-  function dropMarkers(m) {
-    var m = m || placesService.getPlaces();
-    var t = m.length;
-    for (var i = 0; i < t; i += 1) {
-      createMarker(m[i], i, t);
     }
   }
 
@@ -141,13 +59,6 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
         clearMarker(markers[i])
       }
     }
-  }
-
-  function recoverMarkers() {
-    clearMarkers();
-    $timeout(function () {
-      dropMarkers();
-    });
   }
 
   // remove marker from the map
@@ -179,18 +90,13 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
   }
 
   function restartMarkers() {
-    // isFiltering = false;
     cleanMarkers();
-    // cleanFilteredMarkers();
     $timeout(function () {
       createMarkers();
     });
   }
 
   function maximizeMarker(place_id) {
-    // var position = markersModel.markers.indexOf(place);
-    // markersModel.markers[position].maximize();
-
     for (var i = 0; i < markersModel.markers.length; i += 1) {
       if (markersModel.markers[i]) {
         if (place_id === markersModel.markers[i].place.id) {
@@ -198,7 +104,6 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
         }
       }
     }
-    // console.log('markersModel.markers[position]', markersModel.markers[position])
   }
 
   function getMarkerByLocation(location) {
@@ -211,24 +116,27 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
     return false;
   }
 
+  function getMarkerByOrder(order) {
+    for (var i = 0; i < markersModel.markers.length; i += 1) {
+      if (markersModel.markers[i].place.order === order) {
+        return markersModel.markers[i];
+      }
+    }
+    return false;
+  }
+
   /* delegate */
 
   $rootScope.$on(mapModel.events.restart, restartMarkers);
-  // $rootScope.$on(directionsModel.events.displayedDirections, reorderMarkersFromRoute);
   $rootScope.$on('mapController:restart-map', restartMarkers);
-  $rootScope.$on('mapController:set-print-mode', cleanUnselectedMarkers);
-  $rootScope.$on('mapController:unset-print-mode', recoverMarkers);
-  // $rootScope.$on('categoriesService:updated', filterByCategories);
-
 
   // public interface
   return {
     getMarker: getMarker,
-    dropMarkers: dropMarkers,
     createMarkers: createMarkers,
     maximizeMarker: maximizeMarker,
     dropYourLocationPin: dropYourLocationPin,
-    // reorderMarkersFromRoute: reorderMarkersFromRoute,
-    getMarkerByLocation: getMarkerByLocation
+    getMarkerByLocation: getMarkerByLocation,
+    getMarkerByOrder: getMarkerByOrder
   };
 }
