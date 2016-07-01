@@ -38,22 +38,21 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
+        "id": "ChIJ3UYLU3XixUcRlxW4bSCFqdQ",
+        "label": "Foodhallen",
+        "website": "http://www.foodhallen.nl",
+        "category": "Restaurants",
         "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Putamus parum claram anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Legentis in iis: qui ii legunt saepius claritas. Luptatum zzril delenit augue duis congue nihil imperdiet doming.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
+            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
         ],
         "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/avatars/AndreaClarke.jpg"
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/avatars/MarieBennett.jpg"
         },
         "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
+            "x2": "assets/img/x2/bloemenmarkt.jpg",
+            "x3": "assets/img/x3/bloemenmarkt.jpg"
         }
     },
     {
@@ -75,21 +74,22 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ3UYLU3XixUcRlxW4bSCFqdQ",
-        "label": "Foodhallen",
-        "website": "http://www.foodhallen.nl",
-        "category": "Restaurants",
+        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
+        "label": "Hi-Tec Store",
+        "website": "http://www.hi-tec.amsterdam",
         "content": [
-            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
+            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
+            "Putamus parum claram anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Legentis in iis: qui ii legunt saepius claritas. Luptatum zzril delenit augue duis congue nihil imperdiet doming.",
+            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
         ],
         "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/avatars/MarieBennett.jpg"
+            "name": "Andrea Clarke",
+            "role": "Entrepreneur",
+            "picture": "assets/img/avatars/AndreaClarke.jpg"
         },
         "media": {
-            "x2": "assets/img/x2/bloemenmarkt.jpg",
-            "x3": "assets/img/x3/bloemenmarkt.jpg"
+            "x2": "assets/img/x2/hitecstore.jpg",
+            "x3": "assets/img/x3/hitecstore.jpg"
         }
     },
     {
