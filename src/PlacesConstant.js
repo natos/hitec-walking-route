@@ -92,43 +92,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
-        "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
-        ],
-        "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/author/AndreaClarke.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
-        }
-    },
-    {
-        "id": "ChIJ6XBeeuoJxkcRxkGkr5WBeKw",
-        "label": "Lion Noir",
-        "website": "http://www.lionnoir.nl",
-        "region": "West",
-        "category": "Restaurants",
-        "content": [
-            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
-        ],
-        "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/author/MarieBennett.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/lionnoir.jpg",
-            "x3": "assets/img/x3/lionnoir.jpg"
-        }
-    },
-    {
         "id": "ChIJcUanY84JxkcRANelYPRjAIw",
         "label": "Vesper Bar",
         "website": "http://www.vesperbar.nl",
