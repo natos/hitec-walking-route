@@ -19,12 +19,13 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ3UYLU3XixUcRlxW4bSCFqdQ",
-        "label": "Foodhallen",
-        "website": "http://www.foodhallen.nl",
-        "category": "Restaurants",
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Bloemenmarkt",
+        "category": "Markets",
         "content": [
-            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
+            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim.",
+            "Eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.",
+            "Id quod mazim placerat facer, possim assum typi non habent claritatem insitam est usus legentis in. Consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat! Te feugait nulla facilisi nam liber tempor cum soluta. Consequat duis autem vel eum iriure dolor in hendrerit in vulputate velit."
         ],
         "author": {
             "name": "Marie Bennett",
@@ -55,13 +56,30 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Bloemenmarkt",
-        "category": "Markets",
+        "id": "ChIJezIPCY8JxkcRgdqv8FrYp8U",
+        "label": "Juice Brothers",
+        "website": "http://www.juicebro.com",
+        "category": "Healthy Bars",
         "content": [
-            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim.",
-            "Eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.",
-            "Id quod mazim placerat facer, possim assum typi non habent claritatem insitam est usus legentis in. Consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat! Te feugait nulla facilisi nam liber tempor cum soluta. Consequat duis autem vel eum iriure dolor in hendrerit in vulputate velit."
+            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
+        ],
+        "author": {
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/author/MarieBennett.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/juicebrothers.jpg",
+            "x3": "assets/img/x3/juicebrothers.jpg"
+        }
+    },
+    {
+        "id": "ChIJ3UYLU3XixUcRlxW4bSCFqdQ",
+        "label": "Foodhallen",
+        "website": "http://www.foodhallen.nl",
+        "category": "Restaurants",
+        "content": [
+            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim."
         ],
         "author": {
             "name": "Marie Bennett",
@@ -92,24 +110,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJezIPCY8JxkcRgdqv8FrYp8U",
-        "label": "Juice Brothers",
-        "website": "http://www.juicebro.com",
-        "category": "Healthy Bars",
-        "content": [
-            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
-        ],
-        "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/author/MarieBennett.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/juicebrothers.jpg",
-            "x3": "assets/img/x3/juicebrothers.jpg"
-        }
-    },
-    {
         "id": "ChIJ6XBeeuoJxkcRxkGkr5WBeKw",
         "label": "Lion Noir",
         "website": "http://www.lionnoir.nl",
@@ -129,21 +129,21 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ-e1IGhTixUcRy260F0WUXj4",
-        "label": "Rembrandtpark",
-        "category": "Typical Amsterdam",
+        "id": "ChIJcUanY84JxkcRANelYPRjAIw",
+        "label": "Vesper Bar",
+        "website": "http://www.vesperbar.nl",
+        "category": "Local Hotspots",
         "content": [
-            "Iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla. Option congue nihil imperdiet doming id quod mazim placerat facer possim.",
-            "Minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea! Facilisi nam liber tempor cum soluta nobis eleifend assum typi non habent claritatem insitam est."
+            "Boutique Bar Vesper is located in the middle of the Jordaan area in Amsterdam, between the trendy Haarlemmerdijk shopping district and the Brouwersgracht. Vesper has a large variety of great wines, beers and an extensive cocktail list. Due to the intimate character of the bar, Vesper is a great location for a small get- together, cocktail parties or just a nice drink after a long walk."
         ],
         "author": {
-            "name": "Shannon Banks",
-            "role": "Fashion designer",
-            "picture": "assets/img/author/ShannonBanks.jpg"
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/annefrank.jpg",
-            "x3": "assets/img/x3/annefrank.jpg"
+            "x2": "assets/img/x2/vesperbar.jpg",
+            "x3": "assets/img/x3/vesperbar.jpg"
         }
     }
 ]);
