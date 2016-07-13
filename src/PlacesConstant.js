@@ -23,9 +23,7 @@ angular.module('App').constant('places', [
         "label": "Bloemenmarkt",
         "category": "Markets",
         "content": [
-            "Esse molestie consequat vel illum dolore eu feugiat. Modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Ut laoreet dolore magna aliquam erat volutpat ut wisi enim. Per seacula quarta decima et quinta decima eodem. In iis qui facit eorum, claritatem Investigationes demonstraverunt lectores legere me. Eleifend option congue nihil imperdiet doming id quod mazim.",
-            "Eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue.",
-            "Id quod mazim placerat facer, possim assum typi non habent claritatem insitam est usus legentis in. Consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat! Te feugait nulla facilisi nam liber tempor cum soluta. Consequat duis autem vel eum iriure dolor in hendrerit in vulputate velit."
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
         ],
         "author": {
             "name": "Marie Bennett",
@@ -35,24 +33,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/bloemenmarkt.jpg",
             "x3": "assets/img/x3/bloemenmarkt.jpg"
-        }
-    },
-    {
-        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
-        "label": "Cannibale Royale",
-        "website": "http://www.cannibaleroyale.nl",
-        "category": "Restaurants",
-        "content": [
-            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
-        ],
-        "author": {
-            "name": "Marie Bennett",
-            "role": "Architect",
-            "picture": "assets/img/author/MarieBennett.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/cannibaleroyale.jpg",
-            "x3": "assets/img/x3/cannibaleroyale.jpg"
         }
     },
     {
@@ -71,6 +51,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/juicebrothers.jpg",
             "x3": "assets/img/x3/juicebrothers.jpg"
+        }
+    },
+    {
+        "id": "Ei5SdXlzZGFlbGthZGUgMTQ5LCAxMDcyIEFSIEFtc3RlcmRhbSwgTmVkZXJsYW5k",
+        "label": "Cannibale Royale",
+        "website": "http://www.cannibaleroyale.nl",
+        "category": "Restaurants",
+        "content": [
+            "Cannibale Royale, brasserie extraordinaire fulfills all needs for anyone who loves good food, lots of meat, exotic beers and the most beautiful wines."
+        ],
+        "author": {
+            "name": "Marie Bennett",
+            "role": "Architect",
+            "picture": "assets/img/author/MarieBennett.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/cannibaleroyale.jpg",
+            "x3": "assets/img/x3/cannibaleroyale.jpg"
         }
     },
     {
