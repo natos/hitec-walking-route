@@ -35,25 +35,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
-        "label": "Bakers & Roasters",
-        "website": "http://www.bakersandroasters.com",
-        "category": "Breakfast & Lunch",
-        "content": [
-            "After meeting on a night out in West Hollywood, a young Kiwi Lad and a young Brazilian Boy came up with the idea that they would some day open a place, combining everything they missed about their homelands- Their Mothers cooking, their favorite street foods and the most delicious coffee. Wrap it all up with the hospitality their Mums taught them so well and Bakers & Roasters was born.",
-            "B&R is a New Zealand style café served with a heavy dose of Brazil right here in Amsterdam. The open kitchen produces all your favourite brunch dishes, fresh fruit salads, and kiwi-twisted baked goods all day long. All our cakes are made in-house and our Ozone coffee is always served as doubles."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/bakersandroasters.jpg",
-            "x3": "assets/img/x3/bakersandroasters.jpg"
-        }
-    },
-    {
         "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
         "label": "The Breakfast Club",
         "website": "https://www.thebreakfastclub.nl/",
@@ -70,6 +51,25 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/breakfastclub.jpg",
             "x3": "assets/img/x3/breakfastclub.jpg"
+        }
+    },
+    {
+        "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
+        "label": "Bakers & Roasters",
+        "website": "http://www.bakersandroasters.com",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "After meeting on a night out in West Hollywood, a young Kiwi Lad and a young Brazilian Boy came up with the idea that they would some day open a place, combining everything they missed about their homelands- Their Mothers cooking, their favorite street foods and the most delicious coffee. Wrap it all up with the hospitality their Mums taught them so well and Bakers & Roasters was born.",
+            "B&R is a New Zealand style café served with a heavy dose of Brazil right here in Amsterdam. The open kitchen produces all your favourite brunch dishes, fresh fruit salads, and kiwi-twisted baked goods all day long. All our cakes are made in-house and our Ozone coffee is always served as doubles."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/bakersandroasters.jpg",
+            "x3": "assets/img/x3/bakersandroasters.jpg"
         }
     },
     {
