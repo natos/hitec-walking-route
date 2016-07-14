@@ -11,8 +11,8 @@
     </div>
   </section>
   <span flex></span>
-  <footer layout="row" class="fade" ng-if="true">
-    <div layout="row" layout-align="start center">
+  <footer layout="row">
+    <div layout="row" layout-align="start center" ng-if="hasAuthor()">
       <img class="avatar" ng-src="{{marker.place.author.picture}}">
       <span>{{marker.place.author.name}}, <br>{{marker.place.author.role}}</span>
     </div>

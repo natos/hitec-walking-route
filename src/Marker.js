@@ -161,6 +161,9 @@ function MarkerFactory($rootScope, $mdDialog, $timeout, markersModel, appModel, 
       addToRoute();
     }
 
+    function hasAuthor() {
+      return marker.place.author.name && marker.place.author.name !== '';
+    }
     /**
      * Marker Detail controller
      */
@@ -171,6 +174,7 @@ function MarkerFactory($rootScope, $mdDialog, $timeout, markersModel, appModel, 
       $scope.setStart = setStart;
       $scope.setEnd = setEnd;
       $scope.closeDialog = closeDialog;
+      $scope.hasAuthor = hasAuthor;
     }
   };
 
