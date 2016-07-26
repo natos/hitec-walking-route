@@ -56,7 +56,6 @@ function MarkersService($rootScope, $timeout, appModel, markersModel, directions
 
   // unselect markers
   function cleanMarkers() {
-    // markersModel.markers.push(marker);
     for (var i = 0; i < markersModel.markers.length; i += 1) {
       markersModel.markers[i].remove();
     }
