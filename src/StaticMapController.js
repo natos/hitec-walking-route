@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller('StaticMapController', [
     '$scope', '$rootScope', '$window',
-    'appModel',
+    'appModel', 'mapModel',
     StaticMapController
   ]);
 
@@ -12,7 +12,7 @@ angular
  * @param avatarsService
  * @constructor
  */
-function StaticMapController($scope, $rootScope, $window, appModel) {
+function StaticMapController($scope, $rootScope, $window, appModel, mapModel) {
 
   if (!google || !google.maps) {
     console.error('Google Maps API is unavailable.');
@@ -20,16 +20,12 @@ function StaticMapController($scope, $rootScope, $window, appModel) {
 
   var self = this;
 
-      self.cancel = function() {
-        $rootScope.$emit(appModel.events.prevState);
-      };
+  self.cancel = function() {
+    $rootScope.$emit(appModel.events.prevState);
+  };
 
-      self.print = function() {
-        $window.print();
-      };
-
-  /* delegate */
-
-  // $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
+  self.print = function() {
+    $window.print();
+  };
 
 }
