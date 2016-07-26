@@ -19,10 +19,6 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
   (function getPlaces() {
     var service = new google.maps.places.PlacesService(mapService.getMap());
     var places = 0, total = placesModel.places.length;
-    function placeLoaded() {
-      places += 1;
-      if (places === (total-1)) $rootScope.$emit(placesModel.events.placesReady);
-    }
     for (var i = 0; i < total; i += 1) {
       // Keep reference in the closure
       // while async requests come back
@@ -44,16 +40,18 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
             placesModel.places[position].address = results.formatted_address;
             placesModel.places[position].vicinity = results.vicinity;
 
+            // Categrize Places
             if (placesModel.placesByCategory[placesModel.places[position].category]) {
               placesModel.placesByCategory[placesModel.places[position].category].push(placesModel.places[position]);
             }
-
-            // placeLoaded();
           } else {
             console.log('Result Failed', place.id, place.label);
             console.log(results, status);
           }
-          placeLoaded();
+          // Count loaded place
+          if ((places += 1) === (total-1)) {
+            $rootScope.$emit(placesModel.events.placesReady);
+          }
         });
       })(i);
     }
