@@ -25,7 +25,7 @@ function DirectionsController($scope, $rootScope, appModel, directionsModel, dir
       self.distance = directionsService.getTotalDistance();
       self.duration = directionsService.getTotalDuration();
 
-      console.log('directions', self.route);
+      // console.log('directions', self.route);
 
   /* delegate */
 
