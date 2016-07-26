@@ -401,7 +401,8 @@ selecting-start {
   width: 95%;
 }
 
-.loading-route-content {
+.loading-route-content,
+.loading-route-content .loading {
   padding: 2em;
   text-align: center;
 }
@@ -481,6 +482,7 @@ md-progress-linear.md-default-theme[md-mode=buffer].md-warn ._md-bar1, md-progre
 }
 .marker-detail > section {
   padding: 0 2em;
+  overflow: auto;
 }
 .marker-detail > footer {
   padding: 0 1em;
