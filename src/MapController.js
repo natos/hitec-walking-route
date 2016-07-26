@@ -34,49 +34,46 @@ function MapController($scope, $rootScope, $window, appModel, mapModel, directio
       markersService.createMarkers();
       markersService.dropYourLocationPin();
       directionsService.calculateAndDisplayRoute();
-      mapService.getReady();
       transitionToRoute();
-      centerMap();
-
+    }
+    if (appModel.state.isReviewing() || appModel.state.isPrinting()) {
+      // if any dialog is open
+      closeDialog();
+      // adjust UI
+      if (appModel.state.isReviewing()) {
+        angular.element(document.getElementById('map')).removeClass('printing');
+      }
+      if (appModel.state.isPrinting()) {
+        angular.element(document.getElementById('map')).addClass('printing');
+      }
+      // sidebar will show or hide
+      // trigger behaviors to fix map positining
+      $timeout(triggerResize, 1);
+      $timeout(mapService.getReady, 2);
+    } else {
+      unsetReady();
     }
     if (appModel.state.isReviewing()) {
-      $timeout(centerMap);
-      $timeout(closeDialog, 700);
-      $timeout(setReady, 1500);
-    }
-    if (appModel.state.isPrinting()) {
-      $timeout(function() { window.dispatchEvent(new Event('resize')); });
+      setReady();
     }
     // apply state change
     if (!$rootScope.$$phase) $rootScope.$apply();
   }
 
-  function print() {
-    $rootScope.$broadcast('mapController:print');
-    $window.print();
-  }
-
-  function setPrintMode() {
-    $rootScope.$broadcast('mapController:set-print-mode');
-    // self.staticMapURL = directionsService.getStaticMapWithDirections();
-    // self.directions = directionsService.calculateDirections().get();
-    $timeout(function() {
-      self.printMode = true;
-    });
-  }
-
-  function unsetPrintMode() {
-    self.directions = null;
-    self.printMode = false;
-    $rootScope.$broadcast('mapController:unset-print-mode');
+  function triggerResize() {
+    window.dispatchEvent(new Event('resize'));
   }
 
   function centerMap() {
-    $rootScope.$broadcast('mapController:center-map');
+    $rootScope.$broadcast(mapModel.events.center);
   }
 
   function startOver() {
     $rootScope.$broadcast(mapModel.events.restart);
+    self.ready = false;
+  }
+
+  function unsetReady() {
     self.ready = false;
   }
 
