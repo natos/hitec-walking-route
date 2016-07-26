@@ -17,6 +17,25 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
+        "label": "Bakers & Roasters",
+        "website": "http://www.bakersandroasters.com",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "After meeting on a night out in West Hollywood, a young Kiwi Lad and a young Brazilian Boy came up with the idea that they would some day open a place, combining everything they missed about their homelands- Their Mothers cooking, their favorite street foods and the most delicious coffee. Wrap it all up with the hospitality their Mums taught them so well and Bakers & Roasters was born.",
+            "B&R is a New Zealand style café served with a heavy dose of Brazil right here in Amsterdam. The open kitchen produces all your favourite brunch dishes, fresh fruit salads, and kiwi-twisted baked goods all day long. All our cakes are made in-house and our Ozone coffee is always served as doubles."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/bakersandroasters.jpg",
+            "x3": "assets/img/x3/bakersandroasters.jpg"
+        }
+    },
+    {
         "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
         "label": "Anne Frank House",
         "category": "Typical Amsterdam",
@@ -54,25 +73,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
-        "label": "Bakers & Roasters",
-        "website": "http://www.bakersandroasters.com",
-        "category": "Breakfast & Lunch",
-        "content": [
-            "After meeting on a night out in West Hollywood, a young Kiwi Lad and a young Brazilian Boy came up with the idea that they would some day open a place, combining everything they missed about their homelands- Their Mothers cooking, their favorite street foods and the most delicious coffee. Wrap it all up with the hospitality their Mums taught them so well and Bakers & Roasters was born.",
-            "B&R is a New Zealand style café served with a heavy dose of Brazil right here in Amsterdam. The open kitchen produces all your favourite brunch dishes, fresh fruit salads, and kiwi-twisted baked goods all day long. All our cakes are made in-house and our Ozone coffee is always served as doubles."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/bakersandroasters.jpg",
-            "x3": "assets/img/x3/bakersandroasters.jpg"
-        }
-    },
-    {
         "id": "ChIJ__r9yvMJxkcR2Cu56FMSR7A",
         "label": "Cannibale Royale",
         "website": "http://www.cannibaleroyale.nl",
@@ -89,41 +89,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/cannibaleroyale.jpg",
             "x3": "assets/img/x3/cannibaleroyale.jpg"
-        }
-    },
-    {
-        "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
-        "label": "Dr.Blend",
-        "website": "http://www.drblend.nl",
-        "category": "Healthy Bars",
-        "content": [
-            "At Dr. Blend they blend the most delicious and healthiest smoothies, juices, serve the tastiest wraps, sandwiches, salads, yoghurt and many more, made with the greatest passion and care!"
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/drblend.jpg",
-            "x3": "assets/img/x3/drblend.jpg"
-        }
-    },
-    {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
-        "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
         }
     },
     {
@@ -145,6 +110,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
+        "label": "Dr.Blend",
+        "website": "http://www.drblend.nl",
+        "category": "Healthy Bars",
+        "content": [
+            "At Dr. Blend they blend the most delicious and healthiest smoothies, juices, serve the tastiest wraps, sandwiches, salads, yoghurt and many more, made with the greatest passion and care!"
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/drblend.jpg",
+            "x3": "assets/img/x3/drblend.jpg"
+        }
+    },
+    {
         "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
         "label": "Hortus Botanicus",
         "website": "http://www.dehortus.nl",
@@ -160,6 +143,23 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/hortus.jpg",
             "x3": "assets/img/x3/hortus.jpg"
+        }
+    },
+    {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
         }
     },
     {
@@ -181,6 +181,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
+        "label": "Rembrandt House Museum",
+        "website": "http://www.rembrandthuis.nl/en/",
+        "category": "Art & Musea",
+        "content": [
+            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/rembrandthouse.jpg",
+            "x3": "assets/img/x3/rembrandthouse.jpg"
+        }
+    },
+    {
         "id": "ChIJ6XBeeuoJxkcRHBnYtomuArg",
         "label": "Lion Noir",
         "website": "http://www.lionnoir.nl",
@@ -197,24 +215,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/lionnoir.jpg",
             "x3": "assets/img/x3/lionnoir.jpg"
-        }
-    },
-    {
-        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
-        "label": "Rembrandt House Museum",
-        "website": "http://www.rembrandthuis.nl/en/",
-        "category": "Art & Musea",
-        "content": [
-            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/rembrandthouse.jpg",
-            "x3": "assets/img/x3/rembrandthouse.jpg"
         }
     },
     {

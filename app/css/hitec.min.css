@@ -2787,7 +2787,7 @@ selecting-places,selecting-start{z-index:98}
 #sidebar .places{top:0;left:0;padding-top:70px;padding-bottom:70px;overflow:scroll}
 #sidebar .actions{position:absolute;bottom:1rem;right:1rem;left:1rem}
 #sidebar .actions button{width:95%}
-.loading-route-content{padding:2em;text-align:center}
+.loading-route-content,.loading-route-content .loading{padding:2em;text-align:center}
 md-progress-linear.md-default-theme.md-warn ._md-bar,md-progress-linear.md-warn ._md-bar{background-color:#54bceb}
 md-progress-linear.md-default-theme[md-mode=buffer].md-warn ._md-bar1,md-progress-linear[md-mode=buffer].md-warn ._md-bar1{background-color:rgba(84,188,235,.6)}
 .place-list{overflow:visible;position:relative;width:287px;height:110px;border-radius:0;margin:0 0 1px}
@@ -2798,7 +2798,7 @@ md-progress-linear.md-default-theme[md-mode=buffer].md-warn ._md-bar1,md-progres
 .place-list-chip{border-radius:100%;text-align:center;line-height:2em;width:2em;height:2em;margin:0 1em;background:#333;color:#fff}
 .marker-detail{max-width:600px}
 .marker-detail>header{position:relative;margin:0;padding:0;min-height:400px;background-size:cover;background-position:center center}
-.marker-detail>section{padding:0 2em}
+.marker-detail>section{padding:0 2em;overflow:auto}
 .marker-detail>footer{padding:0 1em}
 .marker-detail .close.md-button{margin:0;padding:2em}
 #sidebar .directions .md-button{display:inline-block}
@@ -2856,8 +2856,8 @@ md-backdrop.md-opaque,md-backdrop.md-opaque.md-default-theme{background-color:#f
 @keyframes fade_in_animation{from{opacity:0}
 to{opacity:1}
 }
-@-webkit-keyframes fade_in_animation{from{opacity:1}
-to{opacity:0}
+@-webkit-keyframes fade_in_animation{from{opacity:0}
+to{opacity:1}
 }
 .fade.ng-leave{animation:fade_out_animation .25s linear;-webkit-animation:fade_out_animation .25s linear}
 @keyframes fade_out_animation{from{opacity:1}
