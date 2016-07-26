@@ -13,13 +13,6 @@ angular
  */
 function MapService($rootScope, $window, $timeout, mapModel, locationService) {
 
-  function centerMap() {
-    var map = getMap();
-    map.setCenter(locationService.getCurrentLocation() || mapModel.config.center);
-    map.setZoom(mapModel.config.zoom);
-    return map;
-  }
-
   function getMap() {
     if (mapModel.map) { return mapModel.map; }
     mapModel.map = new google.maps.Map(document.getElementById('map'), mapModel.config);
@@ -27,17 +20,27 @@ function MapService($rootScope, $window, $timeout, mapModel, locationService) {
     return mapModel.map;
   }
 
+  function centerMap() {
+    var map = getMap();
+    if (!map) { return; }
+    map.setCenter(locationService.getCurrentLocation() || mapModel.config.center);
+    map.setZoom(mapModel.config.zoom);
+    return map;
+  }
+
   function getReady() {
-    if (mapModel.map) { return; }
-    google.maps.event.trigger(mapModel.map, 'resize');
-    $timeout(centerMap);
+    var map = getMap();
+    if (!map) { return; }
+    google.maps.event.trigger(map, 'resize');
+    centerMap();
+    return map;
   }
 
   // delegate
-  $rootScope.$on('mapController:center-map', centerMap);
-  $rootScope.$on('markersService:cleaned-markers', centerMap);
+  $rootScope.$on(mapModel.events.center, centerMap);
 
-  angular.element($window).bind('resize', getReady);
+  // adjust map on window events
+  google.maps.event.addDomListener(window, "resize", getReady);
 
   // public interface
   return {
