@@ -47,9 +47,13 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     // round seconds
     seconds = Math.round(seconds * 100) / 100
 
-    var result = (hours < 10 ? "0" + hours : hours);
-        result += ":" + (minutes < 10 ? "0" + minutes : minutes);
-        result += ":" + (seconds  < 10 ? "0" + seconds : seconds);
+    // var result = (hours < 10 ? "0" + hours : hours);
+    //     result += ":" + (minutes < 10 ? "0" + minutes : minutes);
+    //     result += ":" + (seconds  < 10 ? "0" + seconds : seconds);
+
+    var result = (hours > 0 ? hours + " hs ": "");
+        result += (minutes > 0 ? minutes + " min" : "");
+
     return result;
   }
 
