@@ -117,7 +117,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
 
     if (status === google.maps.DirectionsStatus.OK) {
 
-      console.log('response', response);
+      // console.log('response', response);
 
       // comunicate state
       $rootScope.$emit(directionsModel.events.displayingDirections);
