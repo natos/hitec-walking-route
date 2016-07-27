@@ -52,10 +52,10 @@
     "build:templates": "node ./build/build-templates.js",
     "build:content": "node ./build/build-content.js && npm run build:assets",
 
-    "watch:js": "nodemon --watch 'src' -e 'js' --exec 'npm run build:js'",
-    "watch:css": "nodemon --watch 'css' -e 'css' --exec 'npm run build:css'",
-    "watch:templates": "nodemon --watch 'js' -e 'html' --exec 'npm run build:templates'",
-    "watch:content": "nodemon --watch 'content' -e 'yaml' --exec 'npm run build:content'",
+    "watch:js": "nodemon --watch 'src' -e 'js' --exec 'npm run build:js && browser-sync reload'",
+    "watch:css": "nodemon --watch 'css' -e 'css' --exec 'npm run build:css && browser-sync reload'",
+    "watch:templates": "nodemon --watch 'src' -e 'html' --exec 'npm run build:templates'",
+    "watch:content": "nodemon --watch 'content' -e 'yaml' --exec 'npm run build:content && browser-sync reload'",
 
     "serve": "browser-sync start --no-notify --s 'app' --ss 'app/assets' --files 'app/*'"
   }
