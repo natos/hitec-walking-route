@@ -197,6 +197,14 @@ md-card label p {
   opacity: 1;
 }
 
+.place.disabled {
+  opacity: .25;
+}
+.place.disabled label,
+.place.disabled input {
+   cursor: not-allowed;
+ }
+
 .place label {
   cursor: pointer;
   text-transform: uppercase;

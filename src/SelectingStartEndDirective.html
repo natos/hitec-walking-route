@@ -26,14 +26,14 @@
     <h3>End location</h3>
   </header>
   <div class="places fade" layout="row" layout-align="start none" layout-wrap ng-if="selected.start">
-    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{selected: selected.end === place.id}">
+    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{selected: selected.end === place.id, disabled: place.id === selected.start}">
       <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
         <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
       </label>
       <md-card-actions>
         <label for="endPlace{{place.id}}" layout="row" layout-align="space-between center">
           <p>{{place.label}}</p>
-          <input id="endPlace{{place.id}}" name="endPlace" type="radio" ng-model="selected.end" ng-value="place.id">
+          <input id="endPlace{{place.id}}" name="endPlace" type="radio" ng-model="selected.end" ng-value="place.id" ng-disabled="place.id === selected.start">
         </label>
       </md-card-actions>
     </md-card>
