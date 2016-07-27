@@ -18,13 +18,13 @@ angular
      * Directions Model duration information
      * @public
      */
-    this.duration = { value: 0, min: 0 };
+    this.duration = { value: 0, text: '' };
 
     /**
      * Directions Model distance information
      * @public
      */
-    this.distance = { value: 0, min: 0 };
+    this.distance = { value: 0, text: '' };
 
     /**
      * Directions Model events dictionary

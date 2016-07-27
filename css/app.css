@@ -380,13 +380,18 @@ selecting-start {
 #sidebar md-list .md-button.selected {
   color: #03a9f4;
 }
+#sidebar .totals {
+  margin: 1rem;
+  text-align: center;
+  font-size: .75em;
+}
 #sidebar .places {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding-top: 70px;
+  padding-top: 120px;
   padding-bottom: 70px;
   overflow: scroll;
 }

@@ -2,8 +2,7 @@ angular
   .module('App')
   .controller('DirectionsController', [
     '$scope', '$rootScope',
-    'appModel', 'directionsModel',
-    'directionsService', 'markersService',
+    'directionsService',
     DirectionsController
   ]);
 
@@ -13,7 +12,7 @@ angular
  * @param avatarsService
  * @constructor
  */
-function DirectionsController($scope, $rootScope, appModel, directionsModel, directionsService, markersService) {
+function DirectionsController($scope, $rootScope, directionsService) {
 
   if (!google || !google.maps) {
     console.error('Google Maps API is unavailable.');
@@ -24,11 +23,5 @@ function DirectionsController($scope, $rootScope, appModel, directionsModel, dir
       self.route = directionsService.getCurrentRoute();
       self.distance = directionsService.getTotalDistance();
       self.duration = directionsService.getTotalDuration();
-
-      // console.log('directions', self.route);
-
-  /* delegate */
-
-  // $rootScope.$on(appModel.events.stateChanged, currentStateChanged);
 
 }

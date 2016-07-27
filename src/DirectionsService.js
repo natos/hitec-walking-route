@@ -35,17 +35,48 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   directionsDisplay.setOptions(directionsModel.options);
 
   /**
+   * Convert seconds to hh-mm-ss.
+   * @private
+   * @param {number} totalSeconds - the total seconds to convert to hh- mm-ss
+  **/
+  function secondsToTimeFormat(totalSeconds) {
+    var hours   = Math.floor(totalSeconds / 3600);
+    var minutes = Math.floor((totalSeconds - (hours * 3600)) / 60);
+    var seconds = totalSeconds - (hours * 3600) - (minutes * 60);
+
+    // round seconds
+    seconds = Math.round(seconds * 100) / 100
+
+    var result = (hours < 10 ? "0" + hours : hours);
+        result += ":" + (minutes < 10 ? "0" + minutes : minutes);
+        result += ":" + (seconds  < 10 ? "0" + seconds : seconds);
+    return result;
+  }
+
+  /**
+   * Convert meters to Km.
+   * @private
+   * @param {number} totalMeters - the total meters to convert to km
+  **/
+  function metersToKmFormat(totalMeters) {
+    return Math.round(totalMeters / 1000 * 10) / 10;
+  }
+
+  /**
    * Collect time and distance information from route
    * @public
    */
   function collectTimeAndDistance() {
+    // Reset previous values
+    directionsModel.duration.value = 0;
+    directionsModel.distance.value = 0;
     // Collect time and distance information
     for (var i = 0; i < directionsModel.route.legs.length; i++) {
-        directionsModel.duration.value += directionsModel.route.legs[i].duration.value / 60; // to minutes
-        directionsModel.distance.value += directionsModel.route.legs[i].distance.value / 1000; // to km
+        directionsModel.duration.value += directionsModel.route.legs[i].duration.value; // seconds
+        directionsModel.distance.value += directionsModel.route.legs[i].distance.value; // meters
     }
-    directionsModel.duration.min = (Math.round(directionsModel.duration.value * 100) / 100);
-    directionsModel.distance.km = (Math.round(directionsModel.distance.value * 10) / 10);
+    directionsModel.duration.text = secondsToTimeFormat(directionsModel.duration.value);
+    directionsModel.distance.text = metersToKmFormat(directionsModel.distance.value) + ' km'; // to km
   }
 
   /**
@@ -203,8 +234,6 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
 
   // delegate
   $rootScope.$on('mapController:restart-map', cleanRoute);
-  // $rootScope.$on('markersService:toggled-mark', calculateAndDisplayRoute);
-  // $rootScope.$on('markersService:dropped-pins', calculateAndDisplayRoute);
 
   // public interface
   return {
