@@ -2735,7 +2735,7 @@ md-tooltip._md-show{-webkit-transition:all .4s cubic-bezier(.25,.8,.25,1);transi
 @font-face{font-family:hi-tec-icon-font;src:url(../assets/fonts/hi-tec-icon-font.eot);src:url(../assets/fonts/hi-tec-icon-font.eot?#iefix) format("embedded-opentype"),url(../assets/fonts/hi-tec-icon-font.woff) format("woff"),url(../assets/fonts/hi-tec-icon-font.ttf) format("truetype"),url(../assets/fonts/hi-tec-icon-font.svg#hi-tec-icon-font) format("svg");font-weight:400;font-style:normal}
 body,body.md-default-theme,html,html.md-default-theme{font-family:FranklinGothicURW-Boo,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.42857;color:#333;height:100%;margin:0;padding:0;background-color:#f1f1f2}
 h1,h2{font-family:AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
-h3,h4{margin:45px 0 25px;position:relative;color:#333;text-align:center;text-transform:uppercase}
+h3,h4{margin:45px 0 25px;position:relative;text-transform:uppercase;color:#333;text-align:center}
 body,html{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 h1{font-size:40px;font-weight:400;color:#333}
 h3{font:1.25em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
@@ -2755,7 +2755,9 @@ md-card{box-shadow:none}
 md-card label p{font-family:AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 .places .place{max-width:287px;-webkit-transition:all .4s ease-out 50ms;transition:all .4s ease-out 50ms;-webkit-transform:scale3d(.95,.95,1);transform:scale3d(.95,.95,1)}
 .place.selected{box-shadow:0 0 3px 3px #54bceb;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1);opacity:1}
-.place label{cursor:pointer;text-transform:uppercase}
+.place.disabled{opacity:.25}
+.place.disabled input,.place.disabled label{cursor:not-allowed}
+.place label,button.md-button{cursor:pointer;text-transform:uppercase}
 .places .place md-card-actions label{padding:8px;line-height:.8}
 .place-order{background-color:#54bceb;color:#fff;border-radius:100%;width:2em;height:2em;line-height:1em;text-align:center;display:block;position:absolute;bottom:1em;right:1em}
 .fullscreen md-content{padding-bottom:100px}
@@ -2784,7 +2786,8 @@ selecting-places,selecting-start{z-index:98}
 #sidebar md-list{width:287px;padding:0 0 8px;top:0;background:rgba(255,255,255,.9)}
 #sidebar md-list-item>button{width:100%;text-align:left!important}
 #sidebar md-list .md-button.selected{color:#03a9f4}
-#sidebar .places{top:0;left:0;padding-top:70px;padding-bottom:70px;overflow:scroll}
+#sidebar .totals{margin:1rem;text-align:center;font-size:.75em}
+#sidebar .places{top:0;left:0;padding-top:120px;padding-bottom:70px;overflow:scroll}
 #sidebar .actions{position:absolute;bottom:1rem;right:1rem;left:1rem}
 #sidebar .actions button{width:95%}
 .loading-route-content,.loading-route-content .loading{padding:2em;text-align:center}
@@ -2810,7 +2813,7 @@ button.md-button.md-default-theme.md-raised,button.md-button.md-raised{backgroun
 .md-button.md-default-theme.md-primary.md-fab,.md-button.md-default-theme.md-primary.md-raised,.md-button.md-primary.md-fab,.md-button.md-primary.md-raised{background-color:#54bceb;border-color:#54bceb;color:#fff}
 .md-button.md-fab,.md-button.md-raised:not([disabled]),.md-button:not([disabled]).md-fab.md-focused,.md-button:not([disabled]).md-raised.md-focused,.md-shadow-bottom-z-1{box-shadow:none}
 button.close.md-primary.md-button.md-button.md-ink-ripple{border:none}
-button.md-button{border-radius:100px;border:2px solid;cursor:pointer;font:14px AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif;padding:10px;text-transform:uppercase;white-space:normal;-webkit-transition:.2s;transition:.2s;display:inline-block;margin-bottom:0;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;background-image:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
+button.md-button{border-radius:100px;border:2px solid;font:14px AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif;padding:10px;white-space:normal;-webkit-transition:.2s;transition:.2s;display:inline-block;margin-bottom:0;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;background-image:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
 .directions{margin-bottom:1em;background:rgba(255,255,255,1)}
 .directions .instruction div{color:#ccc;padding:1em 1.5em}
 .directions .end,.directions .end md-icon svg,.directions .start,.directions .start md-icon svg{color:#666;fill:#666}

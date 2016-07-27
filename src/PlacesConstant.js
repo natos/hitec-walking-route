@@ -36,24 +36,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "label": "Anne Frank House",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
-            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/annefrankhouse.jpg",
-            "x3": "assets/img/x3/annefrankhouse.jpg"
-        }
-    },
-    {
         "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
         "label": "The Breakfast Club",
         "website": "https://www.thebreakfastclub.nl/",
@@ -70,6 +52,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/breakfastclub.jpg",
             "x3": "assets/img/x3/breakfastclub.jpg"
+        }
+    },
+    {
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "label": "Anne Frank House",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
+            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/annefrankhouse.jpg",
+            "x3": "assets/img/x3/annefrankhouse.jpg"
         }
     },
     {
@@ -92,24 +92,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
-        "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
-        ],
-        "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/author/AndreaClarke.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
-        }
-    },
-    {
         "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
         "label": "Dr.Blend",
         "website": "http://www.drblend.nl",
@@ -125,6 +107,41 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/drblend.jpg",
             "x3": "assets/img/x3/drblend.jpg"
+        }
+    },
+    {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
+        }
+    },
+    {
+        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
+        "label": "Hi-Tec Store",
+        "website": "http://www.hi-tec.amsterdam",
+        "content": [
+            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
+            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
+        ],
+        "author": {
+            "name": "Andrea Clarke",
+            "role": "Entrepreneur",
+            "picture": "assets/img/author/AndreaClarke.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/hitecstore.jpg",
+            "x3": "assets/img/x3/hitecstore.jpg"
         }
     },
     {
@@ -146,11 +163,13 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
+        "id": "ChIJ6XBeeuoJxkcRHBnYtomuArg",
+        "label": "Lion Noir",
+        "website": "http://www.lionnoir.nl",
+        "category": "Restaurants",
         "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+            "Lion Noire is restaurant that will surprise and delight on every visit. Our seasonal menu is constantly evolving, reflecting the availability of locally-sourced fresh ingredients.",
+            "Every dish is crafted to spark the taste buds with flavours inspired by French high-dining. Lion Noir’s eclectically chic ambiance has won much admiration, including a Interior Design of the Year Award."
         ],
         "author": {
             "name": "",
@@ -158,8 +177,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
+            "x2": "assets/img/x2/lionnoir.jpg",
+            "x3": "assets/img/x3/lionnoir.jpg"
         }
     },
     {
@@ -199,13 +218,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ6XBeeuoJxkcRHBnYtomuArg",
-        "label": "Lion Noir",
-        "website": "http://www.lionnoir.nl",
-        "category": "Restaurants",
+        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
+        "label": "Tropenmuseum",
+        "category": "Art & Musea",
         "content": [
-            "Lion Noire is restaurant that will surprise and delight on every visit. Our seasonal menu is constantly evolving, reflecting the availability of locally-sourced fresh ingredients.",
-            "Every dish is crafted to spark the taste buds with flavours inspired by French high-dining. Lion Noir’s eclectically chic ambiance has won much admiration, including a Interior Design of the Year Award."
+            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
+            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
         ],
         "author": {
             "name": "",
@@ -213,8 +231,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/lionnoir.jpg",
-            "x3": "assets/img/x3/lionnoir.jpg"
+            "x2": "assets/img/x2/tropenmuseum.jpg",
+            "x3": "assets/img/x3/tropenmuseum.jpg"
         }
     },
     {
@@ -233,24 +251,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
             "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
-        }
-    },
-    {
-        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
-        "label": "Tropenmuseum",
-        "category": "Art & Musea",
-        "content": [
-            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
-            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/tropenmuseum.jpg",
-            "x3": "assets/img/x3/tropenmuseum.jpg"
         }
     },
     {
