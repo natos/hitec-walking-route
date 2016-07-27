@@ -36,25 +36,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
-        "label": "The Breakfast Club",
-        "website": "https://www.thebreakfastclub.nl/",
-        "category": "Breakfast & Lunch",
-        "content": [
-            "All day Breakfast!",
-            "The Breakfast Club serves breakfast, brunch, lunch and coffee in the cosmopolitan style of New York and Paris but in a cozy and relaxed cafe setting next to De Foodhallen."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/breakfastclub.jpg",
-            "x3": "assets/img/x3/breakfastclub.jpg"
-        }
-    },
-    {
         "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
         "label": "Anne Frank House",
         "category": "Typical Amsterdam",
@@ -92,6 +73,25 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
+        "label": "The Breakfast Club",
+        "website": "https://www.thebreakfastclub.nl/",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "All day Breakfast!",
+            "The Breakfast Club serves breakfast, brunch, lunch and coffee in the cosmopolitan style of New York and Paris but in a cozy and relaxed cafe setting next to De Foodhallen."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/breakfastclub.jpg",
+            "x3": "assets/img/x3/breakfastclub.jpg"
+        }
+    },
+    {
         "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
         "label": "Dr.Blend",
         "website": "http://www.drblend.nl",
@@ -107,23 +107,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/drblend.jpg",
             "x3": "assets/img/x3/drblend.jpg"
-        }
-    },
-    {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
-        "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
         }
     },
     {
@@ -145,6 +128,23 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
+        }
+    },
+    {
         "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
         "label": "Hortus Botanicus",
         "website": "http://www.dehortus.nl",
@@ -160,6 +160,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/hortus.jpg",
             "x3": "assets/img/x3/hortus.jpg"
+        }
+    },
+    {
+        "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
+        "label": "JuiceBrothers",
+        "website": "http://www.juicebro.com",
+        "category": "Healthy Bars",
+        "content": [
+            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/juicebro.jpg",
+            "x3": "assets/img/x3/juicebro.jpg"
         }
     },
     {
@@ -179,24 +197,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/lionnoir.jpg",
             "x3": "assets/img/x3/lionnoir.jpg"
-        }
-    },
-    {
-        "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
-        "label": "JuiceBrothers",
-        "website": "http://www.juicebro.com",
-        "category": "Healthy Bars",
-        "content": [
-            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/juicebro.jpg",
-            "x3": "assets/img/x3/juicebro.jpg"
         }
     },
     {
