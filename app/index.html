@@ -68,7 +68,7 @@
       <div id="sidebar" class="fade" ng-if="app.state.isReviewing() && map.ready" ng-cloak>
         <h4>Your personalised route</h4>
         <div class="totals" ng-controller="DirectionsController as directions">
-          <p>Estimated {{directions.distance.text}} in {{directions.duration.text}}</p>
+          <p>{{directions.duration.text}}, {{directions.distance.text}}</p>
         </div>
         <div class="places">
           <md-card class="place" ng-repeat="place in selected.places" ng-click="map.showPlace(place)">
@@ -85,7 +85,7 @@
             </md-card-actions>
           </md-card>
         </div>
-        <div class="actions">
+        <div class="actions" ng-controller="DirectionsController as directions">
           <md-button ng-click="app.next()" class="finish md-raised md-primary" aria-label="View step by step direcctions">Step-by-step directions</md-button>
         </div>
       </div>

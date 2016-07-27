@@ -2,7 +2,7 @@
   <div class="legs" layout="column">
     <header>
       <h3><md-icon md-svg-icon="directions"></md-icon> Step by step directions</h3>
-      <p>Estimated {{directions.distance.text}} in {{directions.duration.text}}</p>
+      <p>{{directions.duration.text}}, {{directions.distance.text}}</p>
     </header>
     <div class="leg" ng-repeat="leg in directions.route.legs" layout="column">
       <div class="start">
