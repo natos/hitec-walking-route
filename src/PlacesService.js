@@ -25,12 +25,10 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
       (function(i) {
         var place = placesModel.places[i];
         var position = i;
-        // console.log('Asking for place', place.id, place.label);
         service.getDetails({
           placeId: place.id
         }, function (results, status) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
-            // console.log('Result OK', place.id, place.label);
             // populate place with place info
             placesModel.places[position].place_info = results;
             placesModel.places[position].place = {
@@ -45,8 +43,7 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
               placesModel.placesByCategory[placesModel.places[position].category].push(placesModel.places[position]);
             }
           } else {
-            console.log('Result Failed', place.id, place.label);
-            console.log(results, status);
+            console.error('Google Places API', 'Result Failed for', place.label, place.id, status);
           }
           // Count loaded place
           if ((places += 1) === (total-1)) {
