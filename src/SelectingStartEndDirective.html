@@ -9,14 +9,14 @@
     <h3>Start location</h3>
   </header>
   <div class="places" layout="row" layout-align="start none" layout-wrap>
-    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{selected: selected.start === place.id}">
+    <md-card class="place" ng-repeat="place in selected.places" flex="20" ng-class="{selected: selected.start === place.id, disabled: place.id === selected.end}">
       <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
         <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
       </label>
       <md-card-actions>
         <label for="startPlace{{place.id}}" layout="row" layout-align="space-between center">
           <p>{{place.label}}</p>
-          <input id="startPlace{{place.id}}" name="startPlace" type="radio" ng-model="selected.start" ng-value="place.id">
+          <input id="startPlace{{place.id}}" name="startPlace" type="radio" ng-model="selected.start" ng-value="place.id" ng-disabled="place.id === selected.end">
         </label>
       </md-card-actions>
     </md-card>
