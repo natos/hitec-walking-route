@@ -36,6 +36,25 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
+        "label": "The Breakfast Club",
+        "website": "https://www.thebreakfastclub.nl/",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "All day Breakfast!",
+            "The Breakfast Club serves breakfast, brunch, lunch and coffee in the cosmopolitan style of New York and Paris but in a cozy and relaxed cafe setting next to De Foodhallen."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/breakfastclub.jpg",
+            "x3": "assets/img/x3/breakfastclub.jpg"
+        }
+    },
+    {
         "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
         "label": "Anne Frank House",
         "category": "Typical Amsterdam",
@@ -73,13 +92,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
-        "label": "The Breakfast Club",
-        "website": "https://www.thebreakfastclub.nl/",
-        "category": "Breakfast & Lunch",
+        "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
+        "label": "Hortus Botanicus",
+        "website": "http://www.dehortus.nl",
+        "category": "Local Hotspots",
         "content": [
-            "All day Breakfast!",
-            "The Breakfast Club serves breakfast, brunch, lunch and coffee in the cosmopolitan style of New York and Paris but in a cozy and relaxed cafe setting next to De Foodhallen."
+            "The Hortus Botanicus Amsterdam is one of the oldest botanic gardens in the world. Located in the city Centre of the Dutch capital, the garden us a beautiful and intimate place with an unique collection of plants. In the midst of busy city, the Hortus offers an oasis of tranquility, a flowery relief in the urban busyness."
         ],
         "author": {
             "name": "",
@@ -87,44 +105,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/breakfastclub.jpg",
-            "x3": "assets/img/x3/breakfastclub.jpg"
-        }
-    },
-    {
-        "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
-        "label": "Dr.Blend",
-        "website": "http://www.drblend.nl",
-        "category": "Healthy Bars",
-        "content": [
-            "At Dr. Blend they blend the most delicious and healthiest smoothies, juices, serve the tastiest wraps, sandwiches, salads, yoghurt and many more, made with the greatest passion and care!"
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/drblend.jpg",
-            "x3": "assets/img/x3/drblend.jpg"
-        }
-    },
-    {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
-        "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
-        ],
-        "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/author/AndreaClarke.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
+            "x2": "assets/img/x2/hortus.jpg",
+            "x3": "assets/img/x3/hortus.jpg"
         }
     },
     {
@@ -145,21 +127,21 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
-        "label": "Hortus Botanicus",
-        "website": "http://www.dehortus.nl",
-        "category": "Local Hotspots",
+        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
+        "label": "Hi-Tec Store",
+        "website": "http://www.hi-tec.amsterdam",
         "content": [
-            "The Hortus Botanicus Amsterdam is one of the oldest botanic gardens in the world. Located in the city Centre of the Dutch capital, the garden us a beautiful and intimate place with an unique collection of plants. In the midst of busy city, the Hortus offers an oasis of tranquility, a flowery relief in the urban busyness."
+            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
+            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
         ],
         "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
+            "name": "Andrea Clarke",
+            "role": "Entrepreneur",
+            "picture": "assets/img/author/AndreaClarke.jpg"
         },
         "media": {
-            "x2": "assets/img/x2/hortus.jpg",
-            "x3": "assets/img/x3/hortus.jpg"
+            "x2": "assets/img/x2/hitecstore.jpg",
+            "x3": "assets/img/x3/hitecstore.jpg"
         }
     },
     {
@@ -215,42 +197,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/rembrandthouse.jpg",
             "x3": "assets/img/x3/rembrandthouse.jpg"
-        }
-    },
-    {
-        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
-        "label": "Tropenmuseum",
-        "category": "Art & Musea",
-        "content": [
-            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
-            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/tropenmuseum.jpg",
-            "x3": "assets/img/x3/tropenmuseum.jpg"
-        }
-    },
-    {
-        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
-        "label": "The Cold Pressed Juicery",
-        "website": "http://www.thecoldpressedjuicery.com/",
-        "category": "Healthy Bars",
-        "content": [
-            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal  to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
-            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
         }
     },
     {
