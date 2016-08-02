@@ -20,7 +20,8 @@ angular
      * @public
      */
     this.events = {
-      placesReady: 'placesService:places-ready'
+      placeChecked: 'place-checked',
+      placesReady: 'places-ready'
     }
 
     /**
@@ -33,15 +34,7 @@ angular
     * Places by category
     * @public
     */
-    this.placesByCategory = {
-      'Art & Museums': [],
-      'Restaurants': [],
-      'Markets': [],
-      'Healthy Bars': [],
-      'Brunch': [],
-      'Local Hotspots': [],
-      'Typical Amsterdam': []
-    };
+    this.placesByCategory = {};
 
     /**
     * Selected Places

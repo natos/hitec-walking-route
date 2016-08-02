@@ -54,7 +54,6 @@ function AppController($scope, $rootScope, $timeout, appModel, placesModel, mapM
 
     // move to the next state
     next();
-    // TODO: remove this hack to make app auto start
   }
 
   function restart() {

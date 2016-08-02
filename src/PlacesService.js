@@ -1,7 +1,7 @@
 angular
   .module('App')
   .service('placesService', [
-    '$rootScope',
+    '$rootScope', '$timeout',
     'placesModel', 'mapModel',
     'mapService',
     PlacesService
@@ -13,46 +13,68 @@ angular
  * @returns
  * @constructor
  */
-function PlacesService($rootScope, placesModel, mapModel, mapService) {
+function PlacesService($rootScope, $timeout, placesModel, mapModel, mapService) {
 
-  // Get places information
-  (function getPlaces() {
-    var service = new google.maps.places.PlacesService(mapService.getMap());
-    var places = 0, total = placesModel.places.length;
-    for (var i = 0; i < total; i += 1) {
-      // Keep reference in the closure
-      // while async requests come back
-      (function(i) {
-        var place = placesModel.places[i];
-        var position = i;
-        service.getDetails({
-          placeId: place.id
-        }, function (results, status) {
-          if (status == google.maps.places.PlacesServiceStatus.OK) {
-            // populate place with place info
-            placesModel.places[position].place_info = results;
-            placesModel.places[position].place = {
-              placeId: results.place_id,
-              location: results.geometry.location,
-            };
-            placesModel.places[position].address = results.formatted_address;
-            placesModel.places[position].vicinity = results.vicinity;
-
-            // Categrize Places
-            if (placesModel.placesByCategory[placesModel.places[position].category]) {
-              placesModel.placesByCategory[placesModel.places[position].category].push(placesModel.places[position]);
-            }
-          } else {
-            console.error('Google Places API', 'Result Failed for', place.label, place.id, status);
-          }
-          // Count loaded place
-          if ((places += 1) === (total-1)) {
-            $rootScope.$emit(placesModel.events.placesReady);
-          }
-        });
-      })(i);
+  /** autorun */
+  // Order places into categories and get extra info for all places
+  var places = 0, loadedplaces = 0, categories = [], categorization = {}, totalplaces = placesModel.places.length;
+  // get all categories
+  for (var i = 0; i < totalplaces; i += 1) {
+    var place = placesModel.places[i];
+    getPlaceInfo(place.id);
+    categories.push(place.category);
+    if (!categorization[place.category]) {
+      categorization[place.category] = [];
     }
-  })();
+    categorization[place.category].push(place);
+  }
+  // order categories alphabetically
+  categories.sort();
+  for (var c = 0; c < categories.length; c += 1) {
+    var category = categories[c];
+    // store categorized places into the model
+    placesModel.placesByCategory[category] = categorization[category];
+  }
+  // cleaning
+  categories.length = 0;
+  categories = null;
+  categorization = null;
+  /** end autorun */
+
+  var _service = new google.maps.places.PlacesService(mapService.getMap());
+
+  function getPlaceInfo(id) {
+
+    var place = findPlaceById(id);
+    if (!place) {
+      return console.error('Place Id not found', id);
+    }
+
+    var timing = Math.floor(Math.random() * (5000 - 1000)) + 1000;
+
+    $timeout(function() {
+      _service.getDetails({
+        placeId: place.id
+      }, function(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          place.place_info = results;
+          place.address = results.formatted_address;
+          place.vicinity = results.vicinity;
+          place.place = {
+            placeId: results.place_id,
+            location: results.geometry.location
+          };
+        } else {
+          console.error('Google Places API', 'Result Failed for', place.label, place.id, status);
+        }
+        loadedplaces += 1;
+        if (loadedplaces === totalplaces) {
+          $rootScope.$emit(placesModel.events.placesReady);
+        }
+      });
+    }, timing);
+  }
+
 
   function findPlaceById(id) {
     var total = placesModel.places.length;
@@ -128,7 +150,8 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
   function restart() {
     var total = placesModel.places.length;
     for (var i = 0; i < total; i += 1) {
-      placesModel.places[i].selected = false;
+      // placesModel.places[i].selected = false;
+      unselectPlace(placesModel.places[i]);
     }
   }
 
@@ -140,6 +163,7 @@ function PlacesService($rootScope, placesModel, mapModel, mapService) {
 
   return {
     getPlaces: getPlaces,
+    getPlaceInfo: getPlaceInfo,
     getWaypoints: getWaypoints,
     getEndPlace: getEndPlace,
     getStartPlace: getStartPlace,
