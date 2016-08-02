@@ -8,14 +8,14 @@
   <div class="places-by-category layout-padding" ng-repeat="(key, value) in app.placesByCategory" ng-if="value.length">
     <h3>{{key}} ({{value.length}})</h3>
     <div class="places" layout="row" layout-align="start none" layout-wrap>
-      <md-card class="place" ng-repeat="place in value" flex="20" ng-class="{selected: place.selected}">
+      <md-card class="place" ng-repeat="place in value" flex="20" ng-class="{selected: place.selected, disabled: !place.selected && selected.places.length === 10}">
         <label for="place{{place.id}}" layout="row" layout-align="space-between center">
           <img ng-src="{{place.media.x2}}" class="md-card-image" alt="{{place.label}}">
         </label>
         <md-card-actions>
           <label for="place{{place.id}}" layout="row" layout-align="space-between center">
             <p>{{place.label}}</p>
-            <input id="place{{place.id}}" type="checkbox" ng-model="place.selected" checklist-model="selected.places" checklist-value="place">
+            <input id="place{{place.id}}" type="checkbox" ng-model="place.selected" checklist-model="selected.places" checklist-value="place" ng-disabled="!place.selected && selected.places.length === 10">
           </label>
         </md-card-actions>
       </md-card>
