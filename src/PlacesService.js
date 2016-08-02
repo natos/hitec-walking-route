@@ -65,7 +65,8 @@ function PlacesService($rootScope, $timeout, placesModel, mapModel, mapService) 
             location: results.geometry.location
           };
         } else {
-          console.error('Google Places API', 'Result Failed for', place.label, place.id, status);
+          console.error('Google Places API', 'Result Failed for', place.label, place.id, status, 'Re-trying');
+          getPlaceInfo(place.id);
         }
         loadedplaces += 1;
         if (loadedplaces === totalplaces) {
