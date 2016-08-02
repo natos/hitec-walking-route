@@ -12,7 +12,7 @@ angular
      * Map Model Google Maps API Key
      * @public
      */
-    this.API_KEY = 'AIzaSyCcara1t7Tt4Y6iexHJvLGBo_zfW4O6eQo';
+    this.API_KEY = 'AIzaSyDda0gQh0rR7cTRlHMxGCiZ0dcJadq8mJI';
 
     /**
      * Map Model map instance
