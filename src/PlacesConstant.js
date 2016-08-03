@@ -17,6 +17,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "label": "Anne Frank House",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
+            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/annefrankhouse.jpg",
+            "x3": "assets/img/x3/annefrankhouse.jpg"
+        }
+    },
+    {
         "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
         "label": "Bakers & Roasters",
         "website": "http://www.bakersandroasters.com",
@@ -55,24 +73,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "label": "Anne Frank House",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
-            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/annefrankhouse.jpg",
-            "x3": "assets/img/x3/annefrankhouse.jpg"
-        }
-    },
-    {
         "id": "ChIJ__r9yvMJxkcR2Cu56FMSR7A",
         "label": "Cannibale Royale",
         "website": "http://www.cannibaleroyale.nl",
@@ -89,6 +89,77 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/cannibaleroyale.jpg",
             "x3": "assets/img/x3/cannibaleroyale.jpg"
+        }
+    },
+    {
+        "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
+        "label": "Dr.Blend",
+        "website": "http://www.drblend.nl",
+        "category": "Healthy Bars",
+        "content": [
+            "At Dr. Blend they blend the most delicious and healthiest smoothies, juices, serve the tastiest wraps, sandwiches, salads, yoghurt and many more, made with the greatest passion and care!"
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/drblend.jpg",
+            "x3": "assets/img/x3/drblend.jpg"
+        }
+    },
+    {
+        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
+        "label": "Hi-Tec Store",
+        "website": "http://www.hi-tec.amsterdam",
+        "content": [
+            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
+            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
+        ],
+        "author": {
+            "name": "Andrea Clarke",
+            "role": "Entrepreneur",
+            "picture": "assets/img/author/AndreaClarke.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/hitecstore.jpg",
+            "x3": "assets/img/x3/hitecstore.jpg"
+        }
+    },
+    {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
+        }
+    },
+    {
+        "id": "ChIJN_lcRHQJxkcRATpyj7glLxA",
+        "label": "FOAM",
+        "website": "http://www.foam.org/",
+        "category": "Art & Musea",
+        "content": [
+            "Foam is an internationally renowned Amsterdam museum that exhibits all genres of photography in a beautiful canal-side setting. As well as displaying a wide variety of works, it acts as a creative hub where photographers can meet and participate in forums and symposiums."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/foam.jpg",
+            "x3": "assets/img/x3/foam.jpg"
         }
     },
     {
@@ -110,11 +181,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
+        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
+        "label": "Jordaan",
+        "website": "https://www.jordaaninfo.com/",
+        "category": "Typical Amsterdam",
         "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
         ],
         "author": {
             "name": "",
@@ -122,26 +194,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
-        }
-    },
-    {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
-        "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
-        ],
-        "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/author/AndreaClarke.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
+            "x2": "assets/img/x2/jordaan.jpg",
+            "x3": "assets/img/x3/jordaan.jpg"
         }
     },
     {
@@ -182,6 +236,60 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJDeQMr8MJxkcRHTJBjcuhrfg",
+        "label": "The Nine Streets",
+        "website": "https:/www.9straatjesonline.com/en/",
+        "category": "Local Hotspots",
+        "content": [
+            "The Nine Streets - De Negen Straatjes is in the heart of Amsterdam’s canal district and is one of the city’s most delightful shopping areas. Just two minutes walk from the Royal Palace in the Dam Square, these picturesque streets straddle the 17th Century canals from the Singel to the Prinsengracht.",
+            "Spend a fabulous day wandering from one to the next exploring the designer boutiques, art galleries, jewellers, gift shops, fashion shops and specialist businesses - there are plenty of great bars, cafes and restaurants to refresh you along the way."
+        ],
+        "author": {
+            "name": null,
+            "role": null,
+            "picture": "assets/img/author/null"
+        },
+        "media": {
+            "x2": "assets/img/x2/ninestreets.jpg",
+            "x3": "assets/img/x3/ninestreets.jpg"
+        }
+    },
+    {
+        "id": "ChIJO8KiX8MJxkcRhXshm_C99Mo",
+        "label": "PLUK",
+        "website": "http:/http://www.pluk-amsterdam.com/en/",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "Pluk Amsterdam stands for eating healthy, but also for enjoying your food. On their lunch menu you will find delicious sandwiches and salads. But they also serve fresh juices and great coffee! The perfect place to get some rest while your shopping in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/pluk.jpg",
+            "x3": "assets/img/x3/pluk.jpg"
+        }
+    },
+    {
+        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
+        "label": "The Redlight District",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/redlightdistrict.jpg",
+            "x3": "assets/img/x3/redlightdistrict.jpg"
+        }
+    },
+    {
         "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
         "label": "Rembrandt House Museum",
         "website": "http://www.rembrandthuis.nl/en/",
@@ -197,6 +305,115 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/rembrandthouse.jpg",
             "x3": "assets/img/x3/rembrandthouse.jpg"
+        }
+    },
+    {
+        "id": "ChIJ5Ra7we4JxkcRhYVAaq5zQ9U",
+        "label": "Rijkmuseum",
+        "website": "https://www.rijksmuseum.nl/en/",
+        "category": "Art & Musea",
+        "content": [
+            "At the Rijksmuseum, art and history take on new meaning for a broad-based, contemporary national and international audience.",
+            "As a national institute, the Rijksmuseum offers a representative overview of Dutch art and history from the Middle Ages onwards, and of major aspects of European and Asian art."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/rijksmuseum.jpg",
+            "x3": "assets/img/x3/rijksmuseum.jpg"
+        }
+    },
+    {
+        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
+        "label": "Scandinavian Embassy",
+        "website": "http://http://scandinavianembassy.nl/",
+        "category": "Local Hotspots",
+        "content": [
+            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/scandinavian.jpg",
+            "x3": "assets/img/x3/scandinavian.jpg"
+        }
+    },
+    {
+        "id": "ChIJzbmpiu8JxkcR7y9-QgYjLdA",
+        "label": "Stedelijk Museum",
+        "website": "https://www.stedelijk.nl/en",
+        "category": "Art & Musea",
+        "content": [
+            "The Stedelijk Museum Amsterdam is an international museum dedicated to modern and contemporary art and design."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/stedelijkmuseum.jpg",
+            "x3": "assets/img/x3/stedelijkmuseum.jpg"
+        }
+    },
+    {
+        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
+        "label": "The Cold Pressed Juicery",
+        "website": "http://www.thecoldpressedjuicery.com/",
+        "category": "Healthy Bars",
+        "content": [
+            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
+            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
+        }
+    },
+    {
+        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
+        "label": "Tropenmuseum",
+        "category": "Art & Musea",
+        "content": [
+            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
+            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/tropenmuseum.jpg",
+            "x3": "assets/img/x3/tropenmuseum.jpg"
+        }
+    },
+    {
+        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMIY",
+        "label": "Van Gogh Museum",
+        "website": "https://www.vangoghmuseum.nl/en",
+        "category": "Typical Amsterdam",
+        "content": [
+            "Step into Van Gogh's world. Explore the world’s largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/vangogh.jpg",
+            "x3": "assets/img/x3/vangogh.jpg"
         }
     },
     {
