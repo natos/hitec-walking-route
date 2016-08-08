@@ -17,24 +17,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "label": "Anne Frank House",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
-            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/annefrankhouse.jpg",
-            "x3": "assets/img/x3/annefrankhouse.jpg"
-        }
-    },
-    {
         "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
         "label": "Bakers & Roasters",
         "website": "http://www.bakersandroasters.com",
@@ -51,6 +33,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/bakersandroasters.jpg",
             "x3": "assets/img/x3/bakersandroasters.jpg"
+        }
+    },
+    {
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "label": "Anne Frank House",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
+            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/annefrankhouse.jpg",
+            "x3": "assets/img/x3/annefrankhouse.jpg"
         }
     },
     {
@@ -110,24 +110,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
-        "label": "Hi-Tec Store",
-        "website": "http://www.hi-tec.amsterdam",
-        "content": [
-            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
-            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
-        ],
-        "author": {
-            "name": "Andrea Clarke",
-            "role": "Entrepreneur",
-            "picture": "assets/img/author/AndreaClarke.jpg"
-        },
-        "media": {
-            "x2": "assets/img/x2/hitecstore.jpg",
-            "x3": "assets/img/x3/hitecstore.jpg"
-        }
-    },
-    {
         "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
         "label": "Flower Market",
         "category": "Markets",
@@ -163,6 +145,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
+        "label": "Hi-Tec Store",
+        "website": "http://www.hi-tec.amsterdam",
+        "content": [
+            "Dolore te feugait nulla facilisi nam liber tempor cum, soluta nobis eleifend option. Facit eorum claritatem Investigationes demonstraverunt lectores legere me lius quod.",
+            "Sequitur mutationem consuetudium lectorum mirum est notare quam littera gothica quam nunc? Qui eodem modo; typi qui nunc nobis videntur parum clari fiant sollemnes in?"
+        ],
+        "author": {
+            "name": "Andrea Clarke",
+            "role": "Entrepreneur",
+            "picture": "assets/img/author/AndreaClarke.jpg"
+        },
+        "media": {
+            "x2": "assets/img/x2/hitecstore.jpg",
+            "x3": "assets/img/x3/hitecstore.jpg"
+        }
+    },
+    {
         "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
         "label": "Hortus Botanicus",
         "website": "http://www.dehortus.nl",
@@ -181,24 +181,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
-        "label": "Jordaan",
-        "website": "https://www.jordaaninfo.com/",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/jordaan.jpg",
-            "x3": "assets/img/x3/jordaan.jpg"
-        }
-    },
-    {
         "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
         "label": "JuiceBrothers",
         "website": "http://www.juicebro.com",
@@ -214,6 +196,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/juicebro.jpg",
             "x3": "assets/img/x3/juicebro.jpg"
+        }
+    },
+    {
+        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
+        "label": "Jordaan",
+        "website": "https://www.jordaaninfo.com/",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/jordaan.jpg",
+            "x3": "assets/img/x3/jordaan.jpg"
         }
     },
     {
@@ -273,23 +273,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
-        "label": "The Redlight District",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/redlightdistrict.jpg",
-            "x3": "assets/img/x3/redlightdistrict.jpg"
-        }
-    },
-    {
         "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
         "label": "Rembrandt House Museum",
         "website": "http://www.rembrandthuis.nl/en/",
@@ -327,12 +310,11 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
-        "label": "Scandinavian Embassy",
-        "website": "http://http://scandinavianembassy.nl/",
-        "category": "Local Hotspots",
+        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
+        "label": "The Redlight District",
+        "category": "Typical Amsterdam",
         "content": [
-            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
+            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
         ],
         "author": {
             "name": "",
@@ -340,8 +322,26 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/scandinavian.jpg",
-            "x3": "assets/img/x3/scandinavian.jpg"
+            "x2": "assets/img/x2/redlightdistrict.jpg",
+            "x3": "assets/img/x3/redlightdistrict.jpg"
+        }
+    },
+    {
+        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
+        "label": "Tropenmuseum",
+        "category": "Art & Musea",
+        "content": [
+            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
+            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/tropenmuseum.jpg",
+            "x3": "assets/img/x3/tropenmuseum.jpg"
         }
     },
     {
@@ -381,12 +381,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
-        "label": "Tropenmuseum",
-        "category": "Art & Musea",
+        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
+        "label": "Scandinavian Embassy",
+        "website": "http://http://scandinavianembassy.nl/",
+        "category": "Local Hotspots",
         "content": [
-            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
-            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
         ],
         "author": {
             "name": "",
@@ -394,8 +394,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/tropenmuseum.jpg",
-            "x3": "assets/img/x3/tropenmuseum.jpg"
+            "x2": "assets/img/x2/scandinavian.jpg",
+            "x3": "assets/img/x3/scandinavian.jpg"
         }
     },
     {
@@ -414,24 +414,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/vangogh.jpg",
             "x3": "assets/img/x3/vangogh.jpg"
-        }
-    },
-    {
-        "id": "ChIJcUanY84JxkcRANelYPRjAIw",
-        "label": "Vesper Bar",
-        "website": "http://www.vesperbar.nl",
-        "category": "Local Hotspots",
-        "content": [
-            "Boutique Bar Vesper is located in the middle of the Jordaan area in Amsterdam, between the trendy Haarlemmerdijk shopping district and the Brouwersgracht. Vesper has a large variety of great wines, beers and an extensive cocktail list. Due to the intimate character of the bar, Vesper is a great location for a small get- together, cocktail parties or just a nice drink after a long walk."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/vesperbar.jpg",
-            "x3": "assets/img/x3/vesperbar.jpg"
         }
     },
     {

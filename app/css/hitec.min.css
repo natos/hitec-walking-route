@@ -12,8 +12,8 @@ button,html,input,md-bottom-sheet .md-subheader,select,textarea{font-family:Robo
 .md-calendar,.md-calendar-day-header{table-layout:fixed;border-collapse:collapse}
 .md-ripple-container,.md-shadow,md-fab-speed-dial:not(.md-hover-full){pointer-events:none}
 ._md-nav-bar-list,.md-autocomplete-suggestions li:focus,.md-button,.md-button._md-nav-button:focus,.md-button:focus,.md-chips ._md-chip-input-container input:focus,.md-chips ._md-chip-input-container input:not([type]):focus,.md-chips ._md-chip-input-container input[type=url]:focus,.md-chips ._md-chip-input-container input[type=text]:focus,.md-chips ._md-chip-input-container input[type=email]:focus,.md-chips ._md-chip-input-container input[type=number]:focus,.md-chips ._md-chip-input-container input[type=tel]:focus,.md-chips md-chip ._md-chip-content:focus,.md-datepicker-calendar md-calendar:focus,.md-datepicker-input,.md-tab.md-focused,[tabindex='-1']:focus,button.md-button,md-autocomplete button:focus,md-autocomplete input:not(.md-input),md-bottom-sheet md-list-item,md-checkbox,md-dialog md-dialog-content:focus,md-input-container .md-input:invalid,md-list-item ._md-no-style:focus,md-list-item._md-no-proxy:focus,md-option:focus,md-radio-group:focus,md-select:focus,md-slider ._md-slider-wrapper,md-slider:focus,md-switch,md-switch ._md-thumb,md-tabs-wrapper md-next-button:focus,md-tabs-wrapper md-prev-button:focus{outline:0}
-body,html,md-option ._md-text{-webkit-touch-callout:none;-khtml-user-select:none}
 .md-button,.md-button:focus,.md-button:hover,.md-toolbar-tools a,button.md-button{text-decoration:none}
+body,html,md-option ._md-text{-webkit-touch-callout:none;-khtml-user-select:none}
 body,html{position:relative;-webkit-tap-highlight-color:transparent;min-height:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .inset{padding:10px}
 a._md-no-style,button._md-no-style{font-weight:400;background-color:inherit;text-align:left;border:none;padding:0;margin:0}
@@ -2768,11 +2768,11 @@ md-toolbar._md._md-toolbar-transitions{background-color:rgba(255,255,255,.95)}
 md-button.menuBtn>md-icon{fill:#fff;width:24px;height:24px}
 #content .md-button.share:active>md-icon{background-color:#dadada;border-radius:75%;padding:4px;-webkit-transition:all .1s ease-out 30ms;transition:all .1s ease-out 30ms}
 .avatar{width:128px;height:128px;border:1px solid #ddd;border-radius:50%;display:inline-block;overflow:hidden;vertical-align:middle;zoom:.7;transform:translateZ(0);-webkit-transform:scale(.7);-moz-transform:scale(.7)}
-#map,.fullscreen{position:absolute;left:0;bottom:0}
+#map,.fullscreen{position:absolute;bottom:0;left:0}
 .fullscreen{top:0;right:0}
 selecting-places,selecting-start{z-index:98}
 #map{z-index:70;top:44px;right:287px}
-#map.printing{right:0}
+#map.printing{right:0;position:static;top:0;left:0;width:100%;height:100%}
 #map *{overflow:visible}
 .map-overlay{z-index:75;background-color:rgba(255,255,255,.95)}
 .map-actions,.map-print-action{position:absolute;z-index:71;bottom:2rem}
@@ -2781,13 +2781,13 @@ selecting-places,selecting-start{z-index:98}
 #sidebar .places,#sidebar md-list{bottom:0;right:0;position:absolute}
 .map-active{position:absolute;z-index:73;top:50%;left:50%;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0)}
 .map-logo{z-index:71;position:absolute;top:0;left:4rem;background-color:#000;padding:2rem}
-#sidebar{position:relative;position:absolute;top:0;bottom:0;right:0;width:287px;overflow:scroll;background-color:#f1f1f2;z-index:70}
+#sidebar{position:relative;position:absolute;top:0;bottom:0;right:0;width:287px;overflow:scroll;-webkit-overflow-scrolling:touch;background-color:#f1f1f2;z-index:70}
 #sidebar h4{color:#77787b;font-size:.9em;margin-top:60px;margin-bottom:5px}
 #sidebar md-list{width:287px;padding:0 0 8px;top:0;background:rgba(255,255,255,.9)}
 #sidebar md-list-item>button{width:100%;text-align:left!important}
 #sidebar md-list .md-button.selected{color:#03a9f4}
 #sidebar .totals{margin:1rem;text-align:center;font-size:.75em;text-transform:none}
-#sidebar .places{top:0;left:0;margin-top:120px;margin-bottom:70px;overflow:scroll}
+#sidebar .places{top:0;left:0;margin-top:120px;margin-bottom:70px;overflow:scroll;-webkit-overflow-scrolling:touch}
 #sidebar .actions{position:absolute;bottom:1rem;right:1rem;left:1rem}
 #sidebar .actions button{width:95%}
 .loading-route-content,.loading-route-content .loading{padding:2em;text-align:center}
@@ -2840,10 +2840,9 @@ button.md-button{border-radius:100px;border:2px solid;cursor:pointer;font:14px A
 .maneuver.turn-slight-right{background-position:0 -51px}
 .maneuver.uturn-right{background-position:0 -35px}
 md-content{z-index:1}
-#print,.flash.ng-enter,.flash.ng-leave{position:absolute;top:0;left:0;z-index:100}
 md-sidenav{width:287px;overflow:visible}
 md-backdrop.md-opaque,md-backdrop.md-opaque.md-default-theme{background-color:#fff;opacity:.5}
-#print{right:0;bottom:0}
+#print{position:absolute;top:0;left:0;right:0;bottom:0;z-index:100}
 #print .map-placeholder{height:100%;margin-bottom:-10%}
 #print .directions{padding:1rem}
 #print .directions .end,#print .directions .start{padding-top:1rem;padding-left:1rem;border-left:10px solid #ccc}
@@ -2853,8 +2852,11 @@ md-backdrop.md-opaque,md-backdrop.md-opaque.md-default-theme{background-color:#f
 #print .directions .place-address{font-style:italic}
 #print .map-actions{display:none}
 #print .print-actions{position:absolute;right:2em;bottom:2em}
+#map-container{display:block;width:100%;height:100%}
 @media print{#print .md-button,#print .print-actions,#sidebar,.map-actions,.map-active,.map-decoration,.md-button{display:none}
+#map-container{position:relative}
 }
+#map-container.printing-size #map{width:700px;margin:0 auto;position:relative}
 .fade.ng-enter{animation:fade_in_animation 1s linear;-webkit-animation:fade_in_animation 1s linear}
 @keyframes fade_in_animation{from{opacity:0}
 to{opacity:1}
@@ -2869,7 +2871,7 @@ to{opacity:0}
 @-webkit-keyframes fade_out_animation{from{opacity:1}
 to{opacity:0}
 }
-.flash.ng-enter,.flash.ng-leave{display:block;right:0;bottom:0;animation:flash_animation .5s linear;-webkit-animation:flash_animation .5s linear}
+.flash.ng-enter,.flash.ng-leave{display:block;position:absolute;top:0;right:0;bottom:0;left:0;animation:flash_animation .5s linear;-webkit-animation:flash_animation .5s linear;z-index:100}
 @keyframes flash_animation{0%,100%{background-color:rgba(255,255,255,0)}
 40%,60%{background-color:rgba(255,255,255,1)}
 }
