@@ -782,15 +782,7 @@ button.md-button {
     width: 100%;
     height: 100%;
   }
-  /*.print-mode .md-button,
-  .print-mode .map-active,
-  .print-mode .map-actions,
-  .print-mode .map-decoration,
-  .print-mode .map-categories,
-  .print-mode #sidebar {
-      display: none;
-    }
-  }*/
+
   /* print */
   @media print {
     .md-button,
@@ -805,11 +797,8 @@ button.md-button {
     #map-container {
       position: relative;
     }
-    /*#map.printing {
-      width: 700px;
-    }*/
   }
-
+  /* for printing */
   #map-container.printing-size #map {
     width: 700px;
     margin: 0 auto;
