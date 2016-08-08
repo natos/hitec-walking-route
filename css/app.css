@@ -359,6 +359,7 @@ selecting-start {
   right: 0;
   width: 287px;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   background-color: #f1f1f2;
   z-index: 70;
 }
@@ -403,6 +404,7 @@ selecting-start {
   margin-top: 120px;
   margin-bottom: 70px;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 #sidebar .actions {
   position: absolute;
