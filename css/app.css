@@ -313,6 +313,11 @@ selecting-start {
 }
 #map.printing {
   right: 0;
+  position: static;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
 }
 #map * {
     overflow:visible;
@@ -771,6 +776,12 @@ button.md-button {
     bottom: 2em;
   }
 
+
+  #map-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
   /*.print-mode .md-button,
   .print-mode .map-active,
   .print-mode .map-actions,
@@ -791,6 +802,18 @@ button.md-button {
     #print .print-actions {
       display: none;
     }
+    #map-container {
+      position: relative;
+    }
+    /*#map.printing {
+      width: 700px;
+    }*/
+  }
+
+  #map-container.printing-size #map {
+    width: 700px;
+    margin: 0 auto;
+    position: relative;
   }
 
 
