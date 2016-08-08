@@ -50,7 +50,7 @@ function PlacesService($rootScope, $timeout, placesModel, mapModel, mapService) 
       return console.error('Place Id not found', id);
     }
 
-    var timing = Math.floor(Math.random() * (5000 - 1000)) + 1000;
+    var timing = Math.floor(Math.random() * (15000 - 1500)) + 1500;
 
     $timeout(function() {
       _service.getDetails({
