@@ -214,15 +214,15 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     directionsDisplay.set('directions', null);
   }
 
-  // function getStaticMapWithDirections() {
-  //     var url = 'https://maps.googleapis.com/maps/api/staticmap?';
-  //     url += 'center=52.370216,4.895168'; // center in Amsterdam
-  //     // url += '&zoom=14';
-  //     url += '&size=640x640';
-  //     url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + route.overview_polyline;
-  //     url += '&key=' + mapModel.API_KEY;
-  //     return url;
-  // }
+  function getStaticMapWithDirections() {
+      var url = 'https://maps.googleapis.com/maps/api/staticmap?';
+      url += 'center=52.370216,4.895168'; // center in Amsterdam
+      // url += '&zoom=14';
+      url += '&size=640x640';
+      url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + getCurrentRoute().overview_polyline;
+      url += '&key=' + mapModel.API_KEY;
+      return url;
+  }
 
   function getTotalDistance() {
     return directionsModel.distance;
@@ -242,7 +242,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   // public interface
   return {
     cleanRoute: cleanRoute,
-    // getStaticMapWithDirections: getStaticMapWithDirections,
+    getStaticMapWithDirections: getStaticMapWithDirections,
     calculateAndDisplayRoute: calculateAndDisplayRoute,
     getTotalDistance: getTotalDistance,
     getTotalDuration: getTotalDuration,
