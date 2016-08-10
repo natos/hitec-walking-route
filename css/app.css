@@ -134,6 +134,8 @@ start-view {
 .start-button {
   position: absolute;
   top: 35%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .loader {
@@ -872,7 +874,7 @@ button.md-button {
     from { opacity:1; }
     to { opacity:0; }
   }
-  
+
   .fade.shrink.ng-leave {
     animation: fade_out_shrink_animation 0.25s linear;
     -webkit-animation: fade_out_shrink_animation 0.25s linear;
