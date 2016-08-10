@@ -1,24 +1,5 @@
 angular.module('App').constant('places', [
     {
-        "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
-        "label": "Bakers & Roasters",
-        "website": "http://www.bakersandroasters.com",
-        "category": "Breakfast & Lunch",
-        "content": [
-            "After meeting on a night out in West Hollywood, a young Kiwi Lad and a young Brazilian Boy came up with the idea that they would some day open a place, combining everything they missed about their homelands- Their Mothers cooking, their favorite street foods and the most delicious coffee. Wrap it all up with the hospitality their Mums taught them so well and Bakers & Roasters was born.",
-            "B&R is a New Zealand style café served with a heavy dose of Brazil right here in Amsterdam. The open kitchen produces all your favourite brunch dishes, fresh fruit salads, and kiwi-twisted baked goods all day long. All our cakes are made in-house and our Ozone coffee is always served as doubles."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/bakersandroasters.jpg",
-            "x3": "assets/img/x3/bakersandroasters.jpg"
-        }
-    },
-    {
         "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
         "label": "Albert Cuyp Market",
         "category": "Markets",
@@ -51,6 +32,25 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/annefrankhouse.jpg",
             "x3": "assets/img/x3/annefrankhouse.jpg"
+        }
+    },
+    {
+        "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
+        "label": "Bakers & Roasters",
+        "website": "http://www.bakersandroasters.com",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "After meeting on a night out in West Hollywood, a young Kiwi Lad and a young Brazilian Boy came up with the idea that they would some day open a place, combining everything they missed about their homelands- Their Mothers cooking, their favorite street foods and the most delicious coffee. Wrap it all up with the hospitality their Mums taught them so well and Bakers & Roasters was born.",
+            "B&R is a New Zealand style café served with a heavy dose of Brazil right here in Amsterdam. The open kitchen produces all your favourite brunch dishes, fresh fruit salads, and kiwi-twisted baked goods all day long. All our cakes are made in-house and our Ozone coffee is always served as doubles."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/bakersandroasters.jpg",
+            "x3": "assets/img/x3/bakersandroasters.jpg"
         }
     },
     {
@@ -110,6 +110,23 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
+        }
+    },
+    {
         "id": "ChIJN_lcRHQJxkcRATpyj7glLxA",
         "label": "FOAM",
         "website": "http://www.foam.org/",
@@ -128,23 +145,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
-        "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
-        }
-    },
-    {
         "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
         "label": "Hi-Tec Store",
         "website": "http://www.hi-tec.amsterdam",
@@ -160,6 +160,42 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/hitecstore.jpg",
             "x3": "assets/img/x3/hitecstore.jpg"
+        }
+    },
+    {
+        "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
+        "label": "Hortus Botanicus",
+        "website": "http://www.dehortus.nl",
+        "category": "Local Hotspots",
+        "content": [
+            "The Hortus Botanicus Amsterdam is one of the oldest botanic gardens in the world. Located in the city Centre of the Dutch capital, the garden us a beautiful and intimate place with an unique collection of plants. In the midst of busy city, the Hortus offers an oasis of tranquility, a flowery relief in the urban busyness."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/hortus.jpg",
+            "x3": "assets/img/x3/hortus.jpg"
+        }
+    },
+    {
+        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
+        "label": "Jordaan",
+        "website": "https://www.jordaaninfo.com/",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/jordaan.jpg",
+            "x3": "assets/img/x3/jordaan.jpg"
         }
     },
     {
@@ -200,42 +236,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
-        "label": "Hortus Botanicus",
-        "website": "http://www.dehortus.nl",
-        "category": "Local Hotspots",
-        "content": [
-            "The Hortus Botanicus Amsterdam is one of the oldest botanic gardens in the world. Located in the city Centre of the Dutch capital, the garden us a beautiful and intimate place with an unique collection of plants. In the midst of busy city, the Hortus offers an oasis of tranquility, a flowery relief in the urban busyness."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/hortus.jpg",
-            "x3": "assets/img/x3/hortus.jpg"
-        }
-    },
-    {
-        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
-        "label": "Jordaan",
-        "website": "https://www.jordaaninfo.com/",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/jordaan.jpg",
-            "x3": "assets/img/x3/jordaan.jpg"
-        }
-    },
-    {
         "id": "ChIJDeQMr8MJxkcRHTJBjcuhrfg",
         "label": "The Nine Streets",
         "website": "https:/www.9straatjesonline.com/en/",
@@ -255,23 +255,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
-        "label": "The Redlight District",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/redlightdistrict.jpg",
-            "x3": "assets/img/x3/redlightdistrict.jpg"
-        }
-    },
-    {
         "id": "ChIJO8KiX8MJxkcRhXshm_C99Mo",
         "label": "PLUK",
         "website": "http:/http://www.pluk-amsterdam.com/en/",
@@ -287,6 +270,23 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/pluk.jpg",
             "x3": "assets/img/x3/pluk.jpg"
+        }
+    },
+    {
+        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
+        "label": "The Redlight District",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/redlightdistrict.jpg",
+            "x3": "assets/img/x3/redlightdistrict.jpg"
         }
     },
     {
@@ -327,12 +327,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
-        "label": "The Cold Pressed Juicery",
-        "website": "http://www.thecoldpressedjuicery.com/",
-        "category": "Healthy Bars",
+        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
+        "label": "Scandinavian Embassy",
+        "website": "http://http://scandinavianembassy.nl/",
+        "category": "Local Hotspots",
         "content": [
-            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
+            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
         ],
         "author": {
             "name": "",
@@ -340,8 +340,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
-            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
+            "x2": "assets/img/x2/scandinavian.jpg",
+            "x3": "assets/img/x3/scandinavian.jpg"
         }
     },
     {
@@ -363,12 +363,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
-        "label": "Scandinavian Embassy",
-        "website": "http://http://scandinavianembassy.nl/",
-        "category": "Local Hotspots",
+        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
+        "label": "The Cold Pressed Juicery",
+        "website": "http://www.thecoldpressedjuicery.com/",
+        "category": "Healthy Bars",
         "content": [
-            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
+            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
         ],
         "author": {
             "name": "",
@@ -376,8 +376,62 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/scandinavian.jpg",
-            "x3": "assets/img/x3/scandinavian.jpg"
+            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
+            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
+        }
+    },
+    {
+        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
+        "label": "Tropenmuseum",
+        "category": "Art & Musea",
+        "content": [
+            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
+            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/tropenmuseum.jpg",
+            "x3": "assets/img/x3/tropenmuseum.jpg"
+        }
+    },
+    {
+        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMI",
+        "label": "Van Gogh Museum",
+        "website": "https://www.vangoghmuseum.nl/en",
+        "category": "Typical Amsterdam",
+        "content": [
+            "Step into Van Gogh's world. Explore the world’s largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/vangogh.jpg",
+            "x3": "assets/img/x3/vangogh.jpg"
+        }
+    },
+    {
+        "id": "ChIJcUanY84JxkcRANelYPRjAIw",
+        "label": "Vesper Bar",
+        "website": "http://www.vesperbar.nl",
+        "category": "Local Hotspots",
+        "content": [
+            "Boutique Bar Vesper is located in the middle of the Jordaan area in Amsterdam, between the trendy Haarlemmerdijk shopping district and the Brouwersgracht. Vesper has a large variety of great wines, beers and an extensive cocktail list. Due to the intimate character of the bar, Vesper is a great location for a small get- together, cocktail parties or just a nice drink after a long walk."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/vesperbar.jpg",
+            "x3": "assets/img/x3/vesperbar.jpg"
         }
     },
     {

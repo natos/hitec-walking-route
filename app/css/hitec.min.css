@@ -2741,7 +2741,7 @@ h3{font:1.25em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 h3:before{border-top:4px solid #54bceb;content:"";display:block;margin:0 auto 21px;width:50px}
 h4{font:1em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 start-view{background-image:url(../assets/img/brand/cape-town.jpg);background-size:cover;position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.9);padding-top:10%;z-index:200}
-.start-button{position:absolute;top:35%}
+.start-button{position:absolute;top:35%;left:50%;-webkit-transform:translate(-50%,0);transform:translate(-50%,0)}
 .loader{margin:4rem;max-width:400px;text-align:center}
 .loader .loading{margin:.5rem;display:inline-block;width:22px;height:22px;opacity:.5;background-color:#fff;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;border-radius:100%}
 .loader .loading.loaded{opacity:1;background-color:#54bceb}
