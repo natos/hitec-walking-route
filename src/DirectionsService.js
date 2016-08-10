@@ -215,13 +215,55 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   }
 
   function getStaticMapWithDirections() {
-      var url = 'https://maps.googleapis.com/maps/api/staticmap?';
-      url += 'center=52.370216,4.895168'; // center in Amsterdam
-      // url += '&zoom=14';
-      url += '&size=640x640';
-      url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + getCurrentRoute().overview_polyline;
-      url += '&key=' + mapModel.API_KEY;
-      return url;
+    var markers = [];
+    var route = getCurrentRoute();
+    for (var l = 0; l < route.legs.length; l += 1) {
+      markers.push(route.legs[l].start_place.place.location.lat() + "," + route.legs[l].start_place.place.location.lng());
+    }
+    var url = 'https://maps.googleapis.com/maps/api/staticmap?';
+    url += 'center=52.370216,4.895168'; // center in Amsterdam
+    url += '&zoom=14';
+    url += '&size=640x640';
+    url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + getCurrentRoute().overview_polyline;
+    url += '&markers=' + markers.join('|');
+    url += '&key=' + mapModel.API_KEY;
+    return encodeURIComponent(url);
+  }
+
+  function clean(instructions) {
+    return instructions.split("<b>").join("").split("</b>").join("").replace("<div style=\"font-size:0.9em\">", " ").replace("</div>", "%0A");
+  }
+
+  function getDirectionsForEmail() {
+    var map = "Here you can see the map for a better reference: " + getStaticMapWithDirections();
+    var route = getCurrentRoute();
+    var steps = [];
+    for (var l = 0; l < route.legs.length; l += 1) {
+      steps.push((l+1) + ". " + route.legs[l].start_place.label);
+      for (var s = 0; s < route.legs[l].steps.length; s += 1) {
+        steps.push("    - " + clean(route.legs[l].steps[s].instructions));
+      }
+      steps.push(" ");
+    }
+    // Composing Email Content
+    var d = [
+      "Hello!",
+      "This is the walking route you created",
+      " ",
+      "Step by step directions:",
+      " ",
+      steps.join("%0A"),
+      " ",
+      map,
+      " ",
+      "Enojoy Amsterdam!",
+      " ",
+      "Best regards,",
+      "Hi-Tec",
+      "http://www.hi-tec.nl"
+    ];
+
+    return d.join("%0A");
   }
 
   function getTotalDistance() {
@@ -244,6 +286,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     cleanRoute: cleanRoute,
     getStaticMapWithDirections: getStaticMapWithDirections,
     calculateAndDisplayRoute: calculateAndDisplayRoute,
+    getDirectionsForEmail: getDirectionsForEmail,
     getTotalDistance: getTotalDistance,
     getTotalDuration: getTotalDuration,
     getCurrentRoute: getCurrentRoute
