@@ -215,7 +215,12 @@ md-card label p {
 }
 .places .place md-card-actions label {
   padding: 8px; /* fix hotspot area */
-  line-height: 0.8;
+}
+#sidebar .places .place md-card-actions label {
+  margin-right: 50px;
+}
+#sidebar .places .place md-card-actions .place-order {
+  margin-right: 0;
 }
 .place-order {
   background-color: #54bceb;
