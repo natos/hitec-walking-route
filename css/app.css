@@ -131,12 +131,18 @@ start-view {
   z-index: 200;
 }
 
+.start-button {
+  position: absolute;
+  top: 35%;
+}
+
 .loader {
   margin: 4rem;
-  max-width: 438px;
+  max-width: 400px;
+  text-align: center;
 }
 .loader .loading {
-  margin: 1rem;
+  margin: .5rem;
   display: inline-block;
   width: 22px;
   height: 22px;
@@ -865,6 +871,21 @@ button.md-button {
   @-webkit-keyframes fade_out_animation {
     from { opacity:1; }
     to { opacity:0; }
+  }
+  
+  .fade.shrink.ng-leave {
+    animation: fade_out_shrink_animation 0.25s linear;
+    -webkit-animation: fade_out_shrink_animation 0.25s linear;
+  }
+
+  @keyframes fade_out_shrink_animation {
+    from { opacity:1; }
+    to { opacity:0; transform: scale(0); }
+  }
+
+  @-webkit-keyframes fade_out_shrink_animation {
+    from { opacity:1; }
+    to { opacity:0; transform: scale(0); }
   }
 
   .flash.ng-enter,
