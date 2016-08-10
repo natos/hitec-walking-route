@@ -148,10 +148,10 @@ start-view {
   padding: 1rem 4rem;
 }
 
-div#hitec-header {
-    background-color: black;
+#hitec-header {
+    background-color: #000000;
     z-index: 150;
-    position: FIXED;
+    position: fixed;
     width: 100%;
     padding: 5px 10px;
 }
@@ -797,10 +797,14 @@ button.md-button {
     #map-container {
       position: relative;
     }
+    #hitec-header {
+      position: absolute;
+      top: 0;
+    }
   }
   /* for printing */
   #map-container.printing-size #map {
-    width: 700px;
+    width: 768px;
     margin: 0 auto;
     position: relative;
   }
