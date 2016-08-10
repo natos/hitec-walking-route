@@ -64,6 +64,7 @@ function PlacesService($rootScope, $timeout, placesModel, mapModel, mapService) 
             placeId: results.place_id,
             location: results.geometry.location
           };
+          place.loaded = true;
         } else {
           console.error('Google Places API', 'Result Failed for', place.label, place.id, status, 'Re-trying');
           getPlaceInfo(place.id);

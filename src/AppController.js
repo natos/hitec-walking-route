@@ -23,6 +23,7 @@ function AppController($scope, $rootScope, $timeout, appModel, placesModel, mapM
   var self = this;
       // expose state helper
       self.state = appModel.state;
+      self.rawplaces = placesService.getPlaces();
       // expose navigation helpers
       self.next = next;
       self.prev = prev;
