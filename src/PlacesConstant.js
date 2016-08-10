@@ -36,6 +36,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "label": "Anne Frank House",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
+            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/annefrankhouse.jpg",
+            "x3": "assets/img/x3/annefrankhouse.jpg"
+        }
+    },
+    {
         "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
         "label": "The Breakfast Club",
         "website": "https://www.thebreakfastclub.nl/",
@@ -52,24 +70,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/breakfastclub.jpg",
             "x3": "assets/img/x3/breakfastclub.jpg"
-        }
-    },
-    {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "label": "Anne Frank House",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
-            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/annefrankhouse.jpg",
-            "x3": "assets/img/x3/annefrankhouse.jpg"
         }
     },
     {
@@ -199,25 +199,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJDeQMr8MJxkcRHTJBjcuhrfg",
-        "label": "The Nine Streets",
-        "website": "https:/www.9straatjesonline.com/en/",
-        "category": "Local Hotspots",
-        "content": [
-            "The Nine Streets - De Negen Straatjes is in the heart of Amsterdam’s canal district and is one of the city’s most delightful shopping areas. Just two minutes walk from the Royal Palace in the Dam Square, these picturesque streets straddle the 17th Century canals from the Singel to the Prinsengracht.",
-            "Spend a fabulous day wandering from one to the next exploring the designer boutiques, art galleries, jewellers, gift shops, fashion shops and specialist businesses - there are plenty of great bars, cafes and restaurants to refresh you along the way."
-        ],
-        "author": {
-            "name": null,
-            "role": null,
-            "picture": "assets/img/author/null"
-        },
-        "media": {
-            "x2": "assets/img/x2/ninestreets.jpg",
-            "x3": "assets/img/x3/ninestreets.jpg"
-        }
-    },
-    {
         "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
         "label": "JuiceBrothers",
         "website": "http://www.juicebro.com",
@@ -255,20 +236,22 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
-        "label": "The Redlight District",
-        "category": "Typical Amsterdam",
+        "id": "ChIJDeQMr8MJxkcRHTJBjcuhrfg",
+        "label": "The Nine Streets",
+        "website": "https:/www.9straatjesonline.com/en/",
+        "category": "Local Hotspots",
         "content": [
-            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+            "The Nine Streets - De Negen Straatjes is in the heart of Amsterdam’s canal district and is one of the city’s most delightful shopping areas. Just two minutes walk from the Royal Palace in the Dam Square, these picturesque streets straddle the 17th Century canals from the Singel to the Prinsengracht.",
+            "Spend a fabulous day wandering from one to the next exploring the designer boutiques, art galleries, jewellers, gift shops, fashion shops and specialist businesses - there are plenty of great bars, cafes and restaurants to refresh you along the way."
         ],
         "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
+            "name": null,
+            "role": null,
+            "picture": "assets/img/author/null"
         },
         "media": {
-            "x2": "assets/img/x2/redlightdistrict.jpg",
-            "x3": "assets/img/x3/redlightdistrict.jpg"
+            "x2": "assets/img/x2/ninestreets.jpg",
+            "x3": "assets/img/x3/ninestreets.jpg"
         }
     },
     {
@@ -287,6 +270,23 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/pluk.jpg",
             "x3": "assets/img/x3/pluk.jpg"
+        }
+    },
+    {
+        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
+        "label": "The Redlight District",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/redlightdistrict.jpg",
+            "x3": "assets/img/x3/redlightdistrict.jpg"
         }
     },
     {
@@ -345,6 +345,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
+        "label": "Scandinavian Embassy",
+        "website": "http://http://scandinavianembassy.nl/",
+        "category": "Local Hotspots",
+        "content": [
+            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/scandinavian.jpg",
+            "x3": "assets/img/x3/scandinavian.jpg"
+        }
+    },
+    {
         "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
         "label": "The Cold Pressed Juicery",
         "website": "http://www.thecoldpressedjuicery.com/",
@@ -360,6 +378,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
             "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
+        }
+    },
+    {
+        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMI",
+        "label": "Van Gogh Museum",
+        "website": "https://www.vangoghmuseum.nl/en",
+        "category": "Typical Amsterdam",
+        "content": [
+            "Step into Van Gogh's world. Explore the world’s largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/vangogh.jpg",
+            "x3": "assets/img/x3/vangogh.jpg"
         }
     },
     {
@@ -381,12 +417,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
-        "label": "Scandinavian Embassy",
-        "website": "http://http://scandinavianembassy.nl/",
+        "id": "ChIJcUanY84JxkcRANelYPRjAIw",
+        "label": "Vesper Bar",
+        "website": "http://www.vesperbar.nl",
         "category": "Local Hotspots",
         "content": [
-            "At Scandinavian Embassy coffee and food meet fashion in a Scandinavian setting. SE offers delicious coffees combined with healthy breakfasts, lunches and private dining. All while showcasing conceptual fashion collections."
+            "Boutique Bar Vesper is located in the middle of the Jordaan area in Amsterdam, between the trendy Haarlemmerdijk shopping district and the Brouwersgracht. Vesper has a large variety of great wines, beers and an extensive cocktail list. Due to the intimate character of the bar, Vesper is a great location for a small get- together, cocktail parties or just a nice drink after a long walk."
         ],
         "author": {
             "name": "",
@@ -394,26 +430,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/scandinavian.jpg",
-            "x3": "assets/img/x3/scandinavian.jpg"
-        }
-    },
-    {
-        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMI",
-        "label": "Van Gogh Museum",
-        "website": "https://www.vangoghmuseum.nl/en",
-        "category": "Typical Amsterdam",
-        "content": [
-            "Step into Van Gogh's world. Explore the world’s largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/vangogh.jpg",
-            "x3": "assets/img/x3/vangogh.jpg"
+            "x2": "assets/img/x2/vesperbar.jpg",
+            "x3": "assets/img/x3/vesperbar.jpg"
         }
     },
     {
