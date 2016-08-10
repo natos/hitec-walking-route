@@ -35,11 +35,19 @@ function StaticMapController($scope, $rootScope, $window, $timeout, appModel, ma
 
   var self = this;
 
-  // self.staticMapURL = directionsService.getStaticMapWithDirections();
+  self.staticMapURL = directionsService.getStaticMapWithDirections();
 
   self.cancel = function() {
     $rootScope.$emit(appModel.events.prevState);
   };
+
+  self.email = function() {
+    var emailLink = "mailto:me@example.com"
+      + "?subject=" + escape("Hi-Tec Walking Routes")
+      + "&body=" + directionsService.getDirectionsForEmail();
+
+    $window.open(emailLink, "_self");
+  }
 
   self.print = function() {
     angular.element(document.getElementById('map-container')).addClass('printing-size');
