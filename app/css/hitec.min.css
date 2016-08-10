@@ -1128,9 +1128,9 @@ md-tooltip ._md-content._md-show-remove._md-show-remove-active{-webkit-transform
 md-tooltip._md-hide{-webkit-transition:all .3s cubic-bezier(.55,0,.55,.2);transition:all .3s cubic-bezier(.55,0,.55,.2)}
 md-tooltip._md-show{-webkit-transition:all .4s cubic-bezier(.25,.8,.25,1);transition:all .4s cubic-bezier(.25,.8,.25,1);pointer-events:auto}
 .md-virtual-repeat-container{box-sizing:border-box;display:block;margin:0;overflow:hidden;padding:0;position:relative}
-.md-virtual-repeat-container .md-virtual-repeat-scroller{bottom:0;box-sizing:border-box;left:0;margin:0;overflow-x:hidden;padding:0;position:absolute;right:0;top:0}
+.md-virtual-repeat-container .md-virtual-repeat-offsetter,.md-virtual-repeat-container .md-virtual-repeat-scroller{left:0;margin:0;padding:0;position:absolute;right:0;box-sizing:border-box;top:0}
+.md-virtual-repeat-container .md-virtual-repeat-scroller{bottom:0;overflow-x:hidden}
 .md-virtual-repeat-container .md-virtual-repeat-sizer{box-sizing:border-box;height:1px;display:block;margin:0;padding:0;width:1px}
-.md-virtual-repeat-container .md-virtual-repeat-offsetter{box-sizing:border-box;left:0;margin:0;padding:0;position:absolute;right:0;top:0}
 .md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller{overflow-x:auto;overflow-y:hidden}
 .md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-offsetter{bottom:16px;right:auto;white-space:nowrap}
 [dir=rtl] .md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-offsetter{right:0;right:auto;right:initial;left:auto}
@@ -2741,8 +2741,9 @@ h3{font:1.25em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 h3:before{border-top:4px solid #54bceb;content:"";display:block;margin:0 auto 21px;width:50px}
 h4{font:1em AvantGarde-Demi,FranklinGothicURW-Boo,Arial,Helvetica,sans-serif}
 start-view{background-image:url(../assets/img/brand/cape-town.jpg);background-size:cover;position:absolute;top:0;right:0;bottom:0;left:0;background-color:rgba(255,255,255,.9);padding-top:10%;z-index:200}
-.loader{margin:4rem;max-width:438px}
-.loader .loading{margin:1rem;display:inline-block;width:22px;height:22px;opacity:.5;background-color:#fff;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;border-radius:100%}
+.start-button{position:absolute;top:35%}
+.loader{margin:4rem;max-width:400px;text-align:center}
+.loader .loading{margin:.5rem;display:inline-block;width:22px;height:22px;opacity:.5;background-color:#fff;-webkit-transition:all 1s ease-in-out;transition:all 1s ease-in-out;border-radius:100%}
 .loader .loading.loaded{opacity:1;background-color:#54bceb}
 #start .bubbles{margin:2rem}
 #start .bubble{margin:1rem}
@@ -2875,6 +2876,13 @@ to{opacity:0}
 }
 @-webkit-keyframes fade_out_animation{from{opacity:1}
 to{opacity:0}
+}
+.fade.shrink.ng-leave{animation:fade_out_shrink_animation .25s linear;-webkit-animation:fade_out_shrink_animation .25s linear}
+@keyframes fade_out_shrink_animation{from{opacity:1}
+to{opacity:0;-webkit-transform:scale(0);transform:scale(0)}
+}
+@-webkit-keyframes fade_out_shrink_animation{from{opacity:1}
+to{opacity:0;-webkit-transform:scale(0);transform:scale(0)}
 }
 .flash.ng-enter,.flash.ng-leave{display:block;position:absolute;top:0;right:0;bottom:0;left:0;animation:flash_animation .5s linear;-webkit-animation:flash_animation .5s linear;z-index:100}
 @keyframes flash_animation{0%,100%{background-color:rgba(255,255,255,0)}

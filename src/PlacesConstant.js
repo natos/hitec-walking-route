@@ -1,22 +1,5 @@
 angular.module('App').constant('places', [
     {
-        "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
-        "label": "Albert Cuyp Market",
-        "category": "Markets",
-        "content": [
-            "The market began trading in 1904, now over 300 stalls are lining both sides of the Albert Cuyp street in the neighborhood of De Pijp. Stalls sell everything from fruit, vegetables, cheese, fish and spices to clothes, cosmetics and bedding. The prices are among the cheapest in Amsterdam. The market gets very crowded especially on a sunny day and Saturdays."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/albertcuyp.jpg",
-            "x3": "assets/img/x3/albertcuyp.jpg"
-        }
-    },
-    {
         "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
         "label": "Bakers & Roasters",
         "website": "http://www.bakersandroasters.com",
@@ -33,6 +16,23 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/bakersandroasters.jpg",
             "x3": "assets/img/x3/bakersandroasters.jpg"
+        }
+    },
+    {
+        "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
+        "label": "Albert Cuyp Market",
+        "category": "Markets",
+        "content": [
+            "The market began trading in 1904, now over 300 stalls are lining both sides of the Albert Cuyp street in the neighborhood of De Pijp. Stalls sell everything from fruit, vegetables, cheese, fish and spices to clothes, cosmetics and bedding. The prices are among the cheapest in Amsterdam. The market gets very crowded especially on a sunny day and Saturdays."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/albertcuyp.jpg",
+            "x3": "assets/img/x3/albertcuyp.jpg"
         }
     },
     {
@@ -163,42 +163,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
-        "label": "Hortus Botanicus",
-        "website": "http://www.dehortus.nl",
-        "category": "Local Hotspots",
-        "content": [
-            "The Hortus Botanicus Amsterdam is one of the oldest botanic gardens in the world. Located in the city Centre of the Dutch capital, the garden us a beautiful and intimate place with an unique collection of plants. In the midst of busy city, the Hortus offers an oasis of tranquility, a flowery relief in the urban busyness."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/hortus.jpg",
-            "x3": "assets/img/x3/hortus.jpg"
-        }
-    },
-    {
-        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
-        "label": "Jordaan",
-        "website": "https://www.jordaaninfo.com/",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/jordaan.jpg",
-            "x3": "assets/img/x3/jordaan.jpg"
-        }
-    },
-    {
         "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
         "label": "JuiceBrothers",
         "website": "http://www.juicebro.com",
@@ -236,6 +200,42 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJqxRzZuLhxUcRpgvqX1nIp1A",
+        "label": "Hortus Botanicus",
+        "website": "http://www.dehortus.nl",
+        "category": "Local Hotspots",
+        "content": [
+            "The Hortus Botanicus Amsterdam is one of the oldest botanic gardens in the world. Located in the city Centre of the Dutch capital, the garden us a beautiful and intimate place with an unique collection of plants. In the midst of busy city, the Hortus offers an oasis of tranquility, a flowery relief in the urban busyness."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/hortus.jpg",
+            "x3": "assets/img/x3/hortus.jpg"
+        }
+    },
+    {
+        "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
+        "label": "Jordaan",
+        "website": "https://www.jordaaninfo.com/",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Amsterdam Jordaan is undoubtedly the most sung about, described and romanced town district of the Netherlands. Started as a district for the poor, today it is a favorite place for students, artists and young professionals. The Jordaan is the area at the west side of the 'grachtengordel' (main canals). With al kinds of different restaurants, shops, and bars The Jordaan is a popular district in Amsterdam."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/jordaan.jpg",
+            "x3": "assets/img/x3/jordaan.jpg"
+        }
+    },
+    {
         "id": "ChIJDeQMr8MJxkcRHTJBjcuhrfg",
         "label": "The Nine Streets",
         "website": "https:/www.9straatjesonline.com/en/",
@@ -252,6 +252,23 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/ninestreets.jpg",
             "x3": "assets/img/x3/ninestreets.jpg"
+        }
+    },
+    {
+        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
+        "label": "The Redlight District",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/redlightdistrict.jpg",
+            "x3": "assets/img/x3/redlightdistrict.jpg"
         }
     },
     {
@@ -273,11 +290,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
-        "label": "The Redlight District",
-        "category": "Typical Amsterdam",
+        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
+        "label": "Rembrandt House Museum",
+        "website": "http://www.rembrandthuis.nl/en/",
+        "category": "Art & Musea",
         "content": [
-            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
         ],
         "author": {
             "name": "",
@@ -285,8 +303,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/redlightdistrict.jpg",
-            "x3": "assets/img/x3/redlightdistrict.jpg"
+            "x2": "assets/img/x2/rembrandthouse.jpg",
+            "x3": "assets/img/x3/rembrandthouse.jpg"
         }
     },
     {
@@ -309,12 +327,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
-        "label": "Rembrandt House Museum",
-        "website": "http://www.rembrandthuis.nl/en/",
-        "category": "Art & Musea",
+        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
+        "label": "The Cold Pressed Juicery",
+        "website": "http://www.thecoldpressedjuicery.com/",
+        "category": "Healthy Bars",
         "content": [
-            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
+            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
         ],
         "author": {
             "name": "",
@@ -322,8 +340,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/rembrandthouse.jpg",
-            "x3": "assets/img/x3/rembrandthouse.jpg"
+            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
+            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
         }
     },
     {
@@ -360,78 +378,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/scandinavian.jpg",
             "x3": "assets/img/x3/scandinavian.jpg"
-        }
-    },
-    {
-        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
-        "label": "The Cold Pressed Juicery",
-        "website": "http://www.thecoldpressedjuicery.com/",
-        "category": "Healthy Bars",
-        "content": [
-            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
-            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
-        }
-    },
-    {
-        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMI",
-        "label": "Van Gogh Museum",
-        "website": "https://www.vangoghmuseum.nl/en",
-        "category": "Typical Amsterdam",
-        "content": [
-            "Step into Van Gogh's world. Explore the world’s largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/vangogh.jpg",
-            "x3": "assets/img/x3/vangogh.jpg"
-        }
-    },
-    {
-        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
-        "label": "Tropenmuseum",
-        "category": "Art & Musea",
-        "content": [
-            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
-            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/tropenmuseum.jpg",
-            "x3": "assets/img/x3/tropenmuseum.jpg"
-        }
-    },
-    {
-        "id": "ChIJcUanY84JxkcRANelYPRjAIw",
-        "label": "Vesper Bar",
-        "website": "http://www.vesperbar.nl",
-        "category": "Local Hotspots",
-        "content": [
-            "Boutique Bar Vesper is located in the middle of the Jordaan area in Amsterdam, between the trendy Haarlemmerdijk shopping district and the Brouwersgracht. Vesper has a large variety of great wines, beers and an extensive cocktail list. Due to the intimate character of the bar, Vesper is a great location for a small get- together, cocktail parties or just a nice drink after a long walk."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/vesperbar.jpg",
-            "x3": "assets/img/x3/vesperbar.jpg"
         }
     },
     {
