@@ -36,24 +36,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
-        "label": "Anne Frank House",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
-            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/annefrankhouse.jpg",
-            "x3": "assets/img/x3/annefrankhouse.jpg"
-        }
-    },
-    {
         "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
         "label": "The Breakfast Club",
         "website": "https://www.thebreakfastclub.nl/",
@@ -70,6 +52,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/breakfastclub.jpg",
             "x3": "assets/img/x3/breakfastclub.jpg"
+        }
+    },
+    {
+        "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
+        "label": "Anne Frank House",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The Anne Frank House was established on 3 May 1957, with the close involvement of Anne’s father, Otto Frank. It is an independent, non-profit organization dedicated to the preservation of Anne Frank’s hiding place and her diaries, and to spreading the message of Anne Frank’s life and ideals worldwide.",
+            "On the basis of Anne Frank’s life story, set against the background of the Holocaust and the Second World War, the Anne Frank House develops educational programs and products with the aim of raising young people’s awareness of the dangers of anti-Semitism, racism and discrimination and the importance of freedom, equal rights and democracy."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/annefrankhouse.jpg",
+            "x3": "assets/img/x3/annefrankhouse.jpg"
         }
     },
     {
@@ -110,23 +110,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
-        "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
-        }
-    },
-    {
         "id": "ChIJN_lcRHQJxkcRATpyj7glLxA",
         "label": "FOAM",
         "website": "http://www.foam.org/",
@@ -142,6 +125,23 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/foam.jpg",
             "x3": "assets/img/x3/foam.jpg"
+        }
+    },
+    {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
         }
     },
     {
@@ -181,24 +181,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
-        "label": "JuiceBrothers",
-        "website": "http://www.juicebro.com",
-        "category": "Healthy Bars",
-        "content": [
-            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/juicebro.jpg",
-            "x3": "assets/img/x3/juicebro.jpg"
-        }
-    },
-    {
         "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
         "label": "Jordaan",
         "website": "https://www.jordaaninfo.com/",
@@ -214,25 +196,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/jordaan.jpg",
             "x3": "assets/img/x3/jordaan.jpg"
-        }
-    },
-    {
-        "id": "ChIJ6XBeeuoJxkcRHBnYtomuArg",
-        "label": "Lion Noir",
-        "website": "http://www.lionnoir.nl",
-        "category": "Restaurants",
-        "content": [
-            "Lion Noire is restaurant that will surprise and delight on every visit. Our seasonal menu is constantly evolving, reflecting the availability of locally-sourced fresh ingredients.",
-            "Every dish is crafted to spark the taste buds with flavours inspired by French high-dining. Lion Noir’s eclectically chic ambiance has won much admiration, including a Interior Design of the Year Award."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/lionnoir.jpg",
-            "x3": "assets/img/x3/lionnoir.jpg"
         }
     },
     {
@@ -255,6 +218,60 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
+        "label": "JuiceBrothers",
+        "website": "http://www.juicebro.com",
+        "category": "Healthy Bars",
+        "content": [
+            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/juicebro.jpg",
+            "x3": "assets/img/x3/juicebro.jpg"
+        }
+    },
+    {
+        "id": "ChIJ6XBeeuoJxkcRHBnYtomuArg",
+        "label": "Lion Noir",
+        "website": "http://www.lionnoir.nl",
+        "category": "Restaurants",
+        "content": [
+            "Lion Noire is restaurant that will surprise and delight on every visit. Our seasonal menu is constantly evolving, reflecting the availability of locally-sourced fresh ingredients.",
+            "Every dish is crafted to spark the taste buds with flavours inspired by French high-dining. Lion Noir’s eclectically chic ambiance has won much admiration, including a Interior Design of the Year Award."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/lionnoir.jpg",
+            "x3": "assets/img/x3/lionnoir.jpg"
+        }
+    },
+    {
+        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
+        "label": "The Redlight District",
+        "category": "Typical Amsterdam",
+        "content": [
+            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/redlightdistrict.jpg",
+            "x3": "assets/img/x3/redlightdistrict.jpg"
+        }
+    },
+    {
         "id": "ChIJO8KiX8MJxkcRhXshm_C99Mo",
         "label": "PLUK",
         "website": "http:/http://www.pluk-amsterdam.com/en/",
@@ -270,24 +287,6 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/pluk.jpg",
             "x3": "assets/img/x3/pluk.jpg"
-        }
-    },
-    {
-        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
-        "label": "Rembrandt House Museum",
-        "website": "http://www.rembrandthuis.nl/en/",
-        "category": "Art & Musea",
-        "content": [
-            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/rembrandthouse.jpg",
-            "x3": "assets/img/x3/rembrandthouse.jpg"
         }
     },
     {
@@ -310,29 +309,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJZ1NXhLgJxkcRaJzTqGf0CTU",
-        "label": "The Redlight District",
-        "category": "Typical Amsterdam",
-        "content": [
-            "The majority of people have heard about Amsterdam’s Red Light District well before their visit. There are plenty of sex shops, peep shows, brothels, an elaborate condom shop, a sex museum and prostitutes in red-lit windows. But the heart of Amsterdam is much more than that. New opportunities are setting in place a future for the city centre that will show the many qualities."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/redlightdistrict.jpg",
-            "x3": "assets/img/x3/redlightdistrict.jpg"
-        }
-    },
-    {
-        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
-        "label": "Tropenmuseum",
+        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
+        "label": "Rembrandt House Museum",
+        "website": "http://www.rembrandthuis.nl/en/",
         "category": "Art & Musea",
         "content": [
-            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
-            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
         ],
         "author": {
             "name": "",
@@ -340,8 +322,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/tropenmuseum.jpg",
-            "x3": "assets/img/x3/tropenmuseum.jpg"
+            "x2": "assets/img/x2/rembrandthouse.jpg",
+            "x3": "assets/img/x3/rembrandthouse.jpg"
         }
     },
     {
@@ -381,6 +363,24 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
+        "label": "Tropenmuseum",
+        "category": "Art & Musea",
+        "content": [
+            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
+            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/tropenmuseum.jpg",
+            "x3": "assets/img/x3/tropenmuseum.jpg"
+        }
+    },
+    {
         "id": "ChIJZTMH4owJxkcReXGn3msj0nU",
         "label": "Scandinavian Embassy",
         "website": "http://http://scandinavianembassy.nl/",
@@ -399,7 +399,7 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMIY",
+        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMI",
         "label": "Van Gogh Museum",
         "website": "https://www.vangoghmuseum.nl/en",
         "category": "Typical Amsterdam",
