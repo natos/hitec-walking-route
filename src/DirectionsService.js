@@ -230,9 +230,9 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     return url;
   }
 
-  function clean(instructions) {
-    return instructions.split("<b>").join("").split("</b>").join("").replace("<div style=\"font-size:0.9em\">", " ").replace("</div>", "%0A");
-  }
+  // function clean(instructions) {
+  //   return instructions.split("<b>").join("").split("</b>").join("").replace("<div style=\"font-size:0.9em\">", " ").replace("</div>", "%0A");
+  // }
 
   function getDirectionsForMailgun() {
     var map = "You can see the map for a better visual reference: " + getStaticMapWithDirections();
@@ -245,6 +245,8 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       }
       steps.push(" ");
     }
+    // last step
+    steps.push((route.legs.length + 1) + ". " + route.legs[route.legs.length - 1].end_place.label);
     // Composing Email Content
     var d = [
       "Hello!",
@@ -267,37 +269,37 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
   }
 
 
-  function getDirectionsForEmail() {
-    var map = "Here you can see the map for a better reference: " + encodeURIComponent(getStaticMapWithDirections());
-    var route = getCurrentRoute();
-    var steps = [];
-    for (var l = 0; l < route.legs.length; l += 1) {
-      steps.push((l+1) + ". " + route.legs[l].start_place.label);
-      for (var s = 0; s < route.legs[l].steps.length; s += 1) {
-        steps.push("    - " + clean(route.legs[l].steps[s].instructions));
-      }
-      steps.push(" ");
-    }
-    // Composing Email Content
-    var d = [
-      "Hello!",
-      "This is the walking route you created",
-      " ",
-      "Step by step directions:",
-      " ",
-      steps.join("%0A"),
-      " ",
-      map,
-      " ",
-      "Enojoy Amsterdam!",
-      " ",
-      "Best regards,",
-      "Hi-Tec",
-      "http://www.hi-tec.nl"
-    ];
-
-    return d.join("%0A");
-  }
+  // function getDirectionsForEmail() {
+  //   var map = "Here you can see the map for a better reference: " + encodeURIComponent(getStaticMapWithDirections());
+  //   var route = getCurrentRoute();
+  //   var steps = [];
+  //   for (var l = 0; l < route.legs.length; l += 1) {
+  //     steps.push((l+1) + ". " + route.legs[l].start_place.label);
+  //     for (var s = 0; s < route.legs[l].steps.length; s += 1) {
+  //       steps.push("    - " + clean(route.legs[l].steps[s].instructions));
+  //     }
+  //     steps.push(" ");
+  //   }
+  //   // Composing Email Content
+  //   var d = [
+  //     "Hello!",
+  //     "This is the walking route you created",
+  //     " ",
+  //     "Step by step directions:",
+  //     " ",
+  //     steps.join("%0A"),
+  //     " ",
+  //     map,
+  //     " ",
+  //     "Enojoy Amsterdam!",
+  //     " ",
+  //     "Best regards,",
+  //     "Hi-Tec",
+  //     "http://www.hi-tec.nl"
+  //   ];
+  //
+  //   return d.join("%0A");
+  // }
 
   function getTotalDistance() {
     return directionsModel.distance;
@@ -320,7 +322,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     getStaticMapWithDirections: getStaticMapWithDirections,
     calculateAndDisplayRoute: calculateAndDisplayRoute,
     getDirectionsForMailgun: getDirectionsForMailgun,
-    getDirectionsForEmail: getDirectionsForEmail,
+    // getDirectionsForEmail: getDirectionsForEmail,
     getTotalDistance: getTotalDistance,
     getTotalDuration: getTotalDuration,
     getCurrentRoute: getCurrentRoute

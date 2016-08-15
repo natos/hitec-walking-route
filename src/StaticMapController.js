@@ -128,7 +128,6 @@ function StaticMapController($scope, $rootScope, $window, $timeout, $http, Base6
   };
 
   self.email = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.prompt()
       .title('Please provide an email address')
       .textContent('Where do you want to send the instructions?')
@@ -178,10 +177,22 @@ function StaticMapController($scope, $rootScope, $window, $timeout, $http, Base6
         data: dataJSON
     };
 
+    function feedbackDialog(text) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .clickOutsideToClose(true)
+          .title('Thank you')
+          .textContent(text)
+          .ok('Ok')
+          .ariaLabel('Email feedback dialog')
+      );
+      $timeout($mdDialog.hide, 3000);
+    }
+
     $http(req).then(function(data){
-        console.log('mail sent', data);
+      feedbackDialog('Email was sent!');
     }, function(data){
-        console.log('mail sent error?', data);
+      feedbackDialog('We found an error, plase try again.');
     });
   }
 
