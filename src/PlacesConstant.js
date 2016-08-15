@@ -1,5 +1,22 @@
 angular.module('App').constant('places', [
     {
+        "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
+        "label": "Albert Cuyp Market",
+        "category": "Markets",
+        "content": [
+            "The market began trading in 1904, now over 300 stalls are lining both sides of the Albert Cuyp street in the neighborhood of De Pijp. Stalls sell everything from fruit, vegetables, cheese, fish and spices to clothes, cosmetics and bedding. The prices are among the cheapest in Amsterdam. The market gets very crowded especially on a sunny day and Saturdays."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/albertcuyp.jpg",
+            "x3": "assets/img/x3/albertcuyp.jpg"
+        }
+    },
+    {
         "id": "ChIJCX5FdO0JxkcRor975fXq3lA",
         "label": "Bakers & Roasters",
         "website": "http://www.bakersandroasters.com",
@@ -111,23 +128,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
-        "label": "Flower Market",
-        "category": "Markets",
-        "content": [
-            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/flowermarket.jpg",
-            "x3": "assets/img/x3/flowermarket.jpg"
-        }
-    },
-    {
         "id": "ChIJIyPEUu8JxkcRTmRcuMxC9yc",
         "label": "Hi-Tec Store",
         "website": "http://www.hi-tec.amsterdam",
@@ -164,24 +164,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
-        "label": "JuiceBrothers",
-        "website": "http://www.juicebro.com",
-        "category": "Healthy Bars",
-        "content": [
-            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/juicebro.jpg",
-            "x3": "assets/img/x3/juicebro.jpg"
-        }
-    },
-    {
         "id": "ChIJf-GU6NoJxkcRHOqk5aT6MoY",
         "label": "Jordaan",
         "website": "https://www.jordaaninfo.com/",
@@ -197,6 +179,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/jordaan.jpg",
             "x3": "assets/img/x3/jordaan.jpg"
+        }
+    },
+    {
+        "id": "ChIJaQ9zbxIJxkcRUndalsoKnZA",
+        "label": "JuiceBrothers",
+        "website": "http://www.juicebro.com",
+        "category": "Healthy Bars",
+        "content": [
+            "JuiceBrothers their goal is to create quality cold-pressed juice that is nutritious and delicious as hell."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/juicebro.jpg",
+            "x3": "assets/img/x3/juicebro.jpg"
         }
     },
     {
@@ -238,6 +238,23 @@ angular.module('App').constant('places', [
         }
     },
     {
+        "id": "ChIJaTMo1sEJxkcRfjuQODB7BK8",
+        "label": "Flower Market",
+        "category": "Markets",
+        "content": [
+            "This is the only floating flower market in the world, and one of the most fragrant places of interest of Amsterdam - in all seasons. The flower stalls stand on the houseboats. You will find there all sorts of tulips, narcissus and other bulbs and flowers. The bulbs are ready for export, so you can enjoy them at home too. In December the market also sells green Christmas trees."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/flowermarket.jpg",
+            "x3": "assets/img/x3/flowermarket.jpg"
+        }
+    },
+    {
         "id": "ChIJO8KiX8MJxkcRhXshm_C99Mo",
         "label": "PLUK",
         "website": "http:/http://www.pluk-amsterdam.com/en/",
@@ -273,25 +290,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ5Ra7we4JxkcRhYVAaq5zQ9U",
-        "label": "Rijkmuseum",
-        "website": "https://www.rijksmuseum.nl/en/",
-        "category": "Art & Musea",
-        "content": [
-            "At the Rijksmuseum, art and history take on new meaning for a broad-based, contemporary national and international audience.",
-            "As a national institute, the Rijksmuseum offers a representative overview of Dutch art and history from the Middle Ages onwards, and of major aspects of European and Asian art."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/rijksmuseum.jpg",
-            "x3": "assets/img/x3/rijksmuseum.jpg"
-        }
-    },
-    {
         "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
         "label": "Rembrandt House Museum",
         "website": "http://www.rembrandthuis.nl/en/",
@@ -310,12 +308,13 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJzbmpiu8JxkcR7y9-QgYjLdA",
-        "label": "Stedelijk Museum",
-        "website": "https://www.stedelijk.nl/en",
+        "id": "ChIJ5Ra7we4JxkcRhYVAaq5zQ9U",
+        "label": "Rijkmuseum",
+        "website": "https://www.rijksmuseum.nl/en/",
         "category": "Art & Musea",
         "content": [
-            "The Stedelijk Museum Amsterdam is an international museum dedicated to modern and contemporary art and design."
+            "At the Rijksmuseum, art and history take on new meaning for a broad-based, contemporary national and international audience.",
+            "As a national institute, the Rijksmuseum offers a representative overview of Dutch art and history from the Middle Ages onwards, and of major aspects of European and Asian art."
         ],
         "author": {
             "name": "",
@@ -323,26 +322,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/stedelijkmuseum.jpg",
-            "x3": "assets/img/x3/stedelijkmuseum.jpg"
-        }
-    },
-    {
-        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
-        "label": "The Cold Pressed Juicery",
-        "website": "http://www.thecoldpressedjuicery.com/",
-        "category": "Healthy Bars",
-        "content": [
-            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
-            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
+            "x2": "assets/img/x2/rijksmuseum.jpg",
+            "x3": "assets/img/x3/rijksmuseum.jpg"
         }
     },
     {
@@ -364,11 +345,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
-        "label": "Albert Cuyp Market",
-        "category": "Markets",
+        "id": "ChIJJVUGPuUJxkcRjckstQCZ0tw",
+        "label": "The Cold Pressed Juicery",
+        "website": "http://www.thecoldpressedjuicery.com/",
+        "category": "Healthy Bars",
         "content": [
-            "The market began trading in 1904, now over 300 stalls are lining both sides of the Albert Cuyp street in the neighborhood of De Pijp. Stalls sell everything from fruit, vegetables, cheese, fish and spices to clothes, cosmetics and bedding. The prices are among the cheapest in Amsterdam. The market gets very crowded especially on a sunny day and Saturdays."
+            "The Cold Pressed Juicery was founded with a spirited heart and an ambitious goal to offer the purest, cold pressed juices, delicious superfood smoothies and nutritious food that help towards a happier mind, body, and soul, while leading the way for socially-conscious initiatives."
         ],
         "author": {
             "name": "",
@@ -376,17 +358,17 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/albertcuyp.jpg",
-            "x3": "assets/img/x3/albertcuyp.jpg"
+            "x2": "assets/img/x2/thecoldpressedjuicery.jpg",
+            "x3": "assets/img/x3/thecoldpressedjuicery.jpg"
         }
     },
     {
-        "id": "ChIJX1rTlu8JxkcRGsV8-a4oKMI",
-        "label": "Van Gogh Museum",
-        "website": "https://www.vangoghmuseum.nl/en",
-        "category": "Typical Amsterdam",
+        "id": "ChIJzbmpiu8JxkcR7y9-QgYjLdA",
+        "label": "Stedelijk Museum",
+        "website": "https://www.stedelijk.nl/en",
+        "category": "Art & Musea",
         "content": [
-            "Step into Van Gogh's world. Explore the world’s largest collection of works by Vincent van Gogh at the Van Gogh Museum in Amsterdam."
+            "The Stedelijk Museum Amsterdam is an international museum dedicated to modern and contemporary art and design."
         ],
         "author": {
             "name": "",
@@ -394,8 +376,26 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/vangogh.jpg",
-            "x3": "assets/img/x3/vangogh.jpg"
+            "x2": "assets/img/x2/stedelijkmuseum.jpg",
+            "x3": "assets/img/x3/stedelijkmuseum.jpg"
+        }
+    },
+    {
+        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
+        "label": "Tropenmuseum",
+        "category": "Art & Musea",
+        "content": [
+            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
+            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/tropenmuseum.jpg",
+            "x3": "assets/img/x3/tropenmuseum.jpg"
         }
     },
     {
