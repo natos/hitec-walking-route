@@ -151,7 +151,9 @@ function StaticMapController($scope, $rootScope, $window, $timeout, $http, Base6
     //
     // $window.open(emailLink, "_self");
 
-    var url = "https://api.mailgun.net/v3/sandbox93fb6b2e4b4a48b89711c083ca8181d1.mailgun.org/messages";
+    // var url = "https://api.mailgun.net/v3/sandbox93fb6b2e4b4a48b89711c083ca8181d1.mailgun.org/messages";
+    // var url = "http://localhost:3030/send/email";
+    var url = "https://hitec-mail.herokuapp.com/send/email";
     var dataJSON = {
         from: "Hi-Tec Walking Routes <postmaster@sandbox93fb6b2e4b4a48b89711c083ca8181d1.mailgun.org>",
         to: to,
@@ -163,11 +165,10 @@ function StaticMapController($scope, $rootScope, $window, $timeout, $http, Base6
 
     var req = {
         method : 'POST',
-        url: url,
-        headers : {
-            'content-type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + Base64.encode('api:key-a14d1da4eed76f88ff3f955e51e7d742')
-        },
+        // headers : {
+        //     'content-type': 'application/x-www-form-urlencoded',
+        //     'Authorization': 'Basic ' + Base64.encode('api:key-a14d1da4eed76f88ff3f955e51e7d742')
+        // },
         transformRequest: function(obj) {
             var str = [];
             for(var p in obj)
@@ -189,7 +190,7 @@ function StaticMapController($scope, $rootScope, $window, $timeout, $http, Base6
       $timeout($mdDialog.hide, 3000);
     }
 
-    $http(req).then(function(data){
+    $http.post(url, dataJSON).then(function(data){
       feedbackDialog('Email was sent!');
     }, function(data){
       feedbackDialog('We found an error, plase try again.');
