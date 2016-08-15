@@ -19,23 +19,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
-        "label": "Albert Cuyp Market",
-        "category": "Markets",
-        "content": [
-            "The market began trading in 1904, now over 300 stalls are lining both sides of the Albert Cuyp street in the neighborhood of De Pijp. Stalls sell everything from fruit, vegetables, cheese, fish and spices to clothes, cosmetics and bedding. The prices are among the cheapest in Amsterdam. The market gets very crowded especially on a sunny day and Saturdays."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/albertcuyp.jpg",
-            "x3": "assets/img/x3/albertcuyp.jpg"
-        }
-    },
-    {
         "id": "ChIJSRE-IcUJxkcRCltjPmVdmtQ",
         "label": "Anne Frank House",
         "category": "Typical Amsterdam",
@@ -51,6 +34,25 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/annefrankhouse.jpg",
             "x3": "assets/img/x3/annefrankhouse.jpg"
+        }
+    },
+    {
+        "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
+        "label": "The Breakfast Club",
+        "website": "https://www.thebreakfastclub.nl/",
+        "category": "Breakfast & Lunch",
+        "content": [
+            "All day Breakfast!",
+            "The Breakfast Club serves breakfast, brunch, lunch and coffee in the cosmopolitan style of New York and Paris but in a cozy and relaxed cafe setting next to De Foodhallen."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/breakfastclub.jpg",
+            "x3": "assets/img/x3/breakfastclub.jpg"
         }
     },
     {
@@ -73,24 +75,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
-        "label": "Dr.Blend",
-        "website": "http://www.drblend.nl",
-        "category": "Healthy Bars",
-        "content": [
-            "At Dr. Blend they blend the most delicious and healthiest smoothies, juices, serve the tastiest wraps, sandwiches, salads, yoghurt and many more, made with the greatest passion and care!"
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/drblend.jpg",
-            "x3": "assets/img/x3/drblend.jpg"
-        }
-    },
-    {
         "id": "ChIJN_lcRHQJxkcRATpyj7glLxA",
         "label": "FOAM",
         "website": "http://www.foam.org/",
@@ -109,13 +93,12 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJc9UkrArixUcRgRrWHKmGTvg",
-        "label": "The Breakfast Club",
-        "website": "https://www.thebreakfastclub.nl/",
-        "category": "Breakfast & Lunch",
+        "id": "ChIJQY4j8cUJxkcRpFr7st5X1qA",
+        "label": "Dr.Blend",
+        "website": "http://www.drblend.nl",
+        "category": "Healthy Bars",
         "content": [
-            "All day Breakfast!",
-            "The Breakfast Club serves breakfast, brunch, lunch and coffee in the cosmopolitan style of New York and Paris but in a cozy and relaxed cafe setting next to De Foodhallen."
+            "At Dr. Blend they blend the most delicious and healthiest smoothies, juices, serve the tastiest wraps, sandwiches, salads, yoghurt and many more, made with the greatest passion and care!"
         ],
         "author": {
             "name": "",
@@ -123,8 +106,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/breakfastclub.jpg",
-            "x3": "assets/img/x3/breakfastclub.jpg"
+            "x2": "assets/img/x2/drblend.jpg",
+            "x3": "assets/img/x3/drblend.jpg"
         }
     },
     {
@@ -290,24 +273,6 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
-        "label": "Rembrandt House Museum",
-        "website": "http://www.rembrandthuis.nl/en/",
-        "category": "Art & Musea",
-        "content": [
-            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
-        ],
-        "author": {
-            "name": "",
-            "role": "",
-            "picture": "assets/img/author/"
-        },
-        "media": {
-            "x2": "assets/img/x2/rembrandthouse.jpg",
-            "x3": "assets/img/x3/rembrandthouse.jpg"
-        }
-    },
-    {
         "id": "ChIJ5Ra7we4JxkcRhYVAaq5zQ9U",
         "label": "Rijkmuseum",
         "website": "https://www.rijksmuseum.nl/en/",
@@ -324,6 +289,24 @@ angular.module('App').constant('places', [
         "media": {
             "x2": "assets/img/x2/rijksmuseum.jpg",
             "x3": "assets/img/x3/rijksmuseum.jpg"
+        }
+    },
+    {
+        "id": "ChIJ3063hr4JxkcReck8pUAfYXc",
+        "label": "Rembrandt House Museum",
+        "website": "http://www.rembrandthuis.nl/en/",
+        "category": "Art & Musea",
+        "content": [
+            "Visit Rembrandt Harmenszoon van Rijn’s home and workshop. For twenty years the Netherlands’ greatest artist lived and worked in this impressive building in the heart of Amsterdam, now a museum. The Rembrandt House Museum gives visitors a complete Rembrandt experience. With a seventeenth-century inventory as a guide, the house has been meticulously refurbished with furniture, art and objects from that time."
+        ],
+        "author": {
+            "name": "",
+            "role": "",
+            "picture": "assets/img/author/"
+        },
+        "media": {
+            "x2": "assets/img/x2/rembrandthouse.jpg",
+            "x3": "assets/img/x3/rembrandthouse.jpg"
         }
     },
     {
@@ -381,12 +364,11 @@ angular.module('App').constant('places', [
         }
     },
     {
-        "id": "ChIJO_40qnUJxkcRN_Opi2ibQN0",
-        "label": "Tropenmuseum",
-        "category": "Art & Musea",
+        "id": "ChIJcVZ0i_IJxkcRSwuhqrmu2NI",
+        "label": "Albert Cuyp Market",
+        "category": "Markets",
         "content": [
-            "The Tropenmuseum is a museum about people, housed in an impressive listed building overlooking Amsterdam’s Oosterpark.",
-            "The extensive permanent display and regularly changing exhibitions feature objects that all have a story to tell about humankind. Stories about universal human themes like mourning, celebration, ornamentation, prayer, conflict. From Africa to West and Southeast Asia, from New Guinea to Latin America: come to the Tropenmuseum and discover that, despite cultural differences, we are all essentially the same."
+            "The market began trading in 1904, now over 300 stalls are lining both sides of the Albert Cuyp street in the neighborhood of De Pijp. Stalls sell everything from fruit, vegetables, cheese, fish and spices to clothes, cosmetics and bedding. The prices are among the cheapest in Amsterdam. The market gets very crowded especially on a sunny day and Saturdays."
         ],
         "author": {
             "name": "",
@@ -394,8 +376,8 @@ angular.module('App').constant('places', [
             "picture": "assets/img/author/"
         },
         "media": {
-            "x2": "assets/img/x2/tropenmuseum.jpg",
-            "x3": "assets/img/x3/tropenmuseum.jpg"
+            "x2": "assets/img/x2/albertcuyp.jpg",
+            "x3": "assets/img/x3/albertcuyp.jpg"
         }
     },
     {
