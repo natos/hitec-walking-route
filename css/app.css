@@ -760,7 +760,9 @@ button.md-button {
   }
 
 
-
+  .md-dialog-container {
+    z-index: 1000;
+  }
 
   #print {
     position: absolute;

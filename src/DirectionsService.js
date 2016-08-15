@@ -227,15 +227,48 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     url += '&path=weight:3%7Ccolor:0xCC0000%7Cenc:' + getCurrentRoute().overview_polyline;
     url += '&markers=' + markers.join('|');
     url += '&key=' + mapModel.API_KEY;
-    return encodeURIComponent(url);
+    return url;
   }
 
   function clean(instructions) {
     return instructions.split("<b>").join("").split("</b>").join("").replace("<div style=\"font-size:0.9em\">", " ").replace("</div>", "%0A");
   }
 
+  function getDirectionsForMailgun() {
+    var map = "You can see the map for a better visual reference: " + getStaticMapWithDirections();
+    var route = getCurrentRoute();
+    var steps = [];
+    for (var l = 0; l < route.legs.length; l += 1) {
+      steps.push((l+1) + ". " + route.legs[l].start_place.label);
+      for (var s = 0; s < route.legs[l].steps.length; s += 1) {
+        steps.push("&nbsp;&nbsp; - " + route.legs[l].steps[s].instructions);
+      }
+      steps.push(" ");
+    }
+    // Composing Email Content
+    var d = [
+      "Hello!",
+      "This is the walking route you created",
+      " ",
+      "Step by step directions:",
+      " ",
+      steps.join("<br>"),
+      " ",
+      map,
+      " ",
+      "Enojoy Amsterdam!",
+      " ",
+      "Best regards,",
+      "Hi-Tec",
+      "http://www.hi-tec.nl"
+    ];
+
+    return d.join("<br>");
+  }
+
+
   function getDirectionsForEmail() {
-    var map = "Here you can see the map for a better reference: " + getStaticMapWithDirections();
+    var map = "Here you can see the map for a better reference: " + encodeURIComponent(getStaticMapWithDirections());
     var route = getCurrentRoute();
     var steps = [];
     for (var l = 0; l < route.legs.length; l += 1) {
@@ -286,6 +319,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
     cleanRoute: cleanRoute,
     getStaticMapWithDirections: getStaticMapWithDirections,
     calculateAndDisplayRoute: calculateAndDisplayRoute,
+    getDirectionsForMailgun: getDirectionsForMailgun,
     getDirectionsForEmail: getDirectionsForEmail,
     getTotalDistance: getTotalDistance,
     getTotalDuration: getTotalDuration,
