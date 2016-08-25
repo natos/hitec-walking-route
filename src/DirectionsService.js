@@ -258,7 +258,7 @@ function DirectionsService($rootScope, mapModel, directionsModel, mapService, pl
       " ",
       map,
       " ",
-      "Enojoy Amsterdam!",
+      "Enjoy Amsterdam!",
       " ",
       "Best regards,",
       "Hi-Tec",
